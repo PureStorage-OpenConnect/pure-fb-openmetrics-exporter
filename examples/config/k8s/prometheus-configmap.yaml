@@ -34,7 +34,7 @@ data:
           endpoint: ['10.11.112.6']
         static_configs:
         - targets:
-          - 10.11.113.63:9491 
+          - pure-fb-exporter.monitoring.svc:9491
           labels:
             location: uk
             site: London

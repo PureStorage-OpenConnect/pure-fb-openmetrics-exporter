@@ -1,4 +1,5 @@
-![Current version](https://img.shields.io/github/v/tag/PureStorage-OpenConnect/pure-fb-prometheus-exporter?label=current%20version) ![Dependencies](https://img.shields.io/badge/dependecies-python3--prometheus--client%20-orange)
+![Current version](https://img.shields.io/github/v/tag/PureStorage-OpenConnect/pure-fb-prometheus-exporter?label=current%20version)
+
 # Pure Storage FlashBlade Prometheus exporter
 Prometheus exporter for Pure Storage FlashBlade.
 

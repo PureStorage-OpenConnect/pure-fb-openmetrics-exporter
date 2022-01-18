@@ -37,7 +37,6 @@ where the release tag follows the semantic versioning.
 ---
 
 ### Local development
-
 If you want to contribute to the development or simply build the package locally you should use python virtualenv
 
 The following commands describe how to run a typical build:
@@ -51,10 +50,16 @@ python -m pip install --upgrade pip
 pip install build
 
 # clone the repository
+git clone git@github.com:PureStorage-OpenConnect/pure-fb-prometheus-exporter.git
 
-git clone 
+# modify the code and build the package
+cd pure-fb-prometheus-exporter
+...
+python -m build
+
 ```
-Use the same approach to modify the FlashArray and/or the FlashBlade exporter, by simply using the related requitements file.
+
+The newly built package can be found in the ./dist directory.
 
 ### Scraping endpoints
 

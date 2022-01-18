@@ -80,7 +80,7 @@ http://\<exporter-host\>:\<port\>/metrics/usage | endpoint | Quotas usage metric
 
 Depending on the target array, scraping for the whole set of metrics could result into timeout issues, in which case it is suggested either to increase the scraping timeout or to scrape each single endpoint instead.
 
-### Usage example
+### Usage examples
 
 In a typical production scenario, it is recommended to use a visual frontend for your metrics, such as [Grafana](https://github.com/grafana/grafana). Grafana allows you to use your Prometheus instance as a datasource, and create Graphs and other visualizations from PromQL queries. Grafana, Prometheus, are all easy to run as docker containers.
 
@@ -96,6 +96,8 @@ docker run -d -p 9090:9090 --name=prometheus -v /tmp/prometheus-pure.yml:/etc/pr
 docker run -d -p 3000:3000 --name=grafana -v /tmp/grafana-data:/var/lib/grafana grafana/grafana
 ```
 Please have a look at the documentation of each image/application for adequate configuration examples.
+
+A simple but complete example to deploy a full monitoring stack on kubernetes can be found in the [examples](examples/k8s) directory  
 
 
 ### Bugs and Limitations

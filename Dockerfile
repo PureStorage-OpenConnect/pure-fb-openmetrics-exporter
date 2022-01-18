@@ -1,6 +1,5 @@
 FROM python:slim
 
-
 # Run as non-root user
 RUN groupadd app && \
     useradd -d /app -g app app && \
@@ -14,7 +13,7 @@ USER app
 COPY dist/pure-fb-prometheus-exporter-0.0.1.tar.gz .
 COPY src/pure_fb_prometheus_exporter/pure_fb_exporter.py .
 
-# Install dependencies and WSGI server
+# Install package - dependencies are already included in the package itself
 RUN pip install --upgrade pip && \
     pip install --no-cache-dir pure-fb-prometheus-exporter-0.0.1.tar.gz
 

@@ -41,7 +41,7 @@ where the release tag follows the semantic versioning.
 If you want to contribute to the development or simply build the package locally you should use python virtualenv
 
 The following commands describe how to run a typical build:
-```bash
+```shell
 
 python -m venv pure-fb-build
 source ./pure-fb-build/bin/activate
@@ -60,7 +60,7 @@ python -m build
 
 ```
 
-The newly built package can be found in the ./dist directory.
+The newly built package can be found in the <kbd>./dist</kbd> directory.
 
 ### Scraping endpoints
 
@@ -90,7 +90,7 @@ In a typical production scenario, it is recommended to use a visual frontend for
 To spin up a very basic set of those containers, use the following commands:
 ```bash
 # Pure exporter
-docker run -d -p 9491:9491 --name pure-exporter quay.io/purestorage/pure-fb-prometheus-exporter:<version>
+docker run -d -p 9491:9491 --name pure-fb-prometheus-exporter quay.io/purestorage/pure-fb-prometheus-exporter:<version>
 
 # Prometheus with config via bind-volume (create config first!)
 docker run -d -p 9090:9090 --name=prometheus -v /tmp/prometheus-pure.yml:/etc/prometheus/prometheus.yml -v /tmp/prometheus-data:/prometheus prom/prometheus:latest

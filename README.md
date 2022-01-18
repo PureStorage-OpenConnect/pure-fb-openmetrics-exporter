@@ -26,7 +26,7 @@ The exporter is preferably built and launched via Docker. You can also scale the
 #### The official docker images are available at Quay.io
 
 ```shell
-docker pull quay.io/purestorage/pure-exporter:<release>
+docker pull quay.io/purestorage/pure-fb-prometheus-exporter:<release>
 ```
 
 where the release tag follows the semantic versioning.

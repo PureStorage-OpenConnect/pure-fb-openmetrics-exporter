@@ -73,9 +73,9 @@ The exporter understands the following requests:
 URL | GET parameters | description
 ---|---|---
 http://\<exporter-host\>:\<port\>/metrics | endpoint | Full array metrics
-http://\<exporter-host\>:\<port\>/metrics/array | endpoint | Array only metrics
-http://\<exporter-host\>:\<port\>/metrics/clients | endpoint | Clients only metrics
-http://\<exporter-host\>:\<port\>/metrics/quotas | endpoint | Quotas only metrics
+http://\<exporter-host\>:\<port\>/metrics/array | endpoint | Array metrics
+http://\<exporter-host\>:\<port\>/metrics/clients | endpoint | Clients metrics
+http://\<exporter-host\>:\<port\>/metrics/usage | endpoint | Quotas usage metrics
 
 
 Depending on the target array, scraping for the whole set of metrics could result into timeout issues, in which case it is suggested either to increase the scraping timeout or to scrape each single endpoint instead.

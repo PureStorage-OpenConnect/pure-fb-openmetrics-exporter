@@ -34,6 +34,7 @@ docker pull quay.io/purestorage/pure-exporter:<release>
 ```
 
 where the release tag follows the semantic versioning.
+
 ---
 
 ### Local development
@@ -67,37 +68,10 @@ The exporter uses a RESTful API schema to provide Prometheus scraping endpoints.
 
 **Authentication**
 
-Authentication is used by the exporter as the mechanism to cross authenticate to the scraped appliance, therefore for each array it is required to provide the REST API token for an account that has a 'readonly' role. The api-token must be provided in the http request using the HTTP Authorization header of type 'Bearer'. This is achieved by specifying the api-token value as the authorization parameter of the specific job in the Prometheus configuration file. As an alternative, it is possible to provide the api-token as a request argument, using the *apitoken* key. *Note* this option is deprecated and will be removed from the next releases.
+Authentication is used by the exporter as the mechanism to cross authenticate to the scraped appliance, therefore for each array it is required to provide the REST API token for an account that has a 'readonly' role. The api-token must be provided in the http request using the HTTP Authorization header of type 'Bearer'. This is achieved by specifying the api-token value as the authorization parameter of the specific job in the Prometheus configuration file.
 
+The exporter understands the following requests:
 
-The full exporter understands the following requests:
-
-System | URL | GET parameters | description
----|---|---|---
-FlashArray | http://\<exporter-host\>:\<port\>/metrics/flasharray | endpoint| Full array metrics
-FlashArray | http://\<exporter-host\>:\<port\>/metrics/flasharray/array | endpoint | Array only metrics
-FlashArray | http://\<exporter-host\>:\<port\>/metrics/flasharray/volumes | endpoint | Volumes only metrics
-FlashArray | http://\<exporter-host\>:\<port\>/metrics/flasharray/hosts | endpoint | Hosts only metrics
-FlashArray | http://\<exporter-host\>:\<port\>/metrics/flasharray/pods | endpoint| Pods only metrics
-FlashBlade | http://\<exporter-host\>:\<port\>/metrics/flashblade | endpoint | Full array metrics
-FlashBlade | http://\<exporter-host\>:\<port\>/metrics/flashblade/array | endpoint | Array only metrics
-FlashBlade | http://\<exporter-host\>:\<port\>/metrics/flashblade/clients | endpoint | Clients only metrics
-FlashBlade | http://\<exporter-host\>:\<port\>/metrics/flashblade/quotas | endpoint | Quotas only metrics
-
-
-The FlashArray-only and FlashBlade only exporters use a slightly different schema, which consists of the removal of the flasharray|flashblade string from the path.
-
-**FlashArray**
-
-URL | GET parameters | description
----|---|---
-http://\<exporter-host\>:\<port\>/metrics | endpoint | Full array metrics
-http://\<exporter-host\>:\<port\>/metrics/array | endpoint | Array only metrics
-http://\<exporter-host\>:\<port\>/metrics/volumes | endpoint | Volumes only metrics
-http://\<exporter-host\>:\<port\>/metrics/hosts | endpoint | Hosts only metrics
-http://\<exporter-host\>:\<port\>/metrics/pods | endpoint | Pods only metrics
-
-**FlashBlade**
 
 URL | GET parameters | description
 ---|---|---
@@ -109,11 +83,6 @@ http://\<exporter-host\>:\<port\>/metrics/quotas | endpoint | Quotas only metric
 
 Depending on the target array, scraping for the whole set of metrics could result into timeout issues, in which case it is suggested either to increase the scraping timeout or to scrape each single endpoint instead.
 
-
-### Prometheus configuration examples
-
-The [config](config) directory provides a couple of Prometheus configuration examples that can be used as the starting point to build your own solution.
-
 ### Usage example
 
 In a typical production scenario, it is recommended to use a visual frontend for your metrics, such as [Grafana](https://github.com/grafana/grafana). Grafana allows you to use your Prometheus instance as a datasource, and create Graphs and other visualizations from PromQL queries. Grafana, Prometheus, are all easy to run as docker containers.
@@ -121,7 +90,7 @@ In a typical production scenario, it is recommended to use a visual frontend for
 To spin up a very basic set of those containers, use the following commands:
 ```bash
 # Pure exporter
-docker run -d -p 9491:9491 --name pure-exporter quay.io/purestorage/pure-exporter:<version>
+docker run -d -p 9491:9491 --name pure-exporter quay.io/purestorage/pure-fb-prometheus-exporter:<version>
 
 # Prometheus with config via bind-volume (create config first!)
 docker run -d -p 9090:9090 --name=prometheus -v /tmp/prometheus-pure.yml:/etc/prometheus/prometheus.yml -v /tmp/prometheus-data:/prometheus prom/prometheus:latest

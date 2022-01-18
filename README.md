@@ -97,7 +97,7 @@ docker run -d -p 3000:3000 --name=grafana -v /tmp/grafana-data:/var/lib/grafana 
 ```
 Please have a look at the documentation of each image/application for adequate configuration examples.
 
-A simple but complete example to deploy a full monitoring stack on kubernetes can be found in the [examples](examples/k8s) directory  
+A simple but complete example to deploy a full monitoring stack on kubernetes can be found in the [examples](examples/config/k8s) directory  
 
 
 ### Bugs and Limitations

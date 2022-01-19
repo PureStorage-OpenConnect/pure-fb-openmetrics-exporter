@@ -10,14 +10,15 @@ WORKDIR /app
 
 USER app
 
-COPY dist/pure-fb-prometheus-exporter-0.0.1.tar.gz .
+ARG exporter_version
+COPY dist/pure-fb-prometheus-exporter-${exporter_version}.tar.gz .
 COPY src/pure_fb_prometheus_exporter/pure_fb_exporter.py .
 
 # Install package - dependencies are already included in the package itself
 RUN pip install --upgrade pip && \
-    pip install --no-cache-dir pure-fb-prometheus-exporter-0.0.1.tar.gz
+    pip install --no-cache-dir pure-fb-prometheus-exporter-${exporter_version}.tar.gz
 
-RUN rm pure-fb-prometheus-exporter-0.0.1.tar.gz
+RUN rm pure-fb-prometheus-exporter-${exporter_version}.tar.gz
 
 ENV PATH "$PATH:/app/.local/bin"
 

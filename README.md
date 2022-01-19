@@ -59,6 +59,16 @@ python -m build
 
 The newly built package can be found in the <kbd>./dist</kbd> directory.
 
+### Docker image
+
+The provided dockerfile can be used to generate a docker image of the exporter. It accepts the version of the python package as the build parameter, therefore yoo can build the image using docker as follows
+
+```shell
+
+VERSION=<version>
+docker build --build-arg exporter_version=$VERSION -t quay.io/purestorage/pure-fb-prometheus-exporter:$VERSIION .
+```
+
 ### Scraping endpoints
 
 The exporter uses a RESTful API schema to provide Prometheus scraping endpoints.

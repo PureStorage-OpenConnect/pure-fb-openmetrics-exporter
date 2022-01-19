@@ -66,7 +66,7 @@ The provided dockerfile can be used to generate a docker image of the exporter. 
 ```shell
 
 VERSION=<version>
-docker build --build-arg exporter_version=$VERSION -t quay.io/purestorage/pure-fb-prometheus-exporter:$VERSIION .
+docker build --build-arg exporter_version=$VERSION -t pure-fb-prometheus-exporter:$VERSION .
 ```
 
 ### Scraping endpoints

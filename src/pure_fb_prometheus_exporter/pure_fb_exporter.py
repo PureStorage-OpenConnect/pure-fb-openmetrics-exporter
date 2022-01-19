@@ -55,7 +55,7 @@ def create_app(disable_ssl_warn=False):
         </tr>
         <tr>
             <td>Quota metrics</td>
-            <td><a href="/metrics/quotas?endpoint=host>/metrics/quotas</a></td>
+            <td><a href="/metrics/quotas?endpoint=host>/metrics/usage</a></td>
             <td>endpoint</td>
             <td>Provides only quota related metrics.</td>
         </tr>

@@ -23,7 +23,7 @@ class ArrayHardwareMetrics():
         re_ch = re.compile(r"^(CH\d+)$")
         re_fb = re.compile(r"^(CH\d+)\.(FB[0-9]+)$")
         re_fm = re.compile(r"^(CH\d+)\.(FM[0-9]+)$")
-        re_eth = re.compile(r"^(CH\d+)\.(FM\d+)\.ETH([0-9]+)$")
+        re_eth = re.compile(r"^(CH\d+)\.(FM\d+)\.ETH([0-9]+)(\.[0-9]+)?$")
         re_fan = re.compile(r"^(CH\d+)\.(FM\d+)\.FAN([0-9]+)$")
         re_pwr = re.compile(r"^(CH\d+)\.(PWR[0-9]+)$")
 

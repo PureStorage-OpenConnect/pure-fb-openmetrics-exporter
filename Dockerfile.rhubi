@@ -1,14 +1,12 @@
-FROM python:slim
+FROM registry.access.redhat.com/ubi8/python-39
 
+USER 0
 # Run as non-root user
-RUN groupadd app && \
-    useradd -d /app -g app app && \
-    mkdir /app && \
-    chown -R app:app /app
+RUN mkdir -p /app && chown -R 1001:1001 /app
 
 WORKDIR /app
 
-USER app
+USER 1001
 
 ARG exporter_version
 COPY dist/pure-fb-prometheus-exporter-${exporter_version}.tar.gz .

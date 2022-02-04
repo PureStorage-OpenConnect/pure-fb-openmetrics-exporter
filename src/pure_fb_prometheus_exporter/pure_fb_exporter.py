@@ -38,24 +38,25 @@ def create_app(disable_ssl_warn=False):
     <tbody>
         <tr>
             <td>Full metrics</td>
-            <td><a href="/metrics?endpoint=host>/metrics</a></td>
+            <td><a href="/metrics?endpoint=host">/metrics</a></td>
             <td>endpoint</td>
+            <td>All array metrics. Expect slow response time.</td>
         </tr>
         <tr>
             <td>Array metrics</td>
-            <td><a href="/metrics/array?endpoint=host>/metrics/array</a></td>
+            <td><a href="/metrics/array?endpoint=host">/metrics/array</a></td>
             <td>endpoint</td>
             <td>Provides only array related metrics.</td>
         </tr>
         <tr>
             <td>Client metrics</td>
-            <td><a href="/metrics/clients?endpoint=host>/metrics/clients</a></td>
+            <td><a href="/metrics/clients?endpoint=hosti">/metrics/clients</a></td>
             <td>endpoint</td>
             <td>Provides only client related metrics. This is the most time expensive query</td>
         </tr>
         <tr>
             <td>Quota metrics</td>
-            <td><a href="/metrics/quotas?endpoint=host>/metrics/usage</a></td>
+            <td><a href="/metrics/quotas?endpoint=host">/metrics/usage</a></td>
             <td>endpoint</td>
             <td>Provides only quota related metrics.</td>
         </tr>

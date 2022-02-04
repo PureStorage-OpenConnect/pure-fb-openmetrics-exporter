@@ -1,7 +1,7 @@
-from pure_fb_prometheus_exporter.flashblade_collector import flashblade_collector
+from pure_fb_prometheus_exporter.flashblade_collector import collector
 
 def test_collector_array(fb_client):
-    collector = flashblade_collector.FlashbladeCollector(fb_client, request='array')
+    coll = collector.FlashbladeCollector(fb_client, request='array')
 
-    for s in collector.collect():
+    for s in coll.collect():
         print(type(s))

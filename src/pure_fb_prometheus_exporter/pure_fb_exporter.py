@@ -26,7 +26,7 @@ def create_app(disable_ssl_warn=False):
     def route_index():
         """Display an overview of the exporters capabilities."""
         return '''
-<h1>Pure Storage Flashblade Prometeus Exporter</h1>
+<h1>Pure Storage Flashblade Prometheus Exporter</h1>
 <table>
     <thead>
         <tr>

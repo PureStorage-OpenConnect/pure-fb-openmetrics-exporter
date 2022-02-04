@@ -31,8 +31,9 @@ def create_app(disable_ssl_warn=False):
     <thead>
         <tr>
         <td>Type</td>
-            <td>Endpoint</td>
-            <td>GET parameters</td>
+        <td>Endpoint</td>
+        <td>GET parameters</td>
+        <td>Description</td>
         </tr>
     </thead>
     <tbody>

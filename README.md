@@ -59,6 +59,8 @@ python -m build
 
 The newly built package can be found in the <kbd>./dist</kbd> directory.
 
+Tests can be run using tox. You need a running FlashBlade you can use for executing the tests. Modify the tests/conftest.py file accordingly with your FlashBlade management endpoint and API token.
+
 ### Docker image
 
 The provided dockerfile can be used to generate a docker image of the exporter. It accepts the version of the python package as the build parameter, therefore yoo can build the image using docker as follows

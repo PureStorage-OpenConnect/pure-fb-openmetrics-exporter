@@ -13,7 +13,7 @@ class UsageGroupsMetrics():
         """
         Create metrics of gauge type for groups usage indicators.
         """
-        self.usage = GaugeMetricFamily('purefb_filesystem_usage_groups_bytes',
+        self.usage = GaugeMetricFamily('purefb_file_system_usage_groups_bytes',
                                        'FlashBlade filesystem groups usage',
                                        labels=['file_system',
                                                'group_name',

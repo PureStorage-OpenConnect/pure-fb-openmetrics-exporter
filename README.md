@@ -1,7 +1,7 @@
-![Current version](https://img.shields.io/github/v/tag/PureStorage-OpenConnect/pure-fb-prometheus-exporter?label=current%20version)
+![Current version](https://img.shields.io/github/v/tag/PureStorage-OpenConnect/pure-fb-openmetrics-exporter?label=current%20version)
 
-# Pure Storage FlashBlade Prometheus exporter
-Prometheus exporter for Pure Storage FlashBlade.
+# Pure Storage FlashBlade OpenMetrics exporter
+OpenMetrics exporter for Pure Storage FlashBlade.
 
 ## Support Statement
 This exporter is provided under Best Efforts support by the Pure Portfolio Solutions Group, Open Source Integrations team.

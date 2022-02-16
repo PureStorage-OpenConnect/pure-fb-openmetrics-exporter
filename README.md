@@ -11,7 +11,7 @@ We will address these as soon as we can, but there are no specific SLAs.
 
 ### Overview
 
-This application aims to help monitor Pure Storage FlashBlades by providing an "exporter", which means it extracts data from the Purity API and converts it to a format which is easily readable by Prometheus.
+This application aims to help monitor Pure Storage FlashBlades by providing an "exporter", which means it extracts data from the Purity API and converts it to the OpenMetrics format, which is for instance consumable by Prometheus.
 
 The stateless design of the exporter allows for easy configuration management as well as scalability for a whole fleet of Pure Storage systems. Each time Prometheus scrapes metrics for a specific system, it should provide the hostname via GET parameter and the API token as Authorization token to this exporter.
 
@@ -27,7 +27,7 @@ The exporter is preferably built and launched via Docker. You can also scale the
 #### The official docker images are available at Quay.io
 
 ```shell
-docker pull quay.io/purestorage/pure-fb-prometheus-exporter:<release>
+docker pull quay.io/purestorage/pure-fb-ome:<release>
 ```
 
 where the release tag follows the semantic versioning.
@@ -37,21 +37,21 @@ where the release tag follows the semantic versioning.
 ### Local development
 If you want to contribute to the development or simply build the package locally you should use python virtualenv
 
-The following commands describe how to run a typical build:
+The following commands describe how to run a typical build using the basic virtualenv package:
 ```shell
 
-python -m venv pure-fb-build
-source ./pure-fb-build/bin/activate
+python -m venv pure-fb-ome-build
+source ./pure-fb-ome-build/bin/activate
 
 # install dependencies
 python -m pip install --upgrade pip
 pip install build
 
 # clone the repository
-git clone git@github.com:PureStorage-OpenConnect/pure-fb-prometheus-exporter.git
+git clone git@github.com:PureStorage-OpenConnect/pure-fb-openmetrics-exporter.git
 
 # modify the code and build the package
-cd pure-fb-prometheus-exporter
+cd pure-fb-openmetrics-exporter
 ...
 python -m build
 
@@ -68,7 +68,7 @@ The provided dockerfile can be used to generate a docker image of the exporter. 
 ```shell
 
 VERSION=<version>
-docker build --build-arg exporter_version=$VERSION -t pure-fb-prometheus-exporter:$VERSION .
+docker build --build-arg exporter_version=$VERSION -t pure-fb-ome:$VERSION .
 ```
 
 ### Scraping endpoints
@@ -99,7 +99,7 @@ In a typical production scenario, it is recommended to use a visual frontend for
 To spin up a very basic set of those containers, use the following commands:
 ```bash
 # Pure exporter
-docker run -d -p 9491:9491 --name pure-fb-prometheus-exporter quay.io/purestorage/pure-fb-prometheus-exporter:<version>
+docker run -d -p 9491:9491 --name pure-fb-ome quay.io/purestorage/pure-fb-ome:<version>
 
 # Prometheus with config via bind-volume (create config first!)
 docker run -d -p 9090:9090 --name=prometheus -v /tmp/prometheus-pure.yml:/etc/prometheus/prometheus.yml -v /tmp/prometheus-data:/prometheus prom/prometheus:latest
@@ -114,7 +114,7 @@ A simple but complete example to deploy a full monitoring stack on kubernetes ca
 
 ### Bugs and Limitations
 
-* Pure FlashBlade REST APIs are not designed for efficiently reporting on full clients and objects quota KPIs, therefrore it is suggested to scrape the "array" metrics preferably and use the "clients" and "quotas" metrics individually and with a lower frequency than the other.. In any case, as a general rule, it is advisable to do not lower the scraping interval down to less than 30 sec. In case you experience timeout issues, you may want to increase the internal Gunicorn timeout by specifically setting the `--timeout` variable and appropriately reduce the scraping intervall as well.
+* Pure FlashBlade REST APIs are not designed for efficiently reporting on full clients and objects quota KPIs, therefrore it is suggested to scrape the "array" metrics preferably and use the "clients" and "usage" metrics individually and with a lower frequency than the other.. In any case, as a general rule, it is advisable to do not lower the scraping interval down to less than 30 sec. In case you experience timeout issues, you may want to increase the internal Gunicorn timeout by specifically setting the `--timeout` variable and appropriately reduce the scraping intervall as well.
 
 * By default the number of workers spawn by Gunicorn is set to 2 and this is not optimal when monitoring a relatively large amount of arrays. The suggested approach is therefore to run the exporter with a number of workers that approximately matches the number of arrays to be scraped.
 

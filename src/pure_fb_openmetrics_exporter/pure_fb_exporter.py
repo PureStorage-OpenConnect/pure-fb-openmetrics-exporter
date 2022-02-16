@@ -3,8 +3,8 @@
 from flask import Flask, request, abort, make_response
 from flask_httpauth import HTTPTokenAuth
 from prometheus_client import generate_latest, CollectorRegistry, CONTENT_TYPE_LATEST
-from pure_fb_prometheus_exporter.flashblade_collector.collector import FlashbladeCollector
-from pure_fb_prometheus_exporter.flashblade_client.client import FlashbladeClient
+from pure_fb_openmetrics_exporter.flashblade_collector.collector import FlashbladeCollector
+from pure_fb_openmetrics_exporter.flashblade_client.client import FlashbladeClient
 
 import re
 import logging
@@ -26,7 +26,7 @@ def create_app(disable_ssl_warn=False):
     def route_index():
         """Display an overview of the exporters capabilities."""
         return '''
-<h1>Pure Storage Flashblade Prometheus Exporter</h1>
+<h1>Pure Storage Flashblade OpenMetrics Exporter</h1>
 <table>
     <thead>
         <tr>

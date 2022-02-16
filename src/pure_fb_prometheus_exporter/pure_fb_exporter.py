@@ -51,13 +51,13 @@ def create_app(disable_ssl_warn=False):
         </tr>
         <tr>
             <td>Client metrics</td>
-            <td><a href="/metrics/clients?endpoint=hosti">/metrics/clients</a></td>
+            <td><a href="/metrics/clients?endpoint=host">/metrics/clients</a></td>
             <td>endpoint</td>
             <td>Provides only client related metrics. This is the most time expensive query</td>
         </tr>
         <tr>
             <td>Quota metrics</td>
-            <td><a href="/metrics/quotas?endpoint=host">/metrics/usage</a></td>
+            <td><a href="/metrics/usage?endpoint=host">/metrics/usage</a></td>
             <td>endpoint</td>
             <td>Provides only quota related metrics.</td>
         </tr>

@@ -14,7 +14,7 @@ class UsageUsersMetrics():
         Create metrics of gauge type for users usage indicators.
         """
         self.usage = GaugeMetricFamily('purefb_file_system_usage_users_bytes',
-                                       'FlashBlade filesystem users usage',
+                                       'FlashBlade file system users usage',
                                        labels=['file_system',
                                                'user_name',
                                                'uid',

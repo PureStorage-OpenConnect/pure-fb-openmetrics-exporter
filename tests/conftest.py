@@ -1,6 +1,6 @@
 import pytest
 from pypureclient import PureError
-from pure_fb_prometheus_exporter.flashblade_client import client
+from pure_fb_openmetrics_exporter.flashblade_client import client
 
 
 @pytest.fixture()

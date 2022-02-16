@@ -1,4 +1,4 @@
-from pure_fb_prometheus_exporter.flashblade_collector.flashblade_metrics.array_s3_specific_performance_metrics import ArrayS3SpecificPerformanceMetrics
+from pure_fb_openmetrics_exporter.flashblade_collector.flashblade_metrics.array_s3_specific_performance_metrics import ArrayS3SpecificPerformanceMetrics
 
 
 def test_array_s3_perf_name(fb_client):

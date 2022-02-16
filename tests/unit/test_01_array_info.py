@@ -1,4 +1,4 @@
-from pure_fb_prometheus_exporter.flashblade_collector.flashblade_metrics import array_info_metrics
+from pure_fb_openmetrics_exporter.flashblade_collector.flashblade_metrics import array_info_metrics
 
 
 def test_array_info(fb_client):

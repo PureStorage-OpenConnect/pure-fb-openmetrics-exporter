@@ -1,4 +1,4 @@
-from pure_fb_prometheus_exporter.flashblade_collector.flashblade_metrics.usage_users_metrics import UsageUsersMetrics
+from pure_fb_openmetrics_exporter.flashblade_collector.flashblade_metrics.usage_users_metrics import UsageUsersMetrics
 
 
 def test_usage_users_name(fb_client):

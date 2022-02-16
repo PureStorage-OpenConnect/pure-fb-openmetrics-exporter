@@ -1,4 +1,4 @@
-from pure_fb_prometheus_exporter.flashblade_collector.flashblade_metrics.array_http_specific_performance_metrics import ArrayHttpSpecificPerformanceMetrics
+from pure_fb_openmetrics_exporter.flashblade_collector.flashblade_metrics.array_http_specific_performance_metrics import ArrayHttpSpecificPerformanceMetrics
 
 
 def test_array_http_perf_name(fb_client):

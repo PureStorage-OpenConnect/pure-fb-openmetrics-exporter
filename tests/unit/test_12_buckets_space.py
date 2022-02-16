@@ -1,4 +1,4 @@
-from pure_fb_prometheus_exporter.flashblade_collector.flashblade_metrics.buckets_space_metrics import BucketsSpaceMetrics
+from pure_fb_openmetrics_exporter.flashblade_collector.flashblade_metrics.buckets_space_metrics import BucketsSpaceMetrics
 
 
 def test_buckets_space_name(fb_client):

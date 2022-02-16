@@ -1,4 +1,4 @@
-from pure_fb_prometheus_exporter.flashblade_collector.flashblade_metrics.bucket_replica_metrics import BucketReplicaMetrics
+from pure_fb_openmetrics_exporter.flashblade_collector.flashblade_metrics.bucket_replica_metrics import BucketReplicaMetrics
 
 
 def test_bucket_replica_name(fb_client):

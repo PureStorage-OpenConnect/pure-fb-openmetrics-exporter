@@ -1,4 +1,4 @@
-from pure_fb_prometheus_exporter.flashblade_collector.flashblade_metrics.file_systems_performance_metrics import FileSystemsPerformanceMetrics
+from pure_fb_openmetrics_exporter.flashblade_collector.flashblade_metrics.file_systems_performance_metrics import FileSystemsPerformanceMetrics
 
 
 def test_file_systems_perf_name(fb_client):

@@ -1,4 +1,4 @@
-from pure_fb_prometheus_exporter.flashblade_collector.flashblade_metrics.usage_groups_metrics import UsageGroupsMetrics
+from pure_fb_openmetrics_exporter.flashblade_collector.flashblade_metrics.usage_groups_metrics import UsageGroupsMetrics
 
 
 def test_usage_groups_name(fb_client):

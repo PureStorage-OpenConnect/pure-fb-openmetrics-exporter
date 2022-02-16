@@ -1,4 +1,4 @@
-from pure_fb_prometheus_exporter.flashblade_collector.flashblade_metrics import array_hardware_metrics
+from pure_fb_openmetrics_exporter.flashblade_collector.flashblade_metrics import array_hardware_metrics
 
 def test_array_hw_name(fb_client):
     array_hw = array_hardware_metrics.ArrayHardwareMetrics(fb_client)

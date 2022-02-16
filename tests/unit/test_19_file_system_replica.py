@@ -1,4 +1,4 @@
-from pure_fb_prometheus_exporter.flashblade_collector.flashblade_metrics.file_system_replica_metrics import FileSystemReplicaMetrics
+from pure_fb_openmetrics_exporter.flashblade_collector.flashblade_metrics.file_system_replica_metrics import FileSystemReplicaMetrics
 
 
 def test_file_system_replica_name(fb_client):

@@ -1,4 +1,4 @@
-from pure_fb_prometheus_exporter.flashblade_collector.flashblade_metrics.array_nfs_specific_performance_metrics import ArrayNfsSpecificPerformanceMetrics
+from pure_fb_openmetrics_exporter.flashblade_collector.flashblade_metrics.array_nfs_specific_performance_metrics import ArrayNfsSpecificPerformanceMetrics
 
 
 def test_array_nfs_perf_name(fb_client):

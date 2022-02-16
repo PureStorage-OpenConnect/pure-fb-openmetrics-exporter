@@ -1,4 +1,4 @@
-from pure_fb_prometheus_exporter.flashblade_collector.flashblade_metrics.buckets_performance_metrics import BucketsPerformanceMetrics
+from pure_fb_openmetrics_exporter.flashblade_collector.flashblade_metrics.buckets_performance_metrics import BucketsPerformanceMetrics
 
 
 def test_buckets_perf_name(fb_client):

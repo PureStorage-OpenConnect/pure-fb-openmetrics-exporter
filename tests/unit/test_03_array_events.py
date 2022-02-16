@@ -1,4 +1,4 @@
-from pure_fb_prometheus_exporter.flashblade_collector.flashblade_metrics import array_events_metrics
+from pure_fb_openmetrics_exporter.flashblade_collector.flashblade_metrics import array_events_metrics
 
 def test_array_events_name(fb_client):
     array_ev = array_events_metrics.ArrayEventsMetrics(fb_client)

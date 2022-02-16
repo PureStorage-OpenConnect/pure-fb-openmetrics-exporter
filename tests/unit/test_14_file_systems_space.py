@@ -1,4 +1,4 @@
-from pure_fb_prometheus_exporter.flashblade_collector.flashblade_metrics.file_systems_space_metrics import FileSystemsSpaceMetrics
+from pure_fb_openmetrics_exporter.flashblade_collector.flashblade_metrics.file_systems_space_metrics import FileSystemsSpaceMetrics
 
 
 def test_file_systems_space_name(fb_client):

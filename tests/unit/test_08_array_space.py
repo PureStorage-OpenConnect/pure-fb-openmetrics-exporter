@@ -1,4 +1,4 @@
-from pure_fb_prometheus_exporter.flashblade_collector.flashblade_metrics.array_space_metrics import ArraySpaceMetrics
+from pure_fb_openmetrics_exporter.flashblade_collector.flashblade_metrics.array_space_metrics import ArraySpaceMetrics
 
 
 def test_array_space_name(fb_client):

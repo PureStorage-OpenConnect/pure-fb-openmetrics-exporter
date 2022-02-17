@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: pure-fb-prometheus-exporter
+  name: pure-fb-om-exporter
   namespace: monitoring
   labels:
     app: pure-fb-exporter
@@ -21,8 +21,8 @@ spec:
         app: pure-fb-exporter
     spec:
       containers:
-      - name: pure-fb-prometheus-exporter
-        image: quay.io/purestorage/pure-fb-prometheus-exporter:0.9.0
+      - name: pure-fb-om-exporter
+        image: quay.io/purestorage/pure-fb-ome
         args:
           - '--workers=16'
           - '--access-logfile=-'

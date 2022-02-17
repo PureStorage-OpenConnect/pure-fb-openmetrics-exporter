@@ -63,7 +63,7 @@ Tests can be run using tox. You need a running FlashBlade you can use for execut
 
 ### Docker image
 
-The provided dockerfile can be used to generate a docker image of the exporter. It accepts the version of the python package as the build parameter, therefore yoo can build the image using docker as follows
+The provided dockerfile can be used to generate a docker image of the exporter. It accepts the version of the python package as the build parameter, therefore you can build the image using docker as follows
 
 ```shell
 

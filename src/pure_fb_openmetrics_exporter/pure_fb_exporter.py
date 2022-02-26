@@ -71,6 +71,7 @@ def create_app(disable_ssl_warn=False):
         """Produce FlashBlade metrics."""
         if not m_type in ['all', 'array', 'clients', 'usage']:
             abort(400)
+        fb_client = None
         registry = CollectorRegistry()
         collector = FlashbladeCollector
         try:
@@ -84,6 +85,7 @@ def create_app(disable_ssl_warn=False):
 
         resp = make_response(generate_latest(registry), 200)
         resp.headers['Content-type'] = CONTENT_TYPE_LATEST
+        del fb_client
         return resp
 
     @app.route('/metrics', methods=['GET'])

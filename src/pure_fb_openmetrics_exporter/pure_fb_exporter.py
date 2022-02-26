@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-from flask import Flask, request, abort, make_response, session
+from flask import Flask, request, abort, make_response
 from flask_httpauth import HTTPTokenAuth
 from prometheus_client import generate_latest, CollectorRegistry, CONTENT_TYPE_LATEST
 from pure_fb_openmetrics_exporter.flashblade_collector.collector import FlashbladeCollector
@@ -84,7 +84,6 @@ def create_app(disable_ssl_warn=False):
 
         resp = make_response(generate_latest(registry), 200)
         resp.headers['Content-type'] = CONTENT_TYPE_LATEST
-        session.clear()
         return resp
 
     @app.route('/metrics', methods=['GET'])

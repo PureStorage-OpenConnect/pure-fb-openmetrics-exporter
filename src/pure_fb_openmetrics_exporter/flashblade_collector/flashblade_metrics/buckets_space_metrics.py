@@ -1,6 +1,5 @@
 from prometheus_client.core import GaugeMetricFamily
 
-
 class BucketsSpaceMetrics():
     """
     Base class for FlashBlade Prometheus buckets space metrics
@@ -11,7 +10,7 @@ class BucketsSpaceMetrics():
         self.objects = None
         self.buckets = fb_client.buckets()
 
-    def _space(self) -> None:
+    def _space(self):
         """
         Create metrics of gauge type for buckets space indicators.
         """

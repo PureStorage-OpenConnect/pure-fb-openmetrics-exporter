@@ -1,6 +1,5 @@
 from prometheus_client.core import GaugeMetricFamily
 
-
 class FileSystemsSpaceMetrics():
     """
     Base class for FlashBlade Prometheus file systems space metrics
@@ -10,7 +9,7 @@ class FileSystemsSpaceMetrics():
         self.space = None
         self.file_systems = fb_client.file_systems()
 
-    def _space(self) -> None:
+    def _space(self):
         """
         Create metrics of gauge type for file systems space indicators.
         """
@@ -40,7 +39,7 @@ class FileSystemsSpaceMetrics():
             self.space.add_metric([fs.name, nfs, smb, 'virtual'], 
                                   fs.space.virtual)
 
-    def get_metrics(self) -> None:
+    def get_metrics(self):
         self._space()
         yield self.reduction
         yield self.space

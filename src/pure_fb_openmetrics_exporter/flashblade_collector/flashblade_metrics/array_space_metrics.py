@@ -1,6 +1,5 @@
 from prometheus_client.core import GaugeMetricFamily
 
-
 class ArraySpaceMetrics():
     """
     Base class for FlashBlade Prometheus array space metrics
@@ -41,7 +40,7 @@ class ArraySpaceMetrics():
                                   self.array_space[t].capacity)
             self.parity.add_metric([t], self.array_space[t].parity)
 
-    def get_metrics(self) -> None:
+    def get_metrics(self):
         self._space()
         yield self.reduction
         yield self.space

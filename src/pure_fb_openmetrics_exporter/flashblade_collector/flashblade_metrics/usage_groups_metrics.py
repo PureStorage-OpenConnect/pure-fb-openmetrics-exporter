@@ -1,6 +1,5 @@
 from prometheus_client.core import GaugeMetricFamily
 
-
 class UsageGroupsMetrics():
     """
     Base class for FlashBlade Prometheus groups usage metrics

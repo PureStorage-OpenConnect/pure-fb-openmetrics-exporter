@@ -10,7 +10,7 @@ class ArraySpaceMetrics():
         self.parity = None
         self.array_space = fb_client.arrays_space()
 
-    def _space(self) -> None:
+    def _space(self):
         """
         Create metrics of gauge type for array space indicators.
         """

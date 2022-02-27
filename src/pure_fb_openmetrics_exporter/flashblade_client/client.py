@@ -147,8 +147,8 @@ class FlashbladeClient():
                 array_space[t] = next(res.items)
         except:
             pass
-        self._array_space = array_space
-        return self._array_space
+        self._arrays_space = array_space
+        return self._arrays_space
 
     def buckets(self):
         if self._buckets:

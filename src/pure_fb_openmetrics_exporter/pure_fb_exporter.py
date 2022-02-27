@@ -1,31 +1,66 @@
 #!/usr/bin/env python
 
-from flask import Flask, request, abort, make_response
-from flask_httpauth import HTTPTokenAuth
-from prometheus_client import generate_latest, CollectorRegistry, CONTENT_TYPE_LATEST
+from functools import wraps
+
+from sanic import Sanic
+from sanic.log import logger
+from sanic.response import text, html, raw
+from sanic.exceptions import SanicException
+from sanic.handlers import ErrorHandler
+
+from prometheus_client import generate_latest, CollectorRegistry
 from pure_fb_openmetrics_exporter.flashblade_collector.collector import FlashbladeCollector
 from pure_fb_openmetrics_exporter.flashblade_client.client import FlashbladeClient
 
 import re
-import logging
+import argparse
 
-def create_app(disable_ssl_warn=False):
+class CustomHandler(ErrorHandler):
+    def default(self, request, exception):
+        # Here, we have access to the exception object
+        # and can do anything with it (log, send to external service, etc)
 
-    app = Flask(__name__)
-    app.logger.setLevel(logging.INFO)
-    auth = HTTPTokenAuth(scheme='Bearer')
+        # Some exceptions are trivial and built into Sanic (404s, etc)
+        if not isinstance(exception, SanicException):
+            print(exception)
 
-    @auth.verify_token
-    def verify_token(token):
-        pattern_str = "^T-[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$"
-        regx = re.compile(pattern_str)
-        match = regx.search(token)
-        return token if match is not None else False
+        # Then, we must finish handling the exception by returning
+        # our response to the client
+        # For this we can just call the super class' default handler
+        return super().default(request, exception)
 
-    @app.route('/')
-    def route_index():
-        """Display an overview of the exporters capabilities."""
-        return '''
+excp_handler = CustomHandler()
+app = Sanic('purefb_openmetrics_exporter', error_handler=excp_handler)
+
+def check_request_for_authorization_status(request):
+    pattern_str = "^T-[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$"
+    if (request.token is None):
+        return False
+    regx = re.compile(pattern_str)
+    match = regx.search(request.token)
+    return match is not None
+
+def authorized(f):
+    @wraps(f)
+    async def decorated_function(request, *args, **kwargs):
+        is_authorized = check_request_for_authorization_status(request)
+
+        if is_authorized:
+            # the user is authorized.
+            # run the handler method and return the response
+            response = await f(request, *args, **kwargs)
+            return response
+        else:
+            # the user is not authorized.
+            return text("not_authorized", 403)
+
+    return decorated_function
+
+@app.get('/')
+async def index_handler(request):
+    """Display an overview of the exporters capabilities."""
+
+    msg = '''
 <h1>Pure Storage Flashblade OpenMetrics Exporter</h1>
 <table>
     <thead>
@@ -64,52 +99,36 @@ def create_app(disable_ssl_warn=False):
     </tbody>
 </table>
 '''
+    return html(msg)
 
-    @app.route('/metrics/<m_type>', methods=['GET'])
-    @auth.login_required
-    def route_flashblade(m_type: str):
-        """Produce FlashBlade metrics."""
-        if not m_type in ['all', 'array', 'clients', 'usage']:
-            abort(400)
-        registry = CollectorRegistry()
-        collector = FlashbladeCollector
-        try:
-            endpoint = request.args.get('endpoint', None)
-            token = auth.current_user()
-            fb_client = FlashbladeClient(endpoint, token, disable_ssl_warn)
-            registry.register(collector(fb_client, request=m_type))
-        except Exception as e:
-            app.logger.warning('%s: %s', collector.__name__, str(e))
-            abort(500)
+@app.get(r"/metrics/<tag:all|array|clients|usage>/")
+@authorized
+async def flashblade_handler(request, tag):
+    """Produce FlashBlade metrics."""
+    registry = CollectorRegistry()
+    collector = FlashbladeCollector
+    endpoint = request.args.get('endpoint', None)
+    fb_client = FlashbladeClient(endpoint, request.token, app.ctx.disable_cert_warn)
+    registry.register(collector(fb_client, request=tag))
+    resp = generate_latest(registry)
+    del fb_client, collector, registry
+    return raw(resp)
 
-        resp = make_response(generate_latest(registry), 200)
-        resp.headers['Content-type'] = CONTENT_TYPE_LATEST
-        return resp
+@app.get('/metrics', strict_slashes=True)
+def flashblade_handler_full(request):
+    return flashblade_handler(request, 'all')
 
-    @app.route('/metrics', methods=['GET'])
-    def route_flashblade_all():
-        return route_flashblade('all')
 
-    @app.errorhandler(400)
-    def route_error_400(error):
-        """Handle invalid request errors."""
-        return 'Invalid request parameters', 400
-
-    @app.errorhandler(404)
-    def route_error_404(error):
-        """ Handle 404 (HTTP Not Found) errors."""
-        return 'Not found', 404
-
-    @app.errorhandler(500)
-    def route_error_500(error):
-        """Handle server-side errors."""
-        return 'Internal server error', 500
-
-    return app
-
-# Run in debug mode when not called by WSGI
 if __name__ == "__main__":
-    app = create_app(disable_ssl_warn=True)
-    app.logger.setLevel(logging.DEBUG)
-    app.logger.debug('running in debug mode...')
-    app.run(host="0.0.0.0", port=8080, debug=True)
+    argparser = argparse.ArgumentParser()
+    argparser.add_argument("-H", "--host", default="127.0.0.1", help="Address to host the server on")
+    argparser.add_argument("-P", "--port", default="9491", help="Port to host the server on")
+    argparser.add_argument("-D", "--debug", default=False, help="Run in debug mode")
+    argparser.add_argument("-W", "--workers", type=int, default=1, help="Number of workers")
+    argparser.add_argument("-L", "--log", default=False, action="store_true", help="Enable log")
+    argparser.add_argument("-X", "--disable-cert-warning", action="store_true",
+                           help = "Disable SSL certificate verification warning")
+    args = argparser.parse_args()
+    app.ctx.disable_cert_warn = args.disable_cert_warning
+    app.run(host=args.host, port=args.port, workers=args.workers,
+            access_log=args.log, debug=args.debug)

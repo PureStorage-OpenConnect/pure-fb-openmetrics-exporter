@@ -1,0 +1,24 @@
+FROM python:3.9-slim
+
+# Run as non-root user
+USER 0
+RUN useradd -m -d /app appuser -u 1001
+
+WORKDIR /app
+
+USER 1001
+
+ARG exporter_version
+COPY dist/pure-fb-openmetrics-exporter-${exporter_version}.tar.gz .
+COPY src/pure_fb_openmetrics_exporter/pure_fb_exporter.py .
+
+# Install package - dependencies are already included in the package itself
+RUN pip install --upgrade pip && \
+    pip install --no-cache-dir pure-fb-openmetrics-exporter-${exporter_version}.tar.gz
+
+RUN rm pure-fb-openmetrics-exporter-${exporter_version}.tar.gz
+
+ENV PATH "$PATH:/app/.local/bin"
+
+EXPOSE 9491
+CMD ["/app/pure_fb_exporter.py", "--host", 0.0.0.0", "--port", "9491", "--disable-cert-warning"]

@@ -1,6 +1,5 @@
 from prometheus_client.core import GaugeMetricFamily
 
-
 class ArrayPerformanceMetrics():
     """
     Base class for FlashBlade Prometheus array performance metrics

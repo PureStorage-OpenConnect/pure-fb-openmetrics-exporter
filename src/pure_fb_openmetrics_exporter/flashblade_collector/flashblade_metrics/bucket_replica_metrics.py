@@ -1,6 +1,5 @@
 from prometheus_client.core import GaugeMetricFamily
 
-
 class BucketReplicaMetrics():
     """
     Base class for FlashBlade Prometheus buckets replication metrics

@@ -20,7 +20,7 @@ To monitor your Pure Storage appliances, you will need to create a new dedicated
 
 ### Building and Deploying
 
-The exporter is full Python application based on ![Sanic](https://sanic.dev/) framework. It is preferably built and launched via Docker. You can also scale the exporter deployment to multiple containers on Kubernetes thanks to the stateless nature of the application.
+The exporter is full Python application based on [Sanic](https://sanic.dev/) framework. It is preferably built and launched via Docker. You can also scale the exporter deployment to multiple containers on Kubernetes thanks to the stateless nature of the application.
 
 ---
 

@@ -1,6 +1,5 @@
 from prometheus_client.core import GaugeMetricFamily
 
-
 class ArrayNfsSpecificPerformanceMetrics():
     """
     Base class for FlashBlade Prometheus array NFS specific performance metrics

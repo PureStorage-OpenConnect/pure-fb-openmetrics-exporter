@@ -1,6 +1,5 @@
 from prometheus_client.core import GaugeMetricFamily
 
-
 class UsageUsersMetrics():
     """
     Base class for FlashBlade Prometheus users quota metrics

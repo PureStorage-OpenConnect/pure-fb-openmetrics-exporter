@@ -1,6 +1,5 @@
 from prometheus_client.core import InfoMetricFamily
 
-
 class ArrayInfoMetrics():
     """
     Base class for FlashBlade Prometheus array info

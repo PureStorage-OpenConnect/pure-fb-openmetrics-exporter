@@ -1,6 +1,4 @@
 from prometheus_client.core import GaugeMetricFamily
-from pypureclient import flashblade
-
 
 class ArrayEventsMetrics():
     """

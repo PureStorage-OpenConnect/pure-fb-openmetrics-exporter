@@ -1,6 +1,5 @@
 from prometheus_client.core import GaugeMetricFamily
 
-
 class FileSystemsPerformanceMetrics():
     """
     Base class for FlashBlade Prometheus file systems performace metrics

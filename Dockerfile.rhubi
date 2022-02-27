@@ -18,4 +18,5 @@ RUN pip install --upgrade pip && \
     rm pure-fb-openmetrics-exporter-${exporter_version}.tar.gz
 
 ENV PATH "$PATH:/app/.local/bin"
-CMD ["/app/pure_fb_exporter.py", "--host", "0.0.0.0", "--port", "9491", "--disable-cert-warning"]
+ENTRYPOINT ["/app/pure_fb_exporter.py"]
+CMD ["--host", "0.0.0.0", "--port", "9491", "--disable-cert-warning"]

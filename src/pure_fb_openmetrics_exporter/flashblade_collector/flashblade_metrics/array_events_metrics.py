@@ -8,7 +8,7 @@ class ArrayEventsMetrics():
         self.open_events = None
         self.alerts = fb_client.alerts()
 
-    def _open_events(self) -> None:
+    def _open_events(self):
         """
         Create a metric of gauge type for the number of open alerts:
         critical, warning and info, with the severity as label.
@@ -24,6 +24,6 @@ class ArrayEventsMetrics():
             self.open_events.add_metric([a.severity,
                                          a.component_type,
                                          a.component_name], 1.0)
-    def get_metrics(self) -> None:
+    def get_metrics(self):
         self._open_events()
         yield self.open_events

@@ -20,4 +20,5 @@ RUN pip install --upgrade pip && \
 ENV PATH "$PATH:/app/.local/bin"
 
 EXPOSE 9491
-CMD ["/app/pure_fb_exporter.py", "--host", "0.0.0.0", "--port", "9491", "--disable-cert-warning"]
+ENTRYPOINT ["/app/pure_fb_exporter.py"]
+CMD ["--host", "0.0.0.0", "--port", "9491", "--disable-cert-warning"]

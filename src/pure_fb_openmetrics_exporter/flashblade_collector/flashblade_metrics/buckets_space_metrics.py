@@ -33,7 +33,7 @@ class BucketsSpaceMetrics():
             self.space.add_metric([b.name, 'virtual'], b.space.virtual)
             self.objects.add_metric([b.name], b.object_count)
 
-    def get_metrics(self) -> None:
+    def get_metrics(self):
         self._space()
         yield self.reduction
         yield self.space

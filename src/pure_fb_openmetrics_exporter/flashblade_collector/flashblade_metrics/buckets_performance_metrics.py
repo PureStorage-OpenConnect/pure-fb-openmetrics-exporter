@@ -1,6 +1,5 @@
 from prometheus_client.core import GaugeMetricFamily
 
-
 class BucketsPerformanceMetrics():
     """
     Base class for FlashBlade Prometheus buckets performace metrics

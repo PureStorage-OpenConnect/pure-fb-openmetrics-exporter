@@ -1,6 +1,5 @@
 from prometheus_client.core import GaugeMetricFamily
 
-
 class HardwareConnectorsPerformanceMetrics():
     """
     Base class for FlashBlade Prometheus hardware connectors performace metrics

@@ -32,7 +32,32 @@ class FlashbladeClient():
         self._hardware_connectors_performance = None
         if self._disable_ssl_warn:
             urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
-        self.client = flashblade.Client(target=target, api_token=api_token)
+        self.client = flashblade.Client(target=target, 
+                                        api_token=api_token, 
+                                        user_agent='Pure-FB-OpenMetrics-exporter/0.8')
+
+    def __del__(self):
+        del self._disable_ssl_warn 
+        del self._arrays
+        del self._hardware
+        del self._alerts
+        del self._arrays_clients_performance
+        del self._arrays_performance
+        del self._arrays_http_specific_performance
+        del self._arrays_nfs_specific_performance
+        del self._arrays_s3_specific_performance
+        del self._arrays_space
+        del self._buckets
+        del self._buckets_performance
+        del self._buckets_s3_specific_performance
+        del self._bucket_replica_links
+        del self._file_system_replica_links
+        del self._file_systems
+        del self._file_systems_performance
+        del self._usage_groups
+        del self._usage_users
+        del self._hardware_connectors_performance
+        del self.client
 
     def arrays(self):
         if self._arrays:
@@ -147,8 +172,8 @@ class FlashbladeClient():
                 array_space[t] = next(res.items)
         except:
             pass
-        self._arrays_space = array_space
-        return self._arrays_space
+        self._array_space = array_space
+        return self._array_space
 
     def buckets(self):
         if self._buckets:

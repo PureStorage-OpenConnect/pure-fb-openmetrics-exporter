@@ -108,10 +108,13 @@ async def flashblade_handler(request, tag):
     registry = CollectorRegistry()
     collector = FlashbladeCollector
     endpoint = request.args.get('endpoint', None)
+    if not endpoint:
+        return empty(status=400)
+    if (len(request.args.keys()) > 1):
+        return empty(status=400)
     fb_client = FlashbladeClient(endpoint, request.token, app.ctx.disable_cert_warn)
     registry.register(collector(fb_client, request=tag))
     resp = generate_latest(registry)
-    del fb_client, collector, registry
     return raw(resp)
 
 @app.get('/metrics', strict_slashes=True)

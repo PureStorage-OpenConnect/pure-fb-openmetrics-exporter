@@ -268,7 +268,7 @@ class FlashbladeClient():
             # Split file systems list into list of lists of 5 elements each
             file_systems_lists = [fs_names[i:i + 5] for i in range(0, len(fs_names), 5)]
             for fs_list in file_systems_lists:
-                res = self.client.get_file_systems_performance(names=fs_list)
+                res = self.client.get_file_systems_performance(names=fs_list, protocol='nfs')
                 if not isinstance(res, flashblade.ValidResponse):
                     continue
                 file_systems_perf.extend(res.items)

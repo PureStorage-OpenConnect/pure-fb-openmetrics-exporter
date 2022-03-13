@@ -19,5 +19,5 @@ docker run -d -p 9491:9491  --rm --name pure-exporter pure-fb-ome:<version> --wo
 
 If you want to prevent the app from logging a warning when the FB endpoint is not provided with a trusted SSL certificate, you can disable that by invoking the app with the <kbd>--disable-cert-warning</kbd> flag
 ```shell
-docker run -d -p 9491:9491  --rm --name pure-exporter pure-fb-ome:<version> --disable-cert-warning'
+docker run -d -p 9491:9491  --rm --name pure-exporter pure-fb-ome:<version> --disable-cert-warning
 ```

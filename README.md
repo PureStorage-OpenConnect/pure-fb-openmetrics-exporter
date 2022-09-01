@@ -20,7 +20,7 @@ To monitor your Pure Storage appliances, you will need to create a new dedicated
 
 ### Building and Deploying
 
-The exporter is full Python application based on [Sanic](https://sanic.dev/) framework. It is preferably built and launched via Docker. You can also scale the exporter deployment to multiple containers on Kubernetes thanks to the stateless nature of the application.
+The exporter is a Go application based on the Prometheus Go client library and [Resty](https://github.com/go-resty/resty), a simple but reliable HTTP and REST client library for Go . It is preferably built and launched via Docker. You can also scale the exporter deployment to multiple containers on Kubernetes thanks to the stateless nature of the application.
 
 ---
 
@@ -35,17 +35,11 @@ where the release tag follows the semantic versioning.
 ---
 
 ### Local development
-If you want to contribute to the development or simply build the package locally you should use python virtualenv
 
-The following commands describe how to run a typical build using the basic virtualenv package:
+The following commands describe how to run a typical build :
 ```shell
 
-python -m venv pure-fb-ome-build
-source ./pure-fb-ome-build/bin/activate
-
 # install dependencies
-python -m pip install --upgrade pip
-pip install build
 
 # clone the repository
 git clone git@github.com:PureStorage-OpenConnect/pure-fb-openmetrics-exporter.git
@@ -53,17 +47,16 @@ git clone git@github.com:PureStorage-OpenConnect/pure-fb-openmetrics-exporter.gi
 # modify the code and build the package
 cd pure-fb-openmetrics-exporter
 ...
-python -m build
+make build
 
 ```
 
-The newly built package can be found in the <kbd>./dist</kbd> directory.
+The newly built package can be found in the <kbd>./dir</kbd> directory.
 
-Tests can be run using tox. You need a running FlashBlade you can use for executing the tests. Modify the tests/conftest.py file accordingly with your FlashBlade management endpoint and API token.
 
 ### Docker image
 
-The provided dockerfile can be used to generate a docker image of the exporter. It accepts the version of the python package as the build parameter, therefore you can build the image using docker as follows
+The provided dockerfile can be used to generate a docker image of the exporter. It accepts the version of the package as the build parameter, therefore you can build the image using docker as follows
 
 ```shell
 

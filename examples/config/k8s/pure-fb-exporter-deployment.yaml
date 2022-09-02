@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pure-fb-om-exporter
+  namespace: monitoring
+  labels:
+    app: pure-fb-exporter
+spec:
+  replicas: 1
+  strategy:
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1
+    type: RollingUpdate
+  selector:
+    matchLabels:
+      app: pure-fb-exporter
+  template:
+    metadata:
+      labels:
+        app: pure-fb-exporter
+    spec:
+      containers:
+      - name: pure-fb-om-exporter
+        image: quay.io/purestorage/pure-fb-om-exporter
+        args:
+          - '--host=0.0.0.0'
+          - '--port=9491'
+        ports:
+        - name: web
+          containerPort: 9491
+      restartPolicy: Always

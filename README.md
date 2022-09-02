@@ -92,7 +92,7 @@ In a typical production scenario, it is recommended to use a visual frontend for
 To spin up a very basic set of those containers, use the following commands:
 ```bash
 # Pure exporter
-docker run -d -p 9491:9491 --name pure-fb-ome quay.io/purestorage/pure-fb-ome:<version>
+docker run -d -p 9491:9491 --name pure-fb-om-exporter quay.io/purestorage/pure-fb-om-exporter:<version>
 
 # Prometheus with config via bind-volume (create config first!)
 docker run -d -p 9090:9090 --name=prometheus -v /tmp/prometheus-pure.yml:/etc/prometheus/prometheus.yml -v /tmp/prometheus-data:/prometheus prom/prometheus:latest

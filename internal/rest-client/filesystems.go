@@ -1,4 +1,4 @@
-package restclient
+package client
 
 type Http struct {
     Enabled    bool   `json:"enabled"`

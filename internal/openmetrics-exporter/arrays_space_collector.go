@@ -1,7 +1,7 @@
-package fbopenmetrics
+package collectors
 
 import (
-    "purestorage.com/flashblade/client"
+    "purestorage/fb-openmetrics-exporter/internal/rest-client"
     "github.com/prometheus/client_golang/prometheus"
 )
 
@@ -9,7 +9,7 @@ type ArraySpaceCollector struct {
     ReductionDesc    *prometheus.Desc
     SpaceDesc        *prometheus.Desc
     ParityDesc       *prometheus.Desc
-    Client           *restclient.FBClient
+    Client           *client.FBClient
 }
 
 func (c *ArraySpaceCollector) Describe(ch chan<- *prometheus.Desc) {
@@ -65,7 +65,7 @@ func (c *ArraySpaceCollector) Collect(ch chan<- prometheus.Metric) {
     }
 }
 
-func NewArraySpaceCollector(fb *restclient.FBClient) *ArraySpaceCollector {
+func NewArraySpaceCollector(fb *client.FBClient) *ArraySpaceCollector {
     return &ArraySpaceCollector{
         ReductionDesc: prometheus.NewDesc(
             "purefb_array_space_data_reduction_ratio",

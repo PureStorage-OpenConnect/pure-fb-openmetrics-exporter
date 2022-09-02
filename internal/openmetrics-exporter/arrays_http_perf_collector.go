@@ -1,14 +1,14 @@
-package fbopenmetrics
+package collectors
 
 import (
-    "purestorage.com/flashblade/client"
+    "purestorage/fb-openmetrics-exporter/internal/rest-client"
     "github.com/prometheus/client_golang/prometheus"
 )
 
 type HttpPerfCollector struct {
     LatencyDesc    *prometheus.Desc
     ThroughputDesc *prometheus.Desc
-    Client         *restclient.FBClient
+    Client         *client.FBClient
 }
 
 func (c *HttpPerfCollector) Describe(ch chan<- *prometheus.Desc) {
@@ -85,7 +85,7 @@ func (c *HttpPerfCollector) Collect(ch chan<- prometheus.Metric) {
     )
 }
 
-func NewHttpPerfCollector(fb *restclient.FBClient) *HttpPerfCollector {
+func NewHttpPerfCollector(fb *client.FBClient) *HttpPerfCollector {
     return &HttpPerfCollector{
         LatencyDesc: prometheus.NewDesc(
             "purefb_array_http_specific_performance_latency_usec",

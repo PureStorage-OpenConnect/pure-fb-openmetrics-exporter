@@ -1,20 +1,22 @@
-package fbopenmetrics
+package collectors
 
 import (
-    "fmt"
     "context"
-    "purestorage.com/flashblade/client"
+    "purestorage/fb-openmetrics-exporter/internal/rest-client"
     "github.com/prometheus/client_golang/prometheus"
 )
 
 
 func Collector(ctx context.Context, endpoint string, apitoken string, apiver string, metrics string, registry *prometheus.Registry) bool {
-    fbclient := restclient.NewRestClient(endpoint, apitoken, apiver)
+    fbclient := client.NewRestClient(endpoint, apitoken, apiver)
     filesystems := fbclient.GetFileSystems()
     buckets := fbclient.GetBuckets()
     defer fbclient.Close()
    
-    fmt.Println(metrics)
+    registry.MustRegister(
+		prometheus.NewProcessCollector(prometheus.ProcessCollectorOpts{}),
+		prometheus.NewGoCollector(),
+    )
     if (metrics == "all" || metrics == "array") {
         arrayCollector := NewArraysCollector(fbclient)
         perfCollector := NewPerfCollector(fbclient)
@@ -31,21 +33,23 @@ func Collector(ctx context.Context, endpoint string, apitoken string, apiver str
         alertsCollector := NewAlertsCollector(fbclient)
         hardwareCollector := NewHardwareCollector(fbclient)
         hwPerfConnectorsCollector := NewHwConnectorsPerfCollector(fbclient)
-        registry.MustRegister(arrayCollector, 
-                              perfCollector,
-                              s3perfCollector,
-                              httpPerfCollector,
-                              nfsPerfCollector,
-                              perfReplCollector,
-                              bucketsPerfCollector,
-                              buckestS3PerfCollector,
-                              filesystemsPerfCollector,
-                              arraySpaceCollector,
-                              bucketsSpaceCollector,
-                              filesystemsSpaceCollector,
-                              alertsCollector,
-                              hardwareCollector,
-                              hwPerfConnectorsCollector)
+        registry.MustRegister(
+                    arrayCollector, 
+                    perfCollector,
+                    s3perfCollector,
+                    httpPerfCollector,
+                    nfsPerfCollector,
+                    perfReplCollector,
+                    bucketsPerfCollector,
+                    buckestS3PerfCollector,
+                    filesystemsPerfCollector,
+                    arraySpaceCollector,
+                    bucketsSpaceCollector,
+                    filesystemsSpaceCollector,
+                    alertsCollector,
+                    hardwareCollector,
+                    hwPerfConnectorsCollector,
+        )
     }
     if (metrics == "all" || metrics == "clients") {
         clientsPerfCollector := NewClientsPerfCollector(fbclient)

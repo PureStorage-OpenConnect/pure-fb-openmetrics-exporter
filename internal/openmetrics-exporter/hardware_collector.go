@@ -1,14 +1,14 @@
-package fbopenmetrics
+package collectors
 
 import (
     "strconv"
-    "purestorage.com/flashblade/client"
+    "purestorage/fb-openmetrics-exporter/internal/rest-client"
     "github.com/prometheus/client_golang/prometheus"
 )
 
 type HardwareCollector struct {
     HardwareDesc     *prometheus.Desc
-    Client           *restclient.FBClient
+    Client           *client.FBClient
 }
 
 func (c *HardwareCollector) Describe(ch chan<- *prometheus.Desc) {
@@ -38,7 +38,7 @@ func (c *HardwareCollector) Collect(ch chan<- prometheus.Metric) {
     }
 }
 
-func NewHardwareCollector(fb *restclient.FBClient) *HardwareCollector {
+func NewHardwareCollector(fb *client.FBClient) *HardwareCollector {
     return &HardwareCollector{
         HardwareDesc: prometheus.NewDesc(
             "purefb_hardware_health",

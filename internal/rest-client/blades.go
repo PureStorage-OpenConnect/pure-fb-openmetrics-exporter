@@ -1,4 +1,4 @@
-package restclient
+package client
 
 type Blade struct {
     Name          string   `json:"name"`

@@ -1,16 +1,16 @@
-package fbopenmetrics
+package collectors
 
 import (
     "strconv"
-    "purestorage.com/flashblade/client"
+    "purestorage/fb-openmetrics-exporter/internal/rest-client"
     "github.com/prometheus/client_golang/prometheus"
 )
 
 type UsageCollector struct {
     UsageUsersDesc     *prometheus.Desc
     UsageGroupsDesc    *prometheus.Desc
-    Client             *restclient.FBClient
-    FileSystems        *restclient.FileSystemsList
+    Client             *client.FBClient
+    FileSystems        *client.FileSystemsList
 }
 
 func (c *UsageCollector) Describe(ch chan<- *prometheus.Desc) {
@@ -58,8 +58,8 @@ func (c *UsageCollector) Collect(ch chan<- prometheus.Metric) {
     }
 }
 
-func NewUsageCollector(fb *restclient.FBClient, 
-                       f *restclient.FileSystemsList) *UsageCollector {
+func NewUsageCollector(fb *client.FBClient, 
+                       f *client.FileSystemsList) *UsageCollector {
     return &UsageCollector{
         UsageUsersDesc: prometheus.NewDesc(
             "purefb_file_system_usage_users_bytes",

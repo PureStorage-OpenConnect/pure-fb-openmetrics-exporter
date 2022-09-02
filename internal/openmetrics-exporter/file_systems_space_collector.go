@@ -1,15 +1,15 @@
-package fbopenmetrics
+package collectors
 
 import (
     "strings"
-    "purestorage.com/flashblade/client"
+    "purestorage/fb-openmetrics-exporter/internal/rest-client"
     "github.com/prometheus/client_golang/prometheus"
 )
 
 type FileSystemsSpaceCollector struct {
     ReductionDesc    *prometheus.Desc
     SpaceDesc        *prometheus.Desc
-    FileSystems      *restclient.FileSystemsList
+    FileSystems      *client.FileSystemsList
 }
 
 func (c *FileSystemsSpaceCollector) Describe(ch chan<- *prometheus.Desc) {
@@ -80,7 +80,7 @@ func (c *FileSystemsSpaceCollector) Collect(ch chan<- prometheus.Metric) {
     }
 }
 
-func NewFileSystemsSpaceCollector(fl *restclient.FileSystemsList) *FileSystemsSpaceCollector {
+func NewFileSystemsSpaceCollector(fl *client.FileSystemsList) *FileSystemsSpaceCollector {
     return &FileSystemsSpaceCollector{
         ReductionDesc: prometheus.NewDesc(
             "purefb_file_systems_space_data_reduction_ratio",

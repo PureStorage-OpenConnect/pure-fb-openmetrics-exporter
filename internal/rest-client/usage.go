@@ -1,4 +1,4 @@
-package restclient
+package client
 
 type Group struct {
     Id      int      `json:"id"`

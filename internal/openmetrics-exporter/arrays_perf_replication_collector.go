@@ -1,13 +1,13 @@
-package fbopenmetrics
+package collectors
 
 import (
-    "purestorage.com/flashblade/client"
+    "purestorage/fb-openmetrics-exporter/internal/rest-client"
     "github.com/prometheus/client_golang/prometheus"
 )
 
 type PerfReplicationCollector struct {
     ThroughputDesc *prometheus.Desc
-    Client         *restclient.FBClient
+    Client         *client.FBClient
 }
 
 func (c *PerfReplicationCollector) Describe(ch chan<- *prometheus.Desc) {
@@ -35,7 +35,7 @@ func (c *PerfReplicationCollector) Collect(ch chan<- prometheus.Metric) {
     )
 }
 
-func NewPerfReplicationCollector(fb *restclient.FBClient) *PerfReplicationCollector {
+func NewPerfReplicationCollector(fb *client.FBClient) *PerfReplicationCollector {
     return &PerfReplicationCollector{
         ThroughputDesc: prometheus.NewDesc(
             "purefb_array_performance_replication",

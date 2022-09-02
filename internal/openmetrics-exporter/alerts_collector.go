@@ -1,13 +1,13 @@
-package fbopenmetrics
+package collectors
 
 import (
-    "purestorage.com/flashblade/client"
+    "purestorage/fb-openmetrics-exporter/internal/rest-client"
     "github.com/prometheus/client_golang/prometheus"
 )
 
 type AlertsCollector struct {
     AlertsDesc       *prometheus.Desc
-    Client           *restclient.FBClient
+    Client           *client.FBClient
 }
 
 func (c *AlertsCollector) Describe(ch chan<- *prometheus.Desc) {
@@ -29,7 +29,7 @@ func (c *AlertsCollector) Collect(ch chan<- prometheus.Metric) {
     }
 }
 
-func NewAlertsCollector(fb *restclient.FBClient) *AlertsCollector {
+func NewAlertsCollector(fb *client.FBClient) *AlertsCollector {
     return &AlertsCollector{
         AlertsDesc: prometheus.NewDesc(
             "purefb_alerts_open",

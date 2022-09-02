@@ -1,124 +1,127 @@
-package fbopenmetrics
+package collectors
 
 import (
-    "purestorage.com/flashblade/client"
+    "purestorage/fb-openmetrics-exporter/internal/rest-client"
     "github.com/prometheus/client_golang/prometheus"
 )
 
-type ClientsPerfCollector struct {
+type FileSystemsPerfCollector struct {
     LatencyDesc      *prometheus.Desc
     ThroughputDesc   *prometheus.Desc
     BandwidthDesc    *prometheus.Desc
     AverageSizeDesc  *prometheus.Desc
-    Client           *restclient.FBClient
+    Client           *client.FBClient
+    FileSystems      *client.FileSystemsList
 }
 
-func (c *ClientsPerfCollector) Describe(ch chan<- *prometheus.Desc) {
+func (c *FileSystemsPerfCollector) Describe(ch chan<- *prometheus.Desc) {
     prometheus.DescribeByCollect(c, ch)
 }
 
-func (c *ClientsPerfCollector) Collect(ch chan<- prometheus.Metric) {
-    clientsperf := c.Client.GetClientsPerformance()
-    if len(clientsperf.Items) == 0 {
+func (c *FileSystemsPerfCollector) Collect(ch chan<- prometheus.Metric) {
+    filesystemsperf := c.Client.GetFileSystemsPerformance(c.FileSystems, "NFS")
+    if len(filesystemsperf.Items) == 0 {
         return
     }
 
-    for _, cp := range clientsperf.Items {
+    for _, fp := range filesystemsperf.Items {
         ch <- prometheus.MustNewConstMetric(
                 c.LatencyDesc,
                 prometheus.GaugeValue,
-                cp.UsecPerOtherOp,
-                cp.Name, "usec_per_other_op",
-        )
-        ch <- prometheus.MustNewConstMetric(
-                c.LatencyDesc,
-                prometheus.GaugeValue,
-                cp.UsecPerReadOp,
-                cp.Name, "usec_per_read_op",
+                fp.UsecPerOtherOp,
+                fp.Name, "usec_per_other_op",
         )
         ch <- prometheus.MustNewConstMetric(
                 c.LatencyDesc,
                 prometheus.GaugeValue,
-                cp.UsecPerWriteOp,
-                cp.Name, "usec_per_write_op",
+                fp.UsecPerReadOp,
+                fp.Name, "usec_per_read_op",
+        )
+        ch <- prometheus.MustNewConstMetric(
+                c.LatencyDesc,
+                prometheus.GaugeValue,
+                fp.UsecPerWriteOp,
+                fp.Name, "usec_per_write_op",
         )
         ch <- prometheus.MustNewConstMetric(
                 c.ThroughputDesc,
                 prometheus.GaugeValue,
-                cp.OthersPerSec,
-                cp.Name, "others_per_sec",
+                fp.OthersPerSec,
+                fp.Name, "others_per_sec",
         )
         ch <- prometheus.MustNewConstMetric(
                 c.ThroughputDesc,
                 prometheus.GaugeValue,
-                cp.ReadsPerSec,
-                cp.Name, "reads_per_sec",
+                fp.ReadsPerSec,
+                fp.Name, "reads_per_sec",
         )
         ch <- prometheus.MustNewConstMetric(
                 c.ThroughputDesc,
                 prometheus.GaugeValue,
-                cp.WritesPerSec,
-                cp.Name, "writes_per_sec",
+                fp.WritesPerSec,
+                fp.Name, "writes_per_sec",
         )
         ch <- prometheus.MustNewConstMetric(
                 c.BandwidthDesc,
                 prometheus.GaugeValue,
-                cp.ReadBytesPerSec,
-                cp.Name, "read_bytes_per_sec",
+                fp.ReadBytesPerSec,
+                fp.Name, "read_bytes_per_sec",
         )
         ch <- prometheus.MustNewConstMetric(
                 c.BandwidthDesc,
                 prometheus.GaugeValue,
-                cp.WriteBytesPerSec,
-                cp.Name, "write_bytes_per_sec",
+                fp.WriteBytesPerSec,
+                fp.Name, "write_bytes_per_sec",
         )
         ch <- prometheus.MustNewConstMetric(
                 c.AverageSizeDesc,
                 prometheus.GaugeValue,
-                cp.BytesPerOp,
-                cp.Name, "bytes_per_op",
+                fp.BytesPerOp,
+                fp.Name, "bytes_per_op",
         )
         ch <- prometheus.MustNewConstMetric(
                 c.AverageSizeDesc,
                 prometheus.GaugeValue,
-                cp.BytesPerRead,
-                cp.Name, "bytes_per_read",
+                fp.BytesPerRead,
+                fp.Name, "bytes_per_read",
         )
         ch <- prometheus.MustNewConstMetric(
                 c.AverageSizeDesc,
                 prometheus.GaugeValue,
-                cp.BytesPerWrite,
-                cp.Name, "bytes_per_write",
+                fp.BytesPerWrite,
+                fp.Name, "bytes_per_write",
         )
     }
 }
 
-func NewClientsPerfCollector(fb *restclient.FBClient) *ClientsPerfCollector {
-    return &ClientsPerfCollector{
+func NewFileSystemsPerfCollector(fb *client.FBClient, 
+                             f *client.FileSystemsList) *FileSystemsPerfCollector {
+    return &FileSystemsPerfCollector{
         LatencyDesc: prometheus.NewDesc(
-            "purefb_clients_performance_latency_usec",
-            "FlashBlade clients latency",
+            "purefb_file_systems_performance_latency_usec",
+            "FlashBlade file systems latency",
             []string{"name", "dimension"},
             prometheus.Labels{},
         ),
         ThroughputDesc: prometheus.NewDesc(
-            "purefb_clients_performance_throughput_iops",
-            "FlashBlade clients throughput",
+            "purefb_file_systems_performance_throughput_iops",
+            "FlashBlade file systems throughput",
             []string{"name", "dimension"},
             prometheus.Labels{},
         ),
         BandwidthDesc: prometheus.NewDesc(
-            "purefb_clients_performance_bandwidth_bytes",
-            "FlashBlade clients bandwidth",
+            "purefb_file_systems_performance_bandwidth_bytes",
+            "FlashBlade file systems bandwidth",
             []string{"name", "dimension"},
             prometheus.Labels{},
         ),
         AverageSizeDesc: prometheus.NewDesc(
-            "purefb_clients_performance_average_bytes",
-            "FlashBlade clients average operations size",
+            "purefb_file_systems_performance_average_bytes",
+            "FlashBlade file systems average operations size",
             []string{"name", "dimension"},
             prometheus.Labels{},
         ),
         Client: fb,
+        FileSystems: f,
     }
 }

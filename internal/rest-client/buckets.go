@@ -1,4 +1,4 @@
-package restclient
+package client
 
 type Account struct {
     Name          string   `json:"name"`

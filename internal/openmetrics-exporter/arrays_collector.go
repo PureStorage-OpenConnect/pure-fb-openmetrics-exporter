@@ -1,13 +1,13 @@
-package fbopenmetrics
+package collectors
 
 import (
-    "purestorage.com/flashblade/client"
+    "purestorage/fb-openmetrics-exporter/internal/rest-client"
     "github.com/prometheus/client_golang/prometheus"
 )
 
 type ArraysCollector struct {
     ArraysDesc  *prometheus.Desc
-    Client      *restclient.FBClient
+    Client      *client.FBClient
 }
 
 func (c *ArraysCollector) Describe(ch chan<- *prometheus.Desc) {
@@ -29,7 +29,7 @@ func (c *ArraysCollector) Collect(ch chan<- prometheus.Metric) {
     )
 }
 
-func NewArraysCollector(fb *restclient.FBClient) *ArraysCollector {
+func NewArraysCollector(fb *client.FBClient) *ArraysCollector {
     return &ArraysCollector{
         ArraysDesc: prometheus.NewDesc(
             "purefb_info",

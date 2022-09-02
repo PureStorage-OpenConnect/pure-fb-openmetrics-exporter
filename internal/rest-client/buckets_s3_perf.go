@@ -1,4 +1,4 @@
-package restclient
+package client
 
 
 type BucketsS3PerformanceList struct {

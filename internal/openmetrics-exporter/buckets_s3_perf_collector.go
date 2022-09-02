@@ -1,7 +1,7 @@
-package fbopenmetrics
+package collectors
 
 import (
-    "purestorage.com/flashblade/client"
+    "purestorage/fb-openmetrics-exporter/internal/rest-client"
     "github.com/prometheus/client_golang/prometheus"
 )
 
@@ -10,8 +10,8 @@ type BucketsS3PerfCollector struct {
     ThroughputDesc   *prometheus.Desc
     BandwidthDesc    *prometheus.Desc
     AverageSizeDesc  *prometheus.Desc
-    Client           *restclient.FBClient
-    Buckets          *restclient.BucketsList
+    Client           *client.FBClient
+    Buckets          *client.BucketsList
 }
 
 func (c *BucketsS3PerfCollector) Describe(ch chan<- *prometheus.Desc) {
@@ -88,8 +88,8 @@ func (c *BucketsS3PerfCollector) Collect(ch chan<- prometheus.Metric) {
     }
 }
 
-func NewBucketsS3PerfCollector(fb *restclient.FBClient, 
-                               b *restclient.BucketsList) *BucketsS3PerfCollector {
+func NewBucketsS3PerfCollector(fb *client.FBClient, 
+                               b *client.BucketsList) *BucketsS3PerfCollector {
     return &BucketsS3PerfCollector{
         LatencyDesc: prometheus.NewDesc(
             "purefb_buckets_s3_specific_performance_latency_usec",

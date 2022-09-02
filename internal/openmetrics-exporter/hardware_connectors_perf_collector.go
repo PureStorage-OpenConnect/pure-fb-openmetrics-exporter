@@ -1,7 +1,7 @@
-package fbopenmetrics
+package collectors
 
 import (
-    "purestorage.com/flashblade/client"
+    "purestorage/fb-openmetrics-exporter/internal/rest-client"
     "github.com/prometheus/client_golang/prometheus"
 )
 
@@ -9,7 +9,7 @@ type HwConnectorsPerfCollector struct {
     ThroughputDesc   *prometheus.Desc
     BandwidthDesc    *prometheus.Desc
     ErrorsDesc       *prometheus.Desc
-    Client           *restclient.FBClient
+    Client           *client.FBClient
 }
 
 func (c *HwConnectorsPerfCollector) Describe(ch chan<- *prometheus.Desc) {
@@ -83,7 +83,7 @@ func (c *HwConnectorsPerfCollector) Collect(ch chan<- prometheus.Metric) {
     }
 }
 
-func NewHwConnectorsPerfCollector(fb *restclient.FBClient) *HwConnectorsPerfCollector {
+func NewHwConnectorsPerfCollector(fb *client.FBClient) *HwConnectorsPerfCollector {
     return &HwConnectorsPerfCollector{
         ThroughputDesc: prometheus.NewDesc(
             "purefb_hardware_connectors_performance_throughput_pkts",

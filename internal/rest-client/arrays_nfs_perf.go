@@ -1,4 +1,4 @@
-package restclient
+package client
 
 type ArrayNfsPerformance struct {
     Name                                 string   `json:"name"`

@@ -1,4 +1,4 @@
-package restclient
+package client
 
 type RemoteArray struct {
     Id       string  `json:"id"`

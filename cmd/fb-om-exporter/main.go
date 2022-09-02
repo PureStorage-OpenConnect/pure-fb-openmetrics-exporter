@@ -1,24 +1,25 @@
 package main
 
 import (
-        "purestorage.com/flashblade/om-exporter"
-	"fmt"
-        "strings"
-        "context"
-	"github.com/prometheus/client_golang/prometheus"
-	"github.com/prometheus/client_golang/prometheus/promhttp"
-	"log"
-	"net/http"
+    "purestorage/fb-openmetrics-exporter/internal/openmetrics-exporter"
+    "flag"
+    "fmt"
+    "strings"
+    "context"
+    "github.com/prometheus/client_golang/prometheus"
+    "github.com/prometheus/client_golang/prometheus/promhttp"
+    "log"
+    "net/http"
 )
 
-var (
-    version string = "0.0.1"
-    port int = 9178
-)
+var version string = "0.9.0"
 
 func main() {
 
-	addr := fmt.Sprintf("0.0.0.0:%d", port)
+	host := flag.String("host", "0.0.0.0", "Address of the exporter")
+        port := flag.Int("port", 9491, "Port of the exporter")
+        addr := fmt.Sprintf("%s:%d", *host, *port)
+        flag.Parse()
 	log.Printf("Start exporter on %s", addr)
 
 	http.HandleFunc("/", index)
@@ -71,7 +72,7 @@ func metricsHandler(w http.ResponseWriter, r *http.Request) {
         token := authFields[1]
 
 	registry := prometheus.NewRegistry()
-	_ = fbopenmetrics.Collector(context.TODO(), target, token, apiver, metrics, registry)
+	_ = collectors.Collector(context.TODO(), target, token, apiver, metrics, registry)
 
 	h := promhttp.HandlerFor(registry, promhttp.HandlerOpts{})
 	h.ServeHTTP(w, r)

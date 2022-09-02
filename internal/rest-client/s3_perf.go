@@ -1,4 +1,4 @@
-package restclient
+package client
 
 
 type S3Performance struct {

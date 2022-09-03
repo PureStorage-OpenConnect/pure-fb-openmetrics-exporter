@@ -5,11 +5,11 @@ metadata:
   namespace: monitoring
 data:
   prometheus.yml: |
-    # my global config
+    # Here you may want to set the scrpa interval and timeout according
+    # to the time it takes to the exprter to succesfully return. 
     global:
-      scrape_interval:     30s
-      evaluation_interval: 30s
-      # scrape_timeout is set to the global default (10s).
+      scrape_interval:     60s
+      scrape_timeout:      50s
 
     # Alertmanager configuration
     alerting:
@@ -24,7 +24,6 @@ data:
       # - "second_rules.yml"
 
     # A scrape configuration containing exactly one endpoint to scrape:
-    # Here it's Prometheus itself.
     scrape_configs:
       - job_name: 'purestorage-fb'
         metrics_path: /metrics/array

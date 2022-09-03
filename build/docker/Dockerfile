@@ -7,7 +7,7 @@ COPY go.mod go.sum ./
 RUN go mod download && go mod verify
 
 COPY . .
-RUN go build -v -o /usr/local/bin/pure-fb-exporter cmd/fb-om-exporter/main.go
+RUN go build -v -o /usr/local/bin/pure-fb-om-exporter cmd/fb-om-exporter/main.go
 
 EXPOSE 9491
 ENTRYPOINT ["/usr/local/bin/pure-fb-om-exporter"]

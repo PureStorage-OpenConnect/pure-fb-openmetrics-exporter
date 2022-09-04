@@ -49,7 +49,7 @@ make build
 
 ```
 
-The newly built package can be found in the <kbd>./out/bin</kbd> directory.
+The newly built exporter executable can be found in the <kbd>./out/bin</kbd> directory.
 
 
 ### Docker image

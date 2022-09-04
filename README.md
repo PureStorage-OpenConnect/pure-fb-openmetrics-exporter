@@ -39,8 +39,6 @@ where the release tag follows the semantic versioning.
 The following commands describe how to run a typical build :
 ```shell
 
-# install dependencies
-
 # clone the repository
 git clone git@github.com:PureStorage-OpenConnect/pure-fb-openmetrics-exporter.git
 
@@ -51,7 +49,7 @@ make build
 
 ```
 
-The newly built package can be found in the <kbd>./dir</kbd> directory.
+The newly built package can be found in the <kbd>./out/bin</kbd> directory.
 
 
 ### Docker image
@@ -60,8 +58,7 @@ The provided dockerfile can be used to generate a docker image of the exporter. 
 
 ```shell
 
-VERSION=<version>
-docker build --build-arg exporter_version=$VERSION -t pure-fb-ome:$VERSION .
+docker build -t pure-fb-ome:$VERSION .
 ```
 
 ### Scraping endpoints

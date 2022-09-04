@@ -27,7 +27,7 @@ The exporter is a Go application based on the Prometheus Go client library and [
 #### The official docker images are available at Quay.io
 
 ```shell
-docker pull quay.io/purestorage/pure-fb-ome:<release>
+docker pull quay.io/purestorage/pure-fb-om-exporter:<release>
 ```
 
 where the release tag follows the semantic versioning.

@@ -104,7 +104,7 @@ A simple but complete example to deploy a full monitoring stack on kubernetes ca
 
 ### Bugs and Limitations
 
-* Pure FlashBlade REST APIs are not designed for efficiently reporting on full clients and objects quota KPIs, therefrore it is suggested to scrape the "array" metrics preferably and use the "clients" and "usage" metrics individually and with a lower frequency than the other.. In any case, as a general rule, it is advisable to do not lower the scraping interval down to less than 30 sec. In case you experience timeout issues, you may want to increase the internal timeout by specifically setting the `RESPONSE_TIMEOUT` builtin environment variable and appropriately increase the scraping intervall as well.
+* Pure FlashBlade REST APIs are not designed for efficiently reporting on full clients and objects quota KPIs, therefrore it is suggested to scrape the "array" metrics preferably and use the "clients" and "usage" metrics individually and with a lower frequency than the other.. In any case, as a general rule, it is advisable to do not lower the scraping interval down to less than 30 sec. In case you experience timeout issues, you may want to increase the Prometheus scraping timeout and interval approriately.
 
 ### License
 

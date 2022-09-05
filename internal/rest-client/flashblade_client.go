@@ -24,6 +24,7 @@ func NewRestClient(endpoint string, apitoken string, apiversion string) *FBClien
 		EndPoint:   endpoint,
 		ApiToken:   apitoken,
 		RestClient: resty.New(),
+		XAuthToken: "",
 	}
 	fb.RestClient.SetBaseURL("https://" + endpoint + "/api")
 	fb.RestClient.SetTLSClientConfig(&tls.Config{InsecureSkipVerify: true})
@@ -69,6 +70,9 @@ func NewRestClient(endpoint string, apitoken string, apiversion string) *FBClien
 }
 
 func (fb *FBClient) Close() *FBClient {
+	if fb.XAuthToken == "" {
+		return fb
+	}
 	_, err := fb.RestClient.R().
 		SetHeader("x-auth-token", fb.XAuthToken).
 		Post("/logout")

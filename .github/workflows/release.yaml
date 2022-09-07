@@ -15,4 +15,4 @@ jobs:
         github_token: ${{ secrets.GITHUB_TOKEN }}
         goos: linux
         goarch: amd64
-        project_path: cmd/fb-om-exporter/main.go
+        project_path: cmd/fb-om-exporter

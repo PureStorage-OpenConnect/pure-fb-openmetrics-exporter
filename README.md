@@ -33,7 +33,11 @@ docker pull quay.io/purestorage/pure-fb-om-exporter:<release>
 where the release tag follows the semantic versioning.
 
 ---
+#### Binaries
 
+Binary downloads of the exporter can be found on [the Releases page](https://github.com/PureStorage-OpenConnect/pure-fb-openmetrics-exporter/releases/latest).
+
+---
 ### Local development
 
 The following commands describe how to run a typical build :

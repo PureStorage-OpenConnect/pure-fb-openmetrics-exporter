@@ -10,11 +10,38 @@ import (
 	"net/http"
 	"purestorage/fb-openmetrics-exporter/internal/openmetrics-exporter"
 	"strings"
+	muxtrace "gopkg.in/DataDog/dd-trace-go.v1/contrib/gorilla/mux"
+	"gopkg.in/DataDog/dd-trace-go.v1/ddtrace/tracer"
+	"gopkg.in/DataDog/dd-trace-go.v1/profiler"
 )
 
 var version string = "0.9.0"
 
 func main() {
+
+	tracer.Start()
+	defer tracer.Stop()
+
+
+	err := profiler.Start(
+		profiler.WithProfileTypes(
+			profiler.CPUProfile,
+			profiler.HeapProfile,
+
+			// The profiles below are disabled by
+			// default to keep overhead low, but
+			// can be enabled as needed.
+			// profiler.BlockProfile,
+			// profiler.MutexProfile,
+			// profiler.GoroutineProfile,
+		),
+	)
+	if err != nil {
+		log.Fatal(err)
+	}
+	defer profiler.Stop()
+
+	mux := muxtrace.NewRouter()
 
 	host := flag.String("host", "0.0.0.0", "Address of the exporter")
 	port := flag.Int("port", 9491, "Port of the exporter")
@@ -22,20 +49,20 @@ func main() {
 	flag.Parse()
 	log.Printf("Start exporter on %s", addr)
 
-	http.HandleFunc("/", index)
-	http.HandleFunc("/metrics/array", func(w http.ResponseWriter, r *http.Request) {
+	mux.HandleFunc("/", index)
+	mux.HandleFunc("/metrics/array", func(w http.ResponseWriter, r *http.Request) {
 		metricsHandler(w, r)
 	})
-	http.HandleFunc("/metrics/clients", func(w http.ResponseWriter, r *http.Request) {
+	mux.HandleFunc("/metrics/clients", func(w http.ResponseWriter, r *http.Request) {
 		metricsHandler(w, r)
 	})
-	http.HandleFunc("/metrics/usage", func(w http.ResponseWriter, r *http.Request) {
+	mux.HandleFunc("/metrics/usage", func(w http.ResponseWriter, r *http.Request) {
 		metricsHandler(w, r)
 	})
-	http.HandleFunc("/metrics", func(w http.ResponseWriter, r *http.Request) {
+	mux.HandleFunc("/metrics", func(w http.ResponseWriter, r *http.Request) {
 		metricsHandler(w, r)
 	})
-	log.Fatal(http.ListenAndServe(addr, nil))
+	log.Fatal(http.ListenAndServe(addr, mux))
 }
 
 func metricsHandler(w http.ResponseWriter, r *http.Request) {

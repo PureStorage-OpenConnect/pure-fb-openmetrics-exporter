@@ -62,6 +62,12 @@ func (c *ArraySpaceCollector) Collect(ch chan<- prometheus.Metric) {
 			as.Parity,
 			t,
 		)
+		ch <- prometheus.MustNewConstMetric(
+			c.SpaceDesc,
+			prometheus.GaugeValue,
+			float64(as.Capacity),
+			t, "capacity",
+		)
 	}
 }
 

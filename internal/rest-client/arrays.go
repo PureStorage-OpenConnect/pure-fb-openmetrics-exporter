@@ -21,12 +21,14 @@ type ArraysList struct {
 
 func (fb *FBClient) GetArrays() *ArraysList {
 	result := new(ArraysList)
-	_, err := fb.RestClient.R().
+	res, _ := fb.RestClient.R().
 		SetResult(&result).
 		Get("/arrays")
-
-	if err != nil {
-		fb.Error = err
-	}
+        if res.StatusCode() == 401 {
+                fb.RefreshSession()
+		fb.RestClient.R().
+			SetResult(&result).
+			Get("/arrays")
+        }
 	return result
 }

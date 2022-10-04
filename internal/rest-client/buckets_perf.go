@@ -19,13 +19,16 @@ func (fb *FBClient) GetBucketsPerformance(b *BucketsList) *BucketsPerformanceLis
 			n = n + b.Items[i+j].Name + ","
 		}
 		n = n[:len(n)-1]
-		_, err := fb.RestClient.R().
+		res, _ := fb.RestClient.R().
 			SetResult(&temp).
 			SetQueryParam("names", n).
 			Get("/buckets/performance")
-
-		if err != nil {
-			fb.Error = err
+		if res.StatusCode() == 401 {
+			fb.RefreshSession()
+			fb.RestClient.R().
+				SetResult(&temp).
+				SetQueryParam("names", n).
+				Get("/buckets/performance")
 		}
 		result.Items = append(result.Items, temp.Items...)
 	}

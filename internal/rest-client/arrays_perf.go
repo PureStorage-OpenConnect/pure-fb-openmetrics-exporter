@@ -10,13 +10,16 @@ func (fb *FBClient) GetArraysPerformance(protocol string) *ArraysPerformanceList
 	result := new(ArraysPerformanceList)
 	switch protocol {
 	case "all", "HTTP", "NFS", "SMB", "S3":
-		_, err := fb.RestClient.R().
+		res, _ := fb.RestClient.R().
 			SetResult(&result).
 			SetQueryParam("protocol", protocol).
 			Get("/arrays/performance")
-
-		if err != nil {
-			fb.Error = err
+		if res.StatusCode() == 401 {
+                	fb.RefreshSession()
+			fb.RestClient.R().
+			        SetResult(&result).
+			        SetQueryParam("protocol", protocol).
+			        Get("/arrays/performance")
 		}
 	}
 	return result

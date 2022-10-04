@@ -19,12 +19,15 @@ type BladesList struct {
 
 func (fb *FBClient) GetBlades() *BladesList {
 	result := new(BladesList)
-	_, err := fb.RestClient.R().
+	res, _ := fb.RestClient.R().
 		SetResult(&result).
 		Get("/blades")
 
-	if err != nil {
-		fb.Error = err
+	if res.StatusCode() == 401 {
+		fb.RefreshSession()
+		fb.RestClient.R().
+			SetResult(&result).
+			Get("/blades")
 	}
 	return result
 }

@@ -33,13 +33,14 @@ type AlertsList struct {
 
 func (fb *FBClient) GetAlerts(filter string) *AlertsList {
 	result := new(AlertsList)
-	_, err := fb.RestClient.R().
-		SetResult(&result).
-		SetQueryParam("filter", filter).
-		Get("/alerts")
-
-	if err != nil {
-		fb.Error = err
+	req := fb.RestClient.R().SetResult(&result)
+	if filter != "" {
+		req = req.SetQueryParam("filter", filter)
+	}
+	res, _ := req.Get("/alerts")
+	if res.StatusCode() == 401 {
+		fb.RefreshSession()
+		_, _ = req.Get("/alerts")
 	}
 	return result
 }

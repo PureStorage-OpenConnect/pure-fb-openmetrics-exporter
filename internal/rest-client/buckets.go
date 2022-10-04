@@ -25,12 +25,14 @@ type BucketsList struct {
 
 func (fb *FBClient) GetBuckets() *BucketsList {
 	result := new(BucketsList)
-	_, err := fb.RestClient.R().
+	res, _ := fb.RestClient.R().
 		SetResult(&result).
 		Get("/buckets")
-
-	if err != nil {
-		fb.Error = err
-	}
+	if res.StatusCode() == 401 {
+                fb.RefreshSession()
+		fb.RestClient.R().
+			SetResult(&result).
+			Get("/buckets")
+        }	
 	return result
 }

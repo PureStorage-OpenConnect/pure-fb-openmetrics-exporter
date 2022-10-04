@@ -27,12 +27,14 @@ type ArraysPerformanceReplicationList struct {
 
 func (fb *FBClient) GetArraysPerformanceReplication() *ArraysPerformanceReplicationList {
 	result := new(ArraysPerformanceReplicationList)
-	_, err := fb.RestClient.R().
+	res, _ := fb.RestClient.R().
 		SetResult(&result).
 		Get("/arrays/performance/replication")
-
-	if err != nil {
-		fb.Error = err
-	}
+	if res.StatusCode() == 401 {
+                fb.RefreshSession()
+		fb.RestClient.R().
+			SetResult(&result).
+			Get("/arrays/performance/replication")
+        }
 	return result
 }

@@ -19,14 +19,18 @@ func (fb *FBClient) GetFileSystemsPerformance(f *FileSystemsList,
 				n = n + f.Items[i+j].Name + ","
 			}
 			n = n[:len(n)-1]
-			_, err := fb.RestClient.R().
+			res, _ := fb.RestClient.R().
 				SetResult(&temp).
 				SetQueryParam("names", n).
 				SetQueryParam("protocol", protocol).
 				Get("/file-systems/performance")
-
-			if err != nil {
-				fb.Error = err
+			if res.StatusCode() == 401 {
+				fb.RefreshSession()
+				fb.RestClient.R().
+					SetResult(&temp).
+					SetQueryParam("names", n).
+					SetQueryParam("protocol", protocol).
+					Get("/file-systems/performance")
 			}
 			result.Items = append(result.Items, temp.Items...)
 		}

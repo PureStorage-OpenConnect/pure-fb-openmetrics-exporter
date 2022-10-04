@@ -25,12 +25,14 @@ type ClientsPerformanceList struct {
 
 func (fb *FBClient) GetClientsPerformance() *ClientsPerformanceList {
 	result := new(ClientsPerformanceList)
-	_, err := fb.RestClient.R().
+	res, _ := fb.RestClient.R().
 		SetResult(&result).
 		Get("/arrays/clients/performance")
-
-	if err != nil {
-		fb.Error = err
-	}
+	if res.StatusCode() == 401 {
+                fb.RefreshSession()
+		fb.RestClient.R().
+			SetResult(&result).
+			Get("/arrays/clients/performance")
+        }
 	return result
 }

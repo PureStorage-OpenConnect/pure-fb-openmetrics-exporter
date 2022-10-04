@@ -4,23 +4,28 @@ import (
 	"context"
 	"flag"
 	"fmt"
-	"github.com/prometheus/client_golang/prometheus"
-	"github.com/prometheus/client_golang/prometheus/promhttp"
 	"log"
 	"net/http"
-	"purestorage/fb-openmetrics-exporter/internal/openmetrics-exporter"
+	collectors "purestorage/fb-openmetrics-exporter/internal/openmetrics-exporter"
+	client "purestorage/fb-openmetrics-exporter/internal/rest-client"
 	"strings"
+
+	"github.com/prometheus/client_golang/prometheus"
+	"github.com/prometheus/client_golang/prometheus/promhttp"
 )
 
-var version string = "0.9.0"
+var version string = "1.0.0"
+var debug bool = false
 
 func main() {
 
 	host := flag.String("host", "0.0.0.0", "Address of the exporter")
 	port := flag.Int("port", 9491, "Port of the exporter")
-	addr := fmt.Sprintf("%s:%d", *host, *port)
+	d := flag.Bool("debug", false, "Debug")
 	flag.Parse()
-	log.Printf("Start exporter on %s", addr)
+	addr := fmt.Sprintf("%s:%d", *host, *port)
+	debug = *d
+	log.Printf("Start Pure Storage FlashBlade exporter v%s on %s", version, addr)
 
 	http.HandleFunc("/", index)
 	http.HandleFunc("/metrics/array", func(w http.ResponseWriter, r *http.Request) {
@@ -69,13 +74,15 @@ func metricsHandler(w http.ResponseWriter, r *http.Request) {
 		http.Error(w, "Target authorization token is missing", http.StatusBadRequest)
 		return
 	}
-	token := authFields[1]
+	apitoken := authFields[1]
 
 	registry := prometheus.NewRegistry()
-	_ = collectors.Collector(context.TODO(), endpoint, token, apiver, metrics, registry)
+	fbclient := client.NewRestClient(endpoint, apitoken, apiver, debug)
+	_ = collectors.Collector(context.TODO(), metrics, registry, fbclient)
 
 	h := promhttp.HandlerFor(registry, promhttp.HandlerOpts{})
 	h.ServeHTTP(w, r)
+	fbclient.Close()
 }
 
 func index(w http.ResponseWriter, r *http.Request) {

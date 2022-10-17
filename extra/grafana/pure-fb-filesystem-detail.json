@@ -1,0 +1,1608 @@
+{
+    "annotations": {
+      "list": [
+        {
+          "builtIn": 1,
+          "datasource": {
+            "type": "datasource",
+            "uid": "grafana"
+          },
+          "enable": true,
+          "hide": true,
+          "iconColor": "rgba(0, 211, 255, 1)",
+          "name": "Annotations & Alerts",
+          "target": {
+            "limit": 100,
+            "matchAny": false,
+            "tags": [],
+            "type": "dashboard"
+          },
+          "type": "dashboard"
+        }
+      ]
+    },
+    "editable": true,
+    "fiscalYearStartMonth": 0,
+    "graphTooltip": 2,
+    "id": 2,
+    "links": [],
+    "liveNow": false,
+    "panels": [
+      {
+        "datasource": {
+          "type": "prometheus",
+          "uid": "$datasource"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "continuous-GrYlRd"
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            }
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 3,
+          "w": 5,
+          "x": 0,
+          "y": 0
+        },
+        "id": 25,
+        "links": [
+          {
+            "targetBlank": false,
+            "title": "Pure Storage FlashBlade system detail",
+            "url": "d/wL9CHflWk/pure-storage-flashblade-system-detail?orgId=1&var-datasource=${datasource}&var-job=${job}&var-instance=${instance}"
+          }
+        ],
+        "maxDataPoints": 100,
+        "options": {
+          "colorMode": "value",
+          "graphMode": "area",
+          "justifyMode": "auto",
+          "orientation": "auto",
+          "reduceOptions": {
+            "calcs": [
+              "lastNotNull"
+            ],
+            "fields": "/^array_name$/",
+            "values": false
+          },
+          "text": {
+            "valueSize": 25
+          },
+          "textMode": "auto"
+        },
+        "pluginVersion": "9.1.6",
+        "targets": [
+          {
+            "datasource": {
+              "uid": "$datasource"
+            },
+            "editorMode": "code",
+            "expr": "purefb_info{job=~\"$job\",instance=\"$instance\"}",
+            "format": "table",
+            "instant": true,
+            "interval": "",
+            "intervalFactor": 1,
+            "legendFormat": "{{ array_name }}",
+            "refId": "A"
+          }
+        ],
+        "title": "array name",
+        "type": "stat"
+      },
+      {
+        "datasource": {
+          "type": "prometheus",
+          "uid": "$datasource"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "palette-classic"
+            },
+            "custom": {
+              "axisCenteredZero": false,
+              "axisColorMode": "text",
+              "axisLabel": "",
+              "axisPlacement": "auto",
+              "barAlignment": 0,
+              "drawStyle": "line",
+              "fillOpacity": 20,
+              "gradientMode": "none",
+              "hideFrom": {
+                "legend": false,
+                "tooltip": false,
+                "viz": false
+              },
+              "lineInterpolation": "linear",
+              "lineWidth": 1,
+              "pointSize": 5,
+              "scaleDistribution": {
+                "type": "linear"
+              },
+              "showPoints": "never",
+              "spanNulls": false,
+              "stacking": {
+                "group": "A",
+                "mode": "none"
+              },
+              "thresholdsStyle": {
+                "mode": "off"
+              }
+            },
+            "decimals": 2,
+            "links": [],
+            "mappings": [],
+            "min": 0,
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            },
+            "unit": "decbytes"
+          },
+          "overrides": [
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "free"
+              },
+              "properties": [
+                {
+                  "id": "color",
+                  "value": {
+                    "fixedColor": "#96D98D",
+                    "mode": "fixed"
+                  }
+                },
+                {
+                  "id": "custom.fillOpacity",
+                  "value": 0
+                },
+                {
+                  "id": "custom.lineWidth",
+                  "value": 2
+                },
+                {
+                  "id": "custom.lineStyle",
+                  "value": {
+                    "dash": [
+                      10,
+                      10
+                    ],
+                    "fill": "dash"
+                  }
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "snapshots"
+              },
+              "properties": [
+                {
+                  "id": "color",
+                  "value": {
+                    "fixedColor": "#B877D9",
+                    "mode": "fixed"
+                  }
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "shared"
+              },
+              "properties": [
+                {
+                  "id": "color",
+                  "value": {
+                    "fixedColor": "#FADE2A",
+                    "mode": "fixed"
+                  }
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "volumes"
+              },
+              "properties": [
+                {
+                  "id": "color",
+                  "value": {
+                    "fixedColor": "#5794F2",
+                    "mode": "fixed"
+                  }
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "system"
+              },
+              "properties": [
+                {
+                  "id": "color",
+                  "value": {
+                    "fixedColor": "#E02F44",
+                    "mode": "fixed"
+                  }
+                },
+                {
+                  "id": "custom.fillOpacity",
+                  "value": 100
+                }
+              ]
+            }
+          ]
+        },
+        "gridPos": {
+          "h": 6,
+          "w": 8,
+          "x": 5,
+          "y": 0
+        },
+        "id": 5,
+        "links": [],
+        "options": {
+          "legend": {
+            "calcs": [],
+            "displayMode": "list",
+            "placement": "right",
+            "showLegend": true
+          },
+          "tooltip": {
+            "mode": "multi",
+            "sort": "desc"
+          }
+        },
+        "pluginVersion": "9.1.6",
+        "targets": [
+          {
+            "datasource": {
+              "uid": "$datasource"
+            },
+            "editorMode": "code",
+            "expr": "purefb_file_systems_space_bytes{job=~\"$job\",instance=~\"$instance\",name=\"$filesystem\",space=\"virtual\"}\n",
+            "format": "time_series",
+            "hide": false,
+            "interval": "",
+            "intervalFactor": 1,
+            "legendFormat": "{{ space }}",
+            "range": true,
+            "refId": "A"
+          },
+          {
+            "datasource": {
+              "uid": "$datasource"
+            },
+            "editorMode": "code",
+            "expr": "purefb_file_systems_space_bytes{job=~\"$job\",instance=~\"$instance\",name=\"$filesystem\",space=\"total_physical\"}",
+            "hide": false,
+            "interval": "",
+            "legendFormat": "{{ space }}",
+            "range": true,
+            "refId": "B"
+          },
+          {
+            "datasource": {
+              "uid": "$datasource"
+            },
+            "editorMode": "code",
+            "expr": "purefb_file_systems_space_bytes{job=~\"$job\",instance=~\"$instance\",name=\"$filesystem\",space=\"unique\"}",
+            "hide": false,
+            "interval": "",
+            "legendFormat": "{{ space }}",
+            "range": true,
+            "refId": "D"
+          },
+          {
+            "datasource": {
+              "uid": "$datasource"
+            },
+            "editorMode": "code",
+            "expr": "purefb_file_systems_space_bytes{job=~\"$job\",instance=~\"$instance\",name=\"$filesystem\",space=\"snapshots\"}",
+            "hide": false,
+            "interval": "",
+            "legendFormat": "{{ space }}",
+            "range": true,
+            "refId": "C"
+          },
+          {
+            "datasource": {
+              "uid": "$datasource"
+            },
+            "editorMode": "code",
+            "expr": "purefb_file_systems_space_bytes{job=~\"$job\",instance=~\"$instance\",name=\"$filesystem\",space=\"provisioned\"}",
+            "hide": false,
+            "interval": "",
+            "legendFormat": "{{ space }}",
+            "range": true,
+            "refId": "E"
+          }
+        ],
+        "title": "capacity usage distribution",
+        "type": "timeseries"
+      },
+      {
+        "datasource": {
+          "type": "prometheus",
+          "uid": "$datasource"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "mappings": [
+              {
+                "options": {
+                  "match": "null",
+                  "result": {
+                    "text": "N/A"
+                  }
+                },
+                "type": "special"
+              }
+            ],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            },
+            "unit": "iops"
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 2,
+          "w": 5,
+          "x": 13,
+          "y": 0
+        },
+        "id": 9,
+        "links": [],
+        "maxDataPoints": 100,
+        "options": {
+          "colorMode": "value",
+          "fieldOptions": {
+            "calcs": [
+              "mean"
+            ]
+          },
+          "graphMode": "none",
+          "justifyMode": "auto",
+          "orientation": "horizontal",
+          "reduceOptions": {
+            "calcs": [
+              "mean"
+            ],
+            "fields": "",
+            "values": false
+          },
+          "textMode": "auto"
+        },
+        "pluginVersion": "9.1.6",
+        "targets": [
+          {
+            "datasource": {
+              "uid": "$datasource"
+            },
+            "editorMode": "code",
+            "expr": "sum(purefb_file_systems_performance_throughput_iops{job=~\"$job\",instance=\"$instance\",name=\"$filesystem\"})",
+            "format": "time_series",
+            "interval": "",
+            "intervalFactor": 1,
+            "legendFormat": "",
+            "range": true,
+            "refId": "A"
+          }
+        ],
+        "title": "average file system iops",
+        "type": "stat"
+      },
+      {
+        "datasource": {
+          "type": "prometheus",
+          "uid": "$datasource"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "decimals": 2,
+            "mappings": [
+              {
+                "options": {
+                  "match": "null",
+                  "result": {
+                    "text": "N/A"
+                  }
+                },
+                "type": "special"
+              }
+            ],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "#d44a3a",
+                  "value": null
+                },
+                {
+                  "color": "#FF9830",
+                  "value": 1.5
+                },
+                {
+                  "color": "#299c46",
+                  "value": 2.5
+                }
+              ]
+            },
+            "unit": "none"
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 3,
+          "w": 6,
+          "x": 18,
+          "y": 0
+        },
+        "id": 14,
+        "links": [],
+        "maxDataPoints": 100,
+        "options": {
+          "colorMode": "value",
+          "fieldOptions": {
+            "calcs": [
+              "lastNotNull"
+            ]
+          },
+          "graphMode": "none",
+          "justifyMode": "auto",
+          "orientation": "horizontal",
+          "reduceOptions": {
+            "calcs": [
+              "mean"
+            ],
+            "fields": "",
+            "values": false
+          },
+          "textMode": "auto"
+        },
+        "pluginVersion": "9.1.6",
+        "targets": [
+          {
+            "datasource": {
+              "uid": "$datasource"
+            },
+            "editorMode": "code",
+            "expr": "sum(purefb_file_systems_space_data_reduction_ratio{job=~\"$job\",instance=\"$instance\",name=\"$filesystem\"})",
+            "format": "time_series",
+            "interval": "",
+            "intervalFactor": 1,
+            "legendFormat": "",
+            "range": true,
+            "refId": "A"
+          }
+        ],
+        "title": "data reduction ratio",
+        "type": "stat"
+      },
+      {
+        "datasource": {
+          "type": "prometheus",
+          "uid": "$datasource"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "mappings": [
+              {
+                "options": {
+                  "match": "null",
+                  "result": {
+                    "text": "N/A"
+                  }
+                },
+                "type": "special"
+              }
+            ],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "#299c46",
+                  "value": null
+                },
+                {
+                  "color": "rgba(237, 129, 40, 0.89)",
+                  "value": 0.8
+                },
+                {
+                  "color": "#d44a3a",
+                  "value": 1.5
+                }
+              ]
+            },
+            "unit": "ms"
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 2,
+          "w": 5,
+          "x": 13,
+          "y": 2
+        },
+        "id": 11,
+        "links": [],
+        "maxDataPoints": 100,
+        "options": {
+          "colorMode": "value",
+          "fieldOptions": {
+            "calcs": [
+              "mean"
+            ]
+          },
+          "graphMode": "none",
+          "justifyMode": "auto",
+          "orientation": "horizontal",
+          "reduceOptions": {
+            "calcs": [
+              "mean"
+            ],
+            "fields": "",
+            "values": false
+          },
+          "textMode": "auto"
+        },
+        "pluginVersion": "9.1.6",
+        "targets": [
+          {
+            "datasource": {
+              "uid": "$datasource"
+            },
+            "editorMode": "code",
+            "expr": "avg(purefb_file_systems_performance_latency_usec{job=~\"$job\",instance=\"$instance\",name=\"$filesystem\"}) / 1000",
+            "format": "time_series",
+            "interval": "",
+            "intervalFactor": 1,
+            "legendFormat": "",
+            "range": true,
+            "refId": "A"
+          }
+        ],
+        "title": "average file system latency",
+        "type": "stat"
+      },
+      {
+        "datasource": {
+          "type": "prometheus",
+          "uid": "$datasource"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "decimals": 2,
+            "mappings": [
+              {
+                "options": {
+                  "match": "null",
+                  "result": {
+                    "text": "N/A"
+                  }
+                },
+                "type": "special"
+              }
+            ],
+            "max": 1,
+            "min": 0,
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "#299c46",
+                  "value": null
+                },
+                {
+                  "color": "rgba(237, 129, 40, 0.89)",
+                  "value": 0.8
+                },
+                {
+                  "color": "#d44a3a",
+                  "value": 0.9
+                }
+              ]
+            },
+            "unit": "percentunit"
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 2,
+          "w": 5,
+          "x": 0,
+          "y": 3
+        },
+        "id": 7,
+        "links": [],
+        "maxDataPoints": 100,
+        "options": {
+          "colorMode": "value",
+          "fieldOptions": {
+            "calcs": [
+              "lastNotNull"
+            ]
+          },
+          "graphMode": "none",
+          "justifyMode": "auto",
+          "orientation": "horizontal",
+          "reduceOptions": {
+            "calcs": [
+              "mean"
+            ],
+            "fields": "",
+            "values": false
+          },
+          "textMode": "auto"
+        },
+        "pluginVersion": "9.1.6",
+        "targets": [
+          {
+            "datasource": {
+              "uid": "$datasource"
+            },
+            "editorMode": "code",
+            "expr": "sum(purefb_file_systems_space_bytes{job=~\"$job\",instance=~\"$instance\",space=\"virtual\",name=\"$filesystem\"})\n/\nsum(purefb_file_systems_space_bytes{job=~\"$job\",instance=~\"$instance\",space=\"provisioned\",name=\"$filesystem\"})",
+            "format": "time_series",
+            "instant": false,
+            "interval": "",
+            "intervalFactor": 1,
+            "legendFormat": "",
+            "refId": "A"
+          }
+        ],
+        "title": "file system capacity usage",
+        "type": "stat"
+      },
+      {
+        "datasource": {
+          "type": "prometheus",
+          "uid": "$datasource"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
+            "decimals": 0,
+            "mappings": [
+              {
+                "options": {
+                  "match": "null",
+                  "result": {
+                    "text": "N/A"
+                  }
+                },
+                "type": "special"
+              }
+            ],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            },
+            "unit": "percentunit"
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 3,
+          "w": 3,
+          "x": 18,
+          "y": 3
+        },
+        "id": 22,
+        "links": [],
+        "maxDataPoints": 100,
+        "options": {
+          "colorMode": "none",
+          "graphMode": "none",
+          "justifyMode": "auto",
+          "orientation": "horizontal",
+          "reduceOptions": {
+            "calcs": [
+              "mean"
+            ],
+            "fields": "",
+            "values": false
+          },
+          "textMode": "auto"
+        },
+        "pluginVersion": "9.1.6",
+        "targets": [
+          {
+            "datasource": {
+              "uid": "$datasource"
+            },
+            "editorMode": "code",
+            "expr": "sum(purefb_file_systems_performance_throughput_iops{job=~\"$job\",instance=~\"$instance\",name=\"$filesystem\",dimension=\"reads_per_sec\"})\n/\nsum(purefb_file_systems_performance_throughput_iops{job=~\"$job\",instance=~\"$instance\",name=\"$filesystem\"})",
+            "format": "time_series",
+            "instant": false,
+            "interval": "",
+            "intervalFactor": 1,
+            "legendFormat": "",
+            "refId": "A"
+          }
+        ],
+        "title": "iops read ratio",
+        "type": "stat"
+      },
+      {
+        "datasource": {
+          "type": "prometheus",
+          "uid": "$datasource"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
+            "decimals": 0,
+            "mappings": [
+              {
+                "options": {
+                  "match": "null",
+                  "result": {
+                    "text": "N/A"
+                  }
+                },
+                "type": "special"
+              }
+            ],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            },
+            "unit": "percentunit"
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 3,
+          "w": 3,
+          "x": 21,
+          "y": 3
+        },
+        "id": 23,
+        "links": [],
+        "maxDataPoints": 100,
+        "options": {
+          "colorMode": "none",
+          "graphMode": "none",
+          "justifyMode": "auto",
+          "orientation": "horizontal",
+          "reduceOptions": {
+            "calcs": [
+              "mean"
+            ],
+            "fields": "",
+            "values": false
+          },
+          "textMode": "auto"
+        },
+        "pluginVersion": "9.1.6",
+        "targets": [
+          {
+            "datasource": {
+              "uid": "$datasource"
+            },
+            "editorMode": "code",
+            "expr": "sum(purefb_file_systems_performance_throughput_iops{job=~\"$job\",instance=~\"$instance\",name=\"$filesystem\",dimension=\"writes_per_sec\"})\n/\nsum(purefb_file_systems_performance_throughput_iops{job=~\"$job\",instance=~\"$instance\",name=\"$filesystem\"})",
+            "format": "time_series",
+            "interval": "",
+            "intervalFactor": 1,
+            "legendFormat": "",
+            "range": true,
+            "refId": "A"
+          }
+        ],
+        "title": "iops write ratio",
+        "type": "stat"
+      },
+      {
+        "datasource": {
+          "type": "prometheus",
+          "uid": "$datasource"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "decimals": 2,
+            "mappings": [
+              {
+                "options": {
+                  "match": "null",
+                  "result": {
+                    "text": "N/A"
+                  }
+                },
+                "type": "special"
+              }
+            ],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            },
+            "unit": "Bps"
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 2,
+          "w": 5,
+          "x": 13,
+          "y": 4
+        },
+        "id": 12,
+        "links": [],
+        "maxDataPoints": 100,
+        "options": {
+          "colorMode": "value",
+          "fieldOptions": {
+            "calcs": [
+              "mean"
+            ]
+          },
+          "graphMode": "none",
+          "justifyMode": "auto",
+          "orientation": "horizontal",
+          "reduceOptions": {
+            "calcs": [
+              "mean"
+            ],
+            "fields": "",
+            "values": false
+          },
+          "textMode": "auto"
+        },
+        "pluginVersion": "9.1.6",
+        "targets": [
+          {
+            "datasource": {
+              "uid": "$datasource"
+            },
+            "editorMode": "code",
+            "expr": "sum(purefb_file_systems_performance_bandwidth_bytes{instance=\"$instance\",job=\"$job\",name=\"$filesystem\"})",
+            "format": "time_series",
+            "interval": "",
+            "intervalFactor": 1,
+            "legendFormat": "",
+            "range": true,
+            "refId": "A"
+          }
+        ],
+        "title": "average file system throughput",
+        "type": "stat"
+      },
+      {
+        "datasource": {
+          "type": "prometheus",
+          "uid": "$datasource"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "mappings": [
+              {
+                "options": {
+                  "match": "null",
+                  "result": {
+                    "text": "N/A"
+                  }
+                },
+                "type": "special"
+              }
+            ],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                }
+              ]
+            },
+            "unit": "bytes"
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 2,
+          "w": 5,
+          "x": 0,
+          "y": 5
+        },
+        "id": 2,
+        "links": [],
+        "maxDataPoints": 100,
+        "options": {
+          "colorMode": "value",
+          "fieldOptions": {
+            "calcs": [
+              "lastNotNull"
+            ]
+          },
+          "graphMode": "none",
+          "justifyMode": "auto",
+          "orientation": "horizontal",
+          "reduceOptions": {
+            "calcs": [
+              "mean"
+            ],
+            "fields": "",
+            "values": false
+          },
+          "textMode": "auto"
+        },
+        "pluginVersion": "9.1.6",
+        "targets": [
+          {
+            "datasource": {
+              "uid": "$datasource"
+            },
+            "editorMode": "code",
+            "expr": "purefb_file_systems_space_bytes{job=~\"$job\",instance=~\"$instance\",space=\"virtual\",name=\"$filesystem\"}",
+            "format": "time_series",
+            "interval": "",
+            "intervalFactor": 1,
+            "legendFormat": "",
+            "range": true,
+            "refId": "A"
+          }
+        ],
+        "title": "volume capacity",
+        "type": "stat"
+      },
+      {
+        "datasource": {
+          "type": "prometheus",
+          "uid": "$datasource"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "palette-classic"
+            },
+            "custom": {
+              "axisCenteredZero": false,
+              "axisColorMode": "text",
+              "axisLabel": "",
+              "axisPlacement": "auto",
+              "barAlignment": 0,
+              "drawStyle": "line",
+              "fillOpacity": 10,
+              "gradientMode": "none",
+              "hideFrom": {
+                "legend": false,
+                "tooltip": false,
+                "viz": false
+              },
+              "lineInterpolation": "linear",
+              "lineWidth": 1,
+              "pointSize": 5,
+              "scaleDistribution": {
+                "type": "linear"
+              },
+              "showPoints": "never",
+              "spanNulls": false,
+              "stacking": {
+                "group": "A",
+                "mode": "none"
+              },
+              "thresholdsStyle": {
+                "mode": "off"
+              }
+            },
+            "links": [],
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                }
+              ]
+            },
+            "unit": "iops"
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 6,
+          "w": 24,
+          "x": 0,
+          "y": 7
+        },
+        "id": 16,
+        "links": [],
+        "options": {
+          "legend": {
+            "calcs": [
+              "mean",
+              "max",
+              "min"
+            ],
+            "displayMode": "table",
+            "placement": "right",
+            "showLegend": true
+          },
+          "tooltip": {
+            "mode": "multi",
+            "sort": "none"
+          }
+        },
+        "pluginVersion": "9.1.6",
+        "targets": [
+          {
+            "datasource": {
+              "uid": "$datasource"
+            },
+            "editorMode": "code",
+            "expr": "sum(purefb_file_systems_performance_throughput_iops{job=~\"$job\",instance=\"$instance\",name=\"$filesystem\",dimension=\"reads_per_sec\"})",
+            "format": "time_series",
+            "interval": "",
+            "intervalFactor": 1,
+            "legendFormat": "{{filesystem}} read ",
+            "range": true,
+            "refId": "A"
+          },
+          {
+            "datasource": {
+              "uid": "$datasource"
+            },
+            "editorMode": "code",
+            "expr": "sum(\n  purefb_file_systems_performance_throughput_iops{job=~\"$job\",instance=\"$instance\",name=\"$filesystem\",dimension=\"writes_per_sec\"}\n)",
+            "format": "time_series",
+            "interval": "",
+            "intervalFactor": 1,
+            "legendFormat": "{{filesystem}} write ",
+            "range": true,
+            "refId": "B"
+          }
+        ],
+        "title": "file systems iops",
+        "type": "timeseries"
+      },
+      {
+        "datasource": {
+          "type": "prometheus",
+          "uid": "$datasource"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "palette-classic"
+            },
+            "custom": {
+              "axisCenteredZero": false,
+              "axisColorMode": "text",
+              "axisLabel": "",
+              "axisPlacement": "auto",
+              "barAlignment": 0,
+              "drawStyle": "line",
+              "fillOpacity": 10,
+              "gradientMode": "none",
+              "hideFrom": {
+                "legend": false,
+                "tooltip": false,
+                "viz": false
+              },
+              "lineInterpolation": "linear",
+              "lineWidth": 1,
+              "pointSize": 5,
+              "scaleDistribution": {
+                "type": "linear"
+              },
+              "showPoints": "never",
+              "spanNulls": false,
+              "stacking": {
+                "group": "A",
+                "mode": "none"
+              },
+              "thresholdsStyle": {
+                "mode": "off"
+              }
+            },
+            "links": [],
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                }
+              ]
+            },
+            "unit": "ms"
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 6,
+          "w": 24,
+          "x": 0,
+          "y": 13
+        },
+        "id": 17,
+        "links": [],
+        "options": {
+          "legend": {
+            "calcs": [
+              "mean",
+              "max",
+              "min"
+            ],
+            "displayMode": "table",
+            "placement": "right",
+            "showLegend": true
+          },
+          "tooltip": {
+            "mode": "multi",
+            "sort": "none"
+          }
+        },
+        "pluginVersion": "9.1.6",
+        "targets": [
+          {
+            "datasource": {
+              "uid": "$datasource"
+            },
+            "editorMode": "code",
+            "expr": "sum(\n  purefb_file_systems_performance_latency_usec{job=~\"$job\",instance=\"$instance\",name=\"$filesystem\", dimension=\"usec_per_read_op\"}\n) / 1000",
+            "format": "time_series",
+            "interval": "",
+            "intervalFactor": 1,
+            "legendFormat": "{{ volume}} read ",
+            "range": true,
+            "refId": "A"
+          },
+          {
+            "datasource": {
+              "uid": "$datasource"
+            },
+            "editorMode": "code",
+            "expr": "sum(\n  purefb_file_systems_performance_latency_usec{job=~\"$job\",instance=\"$instance\",name=\"$filesystem\",dimension=\"usec_per_write_op\"}\n) / 1000",
+            "format": "time_series",
+            "interval": "",
+            "intervalFactor": 1,
+            "legendFormat": "{{ volume}} write ",
+            "range": true,
+            "refId": "B"
+          }
+        ],
+        "title": "file system latency",
+        "type": "timeseries"
+      },
+      {
+        "datasource": {
+          "type": "prometheus",
+          "uid": "$datasource"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "palette-classic"
+            },
+            "custom": {
+              "axisCenteredZero": false,
+              "axisColorMode": "text",
+              "axisLabel": "",
+              "axisPlacement": "auto",
+              "barAlignment": 0,
+              "drawStyle": "line",
+              "fillOpacity": 10,
+              "gradientMode": "none",
+              "hideFrom": {
+                "legend": false,
+                "tooltip": false,
+                "viz": false
+              },
+              "lineInterpolation": "linear",
+              "lineWidth": 1,
+              "pointSize": 5,
+              "scaleDistribution": {
+                "type": "linear"
+              },
+              "showPoints": "never",
+              "spanNulls": false,
+              "stacking": {
+                "group": "A",
+                "mode": "none"
+              },
+              "thresholdsStyle": {
+                "mode": "off"
+              }
+            },
+            "links": [],
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                }
+              ]
+            },
+            "unit": "Bps"
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 6,
+          "w": 24,
+          "x": 0,
+          "y": 19
+        },
+        "id": 18,
+        "links": [],
+        "options": {
+          "legend": {
+            "calcs": [
+              "mean",
+              "max",
+              "min"
+            ],
+            "displayMode": "table",
+            "placement": "right",
+            "showLegend": true
+          },
+          "tooltip": {
+            "mode": "multi",
+            "sort": "none"
+          }
+        },
+        "pluginVersion": "9.1.6",
+        "targets": [
+          {
+            "datasource": {
+              "uid": "$datasource"
+            },
+            "editorMode": "code",
+            "expr": "sum(\n  purefb_file_systems_performance_bandwidth_bytes{instance=\"$instance\",job=\"$job\",name=\"$filesystem\", dimension=\"read_bytes_per_sec\"}\n)",
+            "format": "time_series",
+            "interval": "",
+            "intervalFactor": 1,
+            "legendFormat": "{{ volume}} read ",
+            "range": true,
+            "refId": "A"
+          },
+          {
+            "datasource": {
+              "uid": "$datasource"
+            },
+            "editorMode": "code",
+            "expr": "sum(\n  purefb_file_systems_performance_bandwidth_bytes{instance=\"$instance\",job=\"$job\",name=\"$filesystem\",dimension=\"write_bytes_per_sec\"}\n)",
+            "format": "time_series",
+            "interval": "",
+            "intervalFactor": 1,
+            "legendFormat": "{{ volume}} write ",
+            "range": true,
+            "refId": "B"
+          }
+        ],
+        "title": "file system throughput",
+        "type": "timeseries"
+      },
+      {
+        "datasource": {
+          "type": "prometheus",
+          "uid": "$datasource"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "palette-classic"
+            },
+            "custom": {
+              "axisCenteredZero": false,
+              "axisColorMode": "text",
+              "axisLabel": "",
+              "axisPlacement": "auto",
+              "barAlignment": 0,
+              "drawStyle": "line",
+              "fillOpacity": 10,
+              "gradientMode": "none",
+              "hideFrom": {
+                "legend": false,
+                "tooltip": false,
+                "viz": false
+              },
+              "lineInterpolation": "linear",
+              "lineWidth": 1,
+              "pointSize": 5,
+              "scaleDistribution": {
+                "type": "linear"
+              },
+              "showPoints": "never",
+              "spanNulls": false,
+              "stacking": {
+                "group": "A",
+                "mode": "none"
+              },
+              "thresholdsStyle": {
+                "mode": "off"
+              }
+            },
+            "links": [],
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            },
+            "unit": "Bps"
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 6,
+          "w": 24,
+          "x": 0,
+          "y": 25
+        },
+        "id": 26,
+        "links": [],
+        "options": {
+          "legend": {
+            "calcs": [],
+            "displayMode": "table",
+            "placement": "right",
+            "showLegend": true
+          },
+          "tooltip": {
+            "mode": "multi",
+            "sort": "none"
+          }
+        },
+        "pluginVersion": "9.1.6",
+        "targets": [
+          {
+            "datasource": {
+              "uid": "$datasource"
+            },
+            "editorMode": "builder",
+            "expr": "purefb_file_system_usage_users_bytes{instance=\"$instance\",job=\"$job\",file_system=\"$filesystem\",dimension=\"usage\"}",
+            "format": "time_series",
+            "interval": "",
+            "intervalFactor": 1,
+            "legendFormat": "user id {{id}}",
+            "range": true,
+            "refId": "A"
+          }
+        ],
+        "title": "file system usage per user",
+        "type": "timeseries"
+      }
+    ],
+    "schemaVersion": 37,
+    "style": "dark",
+    "tags": [],
+    "templating": {
+      "list": [
+        {
+          "current": {
+            "selected": false,
+            "text": "query-1",
+            "value": "query-1"
+          },
+          "hide": 0,
+          "includeAll": false,
+          "label": "Datasource",
+          "multi": false,
+          "name": "datasource",
+          "options": [],
+          "query": "prometheus",
+          "refresh": 1,
+          "regex": "",
+          "skipUrlSync": false,
+          "type": "datasource"
+        },
+        {
+          "current": {
+            "selected": true,
+            "text": [
+              "pure_flashblade1"
+            ],
+            "value": [
+              "pure_flashblade1"
+            ]
+          },
+          "datasource": {
+            "type": "datasource",
+            "uid": "$datasource"
+          },
+          "definition": "label_values(purefb_info, job)",
+          "hide": 0,
+          "includeAll": true,
+          "label": "Job",
+          "multi": true,
+          "name": "job",
+          "options": [],
+          "query": {
+            "query": "label_values(purefb_info, job)",
+            "refId": "query-1-job-Variable-Query"
+          },
+          "refresh": 1,
+          "regex": "",
+          "skipUrlSync": false,
+          "sort": 5,
+          "tagValuesQuery": "",
+          "tagsQuery": "",
+          "type": "query",
+          "useTags": false
+        },
+        {
+          "current": {
+            "selected": false,
+            "text": "10.21.241.90",
+            "value": "10.21.241.90"
+          },
+          "datasource": {
+            "type": "datasource",
+            "uid": "$datasource"
+          },
+          "definition": "label_values(purefb_info{job=\"$job\"}, instance)",
+          "hide": 0,
+          "includeAll": false,
+          "label": "FlashBlade",
+          "multi": false,
+          "name": "instance",
+          "options": [],
+          "query": {
+            "query": "label_values(purefb_info{job=\"$job\"}, instance)",
+            "refId": "query-1-instance-Variable-Query"
+          },
+          "refresh": 1,
+          "regex": "",
+          "skipUrlSync": false,
+          "sort": 3,
+          "tagValuesQuery": "",
+          "tagsQuery": "",
+          "type": "query",
+          "useTags": false
+        },
+        {
+          "current": {
+            "isNone": true,
+            "selected": false,
+            "text": "None",
+            "value": ""
+          },
+          "datasource": {
+            "type": "datasource",
+            "uid": "$datasource"
+          },
+          "definition": "label_values(purefb_filesystems_space_bytes{job=\"$job\",instance=\"$instance\"}, name)",
+          "hide": 0,
+          "includeAll": false,
+          "label": "File System",
+          "multi": false,
+          "name": "filesystem",
+          "options": [],
+          "query": {
+            "query": "label_values(purefb_filesystems_space_bytes{job=\"$job\",instance=\"$instance\"}, name)",
+            "refId": "query-1-filesystem-Variable-Query"
+          },
+          "refresh": 1,
+          "regex": "",
+          "skipUrlSync": false,
+          "sort": 0,
+          "tagValuesQuery": "",
+          "tagsQuery": "",
+          "type": "query",
+          "useTags": false
+        }
+      ]
+    },
+    "time": {
+      "from": "now-1h",
+      "to": "now"
+    },
+    "timepicker": {
+      "refresh_intervals": [
+        "10s",
+        "30s",
+        "1m",
+        "5m",
+        "15m",
+        "30m",
+        "1h",
+        "2h",
+        "1d"
+      ],
+      "time_options": [
+        "5m",
+        "15m",
+        "1h",
+        "6h",
+        "12h",
+        "24h",
+        "2d",
+        "7d",
+        "30d"
+      ]
+    },
+    "timezone": "",
+    "title": "Pure Storage FlashBlade filesystem detail",
+    "uid": "n0zbxlzGk",
+    "version": 28,
+    "weekStart": ""
+  }

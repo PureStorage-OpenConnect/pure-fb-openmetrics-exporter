@@ -1,15 +1,17 @@
 package collectors
 
 import (
+	client "purestorage/fb-openmetrics-exporter/internal/rest-client"
+
 	"github.com/prometheus/client_golang/prometheus"
-	"purestorage/fb-openmetrics-exporter/internal/rest-client"
 )
 
 type ArraySpaceCollector struct {
-	ReductionDesc *prometheus.Desc
-	SpaceDesc     *prometheus.Desc
-	ParityDesc    *prometheus.Desc
-	Client        *client.FBClient
+	ReductionDesc   *prometheus.Desc
+	SpaceDesc       *prometheus.Desc
+	UtilizationDesc *prometheus.Desc
+	ParityDesc      *prometheus.Desc
+	Client          *client.FBClient
 }
 
 func (c *ArraySpaceCollector) Describe(ch chan<- *prometheus.Desc) {
@@ -65,9 +67,24 @@ func (c *ArraySpaceCollector) Collect(ch chan<- prometheus.Metric) {
 		ch <- prometheus.MustNewConstMetric(
 			c.SpaceDesc,
 			prometheus.GaugeValue,
-			float64(as.Capacity),
+			as.Capacity,
 			t, "capacity",
 		)
+
+		if t == "array" {
+			ch <- prometheus.MustNewConstMetric(
+				c.SpaceDesc,
+				prometheus.GaugeValue,
+				as.Capacity-as.Space.TotalPhysical,
+				t, "empty",
+			)
+			ch <- prometheus.MustNewConstMetric(
+				c.UtilizationDesc,
+				prometheus.GaugeValue,
+				as.Space.TotalPhysical/as.Capacity*100,
+				t,
+			)
+		}
 	}
 }
 
@@ -88,6 +105,12 @@ func NewArraySpaceCollector(fb *client.FBClient) *ArraySpaceCollector {
 		ParityDesc: prometheus.NewDesc(
 			"purefb_array_space_parity",
 			"FlashBlade space parity",
+			[]string{"type"},
+			prometheus.Labels{},
+		),
+		UtilizationDesc: prometheus.NewDesc(
+			"purefb_array_space_utilization",
+			"FlashBlade array space utilization in percent",
 			[]string{"type"},
 			prometheus.Labels{},
 		),

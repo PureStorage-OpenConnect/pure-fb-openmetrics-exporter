@@ -3,7 +3,7 @@ package client
 type ArraySpace struct {
 	Name     string  `json:"name"`
 	Id       string  `json:"id"`
-	Capacity int     `json:"capacity"`
+	Capacity float64 `json:"capacity"`
 	Parity   float64 `json:"parity"`
 	Space    Space   `json:"space"`
 	Time     int     `json:"time"`

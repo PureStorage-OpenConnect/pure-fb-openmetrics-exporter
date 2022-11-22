@@ -78,7 +78,11 @@ func metricsHandler(w http.ResponseWriter, r *http.Request) {
 
 	registry := prometheus.NewRegistry()
 	fbclient := client.NewRestClient(endpoint, apitoken, apiver, debug)
-	_ = collectors.Collector(context.TODO(), metrics, registry, fbclient)
+	if fbclient.Error != nil {
+		http.Error(w, "Error connecting to FlashBlade. Check your management endpoint and/or api token are correct.", http.StatusBadRequest)
+		return
+	}
+	collectors.Collector(context.TODO(), metrics, registry, fbclient)
 
 	h := promhttp.HandlerFor(registry, promhttp.HandlerOpts{})
 	h.ServeHTTP(w, r)

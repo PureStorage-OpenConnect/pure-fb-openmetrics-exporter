@@ -1,6 +1,8 @@
 package client
 
 import (
+//	"log"
+	"errors"
 	"crypto/tls"
 	"github.com/go-resty/resty/v2"
 )
@@ -33,6 +35,7 @@ type FBClient struct {
 	RestClient *resty.Client
 	ApiVersion string
 	XAuthToken string
+	Error      error
 }
 
 func NewRestClient(endpoint string, apitoken string, apiversion string, debug bool) *FBClient {
@@ -61,13 +64,19 @@ func NewRestClient(endpoint string, apitoken string, apiversion string, debug bo
 //	})
 
 	result := new(ApiVersions)
-	res, _ := fb.RestClient.R().
+	res, err := fb.RestClient.R().
 		SetResult(&result).
 		Get("/api_version")
+	if err != nil {
+		fb.Error = err
+		return fb
+	}
 	if res.StatusCode() != 200 {
+		fb.Error = errors.New("Not a valid FlashBlade REST API server")
 		return fb
 	}
 	if len(result.Versions) == 0 {
+		fb.Error = errors.New("Not a valid FlashBlade REST API version")
 		return fb
 	}
 	if apiversion == "latest" {
@@ -75,9 +84,13 @@ func NewRestClient(endpoint string, apitoken string, apiversion string, debug bo
 	} else {
 		fb.ApiVersion = apiversion
 	}
-	res, _ = fb.RestClient.R().
+	res, err = fb.RestClient.R().
 		SetHeader("api-token", apitoken).
 		Post("/login")
+	if err != nil {
+		fb.Error = err
+		return fb
+	}
 	fb.XAuthToken = res.Header().Get("x-auth-token")
 	fb.RestClient.SetBaseURL("https://" + endpoint + "/api/" + fb.ApiVersion)
 	fb.RestClient.SetHeader("x-auth-token", fb.XAuthToken)
@@ -88,16 +101,23 @@ func (fb *FBClient) Close() *FBClient {
 	if fb.XAuthToken == "" {
 		return fb
 	}
-	fb.RestClient.R().
+	_, err := fb.RestClient.R().
 		SetHeader("x-auth-token", fb.XAuthToken).
 		Post("/logout")
+	if err != nil {
+		fb.Error = err
+	}
 	return fb
 }
 
 func (fb *FBClient) RefreshSession() *FBClient {
-	res, _ := fb.RestClient.R().
+	res, err := fb.RestClient.R().
 		SetHeader("api-token", fb.ApiToken).
 		Post("/login")
+	if err != nil {
+		fb.Error = err
+		return fb
+	}
 	fb.XAuthToken = res.Header().Get("x-auth-token")
 	fb.RestClient.SetHeader("x-auth-token", fb.XAuthToken)
 	return fb

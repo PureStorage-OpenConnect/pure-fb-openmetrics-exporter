@@ -12,13 +12,13 @@ This exporter is provided under Best Efforts support by the Pure Portfolio Solut
 5. Check out the features and default values set in the [Pure Storage FlashBlade Overview Grafana Dashboard](grafana-purefb-flashblade-overview.json)
 
 # Overview
-Take a holistic overview of your Pure Storage FlashBlade estate on-premise with Prometheus and Grafana to summerise statistics such as:
+Take a holistic overview of your Pure Storage FlashBlade estate on-premise with Prometheus and Grafana to summarize statistics such as:
   * FlashBlade Utilization
   * Purity OS version
   * Data Reduction Rate
   * Number and type of open alerts
 
-Drill down into specific arrays and identify top busy hosts while correlating read and write operations and throughput to quickly highlight or elimiate investigation equiries.
+Drill down into specific arrays and identify top busy hosts while correlating read and write operations and throughput to quickly highlight or eliminate investigation enquiries.
 <br>
 <img src="./images/grafana_purefb_overview_dash_1.png" width="66%" height="66%">
 <img src="./images/grafana_purefb_overview_dash_2.png" width="33%" height="33%">
@@ -48,14 +48,14 @@ Grafana can be configured to query all of the metrics available in the Prometheu
 <br>
 
 # Setup
-## Prerequisits and Dependencies
+## Prerequisites and Dependencies
 This deployment assumes the [Pure Storage FlashBlade OpenMetrics Exporter][1] is previously been setup and configured.
 Supported operating system platforms are available to install Prometheus and Grafana.
 
 The Grafana dashboards have been developed and tested using the following software versions:
-Prometheus v2.39.1
-Grafana v9.2.6
-Pure Storage OpenMetrics Exporter v1.0.1
+* Prometheus v2.39.1
+* Grafana v9.2.6
+* Pure Storage OpenMetrics Exporter v1.0.1
 
 Dashboards may have limited functionality with earlier versions and some modifications may be required.
 
@@ -187,7 +187,7 @@ Checking prometheus.yml
 
 # Troubleshooting Specific Errors
 ## Some panels have errors
-If the panels have errors then the query could be unsupported. Check the versions of Prometheus and Grafana are above the prerequsist tested versions above.
+If the panels have errors then the query could be unsupported. Check the versions of Prometheus and Grafana are above the prerequisites versions tested above.
 
 ## Selected graphs are not loading or taking a long time to load
 Filesystems panels may take longer to load when a greater number of more FlashBlade's are selected combined with longer time ranges are selected.
@@ -202,8 +202,8 @@ Try reducing the scope of the query and/or increase processing and memory resour
 
 # Pure Storage FlashBlade Overview Grafana Dashboard
 
-## Dashboard Templating and Filters
-The dashboards are fully termplated which means they will work with your FlashBlade confgiuration and allow you to filter by environemnt, array and how many top(k) metrics you wish to display on your dashboard.
+## Dashboard Template Variables and Filters
+The dashboards are fully templated which means they will work with your FlashBlade configuration and allow you to filter by environment, array and how many top(k) metrics you wish to display on your dashboard.
 FlashBlade Overview allows filtering of most panels by protocol. Selecting All provides an aggregate of all protocols.
 <br>
 <img src="./images/grafana_purefb_dashboard_template.png">
@@ -219,7 +219,7 @@ Colors have been selected to work equally in both dark and light mode.
 
 ## Threshold Defaults
 ### Utilization
-Grafana dashboards are configured with utilization thresholds to pro-actively highlight potential capacity issues with plenty of time to address. These values can be adjusted to suit your own threashold policies.
+Grafana dashboards are configured with utilization thresholds to pro-actively highlight potential capacity issues with plenty of time to address. These values can be adjusted to suit your own threshold policies.
 
 The utilization bar and value text will change color according to the array utilization.
 

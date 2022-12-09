@@ -92,7 +92,7 @@ func metricsHandler(w http.ResponseWriter, r *http.Request) {
 func index(w http.ResponseWriter, r *http.Request) {
 	msg := `<html>
 <body>
-<h1>Pure Storage Flashblade OpenMetrics Exporter</h1>
+<h1>Pure Storage FlashBlade OpenMetrics Exporter</h1>
 <table>
     <thead>
         <tr>

@@ -1,4 +1,4 @@
-FROM golang:alpine
+FROM golang:alpine as build
 
 WORKDIR /usr/src/app
 
@@ -7,8 +7,11 @@ COPY go.mod go.sum ./
 RUN go mod download && go mod verify
 
 COPY . .
-RUN go build -v -o /usr/local/bin/pure-fb-om-exporter cmd/fb-om-exporter/main.go
+RUN CGO_ENABLED=1 go build -a -tags 'netgo osusergo static_build' -v -o /usr/local/bin/pure-fb-om-exporter cmd/fb-om-exporter/main.go
 
+# alpine is used here as it seems to be the minimal image that passes quay.io vulnerability scan
+FROM alpine
+COPY --from=build  /usr/local/bin/pure-fb-om-exporter /pure-fb-om-exporter
 EXPOSE 9491
-ENTRYPOINT ["/usr/local/bin/pure-fb-om-exporter"]
+ENTRYPOINT ["/pure-fb-om-exporter"]
 CMD ["--host", "0.0.0.0", "--port", "9491"]

@@ -14,7 +14,7 @@ import (
 	"github.com/prometheus/client_golang/prometheus/promhttp"
 )
 
-var version string = "1.0.1"
+var version string = "1.0.2"
 var debug bool = false
 
 func main() {

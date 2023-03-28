@@ -14,7 +14,7 @@ import (
 	"github.com/prometheus/client_golang/prometheus/promhttp"
 )
 
-var version string = "1.0.1"
+var version string = "development"
 var debug bool = false
 
 func main() {
@@ -25,7 +25,7 @@ func main() {
 	flag.Parse()
 	addr := fmt.Sprintf("%s:%d", *host, *port)
 	debug = *d
-	log.Printf("Start Pure Storage FlashBlade exporter v%s on %s", version, addr)
+	log.Printf("Start Pure Storage FlashBlade exporter %s on %s", version, addr)
 
 	http.HandleFunc("/", index)
 	http.HandleFunc("/metrics/array", func(w http.ResponseWriter, r *http.Request) {

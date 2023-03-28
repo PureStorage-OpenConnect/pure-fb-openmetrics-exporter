@@ -25,7 +25,7 @@ func main() {
 	flag.Parse()
 	addr := fmt.Sprintf("%s:%d", *host, *port)
 	debug = *d
-	log.Printf("Start Pure Storage FlashBlade exporter v%s on %s", version, addr)
+	log.Printf("Start Pure Storage FlashBlade exporter %s on %s", version, addr)
 
 	http.HandleFunc("/", index)
 	http.HandleFunc("/metrics/array", func(w http.ResponseWriter, r *http.Request) {

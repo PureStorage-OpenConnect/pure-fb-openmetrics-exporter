@@ -24,7 +24,8 @@ init:
 
 build: ## Build project and put the output binary in out/bin/
 	mkdir -p out/bin
-	CGO_ENABLED=0 GO111MODULE=on $(GOCMD) build -a -tags 'netgo osusergo static_build' -o out/bin/$(BINARY_NAME) cmd/fb-om-exporter/main.go
+## CGO_ENABLED=0 GO111MODULE=on $(GOCMD) build -a -tags 'netgo osusergo static_build' -o out/bin/$(BINARY_NAME) cmd/fb-om-exporter/main.go
+	CGO_ENABLED=0 GO111MODULE=on $(GOCMD) build -a -tags 'netgo osusergo static_build' -ldflags='-X main.version=$(VERSION)' -o out/bin/$(BINARY_NAME) cmd/fb-om-exporter/main.go
 
 clean: ## Remove build related file
 	rm -fr ./bin
@@ -77,7 +78,7 @@ endif
 
 ## Docker:
 docker-build: ## Use the dockerfile to build the container
-	docker build --rm --tag $(BINARY_NAME) --file build/docker/Dockerfile .
+	docker build --rm --tag $(BINARY_NAME) --build-arg VERSION=$(VERSION) --file build/docker/Dockerfile .
 
 docker-release: ## Release the container with tag latest and version
 	docker tag $(BINARY_NAME) $(DOCKER_REGISTRY)$(BINARY_NAME):latest

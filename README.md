@@ -76,12 +76,12 @@ Authentication is used by the exporter as the mechanism to cross authenticate to
 The exporter understands the following requests:
 
 
-URL | GET parameters | description
----|---|---
-http://\<exporter-host\>:\<port\>/metrics | endpoint | Full array metrics
-http://\<exporter-host\>:\<port\>/metrics/array | endpoint | Array metrics
-http://\<exporter-host\>:\<port\>/metrics/clients | endpoint | Clients metrics
-http://\<exporter-host\>:\<port\>/metrics/usage | endpoint | Quotas usage metrics
+| URL                                               | GET parameters | description          |
+| ------------------------------------------------- | -------------- | -------------------- |
+| http://\<exporter-host\>:\<port\>/metrics         | endpoint       | Full array metrics   |
+| http://\<exporter-host\>:\<port\>/metrics/array   | endpoint       | Array metrics        |
+| http://\<exporter-host\>:\<port\>/metrics/clients | endpoint       | Clients metrics      |
+| http://\<exporter-host\>:\<port\>/metrics/usage   | endpoint       | Quotas usage metrics |
 
 
 Depending on the target array, scraping for the whole set of metrics could result into timeout issues, in which case it is suggested either to increase the scraping timeout or to scrape each single endpoint instead.
@@ -112,49 +112,49 @@ A simple but complete example to deploy a full monitoring stack on kubernetes ca
 
 ### Metrics Collected
 
-|Metric Name                                           |Description                                              |
-|------------------------------------------------------|---------------------------------------------------------|
-|purefb_alerts_open                                    |FlashBlade open alert events                             |
-|purefb_info                                           |FlashBlade system information                            |
-|purefb_array_http_specific_performance_latency_usec   |FlashBlade array HTTP specific latency                   |
-|purefb_array_http_specific_performance_throughput_iops|FlashBlade array HTTP specific throughput                |
-|purefb_array_nfs_specific_performance_latency_usec    |FlashBlade array NFS specific latency                    |
-|purefb_array_nfs_specific_performance_throughput_iops |FlashBlade array NFS specific throughput                 |
-|purefb_array_performance_latency_usec                 |FlashBlade array latency                                 |
-|purefb_array_performance_throughput_iops              |FlashBlade array throughput                              |
-|purefb_array_performance_bandwidth_bytes              |FlashBlade array throughput                              |
-|purefb_array_performance_average_bytes                |FlashBlade array average operations size                 |
-|purefb_array_performance_replication                  |FlashBlade array replication throughput                  |
-|purefb_array_s3_performance_latency_usec              |FlashBlade array latency                                 |
-|purefb_array_s3_performance_throughput_iops           |FlashBlade array throughput                              |
-|purefb_array_space_data_reduction_ratio               |FlashBlade space data reduction                          |
-|purefb_array_space_bytes                              |FlashBlade space in bytes                                |
-|purefb_array_space_parity                             |FlashBlade space parity                                  |
-|purefb_array_space_utilization                        |FlashBlade array space utilization in percent            |
-|purefb_buckets_performance_latency_usec               |FlashBlade buckets latency                               |
-|purefb_buckets_performance_throughput_iops            |FlashBlade buckets throughput                            |
-|purefb_buckets_performance_bandwidth_bytes            |FlashBlade buckets bandwidth                             |
-|purefb_buckets_performance_average_bytes              |FlashBlade buckets average operations size               |
-|purefb_buckets_s3_specific_performance_latency_usec   |FlashBlade buckets S3 specific latency                   |
-|purefb_buckets_s3_specific_performance_throughput_iops|FlashBlade buckets S3 specific throughput                |
-|purefb_buckets_space_data_reduction_ratio             |FlashBlade buckets space data reduction                  |
-|purefb_buckets_space_bytes                            |FlashBlade buckets space in bytes                        |
-|purefb_clients_performance_latency_usec               |FlashBlade clients latency                               |
-|purefb_clients_performance_throughput_iops            |FlashBlade clients throughput                            |
-|purefb_clients_performance_bandwidth_bytes            |FlashBlade clients bandwidth                             |
-|purefb_clients_performance_average_bytes              |FlashBlade clients average operations size               |
-|purefb_file_systems_performance_latency_usec          |FlashBlade file systems latency                          |
-|purefb_file_systems_performance_throughput_iops       |FlashBlade file systems throughput                       |
-|purefb_file_systems_performance_bandwidth_bytes       |FlashBlade file systems bandwidth                        |
-|purefb_file_systems_performance_average_bytes         |FlashBlade file systems average operations size          |
-|purefb_file_systems_space_data_reduction_ratio        |FlashBlade file systems space data reduction             |
-|purefb_file_systems_space_bytes                       |FlashBlade file systems space in bytes                   |
-|purefb_hardware_health                                |FlashBlade hardware component health status              |
-|purefb_hardware_connectors_performance_throughput_pkts|FlashBlade hardware connectors performance throughput    |
-|purefb_hardware_connectors_performance_bandwidth_bytes|FlashBlade hardware connectors performance bandwidth     |
-|purefb_shardware_connectors_performance_errors        |FlashBlade hardware connectors performance errors per sec|
-|purefb_file_system_usage_users_bytes                  |FlashBlade file system users usage                       |
-|purefb_file_system_usage_groups_bytes                 |FlashBlade file system groups usage                      |
+| Metric Name                                            | Description                                               |
+| ------------------------------------------------------ | --------------------------------------------------------- |
+| purefb_alerts_open                                     | FlashBlade open alert events                              |
+| purefb_info                                            | FlashBlade system information                             |
+| purefb_array_http_specific_performance_latency_usec    | FlashBlade array HTTP specific latency                    |
+| purefb_array_http_specific_performance_throughput_iops | FlashBlade array HTTP specific throughput                 |
+| purefb_array_nfs_specific_performance_latency_usec     | FlashBlade array NFS specific latency                     |
+| purefb_array_nfs_specific_performance_throughput_iops  | FlashBlade array NFS specific throughput                  |
+| purefb_array_performance_latency_usec                  | FlashBlade array latency                                  |
+| purefb_array_performance_throughput_iops               | FlashBlade array throughput                               |
+| purefb_array_performance_bandwidth_bytes               | FlashBlade array throughput                               |
+| purefb_array_performance_average_bytes                 | FlashBlade array average operations size                  |
+| purefb_array_performance_replication                   | FlashBlade array replication throughput                   |
+| purefb_array_s3_performance_latency_usec               | FlashBlade array latency                                  |
+| purefb_array_s3_performance_throughput_iops            | FlashBlade array throughput                               |
+| purefb_array_space_data_reduction_ratio                | FlashBlade space data reduction                           |
+| purefb_array_space_bytes                               | FlashBlade space in bytes                                 |
+| purefb_array_space_parity                              | FlashBlade space parity                                   |
+| purefb_array_space_utilization                         | FlashBlade array space utilization in percent             |
+| purefb_buckets_performance_latency_usec                | FlashBlade buckets latency                                |
+| purefb_buckets_performance_throughput_iops             | FlashBlade buckets throughput                             |
+| purefb_buckets_performance_bandwidth_bytes             | FlashBlade buckets bandwidth                              |
+| purefb_buckets_performance_average_bytes               | FlashBlade buckets average operations size                |
+| purefb_buckets_s3_specific_performance_latency_usec    | FlashBlade buckets S3 specific latency                    |
+| purefb_buckets_s3_specific_performance_throughput_iops | FlashBlade buckets S3 specific throughput                 |
+| purefb_buckets_space_data_reduction_ratio              | FlashBlade buckets space data reduction                   |
+| purefb_buckets_space_bytes                             | FlashBlade buckets space in bytes                         |
+| purefb_clients_performance_latency_usec                | FlashBlade clients latency                                |
+| purefb_clients_performance_throughput_iops             | FlashBlade clients throughput                             |
+| purefb_clients_performance_bandwidth_bytes             | FlashBlade clients bandwidth                              |
+| purefb_clients_performance_average_bytes               | FlashBlade clients average operations size                |
+| purefb_file_systems_performance_latency_usec           | FlashBlade file systems latency                           |
+| purefb_file_systems_performance_throughput_iops        | FlashBlade file systems throughput                        |
+| purefb_file_systems_performance_bandwidth_bytes        | FlashBlade file systems bandwidth                         |
+| purefb_file_systems_performance_average_bytes          | FlashBlade file systems average operations size           |
+| purefb_file_systems_space_data_reduction_ratio         | FlashBlade file systems space data reduction              |
+| purefb_file_systems_space_bytes                        | FlashBlade file systems space in bytes                    |
+| purefb_hardware_health                                 | FlashBlade hardware component health status               |
+| purefb_hardware_connectors_performance_throughput_pkts | FlashBlade hardware connectors performance throughput     |
+| purefb_hardware_connectors_performance_bandwidth_bytes | FlashBlade hardware connectors performance bandwidth      |
+| purefb_shardware_connectors_performance_errors         | FlashBlade hardware connectors performance errors per sec |
+| purefb_file_system_usage_users_bytes                   | FlashBlade file system users usage                        |
+| purefb_file_system_usage_groups_bytes                  | FlashBlade file system groups usage                       |
 
 ## Monitoring On-Premise with Prometheus and Grafana
 Take a holistic overview of your Pure Storage FlashBlade estate on-premise with Prometheus and Grafana to summarize statistics such as:

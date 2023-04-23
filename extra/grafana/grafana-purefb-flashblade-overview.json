@@ -7,6 +7,13 @@
       "type": "datasource",
       "pluginId": "prometheus",
       "pluginName": "Prometheus"
+    },
+    {
+      "name": "VAR_DASHBOARDVERSION",
+      "type": "constant",
+      "label": "DashboardVersion",
+      "value": "1.0.2",
+      "description": ""
     }
   ],
   "__elements": {},
@@ -15,7 +22,7 @@
       "type": "grafana",
       "id": "grafana",
       "name": "Grafana",
-      "version": "9.2.6"
+      "version": "9.3.2"
     },
     {
       "type": "panel",
@@ -27,7 +34,7 @@
       "type": "datasource",
       "id": "prometheus",
       "name": "Prometheus",
-      "version": "1.0.0"
+      "version": "2.41.0"
     },
     {
       "type": "panel",
@@ -82,17 +89,30 @@
         "type": "prometheus",
         "uid": "${DS_PROMETHEUS}"
       },
+      "gridPos": {
+        "h": 4,
+        "w": 6,
+        "x": 0,
+        "y": 0
+      },
       "id": 121,
+      "links": [
+        {
+          "targetBlank": true,
+          "title": "PUre Storage",
+          "url": "http://www.purestorage.com"
+        }
+      ],
       "options": {
         "code": {
           "language": "plaintext",
           "showLineNumbers": false,
           "showMiniMap": false
         },
-        "content": "<img src=\"https://raw.githubusercontent.com/DataDog/integrations-extras/master/purefa/images/widget_logo.png\">",
+        "content": "<img src=\"https://www.purestorage.com/content/dam/purestorage/knowledge/pure-storage.png.imgo.png\">",
         "mode": "markdown"
       },
-      "pluginVersion": "9.2.6",
+      "pluginVersion": "9.3.2",
       "type": "text"
     },
     {
@@ -108,7 +128,7 @@
           },
           "custom": {
             "align": "center",
-            "displayMode": "color-background-solid",
+            "displayMode": "auto",
             "filterable": false,
             "inspect": false
           },
@@ -131,7 +151,7 @@
           {
             "matcher": {
               "id": "byName",
-              "options": "Array Free Space"
+              "options": "Free Space"
             },
             "properties": [
               {
@@ -140,14 +160,34 @@
               },
               {
                 "id": "custom.width",
-                "value": 125
+                "value": 95
+              },
+              {
+                "id": "thresholds",
+                "value": {
+                  "mode": "absolute",
+                  "steps": [
+                    {
+                      "color": "#cd146d",
+                      "value": null
+                    },
+                    {
+                      "color": "#1a9ea7",
+                      "value": 1
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "custom.displayMode",
+                "value": "color-background"
               }
             ]
           },
           {
             "matcher": {
               "id": "byName",
-              "options": "Array Capacity"
+              "options": "Capacity"
             },
             "properties": [
               {
@@ -156,7 +196,7 @@
               },
               {
                 "id": "custom.width",
-                "value": 125
+                "value": 95
               }
             ]
           },
@@ -199,6 +239,10 @@
                 "value": 125
               },
               {
+                "id": "max",
+                "value": 100
+              },
+              {
                 "id": "custom.displayMode",
                 "value": "gradient-gauge"
               }
@@ -224,7 +268,7 @@
                       "value": null
                     },
                     {
-                      "color": "dark-orange",
+                      "color": "#e0b400",
                       "value": 0
                     },
                     {
@@ -247,7 +291,7 @@
           {
             "matcher": {
               "id": "byName",
-              "options": "Array Health"
+              "options": "Health"
             },
             "properties": [
               {
@@ -273,10 +317,6 @@
               {
                 "id": "custom.width",
                 "value": 125
-              },
-              {
-                "id": "custom.displayMode",
-                "value": "color-background"
               }
             ]
           },
@@ -352,7 +392,7 @@
             "properties": [
               {
                 "id": "custom.width",
-                "value": 85
+                "value": 90
               }
             ]
           }
@@ -367,6 +407,7 @@
       "id": 163,
       "options": {
         "footer": {
+          "countRows": false,
           "fields": "",
           "reducer": [
             "sum"
@@ -377,7 +418,7 @@
         "showHeader": true,
         "sortBy": []
       },
-      "pluginVersion": "9.2.6",
+      "pluginVersion": "9.3.2",
       "targets": [
         {
           "datasource": {
@@ -454,7 +495,7 @@
           "instant": true,
           "legendFormat": "Array Capacity (TB)",
           "range": false,
-          "refId": "Array Capacity"
+          "refId": "Capacity"
         },
         {
           "datasource": {
@@ -470,7 +511,7 @@
           "interval": "",
           "legendFormat": "Array Free Space",
           "range": false,
-          "refId": "Array Free Space"
+          "refId": "Free Space"
         },
         {
           "datasource": {
@@ -506,11 +547,11 @@
                 "os",
                 "version",
                 "Value #Array health",
+                "Value #Alerts",
                 "Value #Data Reduction",
-                "Value #Array Capacity",
-                "Value #Array Free Space",
+                "Value #Free Space",
                 "Value #Utilization",
-                "Value #Alerts"
+                "Value #Capacity"
               ]
             }
           }
@@ -522,10 +563,12 @@
             "indexByName": {},
             "renameByName": {
               "Value #Alerts": "Alerts",
-              "Value #Array Capacity": "Array Capacity",
-              "Value #Array Free Space": "Array Free Space",
-              "Value #Array health": "Array Health",
+              "Value #Array Capacity": "Capacity",
+              "Value #Array Free Space": "Free Space",
+              "Value #Array health": "Health",
+              "Value #Capacity": "Capacity",
               "Value #Data Reduction": "Data Reduction",
+              "Value #Free Space": "Free Space",
               "Value #Total Alerts": "Alerts",
               "Value #Utilization": "Utilization",
               "instance": "Array",
@@ -543,10 +586,10 @@
         "uid": "${DS_PROMETHEUS}"
       },
       "gridPos": {
-        "h": 7,
+        "h": 5,
         "w": 6,
         "x": 0,
-        "y": 3
+        "y": 4
       },
       "id": 177,
       "options": {
@@ -555,10 +598,10 @@
           "showLineNumbers": false,
           "showMiniMap": false
         },
-        "content": "# <b>PURE</b> STORAGE\n\n## Overview\n\nThis dashboard provides performance and capacity details for Pure Storage FlashBlades.\nGroup arrays by customer defined environment, whole fleets, or view arrays individually.",
+        "content": "# **PURE** STORAGE\n\n## Overview\n\nThis dashboard provides performance and capacity details for Pure Storage FlashBlades.\nGroup arrays by customer defined environment, whole fleets, or view arrays individually.",
         "mode": "markdown"
       },
-      "pluginVersion": "9.2.6",
+      "pluginVersion": "9.3.2",
       "type": "text"
     },
     {
@@ -573,7 +616,7 @@
           },
           "custom": {
             "align": "auto",
-            "displayMode": "color-background-solid",
+            "displayMode": "auto",
             "inspect": false
           },
           "mappings": [
@@ -721,10 +764,6 @@
                 "value": "center"
               },
               {
-                "id": "custom.displayMode",
-                "value": "color-background"
-              },
-              {
                 "id": "thresholds",
                 "value": {
                   "mode": "absolute",
@@ -745,7 +784,7 @@
         ]
       },
       "gridPos": {
-        "h": 5,
+        "h": 4,
         "w": 18,
         "x": 6,
         "y": 5
@@ -753,6 +792,7 @@
       "id": 180,
       "options": {
         "footer": {
+          "countRows": false,
           "fields": "",
           "reducer": [
             "sum"
@@ -762,7 +802,7 @@
         "showHeader": true,
         "sortBy": []
       },
-      "pluginVersion": "9.2.6",
+      "pluginVersion": "9.3.2",
       "targets": [
         {
           "datasource": {
@@ -876,10 +916,10 @@
         "uid": "${DS_PROMETHEUS}"
       },
       "gridPos": {
-        "h": 34,
+        "h": 42,
         "w": 6,
         "x": 0,
-        "y": 10
+        "y": 9
       },
       "id": 175,
       "options": {
@@ -891,7 +931,7 @@
         "content": "## Metrics\n\n`All metrics are prefixed with purefb_`\n\nBelow are the metrics names available:\n\n### Collected with endpoint /metrics/array\n\n    * info\n    * alerts_open\n    * hardware_health\n    * array_http_specific_performance_latency_usec\n    * array_http_specific_performance_throughput_iops\n    * array_nfs_latency_usec\n    * array_nfs_throughput_iops\n    * array_performance_average_bytes\n    * array_performance_bandwidth_bytes\n    * array_performance_latency_usec\n    * array_performance_throughput_iops\n    * array_s3_specific_performance_latency_usec\n    * array_s3_specific_performance_throughput_iops\n    * array_space_bytes\n    * array_space_data_reduction_ratio\n    * array_space_parity\n    * bucket_replica_links_lag_msec\n    * buckets_performance_average_bytes\n    * buckets_performance_bandwidth_bytes\n    * buckets_performance_latency_usec\n    * buckets_performance_throughput_iops\n    * buckets_s3_specific_performance_latency_usec\n    * buckets_s3_specific_performance_throughput_iops\n    * buckets_space_bytes\n    * buckets_space_data_reduction_ratio\n    * buckets_space_objects\n    * file_system_links_lag_msec\n    * file_systems_performance_average_bytes\n    * file_systems_performance_bandwidth_bytes\n    * file_systems_performance_latency_usec\n    * file_systems_performance_throughput_iops\n    * file_systems_space_bytes\n    * file_systems_space_data_reduction_ratio\n    * hardware_connectors_performance_bandwidth_bytes\n    * hardware_connectors_performance_errors\n    * hardware_connectors_performance_throughput_pkts\n\n### Collected with endpoint /metrics/usage\n    * file_system_usage_groups_bytes\n    * file_system_usage_users_bytes\n    \n### Collected with endpoint /metrics/clients\nCollecting client performance information may require increasing scrape collection it is therefore recommended as an optional configuration item.\n \n    * array_clients_performance_avg_size_bytes\n    * array_clients_performance_bandwidth_bytes\n    * array_clients_performance_latency_usec\n    * array_clients_performance_throughput_iops\n\n\n\n",
         "mode": "markdown"
       },
-      "pluginVersion": "9.2.6",
+      "pluginVersion": "9.3.2",
       "type": "text"
     },
     {
@@ -986,7 +1026,7 @@
         "h": 8,
         "w": 6,
         "x": 6,
-        "y": 10
+        "y": 9
       },
       "id": 127,
       "options": {
@@ -1195,7 +1235,7 @@
         "h": 8,
         "w": 6,
         "x": 12,
-        "y": 10
+        "y": 9
       },
       "id": 128,
       "options": {
@@ -1336,7 +1376,7 @@
         "h": 8,
         "w": 6,
         "x": 18,
-        "y": 10
+        "y": 9
       },
       "id": 190,
       "options": {
@@ -1429,7 +1469,7 @@
               "type": "linear"
             },
             "showPoints": "never",
-            "spanNulls": false,
+            "spanNulls": 300000,
             "stacking": {
               "group": "A",
               "mode": "none"
@@ -1457,7 +1497,7 @@
         "h": 10,
         "w": 9,
         "x": 6,
-        "y": 18
+        "y": 17
       },
       "id": 165,
       "options": {
@@ -1530,7 +1570,7 @@
               "type": "linear"
             },
             "showPoints": "never",
-            "spanNulls": false,
+            "spanNulls": 300000,
             "stacking": {
               "group": "A",
               "mode": "none"
@@ -1558,7 +1598,7 @@
         "h": 10,
         "w": 9,
         "x": 15,
-        "y": 18
+        "y": 17
       },
       "id": 131,
       "options": {
@@ -1631,7 +1671,7 @@
               "type": "linear"
             },
             "showPoints": "never",
-            "spanNulls": false,
+            "spanNulls": 300000,
             "stacking": {
               "group": "A",
               "mode": "none"
@@ -1646,8 +1686,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               }
             ]
           },
@@ -1659,7 +1698,7 @@
         "h": 8,
         "w": 9,
         "x": 6,
-        "y": 28
+        "y": 27
       },
       "id": 183,
       "options": {
@@ -1735,7 +1774,7 @@
               "type": "linear"
             },
             "showPoints": "never",
-            "spanNulls": true,
+            "spanNulls": 300000,
             "stacking": {
               "group": "A",
               "mode": "none"
@@ -1750,8 +1789,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               }
             ]
           },
@@ -1763,7 +1801,7 @@
         "h": 8,
         "w": 9,
         "x": 15,
-        "y": 28
+        "y": 27
       },
       "id": 172,
       "options": {
@@ -1838,7 +1876,7 @@
               "type": "linear"
             },
             "showPoints": "never",
-            "spanNulls": true,
+            "spanNulls": 300000,
             "stacking": {
               "group": "A",
               "mode": "none"
@@ -1853,8 +1891,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               }
             ]
           },
@@ -1866,7 +1903,7 @@
         "h": 8,
         "w": 9,
         "x": 6,
-        "y": 36
+        "y": 35
       },
       "id": 142,
       "options": {
@@ -1941,7 +1978,7 @@
               "type": "linear"
             },
             "showPoints": "never",
-            "spanNulls": true,
+            "spanNulls": 300000,
             "stacking": {
               "group": "A",
               "mode": "none"
@@ -1956,8 +1993,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               }
             ]
           },
@@ -1969,7 +2005,7 @@
         "h": 8,
         "w": 9,
         "x": 15,
-        "y": 36
+        "y": 35
       },
       "id": 191,
       "options": {
@@ -2044,7 +2080,7 @@
               "type": "linear"
             },
             "showPoints": "never",
-            "spanNulls": false,
+            "spanNulls": 300000,
             "stacking": {
               "group": "A",
               "mode": "none"
@@ -2054,7 +2090,6 @@
             }
           },
           "mappings": [],
-          "min": -1,
           "thresholds": {
             "mode": "absolute",
             "steps": [
@@ -2065,15 +2100,61 @@
           },
           "unit": "µs"
         },
-        "overrides": []
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "usec_per_write_op"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "#fa6400",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "usec_per_other_op"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "#662e9c",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "usec_per_read_op"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "#2ae5f2",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          }
+        ]
       },
       "gridPos": {
         "h": 8,
-        "w": 8,
-        "x": 0,
-        "y": 44
+        "w": 18,
+        "x": 6,
+        "y": 43
       },
-      "id": 135,
+      "id": 193,
       "options": {
         "legend": {
           "calcs": [
@@ -2101,16 +2182,48 @@
           },
           "editorMode": "code",
           "exemplar": false,
-          "expr": "avg(purefb_array_performance_latency_usec{instance=~\"$instance\",env=~\"$env\", dimension=\"usec_per_read_op\", protocol=~\"$protocol\"}) by (instance,protocol)",
+          "expr": "sum(avg_over_time(purefb_array_performance_latency_usec{instance=~\"^$instance\",env=~\"^$env\",dimension=\"usec_per_read_op\"}[$__interval]))",
           "format": "time_series",
           "instant": false,
           "interval": "",
-          "legendFormat": "{{instance}} - {{protocol}}",
+          "legendFormat": "usec_per_read_op",
           "range": true,
-          "refId": "Volume Latency"
+          "refId": "Read"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_PROMETHEUS}"
+          },
+          "editorMode": "code",
+          "exemplar": false,
+          "expr": "sum(avg_over_time(purefb_array_performance_latency_usec{instance=~\"^$instance\",env=~\"^$env\",dimension=\"usec_per_write_op\"}[$__interval]))",
+          "format": "time_series",
+          "hide": false,
+          "instant": false,
+          "interval": "",
+          "legendFormat": "usec_per_write_op",
+          "range": true,
+          "refId": "Write"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_PROMETHEUS}"
+          },
+          "editorMode": "code",
+          "exemplar": false,
+          "expr": "sum(avg_over_time(purefb_array_performance_latency_usec{instance=~\"^$instance\",env=~\"^$env\",dimension=\"usec_per_other_op\"}[$__interval]))",
+          "format": "time_series",
+          "hide": false,
+          "instant": false,
+          "interval": "",
+          "legendFormat": "usec_per_other_op",
+          "range": true,
+          "refId": "Other"
         }
       ],
-      "title": "Read Latency by $instance array(s) & $protocol protocol(s)",
+      "title": "Average Total Latency by $instance array(s) and $protocol protocol(s)",
       "type": "timeseries"
     },
     {
@@ -2148,319 +2261,7 @@
               "type": "linear"
             },
             "showPoints": "never",
-            "spanNulls": false,
-            "stacking": {
-              "group": "A",
-              "mode": "none"
-            },
-            "thresholdsStyle": {
-              "mode": "off"
-            }
-          },
-          "mappings": [],
-          "min": -1,
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green"
-              }
-            ]
-          },
-          "unit": "µs"
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 8,
-        "w": 8,
-        "x": 8,
-        "y": 44
-      },
-      "id": 186,
-      "options": {
-        "legend": {
-          "calcs": [
-            "mean",
-            "min",
-            "max",
-            "last"
-          ],
-          "displayMode": "table",
-          "placement": "bottom",
-          "showLegend": true,
-          "sortBy": "Mean",
-          "sortDesc": true
-        },
-        "tooltip": {
-          "mode": "single",
-          "sort": "none"
-        }
-      },
-      "targets": [
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
-          },
-          "editorMode": "code",
-          "exemplar": false,
-          "expr": "avg(purefb_array_performance_latency_usec{instance=~\"$instance\",env=~\"$env\", dimension=\"usec_per_write_op\", protocol=~\"$protocol\"}) by (instance,protocol)",
-          "format": "time_series",
-          "instant": false,
-          "interval": "",
-          "legendFormat": "{{instance}} - {{protocol}}",
-          "range": true,
-          "refId": "Volume Latency"
-        }
-      ],
-      "title": "Write Latency by $instance array(s) & $protocol protocol(s)",
-      "type": "timeseries"
-    },
-    {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "${DS_PROMETHEUS}"
-      },
-      "description": "",
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "palette-classic"
-          },
-          "custom": {
-            "axisCenteredZero": false,
-            "axisColorMode": "text",
-            "axisLabel": "",
-            "axisPlacement": "auto",
-            "barAlignment": 0,
-            "drawStyle": "line",
-            "fillOpacity": 10,
-            "gradientMode": "none",
-            "hideFrom": {
-              "legend": false,
-              "tooltip": false,
-              "viz": false
-            },
-            "lineInterpolation": "smooth",
-            "lineStyle": {
-              "fill": "solid"
-            },
-            "lineWidth": 1,
-            "pointSize": 5,
-            "scaleDistribution": {
-              "type": "linear"
-            },
-            "showPoints": "never",
-            "spanNulls": false,
-            "stacking": {
-              "group": "A",
-              "mode": "none"
-            },
-            "thresholdsStyle": {
-              "mode": "off"
-            }
-          },
-          "mappings": [],
-          "min": -1,
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green"
-              }
-            ]
-          },
-          "unit": "µs"
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 8,
-        "w": 8,
-        "x": 16,
-        "y": 44
-      },
-      "id": 192,
-      "options": {
-        "legend": {
-          "calcs": [
-            "mean",
-            "min",
-            "max",
-            "last"
-          ],
-          "displayMode": "table",
-          "placement": "bottom",
-          "showLegend": true,
-          "sortBy": "Mean",
-          "sortDesc": true
-        },
-        "tooltip": {
-          "mode": "single",
-          "sort": "none"
-        }
-      },
-      "targets": [
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
-          },
-          "editorMode": "code",
-          "exemplar": false,
-          "expr": "avg(purefb_array_performance_latency_usec{instance=~\"$instance\",env=~\"$env\", dimension=\"usec_per_other_op\", protocol=~\"$protocol\"}) by (instance,protocol)",
-          "format": "time_series",
-          "instant": false,
-          "interval": "",
-          "legendFormat": "{{instance}} - {{protocol}}",
-          "range": true,
-          "refId": "Volume Latency"
-        }
-      ],
-      "title": "Other Latency by $instance array(s) & $protocol protocol(s)",
-      "type": "timeseries"
-    },
-    {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "${DS_PROMETHEUS}"
-      },
-      "description": "",
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "palette-classic"
-          },
-          "custom": {
-            "axisCenteredZero": false,
-            "axisColorMode": "text",
-            "axisLabel": "",
-            "axisPlacement": "auto",
-            "barAlignment": 0,
-            "drawStyle": "line",
-            "fillOpacity": 10,
-            "gradientMode": "none",
-            "hideFrom": {
-              "legend": false,
-              "tooltip": false,
-              "viz": false
-            },
-            "lineInterpolation": "smooth",
-            "lineStyle": {
-              "fill": "solid"
-            },
-            "lineWidth": 1,
-            "pointSize": 5,
-            "scaleDistribution": {
-              "type": "linear"
-            },
-            "showPoints": "never",
-            "spanNulls": false,
-            "stacking": {
-              "group": "A",
-              "mode": "none"
-            },
-            "thresholdsStyle": {
-              "mode": "off"
-            }
-          },
-          "mappings": [],
-          "min": -1,
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green"
-              }
-            ]
-          },
-          "unit": "µs"
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 8,
-        "w": 8,
-        "x": 0,
-        "y": 52
-      },
-      "id": 185,
-      "options": {
-        "legend": {
-          "calcs": [
-            "mean",
-            "min",
-            "max",
-            "last"
-          ],
-          "displayMode": "table",
-          "placement": "bottom",
-          "showLegend": true,
-          "sortBy": "Mean",
-          "sortDesc": true
-        },
-        "tooltip": {
-          "mode": "single",
-          "sort": "none"
-        }
-      },
-      "targets": [
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
-          },
-          "editorMode": "code",
-          "exemplar": false,
-          "expr": "purefb_array_performance_latency_usec{instance=~\"$instance\",env=~\"$env\",protocol=~\"$protocol\"}\nand \ntopk($TopItems,rate(purefb_array_performance_latency_usec{instance=~\"$instance\",env=~\"$env\",protocol=~\"$protocol\"}[$__range] @ end() ))",
-          "format": "time_series",
-          "instant": false,
-          "interval": "",
-          "legendFormat": "{{instance}} - {{dimension}}",
-          "range": true,
-          "refId": "Latency"
-        }
-      ],
-      "title": "Latency by $instance array(s) and $protocol protocol(s)",
-      "type": "timeseries"
-    },
-    {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "${DS_PROMETHEUS}"
-      },
-      "description": "",
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "palette-classic"
-          },
-          "custom": {
-            "axisCenteredZero": false,
-            "axisColorMode": "text",
-            "axisLabel": "",
-            "axisPlacement": "auto",
-            "barAlignment": 0,
-            "drawStyle": "line",
-            "fillOpacity": 10,
-            "gradientMode": "none",
-            "hideFrom": {
-              "legend": false,
-              "tooltip": false,
-              "viz": false
-            },
-            "lineInterpolation": "smooth",
-            "lineStyle": {
-              "fill": "solid"
-            },
-            "lineWidth": 1,
-            "pointSize": 5,
-            "scaleDistribution": {
-              "type": "linear"
-            },
-            "showPoints": "never",
-            "spanNulls": false,
+            "spanNulls": 300000,
             "stacking": {
               "group": "A",
               "mode": "none"
@@ -2481,15 +2282,46 @@
           },
           "unit": "iops"
         },
-        "overrides": []
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "reads_per_sec"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "#2ae5f2",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "writes_per_sec"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "#ff8316",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          }
+        ]
       },
       "gridPos": {
         "h": 8,
-        "w": 8,
-        "x": 8,
-        "y": 52
+        "w": 18,
+        "x": 6,
+        "y": 51
       },
-      "id": 188,
+      "id": 194,
       "options": {
         "legend": {
           "calcs": [
@@ -2517,13 +2349,45 @@
           },
           "editorMode": "code",
           "exemplar": false,
-          "expr": "purefb_array_performance_throughput_iops{instance=~\"$instance\",env=~\"$env\",protocol=~\"$protocol\"}\nand \ntopk($TopItems,rate(purefb_array_performance_throughput_iops{instance=~\"$instance\",env=~\"$env\",protocol=~\"$protocol\"}[$__range] @ end() ))",
+          "expr": "sum(avg_over_time(purefb_array_performance_throughput_iops{instance=~\"^$instance\",env=~\"^$env\",dimension=\"reads_per_sec\"}[$__interval]))",
           "format": "time_series",
           "instant": false,
           "interval": "",
-          "legendFormat": "{{instance}} - {{dimension}}",
+          "legendFormat": "reads_per_sec",
           "range": true,
-          "refId": "Latency"
+          "refId": "Read"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_PROMETHEUS}"
+          },
+          "editorMode": "code",
+          "exemplar": false,
+          "expr": "sum(avg_over_time(purefb_array_performance_throughput_iops{instance=~\"^$instance\",env=~\"^$env\",dimension=\"writes_per_sec\"}[$__interval]))",
+          "format": "time_series",
+          "hide": false,
+          "instant": false,
+          "interval": "",
+          "legendFormat": "writes_per_sec",
+          "range": true,
+          "refId": "Write"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_PROMETHEUS}"
+          },
+          "editorMode": "code",
+          "exemplar": false,
+          "expr": "sum(avg_over_time(purefb_array_performance_throughput_iops{instance=~\"^$instance\",env=~\"^$env\",dimension=\"other_per_sec\"}[$__interval]))",
+          "format": "time_series",
+          "hide": false,
+          "instant": false,
+          "interval": "",
+          "legendFormat": "other_per_sec",
+          "range": true,
+          "refId": "Other"
         }
       ],
       "title": "IOPS by $instance array(s) and $protocol protocol(s)",
@@ -2564,7 +2428,7 @@
               "type": "linear"
             },
             "showPoints": "never",
-            "spanNulls": false,
+            "spanNulls": 300000,
             "stacking": {
               "group": "A",
               "mode": "none"
@@ -2585,15 +2449,46 @@
           },
           "unit": "binBps"
         },
-        "overrides": []
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "read_bytes_per_sec"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "#2ae5f2",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "write_bytes_per_sec"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "dark-orange",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          }
+        ]
       },
       "gridPos": {
         "h": 8,
-        "w": 8,
-        "x": 16,
-        "y": 52
+        "w": 18,
+        "x": 6,
+        "y": 59
       },
-      "id": 189,
+      "id": 195,
       "options": {
         "legend": {
           "calcs": [
@@ -2621,20 +2516,53 @@
           },
           "editorMode": "code",
           "exemplar": false,
-          "expr": "purefb_array_performance_bandwidth_bytes{instance=~\"$instance\",env=~\"$env\",protocol=~\"$protocol\"}\nand \ntopk($TopItems,rate(purefb_array_performance_bandwidth_bytes{instance=~\"$instance\",env=~\"$env\",protocol=~\"$protocol\"}[$__range] @ end() ))",
+          "expr": "sum(avg_over_time(purefb_array_performance_bandwidth_bytes{instance=~\"^$instance\",env=~\"^$env\",dimension=\"read_bytes_per_sec\"}[$__interval]))",
           "format": "time_series",
           "instant": false,
           "interval": "",
-          "legendFormat": "{{instance}} - {{dimension}} - {{protocol}}",
+          "legendFormat": "read_bytes_per_sec",
           "range": true,
-          "refId": "Latency"
+          "refId": "Read"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_PROMETHEUS}"
+          },
+          "editorMode": "code",
+          "exemplar": false,
+          "expr": "sum(avg_over_time(purefb_array_performance_bandwidth_bytes{instance=~\"^$instance\",env=~\"^$env\",dimension=\"write_bytes_per_sec\"}[$__interval]))",
+          "format": "time_series",
+          "hide": false,
+          "instant": false,
+          "interval": "",
+          "legendFormat": "write_bytes_per_sec",
+          "range": true,
+          "refId": "Write"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_PROMETHEUS}"
+          },
+          "editorMode": "code",
+          "exemplar": false,
+          "expr": "sum(avg_over_time(purefb_array_performance_bandwidth_bytes{instance=~\"^$instance\",env=~\"^$env\",dimension=\"other_bytes_per_sec\"}[$__interval]))",
+          "format": "time_series",
+          "hide": false,
+          "instant": false,
+          "interval": "",
+          "legendFormat": "other_bytes_per_sec",
+          "range": true,
+          "refId": "Other"
         }
       ],
-      "title": "Bandwidth by $instance array(s) and $protocol protocol(s)",
+      "title": "Average Total Bandwidth by $instance array(s) and $protocol protocol(s)",
       "type": "timeseries"
     }
   ],
-  "refresh": false,
+  "refresh": "",
+  "revision": 1,
   "schemaVersion": 37,
   "style": "dark",
   "tags": [
@@ -2644,6 +2572,25 @@
   ],
   "templating": {
     "list": [
+      {
+        "hide": 2,
+        "name": "DashboardVersion",
+        "query": "${VAR_DASHBOARDVERSION}",
+        "skipUrlSync": false,
+        "type": "constant",
+        "current": {
+          "value": "${VAR_DASHBOARDVERSION}",
+          "text": "${VAR_DASHBOARDVERSION}",
+          "selected": false
+        },
+        "options": [
+          {
+            "value": "${VAR_DASHBOARDVERSION}",
+            "text": "${VAR_DASHBOARDVERSION}",
+            "selected": false
+          }
+        ]
+      },
       {
         "current": {
           "selected": false,
@@ -2848,6 +2795,6 @@
   "timezone": "",
   "title": "Pure Storage FlashBlade - Overview",
   "uid": "z0BG6-vVz",
-  "version": 176,
+  "version": 2,
   "weekStart": ""
 }

@@ -6,10 +6,9 @@ This exporter is provided under Best Efforts support by the Pure Portfolio Solut
 
 ## TL;DR
 1. Configure Pure Storage OpenMetrics Exporter ([pure-fb-openmetrics-exporter][1]).
-2. Deploy and configure Prometheus ([prometheus-docs][2]).
+2. Deploy and configure Prometheus ([prometheus-docs][2]). [Example prometheus.yaml here](../prometheus/prometheus.yaml).
 3. Deploy and configure Grafana ([grafana-docs][3]).
-4. Import Pure Storage dashboards using .json files into Grafana.
-5. Check out the features and default values set in the [Pure Storage FlashBlade Overview Grafana Dashboard](grafana-purefb-flashblade-overview.json)
+4. Import [grafana-purefb-flashblade-overview.json](grafana-purefb-flashblade-overview.json) into Grafana.
 
 # Overview
 Take a holistic overview of your Pure Storage FlashBlade estate on-premise with Prometheus and Grafana to summarize statistics such as:
@@ -53,28 +52,31 @@ This deployment assumes the [Pure Storage FlashBlade OpenMetrics Exporter][1] is
 Supported operating system platforms are available to install Prometheus and Grafana.
 
 The Grafana dashboards have been developed and tested using the following software versions:
-* Prometheus v2.39.1
-* Grafana v9.2.6
-* Pure Storage OpenMetrics Exporter v1.0.1
+* Prometheus v2.41.1
+* Grafana v9.3.2 & v9.4.1
+* Pure Storage OpenMetrics Exporter v1.0.5.hotfix1
 
 Dashboards may have limited functionality with earlier versions and some modifications may be required.
 
 ## Prometheus
 1. Install Prometheus on your chosen OS platform ([prometheus-docs][2]).
 
-2. Generate API token from your chosen user account or create a new readonly user.
+2. Generate an API token for your chosen user account.
+In this case we are using a remote LDAP user account with read-only permissions.
 ```console
-pureuser@arrayname01> pureadmin create --role readonly svc-readonly
- Name          Type   Role    
-svc-readonly  local  readonly
+pureuser@arrayname01> pureadmin list
+Name         Type    Role
+pureuser     local   array_admin
+svc-readonly remote  readonly
 
 pureuser@arrayname01> pureadmin create --api-token svc-readonly
-Name          Type   API Token                             Created                  Expires
-svc-readonly  local  a12345bc6-d78e-901f-23a4-56b07b89012  2022-11-30 08:58:40 EST  -      
+Name          Type    API Token                             Created                  Expires
+svc-readonly  remote  a12345bc6-d78e-901f-23a4-56b07b89012  2022-11-30 08:58:40 EST  -    
 ```
 
 3. Configure `/etc/prometheus/prometheus.yaml` to point use the OpenMetrics exporter to query the device endpoint.
-An example of a single FlashBlade device configuration is here: [](../prometheus/prometheus.yaml)
+
+[This is an example of configuring the prometheus.yaml](../prometheus/prometheus.yaml)
 
 Let's take a walkthrough an example of scraping the `/metrics/array` endpoint.
 
@@ -154,33 +156,31 @@ Check the data is accessible at component in the stack. If at any on these point
   * Check Grafana
 
 ### Check Pure OpenMetrics Exporter
-1. Start by querying the exporter to make sure it is returning results. Use an API query tool such as [Postman](https://www.postman.com/) to query the device direct and retrieve the raw API call.
-  - GET: `http://<exporter_ip>:9491/metrics/array?endpoint=arrayname01.fqdn.com`.
-  - Authorization > Type:Bearer Token: `T-a12345bc6-d78e-901f-23a4-56b07b89012`.
-<br>
-<img src="./images/postman-purefb-openmetricsexporter-query.png" width="40%" height="40%">
-<br>
-2. Ensure the API authorization token is correct and correctly configured in prometheus.yaml.
+1. Run cURL against the exporter and pass is the bearer token and endpoint. 
+```
+curl -H 'Authorization: Bearer a12345bc6-d78e-901f-23a4-56b07b89012' -X GET 'http://<exporter_ip>:9490/metrics/array?endpoint=arrayname01.fqdn.com'
+```
+
 ### Check Prometheus
-3. Using the Prometheus UI, run a simple query to see if any results are returned.
+2. Using the Prometheus UI, run a simple query to see if any results are returned.
 <br>
 <img src="./images/prometheus_simple_purefb_query.png" width="40%" height="40%">
 <br>
 
-4. If the query does not return results, check the status of the targets for status errors.
+3. If the query does not return results, check the status of the targets for status errors.
 <br>
 <img src="./images/prometheus_purefb_target_status.png" width="40%" height="40%">
 <br>
-5. Run prometheus.yaml through the yaml checker. Check the configuration is correct and retsart Prometheus.
+4. Run prometheus.yaml through the yaml checker. Check the configuration is correct and retsart Prometheus.
 ```console
 > promtool check config /etc/prometheus/prometheus.yml
 Checking prometheus.yml
  SUCCESS: prometheus.yml is valid prometheus config file syntax
 ```
-6. Check messages log for Prometheus errors.
+5. Check messages log for Prometheus errors.
 
 ### Check Grafana
-7. Perform a simple test for Grafana by navigating to 'Explore' and entering a simple query.
+6. Perform a simple test for Grafana by navigating to 'Explore' and entering a simple query.
 <br>
 <img src="./images/grafana_simple_purefb_query.png" width="50%" height="50%">
 <br>

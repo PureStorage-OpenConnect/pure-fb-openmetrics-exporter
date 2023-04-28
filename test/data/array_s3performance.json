@@ -1,0 +1,21 @@
+{
+  "continuation_token": null,
+  "total_item_count": 1,
+  "items": [
+    {
+      "name": "fbstaines02",
+      "read_buckets_per_sec": 12,
+      "write_buckets_per_sec": 0,
+      "read_objects_per_sec": 0,
+      "write_objects_per_sec": 0,
+      "others_per_sec": 0,
+      "usec_per_read_bucket_op": 23936,
+      "usec_per_write_bucket_op": 0,
+      "usec_per_read_object_op": 0,
+      "usec_per_write_object_op": 0,
+      "usec_per_other_op": 0,
+      "time": 1682688045000,
+      "id": "66992c13-6d81-433f-bb31-5fc33e76fa5f"
+    }
+  ]
+}

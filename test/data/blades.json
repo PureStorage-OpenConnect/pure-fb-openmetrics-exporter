@@ -1,0 +1,150 @@
+{
+  "total": {
+    "raw_capacity": 193514046488576,
+    "details": null,
+    "name": null,
+    "id": null,
+    "progress": null,
+    "status": null,
+    "target": null
+  },
+  "continuation_token": null,
+  "total_item_count": 15,
+  "items": [
+    {
+      "raw_capacity": 17592186044416,
+      "details": null,
+      "name": "CH1.FB1",
+      "id": "9905b158-c52c-7255-cb86-ae259dd77abb",
+      "progress": null,
+      "status": "healthy",
+      "target": null
+    },
+    {
+      "raw_capacity": 8796093022208,
+      "details": null,
+      "name": "CH1.FB10",
+      "id": "29778dac-d832-c057-2694-5215c77f2ec7",
+      "progress": null,
+      "status": "healthy",
+      "target": null
+    },
+    {
+      "raw_capacity": 8796093022208,
+      "details": null,
+      "name": "CH1.FB11",
+      "id": "e1862971-d992-fdec-7eda-f995a76abfaa",
+      "progress": null,
+      "status": "healthy",
+      "target": null
+    },
+    {
+      "raw_capacity": 8796093022208,
+      "details": null,
+      "name": "CH1.FB12",
+      "id": "eaf9bbb7-a4a3-99ec-b8c7-dbeeefb16896",
+      "progress": null,
+      "status": "healthy",
+      "target": null
+    },
+    {
+      "raw_capacity": 8796093022208,
+      "details": null,
+      "name": "CH1.FB13",
+      "id": "0f2a2e9b-b005-4cf4-39b9-15fee65420e0",
+      "progress": null,
+      "status": "healthy",
+      "target": null
+    },
+    {
+      "raw_capacity": 17592186044416,
+      "details": null,
+      "name": "CH1.FB14",
+      "id": "426ae55d-41a8-6423-1fc0-c8a0321a7441",
+      "progress": null,
+      "status": "healthy",
+      "target": null
+    },
+    {
+      "raw_capacity": 17592186044416,
+      "details": null,
+      "name": "CH1.FB15",
+      "id": "b1ce7ca4-98cf-be7a-78ec-e197f26e2c4f",
+      "progress": null,
+      "status": "healthy",
+      "target": null
+    },
+    {
+      "raw_capacity": 8796093022208,
+      "details": null,
+      "name": "CH1.FB2",
+      "id": "68670094-e3d3-3845-304d-33c6c385dad5",
+      "progress": null,
+      "status": "healthy",
+      "target": null
+    },
+    {
+      "raw_capacity": 17592186044416,
+      "details": null,
+      "name": "CH1.FB3",
+      "id": "79ff40c9-eff9-0cd1-2934-89fad84bb47a",
+      "progress": null,
+      "status": "healthy",
+      "target": null
+    },
+    {
+      "raw_capacity": 17592186044416,
+      "details": null,
+      "name": "CH1.FB4",
+      "id": "8bb54e58-67f1-1bf6-1fc7-8149751ae1d9",
+      "progress": null,
+      "status": "healthy",
+      "target": null
+    },
+    {
+      "raw_capacity": 17592186044416,
+      "details": null,
+      "name": "CH1.FB5",
+      "id": "ec8946bf-095d-724c-f7cf-578041a9dcc2",
+      "progress": null,
+      "status": "healthy",
+      "target": null
+    },
+    {
+      "raw_capacity": 8796093022208,
+      "details": null,
+      "name": "CH1.FB6",
+      "id": "bb5c2591-e4d9-301f-83b8-0bf81295e447",
+      "progress": null,
+      "status": "healthy",
+      "target": null
+    },
+    {
+      "raw_capacity": 17592186044416,
+      "details": null,
+      "name": "CH1.FB7",
+      "id": "59396d25-6d64-f22a-af84-f0d36bb95f95",
+      "progress": null,
+      "status": "healthy",
+      "target": null
+    },
+    {
+      "raw_capacity": 8796093022208,
+      "details": null,
+      "name": "CH1.FB8",
+      "id": "046c6e05-b99d-5053-dfcf-c6e1b6649e3a",
+      "progress": null,
+      "status": "healthy",
+      "target": null
+    },
+    {
+      "raw_capacity": 8796093022208,
+      "details": null,
+      "name": "CH1.FB9",
+      "id": "a31cc41d-77c3-2dd0-6ee9-74fec5b7a286",
+      "progress": null,
+      "status": "healthy",
+      "target": null
+    }
+  ]
+}

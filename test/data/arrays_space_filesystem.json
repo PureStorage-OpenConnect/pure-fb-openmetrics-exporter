@@ -1,0 +1,20 @@
+{
+  "continuation_token": null,
+  "total_item_count": 1,
+  "items": [
+    {
+      "name": "fbstaines02",
+      "id": "66992c13-6d81-433f-bb31-5fc33e76fa5f",
+      "time": 1682626140000,
+      "capacity": 89314175302419,
+      "parity": 1,
+      "space": {
+        "virtual": 31229729723392,
+        "unique": 16114891884224,
+        "snapshots": 30041741112,
+        "data_reduction": 1.9379423,
+        "total_physical": 16144933625336
+      }
+    }
+  ]
+}

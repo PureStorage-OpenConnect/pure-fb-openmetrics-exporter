@@ -18,16 +18,17 @@ type BladesList struct {
 }
 
 func (fb *FBClient) GetBlades() *BladesList {
+	uri := "/blades"
 	result := new(BladesList)
 	res, _ := fb.RestClient.R().
 		SetResult(&result).
-		Get("/blades")
+		Get(uri)
 
 	if res.StatusCode() == 401 {
 		fb.RefreshSession()
 		fb.RestClient.R().
 			SetResult(&result).
-			Get("/blades")
+			Get(uri)
 	}
 	return result
 }

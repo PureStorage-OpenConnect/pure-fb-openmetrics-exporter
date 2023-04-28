@@ -9,9 +9,10 @@ type FileSystemsPerformanceList struct {
 
 func (fb *FBClient) GetFileSystemsPerformance(f *FileSystemsList,
 	protocol string) *FileSystemsPerformanceList {
+	uri := "/file-systems/performance"
 	result := new(FileSystemsPerformanceList)
 	switch protocol {
-	case "all", "HTTP", "NFS", "SMB", "S3":
+	case "all", "NFS", "SMB":
 		temp := new(FileSystemsPerformanceList)
 		for i := 0; i < len(f.Items); i += 5 {
 			n := ""
@@ -23,14 +24,14 @@ func (fb *FBClient) GetFileSystemsPerformance(f *FileSystemsList,
 				SetResult(&temp).
 				SetQueryParam("names", n).
 				SetQueryParam("protocol", protocol).
-				Get("/file-systems/performance")
+				Get(uri)
 			if res.StatusCode() == 401 {
 				fb.RefreshSession()
 				fb.RestClient.R().
 					SetResult(&temp).
 					SetQueryParam("names", n).
 					SetQueryParam("protocol", protocol).
-					Get("/file-systems/performance")
+					Get(uri)
 			}
 			result.Items = append(result.Items, temp.Items...)
 		}

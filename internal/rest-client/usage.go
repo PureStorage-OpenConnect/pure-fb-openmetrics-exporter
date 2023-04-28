@@ -47,19 +47,20 @@ type UsageUsersList struct {
 }
 
 func (fb *FBClient) GetUsageUsers(f *FileSystemsList) *UsageUsersList {
+	uri := "/usage/users"
 	result := new(UsageUsersList)
 	temp := new(UsageUsersList)
 	for i := 0; i < len(f.Items); i++ {
 		res, _ := fb.RestClient.R().
 			SetResult(&temp).
 			SetQueryParam("file_system_ids", f.Items[i].Id).
-			Get("/usage/users")
+			Get(uri)
 		if res.StatusCode() == 401 {
 			fb.RefreshSession()
 			fb.RestClient.R().
 				SetResult(&temp).
 				SetQueryParam("file_system_ids", f.Items[i].Id).
-				Get("/usage/users")
+				Get(uri)
 		}
 		result.Items = append(result.Items, temp.Items...)
 	}
@@ -67,19 +68,20 @@ func (fb *FBClient) GetUsageUsers(f *FileSystemsList) *UsageUsersList {
 }
 
 func (fb *FBClient) GetUsageGroups(f *FileSystemsList) *UsageGroupsList {
+	uri := "/usage/groups"
 	result := new(UsageGroupsList)
 	temp := new(UsageGroupsList)
 	for i := 0; i < len(f.Items); i++ {
 		res, _ := fb.RestClient.R().
 			SetResult(&temp).
 			SetQueryParam("file_system_ids", f.Items[i].Id).
-			Get("/usage/groups")
+			Get(uri)
 		if res.StatusCode() == 401 {
 			fb.RefreshSession()
 			fb.RestClient.R().
 				SetResult(&temp).
 				SetQueryParam("file_system_ids", f.Items[i].Id).
-				Get("/usage/groups")
+				Get(uri)
 		}
 		result.Items = append(result.Items, temp.Items...)
 	}

@@ -1,0 +1,157 @@
+{
+  "continuation_token": null,
+  "total_item_count": 4,
+  "items": [
+    {
+      "name": "pxbackup-nfs-target-policy",
+      "id": "0021b4ff-f083-2849-e8c9-bbfb8a9d3cde",
+      "enabled": true,
+      "is_local": true,
+      "location": {
+        "name": "fbstaines02",
+        "id": "66992c13-6d81-433f-bb31-5fc33e76fa5f",
+        "resource_type": "arrays"
+      },
+      "version": "ffffffff-cf82-04c7-ffff-ffff85c37ce6",
+      "rules": [
+        {
+          "name": "pxbackup-nfs-target-policy.1",
+          "id": "8c4fb16c-8c16-4d1e-be30-9c18e509c24a",
+          "policy": {
+            "name": "pxbackup-nfs-target-policy",
+            "id": "0021b4ff-f083-2849-e8c9-bbfb8a9d3cde",
+            "resource_type": "nfs-export-policies"
+          },
+          "index": 1,
+          "policy_version": "ffffffff-cf82-04c7-ffff-ffff85c37ce6",
+          "access": "all-squash",
+          "anongid": null,
+          "anonuid": null,
+          "atime": true,
+          "client": "*",
+          "fileid_32bit": false,
+          "permission": "rw",
+          "secure": false,
+          "security": [
+            "sys"
+          ]
+        }
+      ],
+      "policy_type": "nfs-export"
+    },
+    {
+      "name": "ff",
+      "id": "11f9533f-ec2e-4079-0c67-4c5dbdadc520",
+      "enabled": true,
+      "is_local": true,
+      "location": {
+        "name": "fbstaines02",
+        "id": "66992c13-6d81-433f-bb31-5fc33e76fa5f",
+        "resource_type": "arrays"
+      },
+      "version": "00000000-3a03-3b06-0000-000000000000",
+      "rules": [],
+      "policy_type": "nfs-export"
+    },
+    {
+      "name": "testnfspolicy",
+      "id": "29f2da80-90c5-7206-6f70-471bda3e6bf5",
+      "enabled": true,
+      "is_local": true,
+      "location": {
+        "name": "fbstaines02",
+        "id": "66992c13-6d81-433f-bb31-5fc33e76fa5f",
+        "resource_type": "arrays"
+      },
+      "version": "00000000-051b-2554-0000-000039fb1db5",
+      "rules": [
+        {
+          "name": "testnfspolicy.1",
+          "id": "b59ea487-065e-4423-9321-d53b01736100",
+          "policy": {
+            "name": "testnfspolicy",
+            "id": "29f2da80-90c5-7206-6f70-471bda3e6bf5",
+            "resource_type": "nfs-export-policies"
+          },
+          "index": 1,
+          "policy_version": "00000000-051b-2554-0000-000039fb1db5",
+          "access": "root-squash",
+          "anongid": null,
+          "anonuid": null,
+          "atime": true,
+          "client": "10.10.10.1",
+          "fileid_32bit": false,
+          "permission": "ro",
+          "secure": false,
+          "security": [
+            "krb5i",
+            "krb5p",
+            "sys"
+          ]
+        },
+        {
+          "name": "testnfspolicy.2",
+          "id": "96a4ba7a-f4da-4b12-a7a5-30bb912c0844",
+          "policy": {
+            "name": "testnfspolicy",
+            "id": "29f2da80-90c5-7206-6f70-471bda3e6bf5",
+            "resource_type": "nfs-export-policies"
+          },
+          "index": 2,
+          "policy_version": "00000000-051b-2554-0000-000039fb1db5",
+          "access": "root-squash",
+          "anongid": null,
+          "anonuid": null,
+          "atime": true,
+          "client": "10.10.10.2",
+          "fileid_32bit": false,
+          "permission": "ro",
+          "secure": false,
+          "security": [
+            "sys"
+          ]
+        }
+      ],
+      "policy_type": "nfs-export"
+    },
+    {
+      "name": "KNFS4",
+      "id": "2dcad5bf-3151-b404-5a04-ad20040107dd",
+      "enabled": true,
+      "is_local": true,
+      "location": {
+        "name": "fbstaines02",
+        "id": "66992c13-6d81-433f-bb31-5fc33e76fa5f",
+        "resource_type": "arrays"
+      },
+      "version": "00000000-1c06-965f-ffff-ffff98ba5af2",
+      "rules": [
+        {
+          "name": "KNFS4.1",
+          "id": "f869ae87-9dc5-4788-bce6-807562642ef7",
+          "policy": {
+            "name": "KNFS4",
+            "id": "2dcad5bf-3151-b404-5a04-ad20040107dd",
+            "resource_type": "nfs-export-policies"
+          },
+          "index": 1,
+          "policy_version": "00000000-1c06-965f-ffff-ffff98ba5af2",
+          "access": "no-squash",
+          "anongid": null,
+          "anonuid": null,
+          "atime": true,
+          "client": "*",
+          "fileid_32bit": false,
+          "permission": "rw",
+          "secure": false,
+          "security": [
+            "krb5",
+            "krb5i",
+            "krb5p"
+          ]
+        }
+      ],
+      "policy_type": "nfs-export"
+    }
+  ]
+}

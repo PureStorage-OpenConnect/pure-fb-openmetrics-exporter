@@ -1,0 +1,548 @@
+{
+  "total": [
+    {
+      "id": null,
+      "name": null,
+      "link_aggregation_group": {
+        "name": null,
+        "id": null,
+        "resource_type": null
+      },
+      "other_errors_per_sec": 52.66666666666667,
+      "received_bytes_per_sec": 4183659.3333333326,
+      "received_packets_per_sec": 47182.96666666667,
+      "received_crc_errors_per_sec": 0,
+      "received_frame_errors_per_sec": 0,
+      "transmitted_bytes_per_sec": 2146300376.5,
+      "transmitted_packets_per_sec": 1417821.9666666663,
+      "transmitted_dropped_errors_per_sec": 0,
+      "transmitted_carrier_errors_per_sec": 0,
+      "total_errors_per_sec": 52.66666666666667,
+      "time": 1682692980000
+    }
+  ],
+  "continuation_token": null,
+  "total_item_count": 26,
+  "items": [
+    {
+      "id": "766bd13a-3041-9cf7-021b-700f301d8bcb",
+      "name": "CH1.FM1.ETH1.1",
+      "link_aggregation_group": {
+        "name": "uplink",
+        "id": "20f2823a-522a-3530-e5a3-675391d9efb2",
+        "resource_type": "link-aggregation-groups"
+      },
+      "other_errors_per_sec": 4.033333333333333,
+      "received_bytes_per_sec": 238897.9,
+      "received_packets_per_sec": 2609.4666666666667,
+      "received_crc_errors_per_sec": 0,
+      "received_frame_errors_per_sec": 0,
+      "transmitted_bytes_per_sec": 143777529.03333333,
+      "transmitted_packets_per_sec": 94945.43333333333,
+      "transmitted_dropped_errors_per_sec": 0,
+      "transmitted_carrier_errors_per_sec": 0,
+      "total_errors_per_sec": 4.033333333333333,
+      "time": 1682692980000
+    },
+    {
+      "id": "766bd13a-3041-9cf7-021b-700f301d8bcb",
+      "name": "CH1.FM1.ETH1.2",
+      "link_aggregation_group": {
+        "name": "uplink",
+        "id": "20f2823a-522a-3530-e5a3-675391d9efb2",
+        "resource_type": "link-aggregation-groups"
+      },
+      "other_errors_per_sec": 2,
+      "received_bytes_per_sec": 800315.7,
+      "received_packets_per_sec": 9158.1,
+      "received_crc_errors_per_sec": 0,
+      "received_frame_errors_per_sec": 0,
+      "transmitted_bytes_per_sec": 127446808.73333333,
+      "transmitted_packets_per_sec": 84208.7,
+      "transmitted_dropped_errors_per_sec": 0,
+      "transmitted_carrier_errors_per_sec": 0,
+      "total_errors_per_sec": 2,
+      "time": 1682692980000
+    },
+    {
+      "id": "766bd13a-3041-9cf7-021b-700f301d8bcb",
+      "name": "CH1.FM1.ETH1.3",
+      "link_aggregation_group": {
+        "name": "uplink",
+        "id": "20f2823a-522a-3530-e5a3-675391d9efb2",
+        "resource_type": "link-aggregation-groups"
+      },
+      "other_errors_per_sec": 3.7666666666666666,
+      "received_bytes_per_sec": 533113.8,
+      "received_packets_per_sec": 5969.166666666667,
+      "received_crc_errors_per_sec": 0,
+      "received_frame_errors_per_sec": 0,
+      "transmitted_bytes_per_sec": 14447.966666666667,
+      "transmitted_packets_per_sec": 25.4,
+      "transmitted_dropped_errors_per_sec": 0,
+      "transmitted_carrier_errors_per_sec": 0,
+      "total_errors_per_sec": 3.7666666666666666,
+      "time": 1682692980000
+    },
+    {
+      "id": "766bd13a-3041-9cf7-021b-700f301d8bcb",
+      "name": "CH1.FM1.ETH1.4",
+      "link_aggregation_group": {
+        "name": "uplink",
+        "id": "20f2823a-522a-3530-e5a3-675391d9efb2",
+        "resource_type": "link-aggregation-groups"
+      },
+      "other_errors_per_sec": 1.8,
+      "received_bytes_per_sec": 567401.4333333333,
+      "received_packets_per_sec": 6464.6,
+      "received_crc_errors_per_sec": 0,
+      "received_frame_errors_per_sec": 0,
+      "transmitted_bytes_per_sec": 520568129.93333334,
+      "transmitted_packets_per_sec": 343959.3,
+      "transmitted_dropped_errors_per_sec": 0,
+      "transmitted_carrier_errors_per_sec": 0,
+      "total_errors_per_sec": 1.8,
+      "time": 1682692980000
+    },
+    {
+      "id": "58396d30-fb82-fc00-b837-abc8a7cba2a6",
+      "name": "CH1.FM1.ETH2.1",
+      "link_aggregation_group": {
+        "name": null,
+        "id": null,
+        "resource_type": "link-aggregation-groups"
+      },
+      "other_errors_per_sec": 2.2333333333333334,
+      "received_bytes_per_sec": 4.333333333333333,
+      "received_packets_per_sec": 0,
+      "received_crc_errors_per_sec": 0,
+      "received_frame_errors_per_sec": 0,
+      "transmitted_bytes_per_sec": 5.033333333333333,
+      "transmitted_packets_per_sec": 0.03333333333333333,
+      "transmitted_dropped_errors_per_sec": 0,
+      "transmitted_carrier_errors_per_sec": 0,
+      "total_errors_per_sec": 2.2333333333333334,
+      "time": 1682692980000
+    },
+    {
+      "id": "58396d30-fb82-fc00-b837-abc8a7cba2a6",
+      "name": "CH1.FM1.ETH2.2",
+      "link_aggregation_group": {
+        "name": null,
+        "id": null,
+        "resource_type": "link-aggregation-groups"
+      },
+      "other_errors_per_sec": 2.433333333333333,
+      "received_bytes_per_sec": 5.033333333333333,
+      "received_packets_per_sec": 0,
+      "received_crc_errors_per_sec": 0,
+      "received_frame_errors_per_sec": 0,
+      "transmitted_bytes_per_sec": 5.033333333333333,
+      "transmitted_packets_per_sec": 0.03333333333333333,
+      "transmitted_dropped_errors_per_sec": 0,
+      "transmitted_carrier_errors_per_sec": 0,
+      "total_errors_per_sec": 2.433333333333333,
+      "time": 1682692980000
+    },
+    {
+      "id": "58396d30-fb82-fc00-b837-abc8a7cba2a6",
+      "name": "CH1.FM1.ETH2.3",
+      "link_aggregation_group": {
+        "name": null,
+        "id": null,
+        "resource_type": "link-aggregation-groups"
+      },
+      "other_errors_per_sec": 2,
+      "received_bytes_per_sec": 3.8333333333333335,
+      "received_packets_per_sec": 0,
+      "received_crc_errors_per_sec": 0,
+      "received_frame_errors_per_sec": 0,
+      "transmitted_bytes_per_sec": 5.033333333333333,
+      "transmitted_packets_per_sec": 0.03333333333333333,
+      "transmitted_dropped_errors_per_sec": 0,
+      "transmitted_carrier_errors_per_sec": 0,
+      "total_errors_per_sec": 2,
+      "time": 1682692980000
+    },
+    {
+      "id": "58396d30-fb82-fc00-b837-abc8a7cba2a6",
+      "name": "CH1.FM1.ETH2.4",
+      "link_aggregation_group": {
+        "name": null,
+        "id": null,
+        "resource_type": "link-aggregation-groups"
+      },
+      "other_errors_per_sec": 2.3,
+      "received_bytes_per_sec": 4.766666666666667,
+      "received_packets_per_sec": 0,
+      "received_crc_errors_per_sec": 0,
+      "received_frame_errors_per_sec": 0,
+      "transmitted_bytes_per_sec": 5.033333333333333,
+      "transmitted_packets_per_sec": 0.03333333333333333,
+      "transmitted_dropped_errors_per_sec": 0,
+      "transmitted_carrier_errors_per_sec": 0,
+      "total_errors_per_sec": 2.3,
+      "time": 1682692980000
+    },
+    {
+      "id": "46fd286f-8495-a70e-cac6-67fa5fe45712",
+      "name": "CH1.FM1.ETH3",
+      "link_aggregation_group": {
+        "name": "cisco_uplink",
+        "id": "bef7352b-5bf1-0709-2a0b-fb79bfc1f509",
+        "resource_type": "link-aggregation-groups"
+      },
+      "other_errors_per_sec": 0,
+      "received_bytes_per_sec": 0,
+      "received_packets_per_sec": 0,
+      "received_crc_errors_per_sec": 0,
+      "received_frame_errors_per_sec": 0,
+      "transmitted_bytes_per_sec": 0,
+      "transmitted_packets_per_sec": 0,
+      "transmitted_dropped_errors_per_sec": 0,
+      "transmitted_carrier_errors_per_sec": 0,
+      "total_errors_per_sec": 0,
+      "time": 1682692980000
+    },
+    {
+      "id": null,
+      "name": "CH1.FM1.ETH4.1",
+      "link_aggregation_group": {
+        "name": null,
+        "id": null,
+        "resource_type": "link-aggregation-groups"
+      },
+      "other_errors_per_sec": 0,
+      "received_bytes_per_sec": 0,
+      "received_packets_per_sec": 0,
+      "received_crc_errors_per_sec": 0,
+      "received_frame_errors_per_sec": 0,
+      "transmitted_bytes_per_sec": 0,
+      "transmitted_packets_per_sec": 0,
+      "transmitted_dropped_errors_per_sec": 0,
+      "transmitted_carrier_errors_per_sec": 0,
+      "total_errors_per_sec": 0,
+      "time": 1682692980000
+    },
+    {
+      "id": null,
+      "name": "CH1.FM1.ETH4.2",
+      "link_aggregation_group": {
+        "name": null,
+        "id": null,
+        "resource_type": "link-aggregation-groups"
+      },
+      "other_errors_per_sec": 0,
+      "received_bytes_per_sec": 0,
+      "received_packets_per_sec": 0,
+      "received_crc_errors_per_sec": 0,
+      "received_frame_errors_per_sec": 0,
+      "transmitted_bytes_per_sec": 0,
+      "transmitted_packets_per_sec": 0,
+      "transmitted_dropped_errors_per_sec": 0,
+      "transmitted_carrier_errors_per_sec": 0,
+      "total_errors_per_sec": 0,
+      "time": 1682692980000
+    },
+    {
+      "id": null,
+      "name": "CH1.FM1.ETH4.3",
+      "link_aggregation_group": {
+        "name": null,
+        "id": null,
+        "resource_type": "link-aggregation-groups"
+      },
+      "other_errors_per_sec": 0,
+      "received_bytes_per_sec": 0,
+      "received_packets_per_sec": 0,
+      "received_crc_errors_per_sec": 0,
+      "received_frame_errors_per_sec": 0,
+      "transmitted_bytes_per_sec": 0,
+      "transmitted_packets_per_sec": 0,
+      "transmitted_dropped_errors_per_sec": 0,
+      "transmitted_carrier_errors_per_sec": 0,
+      "total_errors_per_sec": 0,
+      "time": 1682692980000
+    },
+    {
+      "id": null,
+      "name": "CH1.FM1.ETH4.4",
+      "link_aggregation_group": {
+        "name": null,
+        "id": null,
+        "resource_type": "link-aggregation-groups"
+      },
+      "other_errors_per_sec": 0,
+      "received_bytes_per_sec": 0,
+      "received_packets_per_sec": 0,
+      "received_crc_errors_per_sec": 0,
+      "received_frame_errors_per_sec": 0,
+      "transmitted_bytes_per_sec": 0,
+      "transmitted_packets_per_sec": 0,
+      "transmitted_dropped_errors_per_sec": 0,
+      "transmitted_carrier_errors_per_sec": 0,
+      "total_errors_per_sec": 0,
+      "time": 1682692980000
+    },
+    {
+      "id": "80ec21c8-48d9-2b1d-c1c5-b61a304f36d4",
+      "name": "CH1.FM2.ETH1.1",
+      "link_aggregation_group": {
+        "name": "uplink",
+        "id": "20f2823a-522a-3530-e5a3-675391d9efb2",
+        "resource_type": "link-aggregation-groups"
+      },
+      "other_errors_per_sec": 4.166666666666667,
+      "received_bytes_per_sec": 1241864.5666666667,
+      "received_packets_per_sec": 14031.2,
+      "received_crc_errors_per_sec": 0,
+      "received_frame_errors_per_sec": 0,
+      "transmitted_bytes_per_sec": 271173843.06666666,
+      "transmitted_packets_per_sec": 179156,
+      "transmitted_dropped_errors_per_sec": 0,
+      "transmitted_carrier_errors_per_sec": 0,
+      "total_errors_per_sec": 4.166666666666667,
+      "time": 1682692980000
+    },
+    {
+      "id": "80ec21c8-48d9-2b1d-c1c5-b61a304f36d4",
+      "name": "CH1.FM2.ETH1.2",
+      "link_aggregation_group": {
+        "name": "uplink",
+        "id": "20f2823a-522a-3530-e5a3-675391d9efb2",
+        "resource_type": "link-aggregation-groups"
+      },
+      "other_errors_per_sec": 2.1666666666666665,
+      "received_bytes_per_sec": 563760.9,
+      "received_packets_per_sec": 6378.066666666667,
+      "received_crc_errors_per_sec": 0,
+      "received_frame_errors_per_sec": 0,
+      "transmitted_bytes_per_sec": 401356477.1333333,
+      "transmitted_packets_per_sec": 265061.93333333335,
+      "transmitted_dropped_errors_per_sec": 0,
+      "transmitted_carrier_errors_per_sec": 0,
+      "total_errors_per_sec": 2.1666666666666665,
+      "time": 1682692980000
+    },
+    {
+      "id": "80ec21c8-48d9-2b1d-c1c5-b61a304f36d4",
+      "name": "CH1.FM2.ETH1.3",
+      "link_aggregation_group": {
+        "name": "uplink",
+        "id": "20f2823a-522a-3530-e5a3-675391d9efb2",
+        "resource_type": "link-aggregation-groups"
+      },
+      "other_errors_per_sec": 4.466666666666667,
+      "received_bytes_per_sec": 230345.43333333332,
+      "received_packets_per_sec": 2524.9333333333334,
+      "received_crc_errors_per_sec": 0,
+      "received_frame_errors_per_sec": 0,
+      "transmitted_bytes_per_sec": 279606857.46666664,
+      "transmitted_packets_per_sec": 184638.53333333333,
+      "transmitted_dropped_errors_per_sec": 0,
+      "transmitted_carrier_errors_per_sec": 0,
+      "total_errors_per_sec": 4.466666666666667,
+      "time": 1682692980000
+    },
+    {
+      "id": "80ec21c8-48d9-2b1d-c1c5-b61a304f36d4",
+      "name": "CH1.FM2.ETH1.4",
+      "link_aggregation_group": {
+        "name": "uplink",
+        "id": "20f2823a-522a-3530-e5a3-675391d9efb2",
+        "resource_type": "link-aggregation-groups"
+      },
+      "other_errors_per_sec": 3.2666666666666666,
+      "received_bytes_per_sec": 6593.833333333333,
+      "received_packets_per_sec": 29.233333333333334,
+      "received_crc_errors_per_sec": 0,
+      "received_frame_errors_per_sec": 0,
+      "transmitted_bytes_per_sec": 402356133.8,
+      "transmitted_packets_per_sec": 265825.5333333333,
+      "transmitted_dropped_errors_per_sec": 0,
+      "transmitted_carrier_errors_per_sec": 0,
+      "total_errors_per_sec": 3.2666666666666666,
+      "time": 1682692980000
+    },
+    {
+      "id": null,
+      "name": "CH1.FM2.ETH2.1",
+      "link_aggregation_group": {
+        "name": null,
+        "id": null,
+        "resource_type": "link-aggregation-groups"
+      },
+      "other_errors_per_sec": 0,
+      "received_bytes_per_sec": 0,
+      "received_packets_per_sec": 0,
+      "received_crc_errors_per_sec": 0,
+      "received_frame_errors_per_sec": 0,
+      "transmitted_bytes_per_sec": 0,
+      "transmitted_packets_per_sec": 0,
+      "transmitted_dropped_errors_per_sec": 0,
+      "transmitted_carrier_errors_per_sec": 0,
+      "total_errors_per_sec": 0,
+      "time": 1682692980000
+    },
+    {
+      "id": null,
+      "name": "CH1.FM2.ETH2.2",
+      "link_aggregation_group": {
+        "name": null,
+        "id": null,
+        "resource_type": "link-aggregation-groups"
+      },
+      "other_errors_per_sec": 0,
+      "received_bytes_per_sec": 0,
+      "received_packets_per_sec": 0,
+      "received_crc_errors_per_sec": 0,
+      "received_frame_errors_per_sec": 0,
+      "transmitted_bytes_per_sec": 0,
+      "transmitted_packets_per_sec": 0,
+      "transmitted_dropped_errors_per_sec": 0,
+      "transmitted_carrier_errors_per_sec": 0,
+      "total_errors_per_sec": 0,
+      "time": 1682692980000
+    },
+    {
+      "id": null,
+      "name": "CH1.FM2.ETH2.3",
+      "link_aggregation_group": {
+        "name": null,
+        "id": null,
+        "resource_type": "link-aggregation-groups"
+      },
+      "other_errors_per_sec": 0,
+      "received_bytes_per_sec": 0,
+      "received_packets_per_sec": 0,
+      "received_crc_errors_per_sec": 0,
+      "received_frame_errors_per_sec": 0,
+      "transmitted_bytes_per_sec": 0,
+      "transmitted_packets_per_sec": 0,
+      "transmitted_dropped_errors_per_sec": 0,
+      "transmitted_carrier_errors_per_sec": 0,
+      "total_errors_per_sec": 0,
+      "time": 1682692980000
+    },
+    {
+      "id": null,
+      "name": "CH1.FM2.ETH2.4",
+      "link_aggregation_group": {
+        "name": null,
+        "id": null,
+        "resource_type": "link-aggregation-groups"
+      },
+      "other_errors_per_sec": 0,
+      "received_bytes_per_sec": 0,
+      "received_packets_per_sec": 0,
+      "received_crc_errors_per_sec": 0,
+      "received_frame_errors_per_sec": 0,
+      "transmitted_bytes_per_sec": 0,
+      "transmitted_packets_per_sec": 0,
+      "transmitted_dropped_errors_per_sec": 0,
+      "transmitted_carrier_errors_per_sec": 0,
+      "total_errors_per_sec": 0,
+      "time": 1682692980000
+    },
+    {
+      "id": "444d6f69-8b95-51fd-c9d0-bb6183541d48",
+      "name": "CH1.FM2.ETH3",
+      "link_aggregation_group": {
+        "name": "cisco_uplink",
+        "id": "bef7352b-5bf1-0709-2a0b-fb79bfc1f509",
+        "resource_type": "link-aggregation-groups"
+      },
+      "other_errors_per_sec": 18.033333333333335,
+      "received_bytes_per_sec": 1347.8,
+      "received_packets_per_sec": 18.2,
+      "received_crc_errors_per_sec": 0,
+      "received_frame_errors_per_sec": 0,
+      "transmitted_bytes_per_sec": 129.23333333333332,
+      "transmitted_packets_per_sec": 1,
+      "transmitted_dropped_errors_per_sec": 0,
+      "transmitted_carrier_errors_per_sec": 0,
+      "total_errors_per_sec": 18.033333333333335,
+      "time": 1682692980000
+    },
+    {
+      "id": null,
+      "name": "CH1.FM2.ETH4.1",
+      "link_aggregation_group": {
+        "name": null,
+        "id": null,
+        "resource_type": "link-aggregation-groups"
+      },
+      "other_errors_per_sec": 0,
+      "received_bytes_per_sec": 0,
+      "received_packets_per_sec": 0,
+      "received_crc_errors_per_sec": 0,
+      "received_frame_errors_per_sec": 0,
+      "transmitted_bytes_per_sec": 0,
+      "transmitted_packets_per_sec": 0,
+      "transmitted_dropped_errors_per_sec": 0,
+      "transmitted_carrier_errors_per_sec": 0,
+      "total_errors_per_sec": 0,
+      "time": 1682692980000
+    },
+    {
+      "id": null,
+      "name": "CH1.FM2.ETH4.2",
+      "link_aggregation_group": {
+        "name": null,
+        "id": null,
+        "resource_type": "link-aggregation-groups"
+      },
+      "other_errors_per_sec": 0,
+      "received_bytes_per_sec": 0,
+      "received_packets_per_sec": 0,
+      "received_crc_errors_per_sec": 0,
+      "received_frame_errors_per_sec": 0,
+      "transmitted_bytes_per_sec": 0,
+      "transmitted_packets_per_sec": 0,
+      "transmitted_dropped_errors_per_sec": 0,
+      "transmitted_carrier_errors_per_sec": 0,
+      "total_errors_per_sec": 0,
+      "time": 1682692980000
+    },
+    {
+      "id": null,
+      "name": "CH1.FM2.ETH4.3",
+      "link_aggregation_group": {
+        "name": null,
+        "id": null,
+        "resource_type": "link-aggregation-groups"
+      },
+      "other_errors_per_sec": 0,
+      "received_bytes_per_sec": 0,
+      "received_packets_per_sec": 0,
+      "received_crc_errors_per_sec": 0,
+      "received_frame_errors_per_sec": 0,
+      "transmitted_bytes_per_sec": 0,
+      "transmitted_packets_per_sec": 0,
+      "transmitted_dropped_errors_per_sec": 0,
+      "transmitted_carrier_errors_per_sec": 0,
+      "total_errors_per_sec": 0,
+      "time": 1682692980000
+    },
+    {
+      "id": null,
+      "name": "CH1.FM2.ETH4.4",
+      "link_aggregation_group": {
+        "name": null,
+        "id": null,
+        "resource_type": "link-aggregation-groups"
+      },
+      "other_errors_per_sec": 0,
+      "received_bytes_per_sec": 0,
+      "received_packets_per_sec": 0,
+      "received_crc_errors_per_sec": 0,
+      "received_frame_errors_per_sec": 0,
+      "transmitted_bytes_per_sec": 0,
+      "transmitted_packets_per_sec": 0,
+      "transmitted_dropped_errors_per_sec": 0,
+      "transmitted_carrier_errors_per_sec": 0,
+      "total_errors_per_sec": 0,
+      "time": 1682692980000
+    }
+  ]
+}

@@ -1,0 +1,328 @@
+{
+  "total": {
+    "name": null,
+    "created": null,
+    "fast_remove_directory_enabled": null,
+    "snapshot_directory_enabled": null,
+    "destroyed": null,
+    "promotion_status": null,
+    "requested_promotion_state": null,
+    "writable": null,
+    "time_remaining": null,
+    "nfs": {
+      "rules": null,
+      "export_policy": null,
+      "v3_enabled": null,
+      "v4_1_enabled": null
+    },
+    "smb": {
+      "enabled": null
+    },
+    "http": {
+      "enabled": null
+    },
+    "multi_protocol": {
+      "safeguard_acls": null,
+      "access_control_style": null
+    },
+    "hard_limit_enabled": null,
+    "default_user_quota": null,
+    "default_group_quota": null,
+    "space": {
+      "virtual": 31134805601280,
+      "unique": 16061360383975,
+      "snapshots": 84356666672,
+      "data_reduction": 1.9,
+      "total_physical": 16145717050647
+    },
+    "source": {
+      "name": null,
+      "id": null,
+      "resource_type": null,
+      "location": null,
+      "is_local": null,
+      "display_name": null
+    },
+    "id": null,
+    "provisioned": 11691584889290752
+  },
+  "continuation_token": null,
+  "total_item_count": 5,
+  "items": [
+    {
+      "name": "zda140-pso-db_0000000000",
+      "created": 1614853257000,
+      "fast_remove_directory_enabled": false,
+      "snapshot_directory_enabled": true,
+      "destroyed": false,
+      "promotion_status": "promoted",
+      "requested_promotion_state": "promoted",
+      "writable": true,
+      "time_remaining": null,
+      "nfs": {
+        "rules": "*(rw,no_root_squash)",
+        "export_policy": {
+          "name": null,
+          "id": null,
+          "resource_type": null
+        },
+        "v3_enabled": true,
+        "v4_1_enabled": true
+      },
+      "smb": {
+        "enabled": false
+      },
+      "http": {
+        "enabled": false
+      },
+      "multi_protocol": {
+        "safeguard_acls": true,
+        "access_control_style": "shared"
+      },
+      "hard_limit_enabled": false,
+      "default_user_quota": 0,
+      "default_group_quota": 0,
+      "space": {
+        "virtual": 552784384,
+        "unique": 276552025,
+        "snapshots": 0,
+        "data_reduction": 2,
+        "total_physical": 276552025
+      },
+      "source": {
+        "name": null,
+        "id": null,
+        "resource_type": null,
+        "location": {
+          "name": null,
+          "id": null,
+          "resource_type": null
+        },
+        "is_local": true,
+        "display_name": null
+      },
+      "id": "c3647d9f-cfb6-a3e2-e438-9bd38c7d41dd",
+      "provisioned": 34359738368
+    },
+    {
+      "name": "zda140-pso-db_0000000001",
+      "created": 1614853257000,
+      "fast_remove_directory_enabled": false,
+      "snapshot_directory_enabled": true,
+      "destroyed": false,
+      "promotion_status": "promoted",
+      "requested_promotion_state": "promoted",
+      "writable": true,
+      "time_remaining": null,
+      "nfs": {
+        "rules": "*(rw,no_root_squash)",
+        "export_policy": {
+          "name": null,
+          "id": null,
+          "resource_type": null
+        },
+        "v3_enabled": true,
+        "v4_1_enabled": true
+      },
+      "smb": {
+        "enabled": false
+      },
+      "http": {
+        "enabled": false
+      },
+      "multi_protocol": {
+        "safeguard_acls": true,
+        "access_control_style": "shared"
+      },
+      "hard_limit_enabled": false,
+      "default_user_quota": 0,
+      "default_group_quota": 0,
+      "space": {
+        "virtual": 554454016,
+        "unique": 290482990,
+        "snapshots": 0,
+        "data_reduction": 1.9,
+        "total_physical": 290482990
+      },
+      "source": {
+        "name": null,
+        "id": null,
+        "resource_type": null,
+        "location": {
+          "name": null,
+          "id": null,
+          "resource_type": null
+        },
+        "is_local": true,
+        "display_name": null
+      },
+      "id": "f5f76a81-f98e-8605-edd8-7900f37d8697",
+      "provisioned": 34359738368
+    },
+    {
+      "name": "zda140-pso-db_0000000002",
+      "created": 1614853257000,
+      "fast_remove_directory_enabled": false,
+      "snapshot_directory_enabled": true,
+      "destroyed": false,
+      "promotion_status": "promoted",
+      "requested_promotion_state": "promoted",
+      "writable": true,
+      "time_remaining": null,
+      "nfs": {
+        "rules": "*(rw,no_root_squash)",
+        "export_policy": {
+          "name": null,
+          "id": null,
+          "resource_type": null
+        },
+        "v3_enabled": true,
+        "v4_1_enabled": true
+      },
+      "smb": {
+        "enabled": false
+      },
+      "http": {
+        "enabled": false
+      },
+      "multi_protocol": {
+        "safeguard_acls": true,
+        "access_control_style": "shared"
+      },
+      "hard_limit_enabled": false,
+      "default_user_quota": 0,
+      "default_group_quota": 0,
+      "space": {
+        "virtual": 549879296,
+        "unique": 255479843,
+        "snapshots": 0,
+        "data_reduction": 2.2,
+        "total_physical": 255479843
+      },
+      "source": {
+        "name": null,
+        "id": null,
+        "resource_type": null,
+        "location": {
+          "name": null,
+          "id": null,
+          "resource_type": null
+        },
+        "is_local": true,
+        "display_name": null
+      },
+      "id": "9fd25e02-1d66-0254-092e-e0da4f37a27e",
+      "provisioned": 34359738368
+    },
+    {
+      "name": "zda140-pso-db_0000000003",
+      "created": 1614853257000,
+      "fast_remove_directory_enabled": false,
+      "snapshot_directory_enabled": true,
+      "destroyed": false,
+      "promotion_status": "promoted",
+      "requested_promotion_state": "promoted",
+      "writable": true,
+      "time_remaining": null,
+      "nfs": {
+        "rules": "*(rw,no_root_squash)",
+        "export_policy": {
+          "name": null,
+          "id": null,
+          "resource_type": null
+        },
+        "v3_enabled": true,
+        "v4_1_enabled": true
+      },
+      "smb": {
+        "enabled": false
+      },
+      "http": {
+        "enabled": false
+      },
+      "multi_protocol": {
+        "safeguard_acls": true,
+        "access_control_style": "shared"
+      },
+      "hard_limit_enabled": false,
+      "default_user_quota": 0,
+      "default_group_quota": 0,
+      "space": {
+        "virtual": 12733440,
+        "unique": 6965583,
+        "snapshots": 0,
+        "data_reduction": 1.8,
+        "total_physical": 6965583
+      },
+      "source": {
+        "name": null,
+        "id": null,
+        "resource_type": null,
+        "location": {
+          "name": null,
+          "id": null,
+          "resource_type": null
+        },
+        "is_local": true,
+        "display_name": null
+      },
+      "id": "90a7352c-4708-18a9-fa6f-9270d2cf44fe",
+      "provisioned": 34359738368
+    },
+    {
+      "name": "zda140-pso-db_0000000004",
+      "created": 1614853258000,
+      "fast_remove_directory_enabled": false,
+      "snapshot_directory_enabled": true,
+      "destroyed": false,
+      "promotion_status": "promoted",
+      "requested_promotion_state": "promoted",
+      "writable": true,
+      "time_remaining": null,
+      "nfs": {
+        "rules": "*(rw,no_root_squash)",
+        "export_policy": {
+          "name": null,
+          "id": null,
+          "resource_type": null
+        },
+        "v3_enabled": true,
+        "v4_1_enabled": true
+      },
+      "smb": {
+        "enabled": false
+      },
+      "http": {
+        "enabled": false
+      },
+      "multi_protocol": {
+        "safeguard_acls": true,
+        "access_control_style": "shared"
+      },
+      "hard_limit_enabled": false,
+      "default_user_quota": 0,
+      "default_group_quota": 0,
+      "space": {
+        "virtual": 6879744,
+        "unique": 3332206,
+        "snapshots": 0,
+        "data_reduction": 2.1,
+        "total_physical": 3332206
+      },
+      "source": {
+        "name": null,
+        "id": null,
+        "resource_type": null,
+        "location": {
+          "name": null,
+          "id": null,
+          "resource_type": null
+        },
+        "is_local": true,
+        "display_name": null
+      },
+      "id": "1f10d624-a0a5-3205-6f6a-f8958eb52d7e",
+      "provisioned": 34359738368
+    }
+  ]
+}

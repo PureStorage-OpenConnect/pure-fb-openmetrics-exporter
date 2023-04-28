@@ -61,15 +61,16 @@ type ArraysNfsPerformanceList struct {
 }
 
 func (fb *FBClient) GetArraysNfsPerformance() *ArraysNfsPerformanceList {
+	uri := "/arrays/nfs-specific-performance"
 	result := new(ArraysNfsPerformanceList)
 	res, _ := fb.RestClient.R().
 		SetResult(&result).
-		Get("/arrays/nfs-specific-performance")
+		Get(uri)
 	if res.StatusCode() == 401 {
                 fb.RefreshSession()
 		fb.RestClient.R().
 			SetResult(&result).
-			Get("/arrays/nfs-specific-performance")
+			Get(uri)
         }
 	return result
 }

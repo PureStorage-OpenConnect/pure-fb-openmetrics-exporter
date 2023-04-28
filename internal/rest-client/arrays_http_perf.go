@@ -23,15 +23,16 @@ type ArraysHttpPerformanceList struct {
 }
 
 func (fb *FBClient) GetArraysHttpPerformance() *ArraysHttpPerformanceList {
+	uri := "/arrays/http-specific-performance"
 	result := new(ArraysHttpPerformanceList)
 	res, _ := fb.RestClient.R().
 		SetResult(&result).
-		Get("/arrays/http-specific-performance")
+		Get(uri)
 	if res.StatusCode() == 401 {
                 fb.RefreshSession()
 		fb.RestClient.R().
 			SetResult(&result).
-			Get("/arrays/http-specific-performance")
+			Get(uri)
         }
 	return result
 }

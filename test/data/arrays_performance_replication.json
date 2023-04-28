@@ -1,0 +1,29 @@
+{
+  "continuation_token": null,
+  "total_item_count": 1,
+  "items": [
+    {
+      "id": "66992c13-6d81-433f-bb31-5fc33e76fa5f",
+      "periodic": {
+        "received_bytes_per_sec": 54.7,
+        "transmitted_bytes_per_sec": 56.1
+      },
+      "continuous": {
+        "received_bytes_per_sec": 0,
+        "transmitted_bytes_per_sec": 0,
+        "object_backlog": {
+          "put_ops_count": 1306,
+          "delete_ops_count": 0,
+          "other_ops_count": 0,
+          "bytes_count": 105241081310
+        }
+      },
+      "aggregate": {
+        "received_bytes_per_sec": 54.7,
+        "transmitted_bytes_per_sec": 56.1
+      },
+      "time": 1682619030000,
+      "name": "fbstaines02"
+    }
+  ]
+}

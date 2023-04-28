@@ -1,0 +1,3354 @@
+{
+  "total": {
+    "name": null,
+    "created": null,
+    "account": {
+      "name": null,
+      "id": null,
+      "resource_type": null
+    },
+    "destroyed": null,
+    "time_remaining": null,
+    "space": {
+      "virtual": 10822945970583,
+      "unique": 6989539778298,
+      "snapshots": 0,
+      "data_reduction": 1.5,
+      "total_physical": 6989539778298,
+      "total_provisioned": 1099511627776
+    },
+    "object_count": 138869475,
+    "versioning": null,
+    "bucket_type": null,
+    "id": null,
+    "quota_limit": null,
+    "hard_limit_enabled": null,
+    "retention_lock": null,
+    "eradication_config": {
+      "manual_eradication": null,
+      "eradication_delay": null
+    },
+    "object_lock_config": {
+      "enabled": null,
+      "freeze_locked_objects": null,
+      "default_retention": null,
+      "default_retention_mode": null
+    }
+  },
+  "continuation_token": null,
+  "total_item_count": 92,
+  "items": [
+    {
+      "name": "1mil",
+      "created": 1656450180000,
+      "account": {
+        "name": "jbt",
+        "id": "665a6ba4-749b-f1c7-159c-3e1bb1afdc92",
+        "resource_type": "object-store-accounts"
+      },
+      "destroyed": false,
+      "time_remaining": null,
+      "space": {
+        "virtual": 1264189934080,
+        "unique": 21512447423,
+        "snapshots": 0,
+        "data_reduction": 58.8,
+        "total_physical": 21512447423,
+        "total_provisioned": null
+      },
+      "object_count": 15467642,
+      "versioning": "enabled",
+      "bucket_type": "classic",
+      "id": "74a3a782-ebf1-0986-a834-9a780fc7296a",
+      "quota_limit": null,
+      "hard_limit_enabled": false,
+      "retention_lock": "unlocked",
+      "eradication_config": {
+        "manual_eradication": "enabled",
+        "eradication_delay": 86400000
+      },
+      "object_lock_config": {
+        "enabled": false,
+        "freeze_locked_objects": false,
+        "default_retention": null,
+        "default_retention_mode": null
+      }
+    },
+    {
+      "name": "acme6orgadmin",
+      "created": 1664372745000,
+      "account": {
+        "name": "f158aeca-bb21-4f6f-a653-523106ca1294",
+        "id": "2e9de7dc-a48a-5c28-5f62-9810227ca41f",
+        "resource_type": "object-store-accounts"
+      },
+      "destroyed": false,
+      "time_remaining": null,
+      "space": {
+        "virtual": 62662,
+        "unique": 62662,
+        "snapshots": 0,
+        "data_reduction": 1,
+        "total_physical": 62662,
+        "total_provisioned": null
+      },
+      "object_count": 7,
+      "versioning": "none",
+      "bucket_type": "classic",
+      "id": "dd2a8f10-6906-f9c6-587d-c6a05039d09e",
+      "quota_limit": null,
+      "hard_limit_enabled": false,
+      "retention_lock": "unlocked",
+      "eradication_config": {
+        "manual_eradication": "enabled",
+        "eradication_delay": 86400000
+      },
+      "object_lock_config": {
+        "enabled": false,
+        "freeze_locked_objects": false,
+        "default_retention": null,
+        "default_retention_mode": null
+      }
+    },
+    {
+      "name": "acme7catalog",
+      "created": 1664383217000,
+      "account": {
+        "name": "8db18e81-10aa-43fe-9260-cc960ee01280",
+        "id": "bcbb7278-7dee-1764-284d-6664f3605b6f",
+        "resource_type": "object-store-accounts"
+      },
+      "destroyed": false,
+      "time_remaining": null,
+      "space": {
+        "virtual": 1406534144,
+        "unique": 1396645132,
+        "snapshots": 0,
+        "data_reduction": 1,
+        "total_physical": 1396645132,
+        "total_provisioned": null
+      },
+      "object_count": 1,
+      "versioning": "none",
+      "bucket_type": "classic",
+      "id": "c31132f1-a1b9-96b3-36dd-2eab97220521",
+      "quota_limit": null,
+      "hard_limit_enabled": false,
+      "retention_lock": "unlocked",
+      "eradication_config": {
+        "manual_eradication": "enabled",
+        "eradication_delay": 86400000
+      },
+      "object_lock_config": {
+        "enabled": false,
+        "freeze_locked_objects": false,
+        "default_retention": null,
+        "default_retention_mode": null
+      }
+    },
+    {
+      "name": "acme7defaultid",
+      "created": 1664381552000,
+      "account": {
+        "name": "8db18e81-10aa-43fe-9260-cc960ee01280",
+        "id": "bcbb7278-7dee-1764-284d-6664f3605b6f",
+        "resource_type": "object-store-accounts"
+      },
+      "destroyed": false,
+      "time_remaining": null,
+      "space": {
+        "virtual": 512,
+        "unique": 137,
+        "snapshots": 0,
+        "data_reduction": 3.7,
+        "total_physical": 137,
+        "total_provisioned": null
+      },
+      "object_count": 0,
+      "versioning": "none",
+      "bucket_type": "classic",
+      "id": "d5bb6c32-4918-3479-5040-a13525e45528",
+      "quota_limit": null,
+      "hard_limit_enabled": false,
+      "retention_lock": "unlocked",
+      "eradication_config": {
+        "manual_eradication": "enabled",
+        "eradication_delay": 86400000
+      },
+      "object_lock_config": {
+        "enabled": false,
+        "freeze_locked_objects": false,
+        "default_retention": null,
+        "default_retention_mode": null
+      }
+    },
+    {
+      "name": "acme7orguser",
+      "created": 1664444861000,
+      "account": {
+        "name": "8db18e81-10aa-43fe-9260-cc960ee01280",
+        "id": "bcbb7278-7dee-1764-284d-6664f3605b6f",
+        "resource_type": "object-store-accounts"
+      },
+      "destroyed": false,
+      "time_remaining": null,
+      "space": {
+        "virtual": 21048,
+        "unique": 21048,
+        "snapshots": 0,
+        "data_reduction": 1,
+        "total_physical": 21048,
+        "total_provisioned": null
+      },
+      "object_count": 2,
+      "versioning": "none",
+      "bucket_type": "classic",
+      "id": "0adc3085-536a-f74b-d9f5-7999135e806c",
+      "quota_limit": null,
+      "hard_limit_enabled": false,
+      "retention_lock": "unlocked",
+      "eradication_config": {
+        "manual_eradication": "enabled",
+        "eradication_delay": 86400000
+      },
+      "object_lock_config": {
+        "enabled": false,
+        "freeze_locked_objects": false,
+        "default_retention": null,
+        "default_retention_mode": null
+      }
+    },
+    {
+      "name": "adf-bucket-01",
+      "created": 1582302616000,
+      "account": {
+        "name": "azure-data-factory",
+        "id": "88c471b6-305c-570a-ac66-e9933fe3040c",
+        "resource_type": "object-store-accounts"
+      },
+      "destroyed": false,
+      "time_remaining": null,
+      "space": {
+        "virtual": 1059849182720,
+        "unique": 400323995809,
+        "snapshots": 0,
+        "data_reduction": 2.6,
+        "total_physical": 400323995809,
+        "total_provisioned": null
+      },
+      "object_count": 1390,
+      "versioning": "none",
+      "bucket_type": "classic",
+      "id": "6125113f-0306-5390-2591-8730f5c8b588",
+      "quota_limit": null,
+      "hard_limit_enabled": false,
+      "retention_lock": "unlocked",
+      "eradication_config": {
+        "manual_eradication": "enabled",
+        "eradication_delay": 86400000
+      },
+      "object_lock_config": {
+        "enabled": false,
+        "freeze_locked_objects": false,
+        "default_retention": null,
+        "default_retention_mode": null
+      }
+    },
+    {
+      "name": "alex",
+      "created": 1591174414000,
+      "account": {
+        "name": "alex",
+        "id": "5888a1b8-0fda-7b92-3436-4b9baa798075",
+        "resource_type": "object-store-accounts"
+      },
+      "destroyed": false,
+      "time_remaining": null,
+      "space": {
+        "virtual": 0,
+        "unique": 0,
+        "snapshots": 0,
+        "data_reduction": null,
+        "total_physical": 0,
+        "total_provisioned": null
+      },
+      "object_count": 0,
+      "versioning": "none",
+      "bucket_type": "classic",
+      "id": "3c212d50-c058-0290-45a2-683300571322",
+      "quota_limit": null,
+      "hard_limit_enabled": false,
+      "retention_lock": "unlocked",
+      "eradication_config": {
+        "manual_eradication": "enabled",
+        "eradication_delay": 86400000
+      },
+      "object_lock_config": {
+        "enabled": false,
+        "freeze_locked_objects": false,
+        "default_retention": null,
+        "default_retention_mode": null
+      }
+    },
+    {
+      "name": "alias-failover",
+      "created": 1654326679000,
+      "account": {
+        "name": "fbstaines02",
+        "id": "4e2da6ce-19cd-774d-af1e-c9c8cefc8960",
+        "resource_type": "object-store-accounts"
+      },
+      "destroyed": false,
+      "time_remaining": null,
+      "space": {
+        "virtual": 12372393,
+        "unique": 12372393,
+        "snapshots": 0,
+        "data_reduction": 1,
+        "total_physical": 12372393,
+        "total_provisioned": null
+      },
+      "object_count": 2000,
+      "versioning": "enabled",
+      "bucket_type": "classic",
+      "id": "3e0d8eb0-fb77-5bc3-c628-06c0f52092ae",
+      "quota_limit": null,
+      "hard_limit_enabled": false,
+      "retention_lock": "unlocked",
+      "eradication_config": {
+        "manual_eradication": "enabled",
+        "eradication_delay": 86400000
+      },
+      "object_lock_config": {
+        "enabled": false,
+        "freeze_locked_objects": false,
+        "default_retention": null,
+        "default_retention_mode": null
+      }
+    },
+    {
+      "name": "anthosdemo",
+      "created": 1593899478000,
+      "account": {
+        "name": "anthos",
+        "id": "aba8d1ee-1cca-8b02-0473-be186660ab07",
+        "resource_type": "object-store-accounts"
+      },
+      "destroyed": false,
+      "time_remaining": null,
+      "space": {
+        "virtual": 496269646336,
+        "unique": 259995746472,
+        "snapshots": 0,
+        "data_reduction": 1.9,
+        "total_physical": 259995746472,
+        "total_provisioned": null
+      },
+      "object_count": 220,
+      "versioning": "none",
+      "bucket_type": "classic",
+      "id": "830a4df3-8f36-bfa8-66c9-7b95537bbb05",
+      "quota_limit": null,
+      "hard_limit_enabled": false,
+      "retention_lock": "unlocked",
+      "eradication_config": {
+        "manual_eradication": "enabled",
+        "eradication_delay": 86400000
+      },
+      "object_lock_config": {
+        "enabled": false,
+        "freeze_locked_objects": false,
+        "default_retention": null,
+        "default_retention_mode": null
+      }
+    },
+    {
+      "name": "app",
+      "created": 1638262711000,
+      "account": {
+        "name": "semih-px",
+        "id": "db732280-4628-3689-8935-02c11a308177",
+        "resource_type": "object-store-accounts"
+      },
+      "destroyed": false,
+      "time_remaining": null,
+      "space": {
+        "virtual": 2560,
+        "unique": 2355,
+        "snapshots": 0,
+        "data_reduction": 1.1,
+        "total_physical": 2355,
+        "total_provisioned": null
+      },
+      "object_count": 1,
+      "versioning": "none",
+      "bucket_type": "classic",
+      "id": "16a7075c-8623-7fb3-14a7-3040327f6755",
+      "quota_limit": null,
+      "hard_limit_enabled": false,
+      "retention_lock": "unlocked",
+      "eradication_config": {
+        "manual_eradication": "enabled",
+        "eradication_delay": 86400000
+      },
+      "object_lock_config": {
+        "enabled": false,
+        "freeze_locked_objects": false,
+        "default_retention": null,
+        "default_retention_mode": null
+      }
+    },
+    {
+      "name": "ash-bucket",
+      "created": 1621698916000,
+      "account": {
+        "name": "ashtest",
+        "id": "b27ca6ce-658f-75a8-0012-7236cc639e91",
+        "resource_type": "object-store-accounts"
+      },
+      "destroyed": false,
+      "time_remaining": null,
+      "space": {
+        "virtual": 116022272,
+        "unique": 4127793,
+        "snapshots": 0,
+        "data_reduction": 28.1,
+        "total_physical": 4127793,
+        "total_provisioned": null
+      },
+      "object_count": 54,
+      "versioning": "none",
+      "bucket_type": "classic",
+      "id": "16a7f6b1-ae2f-d61a-93a0-9e0e7d5e2e85",
+      "quota_limit": null,
+      "hard_limit_enabled": false,
+      "retention_lock": "unlocked",
+      "eradication_config": {
+        "manual_eradication": "enabled",
+        "eradication_delay": 86400000
+      },
+      "object_lock_config": {
+        "enabled": false,
+        "freeze_locked_objects": false,
+        "default_retention": null,
+        "default_retention_mode": null
+      }
+    },
+    {
+      "name": "backup",
+      "created": 1634544143000,
+      "account": {
+        "name": "semih-px",
+        "id": "db732280-4628-3689-8935-02c11a308177",
+        "resource_type": "object-store-accounts"
+      },
+      "destroyed": false,
+      "time_remaining": null,
+      "space": {
+        "virtual": 38362112,
+        "unique": 25390773,
+        "snapshots": 0,
+        "data_reduction": 1.5,
+        "total_physical": 25390773,
+        "total_provisioned": null
+      },
+      "object_count": 77,
+      "versioning": "none",
+      "bucket_type": "classic",
+      "id": "f40edc98-eb40-725a-584c-2ffcf092e886",
+      "quota_limit": null,
+      "hard_limit_enabled": false,
+      "retention_lock": "unlocked",
+      "eradication_config": {
+        "manual_eradication": "enabled",
+        "eradication_delay": 86400000
+      },
+      "object_lock_config": {
+        "enabled": false,
+        "freeze_locked_objects": false,
+        "default_retention": null,
+        "default_retention_mode": null
+      }
+    },
+    {
+      "name": "backups",
+      "created": 1633522742000,
+      "account": {
+        "name": "semih-px",
+        "id": "db732280-4628-3689-8935-02c11a308177",
+        "resource_type": "object-store-accounts"
+      },
+      "destroyed": false,
+      "time_remaining": null,
+      "space": {
+        "virtual": 80504832,
+        "unique": 57328034,
+        "snapshots": 0,
+        "data_reduction": 1.4,
+        "total_physical": 57328034,
+        "total_provisioned": null
+      },
+      "object_count": 104,
+      "versioning": "none",
+      "bucket_type": "classic",
+      "id": "cf836d0d-1a49-0780-6430-e6ce5a56d1c8",
+      "quota_limit": null,
+      "hard_limit_enabled": false,
+      "retention_lock": "unlocked",
+      "eradication_config": {
+        "manual_eradication": "enabled",
+        "eradication_delay": 86400000
+      },
+      "object_lock_config": {
+        "enabled": false,
+        "freeze_locked_objects": false,
+        "default_retention": null,
+        "default_retention_mode": null
+      }
+    },
+    {
+      "name": "bbbb",
+      "created": 1595919226000,
+      "account": {
+        "name": "mwamrep",
+        "id": "eaafc05d-8e3f-9dcc-5cec-c69f95f64bb9",
+        "resource_type": "object-store-accounts"
+      },
+      "destroyed": false,
+      "time_remaining": null,
+      "space": {
+        "virtual": 2912081920,
+        "unique": 2814923639,
+        "snapshots": 0,
+        "data_reduction": 1,
+        "total_physical": 2814923639,
+        "total_provisioned": null
+      },
+      "object_count": 10,
+      "versioning": "enabled",
+      "bucket_type": "classic",
+      "id": "cd69064c-7559-858a-67a3-6e132448e593",
+      "quota_limit": null,
+      "hard_limit_enabled": false,
+      "retention_lock": "unlocked",
+      "eradication_config": {
+        "manual_eradication": "enabled",
+        "eradication_delay": 86400000
+      },
+      "object_lock_config": {
+        "enabled": false,
+        "freeze_locked_objects": false,
+        "default_retention": null,
+        "default_retention_mode": null
+      }
+    },
+    {
+      "name": "bc-kafka-queue",
+      "created": 1621333197000,
+      "account": {
+        "name": "bcatic",
+        "id": "ba3be33c-9733-10da-dcad-e8480854f696",
+        "resource_type": "object-store-accounts"
+      },
+      "destroyed": false,
+      "time_remaining": null,
+      "space": {
+        "virtual": 3080508,
+        "unique": 3080508,
+        "snapshots": 0,
+        "data_reduction": 1,
+        "total_physical": 3080508,
+        "total_provisioned": null
+      },
+      "object_count": 212,
+      "versioning": "enabled",
+      "bucket_type": "classic",
+      "id": "5e4d0cf1-3b5f-00f3-7fa8-e6c4b64bd7ff",
+      "quota_limit": null,
+      "hard_limit_enabled": false,
+      "retention_lock": "unlocked",
+      "eradication_config": {
+        "manual_eradication": "enabled",
+        "eradication_delay": 86400000
+      },
+      "object_lock_config": {
+        "enabled": false,
+        "freeze_locked_objects": false,
+        "default_retention": null,
+        "default_retention_mode": null
+      }
+    },
+    {
+      "name": "bigdata",
+      "created": 1584536682000,
+      "account": {
+        "name": "oracle",
+        "id": "e20e09f2-8ead-cd8e-4ce3-0b361f125cba",
+        "resource_type": "object-store-accounts"
+      },
+      "destroyed": false,
+      "time_remaining": null,
+      "space": {
+        "virtual": 277314048,
+        "unique": 64722090,
+        "snapshots": 0,
+        "data_reduction": 4.3,
+        "total_physical": 64722090,
+        "total_provisioned": null
+      },
+      "object_count": 4,
+      "versioning": "none",
+      "bucket_type": "classic",
+      "id": "1bcc5864-63df-edae-2fca-bb6b20113ad5",
+      "quota_limit": null,
+      "hard_limit_enabled": false,
+      "retention_lock": "unlocked",
+      "eradication_config": {
+        "manual_eradication": "enabled",
+        "eradication_delay": 86400000
+      },
+      "object_lock_config": {
+        "enabled": false,
+        "freeze_locked_objects": false,
+        "default_retention": null,
+        "default_retention_mode": null
+      }
+    },
+    {
+      "name": "bloom-bi-dir-classic",
+      "created": 1682077285000,
+      "account": {
+        "name": "bloom-bidir",
+        "id": "df3c4d5f-792a-22a1-5f31-5214e5656e28",
+        "resource_type": "object-store-accounts"
+      },
+      "destroyed": false,
+      "time_remaining": null,
+      "space": {
+        "virtual": 263105164800,
+        "unique": 123247013426,
+        "snapshots": 0,
+        "data_reduction": 2.1,
+        "total_physical": 123247013426,
+        "total_provisioned": null
+      },
+      "object_count": 1305,
+      "versioning": "enabled",
+      "bucket_type": "classic",
+      "id": "8a36e97c-b2df-4d98-ac3e-73c41da114a5",
+      "quota_limit": null,
+      "hard_limit_enabled": false,
+      "retention_lock": "unlocked",
+      "eradication_config": {
+        "manual_eradication": "enabled",
+        "eradication_delay": 86400000
+      },
+      "object_lock_config": {
+        "enabled": false,
+        "freeze_locked_objects": false,
+        "default_retention": null,
+        "default_retention_mode": null
+      }
+    },
+    {
+      "name": "chemicalx",
+      "created": 1670579167000,
+      "account": {
+        "name": "b7b9c540-538f-4b71-b86b-df39b59dc596",
+        "id": "9bf477e0-1d2b-c455-20c4-18075f04120e",
+        "resource_type": "object-store-accounts"
+      },
+      "destroyed": false,
+      "time_remaining": null,
+      "space": {
+        "virtual": 0,
+        "unique": 0,
+        "snapshots": 0,
+        "data_reduction": null,
+        "total_physical": 0,
+        "total_provisioned": null
+      },
+      "object_count": 0,
+      "versioning": "enabled",
+      "bucket_type": "classic",
+      "id": "ca41f444-2c7a-e79d-1acb-1100cbc99a41",
+      "quota_limit": null,
+      "hard_limit_enabled": false,
+      "retention_lock": "unlocked",
+      "eradication_config": {
+        "manual_eradication": "enabled",
+        "eradication_delay": 86400000
+      },
+      "object_lock_config": {
+        "enabled": false,
+        "freeze_locked_objects": false,
+        "default_retention": null,
+        "default_retention_mode": null
+      }
+    },
+    {
+      "name": "data",
+      "created": 1638280747000,
+      "account": {
+        "name": "semih-px",
+        "id": "db732280-4628-3689-8935-02c11a308177",
+        "resource_type": "object-store-accounts"
+      },
+      "destroyed": false,
+      "time_remaining": null,
+      "space": {
+        "virtual": 125981696,
+        "unique": 47487524,
+        "snapshots": 0,
+        "data_reduction": 2.7,
+        "total_physical": 47487524,
+        "total_provisioned": null
+      },
+      "object_count": 1,
+      "versioning": "none",
+      "bucket_type": "classic",
+      "id": "5133670d-88e6-87e6-e74d-5a2af8bb2268",
+      "quota_limit": null,
+      "hard_limit_enabled": false,
+      "retention_lock": "unlocked",
+      "eradication_config": {
+        "manual_eradication": "enabled",
+        "eradication_delay": 86400000
+      },
+      "object_lock_config": {
+        "enabled": false,
+        "freeze_locked_objects": false,
+        "default_retention": null,
+        "default_retention_mode": null
+      }
+    },
+    {
+      "name": "datev",
+      "created": 1586269544000,
+      "account": {
+        "name": "jbt",
+        "id": "665a6ba4-749b-f1c7-159c-3e1bb1afdc92",
+        "resource_type": "object-store-accounts"
+      },
+      "destroyed": false,
+      "time_remaining": null,
+      "space": {
+        "virtual": 413088133021,
+        "unique": 413088133021,
+        "snapshots": 0,
+        "data_reduction": 1,
+        "total_physical": 413088133021,
+        "total_provisioned": null
+      },
+      "object_count": 100122908,
+      "versioning": "none",
+      "bucket_type": "classic",
+      "id": "996bd62a-e9b6-351f-3108-87054096ca71",
+      "quota_limit": null,
+      "hard_limit_enabled": false,
+      "retention_lock": "unlocked",
+      "eradication_config": {
+        "manual_eradication": "enabled",
+        "eradication_delay": 86400000
+      },
+      "object_lock_config": {
+        "enabled": false,
+        "freeze_locked_objects": false,
+        "default_retention": null,
+        "default_retention_mode": null
+      }
+    },
+    {
+      "name": "deleteme-go-plumb-bucket-go-plumbing-fb02-fppjf",
+      "created": 1674657072000,
+      "account": {
+        "name": "deleteme-go-plumb-account-go-plumbing-fb02-fppjf",
+        "id": "4bf05eea-e8f9-fb66-81ce-92365abe31b0",
+        "resource_type": "object-store-accounts"
+      },
+      "destroyed": false,
+      "time_remaining": null,
+      "space": {
+        "virtual": 151320938,
+        "unique": 151320938,
+        "snapshots": 0,
+        "data_reduction": 1,
+        "total_physical": 151320938,
+        "total_provisioned": null
+      },
+      "object_count": 18,
+      "versioning": "none",
+      "bucket_type": "classic",
+      "id": "ab5502cd-81bf-d061-7794-39a36614b492",
+      "quota_limit": null,
+      "hard_limit_enabled": false,
+      "retention_lock": "unlocked",
+      "eradication_config": {
+        "manual_eradication": "enabled",
+        "eradication_delay": 86400000
+      },
+      "object_lock_config": {
+        "enabled": false,
+        "freeze_locked_objects": false,
+        "default_retention": null,
+        "default_retention_mode": null
+      }
+    },
+    {
+      "name": "dmbucket",
+      "created": 1671018873000,
+      "account": {
+        "name": "dmiller",
+        "id": "a8f23a74-e2ae-504f-ac90-1cdd3f40e606",
+        "resource_type": "object-store-accounts"
+      },
+      "destroyed": false,
+      "time_remaining": null,
+      "space": {
+        "virtual": 140639232,
+        "unique": 101403566,
+        "snapshots": 0,
+        "data_reduction": 1.4,
+        "total_physical": 101403566,
+        "total_provisioned": null
+      },
+      "object_count": 236,
+      "versioning": "enabled",
+      "bucket_type": "classic",
+      "id": "50114bb8-63e7-2994-7013-bbf53a40bbc8",
+      "quota_limit": null,
+      "hard_limit_enabled": false,
+      "retention_lock": "unlocked",
+      "eradication_config": {
+        "manual_eradication": "enabled",
+        "eradication_delay": 86400000
+      },
+      "object_lock_config": {
+        "enabled": false,
+        "freeze_locked_objects": false,
+        "default_retention": null,
+        "default_retention_mode": null
+      }
+    },
+    {
+      "name": "ef-data",
+      "created": 1670854759000,
+      "account": {
+        "name": "2d8224d1-d728-44b9-91e8-9aad3204389b",
+        "id": "6d428a54-964c-9a2f-192f-106e65051ec1",
+        "resource_type": "object-store-accounts"
+      },
+      "destroyed": false,
+      "time_remaining": null,
+      "space": {
+        "virtual": 8664061,
+        "unique": 8664061,
+        "snapshots": 0,
+        "data_reduction": 1,
+        "total_physical": 8664061,
+        "total_provisioned": null
+      },
+      "object_count": 1,
+      "versioning": "enabled",
+      "bucket_type": "classic",
+      "id": "c3971092-f9d2-531b-75dc-c261e122ed96",
+      "quota_limit": null,
+      "hard_limit_enabled": false,
+      "retention_lock": "unlocked",
+      "eradication_config": {
+        "manual_eradication": "enabled",
+        "eradication_delay": 86400000
+      },
+      "object_lock_config": {
+        "enabled": false,
+        "freeze_locked_objects": false,
+        "default_retention": null,
+        "default_retention_mode": null
+      }
+    },
+    {
+      "name": "es-snaprepo-ke-elastic",
+      "created": 1606128840000,
+      "account": {
+        "name": "datapipeline",
+        "id": "b3d1332f-7f0c-885e-6330-6baacd87b403",
+        "resource_type": "object-store-accounts"
+      },
+      "destroyed": false,
+      "time_remaining": null,
+      "space": {
+        "virtual": 948047413760,
+        "unique": 874440391743,
+        "snapshots": 0,
+        "data_reduction": 1.1,
+        "total_physical": 874440391743,
+        "total_provisioned": null
+      },
+      "object_count": 43171,
+      "versioning": "none",
+      "bucket_type": "classic",
+      "id": "892eb759-a599-292d-4c06-6517416da681",
+      "quota_limit": null,
+      "hard_limit_enabled": false,
+      "retention_lock": "unlocked",
+      "eradication_config": {
+        "manual_eradication": "enabled",
+        "eradication_delay": 86400000
+      },
+      "object_lock_config": {
+        "enabled": false,
+        "freeze_locked_objects": false,
+        "default_retention": null,
+        "default_retention_mode": null
+      }
+    },
+    {
+      "name": "flashblade-rclone-bucket",
+      "created": 1655523168000,
+      "account": {
+        "name": "rclone-test",
+        "id": "9b883e56-ba9d-5bfe-bc9d-4ce5e3a22380",
+        "resource_type": "object-store-accounts"
+      },
+      "destroyed": false,
+      "time_remaining": null,
+      "space": {
+        "virtual": 167894702687,
+        "unique": 79113035810,
+        "snapshots": 0,
+        "data_reduction": 2.1,
+        "total_physical": 79113035810,
+        "total_provisioned": null
+      },
+      "object_count": 84695,
+      "versioning": "enabled",
+      "bucket_type": "classic",
+      "id": "b9ea8761-fc2b-755e-8aef-40fc8803c34f",
+      "quota_limit": null,
+      "hard_limit_enabled": false,
+      "retention_lock": "unlocked",
+      "eradication_config": {
+        "manual_eradication": "enabled",
+        "eradication_delay": 86400000
+      },
+      "object_lock_config": {
+        "enabled": false,
+        "freeze_locked_objects": false,
+        "default_retention": null,
+        "default_retention_mode": null
+      }
+    },
+    {
+      "name": "flashrecover",
+      "created": 1653509699000,
+      "account": {
+        "name": "plumbing",
+        "id": "499e4bdd-24f1-6d35-2e7e-23bee82e2c1b",
+        "resource_type": "object-store-accounts"
+      },
+      "destroyed": false,
+      "time_remaining": null,
+      "space": {
+        "virtual": 128807075840,
+        "unique": 114255242820,
+        "snapshots": 0,
+        "data_reduction": 1.1,
+        "total_physical": 114255242820,
+        "total_provisioned": null
+      },
+      "object_count": 174,
+      "versioning": "none",
+      "bucket_type": "classic",
+      "id": "05f27368-a151-8915-094f-b4748abb40b4",
+      "quota_limit": null,
+      "hard_limit_enabled": false,
+      "retention_lock": "unlocked",
+      "eradication_config": {
+        "manual_eradication": "enabled",
+        "eradication_delay": 86400000
+      },
+      "object_lock_config": {
+        "enabled": false,
+        "freeze_locked_objects": false,
+        "default_retention": null,
+        "default_retention_mode": null
+      }
+    },
+    {
+      "name": "fsf",
+      "created": 1662720559000,
+      "account": {
+        "name": "mmeppen2",
+        "id": "5f18583b-9518-0794-c0b1-ae3264b94a55",
+        "resource_type": "object-store-accounts"
+      },
+      "destroyed": false,
+      "time_remaining": null,
+      "space": {
+        "virtual": 0,
+        "unique": 0,
+        "snapshots": 0,
+        "data_reduction": null,
+        "total_physical": 0,
+        "total_provisioned": null
+      },
+      "object_count": 0,
+      "versioning": "none",
+      "bucket_type": "classic",
+      "id": "7cfaf9f4-a49a-1216-b15e-9b0133267f1f",
+      "quota_limit": null,
+      "hard_limit_enabled": false,
+      "retention_lock": "unlocked",
+      "eradication_config": {
+        "manual_eradication": "enabled",
+        "eradication_delay": 86400000
+      },
+      "object_lock_config": {
+        "enabled": false,
+        "freeze_locked_objects": false,
+        "default_retention": null,
+        "default_retention_mode": null
+      }
+    },
+    {
+      "name": "gse-fb02-s3-source",
+      "created": 1587467106000,
+      "account": {
+        "name": "gse-s3-test-migration",
+        "id": "c3f45a45-1fbc-d088-47b2-598bca488b1a",
+        "resource_type": "object-store-accounts"
+      },
+      "destroyed": false,
+      "time_remaining": null,
+      "space": {
+        "virtual": 314576384,
+        "unique": 230672,
+        "snapshots": 0,
+        "data_reduction": 1363.7,
+        "total_physical": 230672,
+        "total_provisioned": null
+      },
+      "object_count": 9,
+      "versioning": "none",
+      "bucket_type": "classic",
+      "id": "fbffae68-5187-c66e-44a4-58f77c581fb1",
+      "quota_limit": null,
+      "hard_limit_enabled": false,
+      "retention_lock": "unlocked",
+      "eradication_config": {
+        "manual_eradication": "enabled",
+        "eradication_delay": 86400000
+      },
+      "object_lock_config": {
+        "enabled": false,
+        "freeze_locked_objects": false,
+        "default_retention": null,
+        "default_retention_mode": null
+      }
+    },
+    {
+      "name": "gse-fb02-s3-target",
+      "created": 1587470221000,
+      "account": {
+        "name": "gse-s3-test-migration",
+        "id": "c3f45a45-1fbc-d088-47b2-598bca488b1a",
+        "resource_type": "object-store-accounts"
+      },
+      "destroyed": false,
+      "time_remaining": null,
+      "space": {
+        "virtual": 314576384,
+        "unique": 227355,
+        "snapshots": 0,
+        "data_reduction": 1383.6,
+        "total_physical": 227355,
+        "total_provisioned": null
+      },
+      "object_count": 9,
+      "versioning": "none",
+      "bucket_type": "classic",
+      "id": "6b49220a-36e2-87a2-9b5a-98cca6ad0bab",
+      "quota_limit": null,
+      "hard_limit_enabled": false,
+      "retention_lock": "unlocked",
+      "eradication_config": {
+        "manual_eradication": "enabled",
+        "eradication_delay": 86400000
+      },
+      "object_lock_config": {
+        "enabled": false,
+        "freeze_locked_objects": false,
+        "default_retention": null,
+        "default_retention_mode": null
+      }
+    },
+    {
+      "name": "gwillett-px-backup",
+      "created": 1639651747000,
+      "account": {
+        "name": "gwillett-px-backup",
+        "id": "95a39da8-0cde-c256-0ef5-dbe6813c9cfe",
+        "resource_type": "object-store-accounts"
+      },
+      "destroyed": false,
+      "time_remaining": null,
+      "space": {
+        "virtual": 110592,
+        "unique": 43988,
+        "snapshots": 0,
+        "data_reduction": 2.5,
+        "total_physical": 43988,
+        "total_provisioned": null
+      },
+      "object_count": 48,
+      "versioning": "none",
+      "bucket_type": "classic",
+      "id": "adcf4d9c-0a48-6e2e-8b6d-19cddf649999",
+      "quota_limit": null,
+      "hard_limit_enabled": false,
+      "retention_lock": "unlocked",
+      "eradication_config": {
+        "manual_eradication": "enabled",
+        "eradication_delay": 86400000
+      },
+      "object_lock_config": {
+        "enabled": false,
+        "freeze_locked_objects": false,
+        "default_retention": null,
+        "default_retention_mode": null
+      }
+    },
+    {
+      "name": "jbtbucket",
+      "created": 1590327085000,
+      "account": {
+        "name": "jbt",
+        "id": "665a6ba4-749b-f1c7-159c-3e1bb1afdc92",
+        "resource_type": "object-store-accounts"
+      },
+      "destroyed": false,
+      "time_remaining": null,
+      "space": {
+        "virtual": 41978292,
+        "unique": 41548810,
+        "snapshots": 0,
+        "data_reduction": 1,
+        "total_physical": 41548810,
+        "total_provisioned": null
+      },
+      "object_count": 33,
+      "versioning": "none",
+      "bucket_type": "classic",
+      "id": "24bc0d2c-9974-3eaa-a5df-85eaf8a97d29",
+      "quota_limit": null,
+      "hard_limit_enabled": false,
+      "retention_lock": "unlocked",
+      "eradication_config": {
+        "manual_eradication": "enabled",
+        "eradication_delay": 86400000
+      },
+      "object_lock_config": {
+        "enabled": false,
+        "freeze_locked_objects": false,
+        "default_retention": null,
+        "default_retention_mode": null
+      }
+    },
+    {
+      "name": "jbtdata",
+      "created": 1583412156000,
+      "account": {
+        "name": "jbt",
+        "id": "665a6ba4-749b-f1c7-159c-3e1bb1afdc92",
+        "resource_type": "object-store-accounts"
+      },
+      "destroyed": false,
+      "time_remaining": null,
+      "space": {
+        "virtual": 1740590447104,
+        "unique": 773184256996,
+        "snapshots": 0,
+        "data_reduction": 2.3,
+        "total_physical": 773184256996,
+        "total_provisioned": null
+      },
+      "object_count": 21799681,
+      "versioning": "none",
+      "bucket_type": "classic",
+      "id": "586728c7-a730-6d58-20e5-f5787495cfa5",
+      "quota_limit": null,
+      "hard_limit_enabled": false,
+      "retention_lock": "unlocked",
+      "eradication_config": {
+        "manual_eradication": "enabled",
+        "eradication_delay": 86400000
+      },
+      "object_lock_config": {
+        "enabled": false,
+        "freeze_locked_objects": false,
+        "default_retention": null,
+        "default_retention_mode": null
+      }
+    },
+    {
+      "name": "kafka-tiered-storage",
+      "created": 1606215643000,
+      "account": {
+        "name": "datapipeline",
+        "id": "b3d1332f-7f0c-885e-6330-6baacd87b403",
+        "resource_type": "object-store-accounts"
+      },
+      "destroyed": false,
+      "time_remaining": null,
+      "space": {
+        "virtual": 3407668019200,
+        "unique": 3366726476664,
+        "snapshots": 0,
+        "data_reduction": 1,
+        "total_physical": 3366726476664,
+        "total_provisioned": null
+      },
+      "object_count": 173877,
+      "versioning": "none",
+      "bucket_type": "classic",
+      "id": "2b807f89-c5ea-46de-9f65-04cc9b7e3176",
+      "quota_limit": null,
+      "hard_limit_enabled": false,
+      "retention_lock": "unlocked",
+      "eradication_config": {
+        "manual_eradication": "enabled",
+        "eradication_delay": 86400000
+      },
+      "object_lock_config": {
+        "enabled": false,
+        "freeze_locked_objects": false,
+        "default_retention": null,
+        "default_retention_mode": null
+      }
+    },
+    {
+      "name": "kompriserepo",
+      "created": 1582211184000,
+      "account": {
+        "name": "jwps",
+        "id": "70cf93fa-5327-9a90-4567-853fb3e982f5",
+        "resource_type": "object-store-accounts"
+      },
+      "destroyed": false,
+      "time_remaining": null,
+      "space": {
+        "virtual": 0,
+        "unique": 0,
+        "snapshots": 0,
+        "data_reduction": null,
+        "total_physical": 0,
+        "total_provisioned": null
+      },
+      "object_count": 0,
+      "versioning": "none",
+      "bucket_type": "classic",
+      "id": "d1ecbcf9-4bf7-496c-887c-9f6626f936f8",
+      "quota_limit": null,
+      "hard_limit_enabled": false,
+      "retention_lock": "unlocked",
+      "eradication_config": {
+        "manual_eradication": "enabled",
+        "eradication_delay": 86400000
+      },
+      "object_lock_config": {
+        "enabled": false,
+        "freeze_locked_objects": false,
+        "default_retention": null,
+        "default_retention_mode": null
+      }
+    },
+    {
+      "name": "lee-sql-fb02",
+      "created": 1676475517000,
+      "account": {
+        "name": "lee-sql-fb02",
+        "id": "c5b2d70c-495e-b93f-8c39-b2fed83570a0",
+        "resource_type": "object-store-accounts"
+      },
+      "destroyed": false,
+      "time_remaining": null,
+      "space": {
+        "virtual": 0,
+        "unique": 0,
+        "snapshots": 0,
+        "data_reduction": null,
+        "total_physical": 0,
+        "total_provisioned": null
+      },
+      "object_count": 0,
+      "versioning": "enabled",
+      "bucket_type": "classic",
+      "id": "2a86e1cb-734b-6b0b-6753-a679669fcd44",
+      "quota_limit": null,
+      "hard_limit_enabled": false,
+      "retention_lock": "unlocked",
+      "eradication_config": {
+        "manual_eradication": "enabled",
+        "eradication_delay": 86400000
+      },
+      "object_lock_config": {
+        "enabled": false,
+        "freeze_locked_objects": false,
+        "default_retention": null,
+        "default_retention_mode": null
+      }
+    },
+    {
+      "name": "lee-virtualhost",
+      "created": 1672987311000,
+      "account": {
+        "name": "lee-virtualhost",
+        "id": "19acfd13-755b-be4f-753d-3bbe3f08928c",
+        "resource_type": "object-store-accounts"
+      },
+      "destroyed": false,
+      "time_remaining": null,
+      "space": {
+        "virtual": 31744,
+        "unique": 12958,
+        "snapshots": 0,
+        "data_reduction": 2.4,
+        "total_physical": 12958,
+        "total_provisioned": null
+      },
+      "object_count": 1,
+      "versioning": "none",
+      "bucket_type": "classic",
+      "id": "cebe620b-a993-27bf-f4e3-fe9d2dc5cc8c",
+      "quota_limit": null,
+      "hard_limit_enabled": false,
+      "retention_lock": "unlocked",
+      "eradication_config": {
+        "manual_eradication": "enabled",
+        "eradication_delay": 86400000
+      },
+      "object_lock_config": {
+        "enabled": false,
+        "freeze_locked_objects": false,
+        "default_retention": null,
+        "default_retention_mode": null
+      }
+    },
+    {
+      "name": "lock7days",
+      "created": 1681468109000,
+      "account": {
+        "name": "jbt",
+        "id": "665a6ba4-749b-f1c7-159c-3e1bb1afdc92",
+        "resource_type": "object-store-accounts"
+      },
+      "destroyed": false,
+      "time_remaining": null,
+      "space": {
+        "virtual": 4096,
+        "unique": 686,
+        "snapshots": 0,
+        "data_reduction": 6,
+        "total_physical": 686,
+        "total_provisioned": null
+      },
+      "object_count": 7,
+      "versioning": "none",
+      "bucket_type": "classic",
+      "id": "b721f6a4-278d-0b06-d42d-9154423a464d",
+      "quota_limit": null,
+      "hard_limit_enabled": false,
+      "retention_lock": "unlocked",
+      "eradication_config": {
+        "manual_eradication": "enabled",
+        "eradication_delay": 86400000
+      },
+      "object_lock_config": {
+        "enabled": true,
+        "freeze_locked_objects": true,
+        "default_retention": 604800000,
+        "default_retention_mode": "compliance"
+      }
+    },
+    {
+      "name": "lock7dayversion",
+      "created": 1681468374000,
+      "account": {
+        "name": "jbt",
+        "id": "665a6ba4-749b-f1c7-159c-3e1bb1afdc92",
+        "resource_type": "object-store-accounts"
+      },
+      "destroyed": false,
+      "time_remaining": null,
+      "space": {
+        "virtual": 5632,
+        "unique": 957,
+        "snapshots": 0,
+        "data_reduction": 5.9,
+        "total_physical": 957,
+        "total_provisioned": null
+      },
+      "object_count": 7,
+      "versioning": "enabled",
+      "bucket_type": "classic",
+      "id": "7168a739-c5e4-8da5-2f8a-378d90a6f13c",
+      "quota_limit": null,
+      "hard_limit_enabled": false,
+      "retention_lock": "unlocked",
+      "eradication_config": {
+        "manual_eradication": "enabled",
+        "eradication_delay": 86400000
+      },
+      "object_lock_config": {
+        "enabled": true,
+        "freeze_locked_objects": false,
+        "default_retention": 604800000,
+        "default_retention_mode": "compliance"
+      }
+    },
+    {
+      "name": "london-smart-meter",
+      "created": 1587325838000,
+      "account": {
+        "name": "azure-data-factory",
+        "id": "88c471b6-305c-570a-ac66-e9933fe3040c",
+        "resource_type": "object-store-accounts"
+      },
+      "destroyed": false,
+      "time_remaining": null,
+      "space": {
+        "virtual": 18207618560,
+        "unique": 3606911052,
+        "snapshots": 0,
+        "data_reduction": 5,
+        "total_physical": 3606911052,
+        "total_provisioned": null
+      },
+      "object_count": 455,
+      "versioning": "none",
+      "bucket_type": "classic",
+      "id": "5d0e6215-4d33-5fee-1a24-fea33579b018",
+      "quota_limit": null,
+      "hard_limit_enabled": false,
+      "retention_lock": "unlocked",
+      "eradication_config": {
+        "manual_eradication": "enabled",
+        "eradication_delay": 86400000
+      },
+      "object_lock_config": {
+        "enabled": false,
+        "freeze_locked_objects": false,
+        "default_retention": null,
+        "default_retention_mode": null
+      }
+    },
+    {
+      "name": "lucatestbrepst2",
+      "created": 1624969709000,
+      "account": {
+        "name": "luca",
+        "id": "b260fc84-6770-dce6-2c52-2c62d6c5442c",
+        "resource_type": "object-store-accounts"
+      },
+      "destroyed": false,
+      "time_remaining": null,
+      "space": {
+        "virtual": 35840,
+        "unique": 8396,
+        "snapshots": 0,
+        "data_reduction": 4.3,
+        "total_physical": 8396,
+        "total_provisioned": null
+      },
+      "object_count": 18,
+      "versioning": "enabled",
+      "bucket_type": "classic",
+      "id": "722980d3-fb94-ba8d-ef78-c1508663bae8",
+      "quota_limit": null,
+      "hard_limit_enabled": false,
+      "retention_lock": "unlocked",
+      "eradication_config": {
+        "manual_eradication": "enabled",
+        "eradication_delay": 86400000
+      },
+      "object_lock_config": {
+        "enabled": false,
+        "freeze_locked_objects": false,
+        "default_retention": null,
+        "default_retention_mode": null
+      }
+    },
+    {
+      "name": "makadmeh-px-backup-bucket-fb",
+      "created": 1675495172000,
+      "account": {
+        "name": "makadmeh-fb",
+        "id": "bef6fd5d-cec8-2bb1-142d-0f9069a4dfb8",
+        "resource_type": "object-store-accounts"
+      },
+      "destroyed": false,
+      "time_remaining": null,
+      "space": {
+        "virtual": 443233792,
+        "unique": 119436430,
+        "snapshots": 0,
+        "data_reduction": 3.7,
+        "total_physical": 119436430,
+        "total_provisioned": null
+      },
+      "object_count": 401,
+      "versioning": "none",
+      "bucket_type": "classic",
+      "id": "d2b5de8c-f203-9305-7ffd-82e3082b11d0",
+      "quota_limit": null,
+      "hard_limit_enabled": false,
+      "retention_lock": "unlocked",
+      "eradication_config": {
+        "manual_eradication": "enabled",
+        "eradication_delay": 86400000
+      },
+      "object_lock_config": {
+        "enabled": false,
+        "freeze_locked_objects": false,
+        "default_retention": null,
+        "default_retention_mode": null
+      }
+    },
+    {
+      "name": "matzes-bucket",
+      "created": 1665420294000,
+      "account": {
+        "name": "b6f55c98-5f44-40d2-8097-19db7294bdc9",
+        "id": "1cfc549f-a75e-7fbd-608c-1e606bdaab13",
+        "resource_type": "object-store-accounts"
+      },
+      "destroyed": false,
+      "time_remaining": null,
+      "space": {
+        "virtual": 5125632,
+        "unique": 5084144,
+        "snapshots": 0,
+        "data_reduction": 1,
+        "total_physical": 5084144,
+        "total_provisioned": null
+      },
+      "object_count": 2,
+      "versioning": "enabled",
+      "bucket_type": "classic",
+      "id": "094b238a-b9ba-2738-0427-e129d5a972be",
+      "quota_limit": null,
+      "hard_limit_enabled": false,
+      "retention_lock": "unlocked",
+      "eradication_config": {
+        "manual_eradication": "enabled",
+        "eradication_delay": 86400000
+      },
+      "object_lock_config": {
+        "enabled": false,
+        "freeze_locked_objects": false,
+        "default_retention": null,
+        "default_retention_mode": null
+      }
+    },
+    {
+      "name": "me-k8s-clusters-px-backup-bucket",
+      "created": 1663082372000,
+      "account": {
+        "name": "me-k8s-clusters-px-backup-user",
+        "id": "8ec0948f-ba09-8b80-1f90-6dc3b6ae2f27",
+        "resource_type": "object-store-accounts"
+      },
+      "destroyed": false,
+      "time_remaining": null,
+      "space": {
+        "virtual": 2760214016,
+        "unique": 2182487444,
+        "snapshots": 0,
+        "data_reduction": 1.3,
+        "total_physical": 2182487444,
+        "total_provisioned": null
+      },
+      "object_count": 3571,
+      "versioning": "none",
+      "bucket_type": "classic",
+      "id": "b1075f2d-0c5f-7686-3e13-f68d69ca3214",
+      "quota_limit": null,
+      "hard_limit_enabled": false,
+      "retention_lock": "unlocked",
+      "eradication_config": {
+        "manual_eradication": "enabled",
+        "eradication_delay": 86400000
+      },
+      "object_lock_config": {
+        "enabled": false,
+        "freeze_locked_objects": false,
+        "default_retention": null,
+        "default_retention_mode": null
+      }
+    },
+    {
+      "name": "me-k8s-clusters-px-backup-fb2-bucket",
+      "created": 1659000356000,
+      "account": {
+        "name": "me-k8s-clusters-px-backup-fb2-user",
+        "id": "f96edcf4-4904-0581-93d7-41348fc08be2",
+        "resource_type": "object-store-accounts"
+      },
+      "destroyed": false,
+      "time_remaining": null,
+      "space": {
+        "virtual": 865469440,
+        "unique": 215678135,
+        "snapshots": 0,
+        "data_reduction": 4,
+        "total_physical": 215678135,
+        "total_provisioned": null
+      },
+      "object_count": 724,
+      "versioning": "none",
+      "bucket_type": "classic",
+      "id": "d938473b-1cdf-0dc5-745a-a60814ab1c32",
+      "quota_limit": null,
+      "hard_limit_enabled": false,
+      "retention_lock": "unlocked",
+      "eradication_config": {
+        "manual_eradication": "enabled",
+        "eradication_delay": 86400000
+      },
+      "object_lock_config": {
+        "enabled": false,
+        "freeze_locked_objects": false,
+        "default_retention": null,
+        "default_retention_mode": null
+      }
+    },
+    {
+      "name": "me-k8s-clusters-px-backup-fb2-bucket2",
+      "created": 1662400325000,
+      "account": {
+        "name": "me-k8s-clusters-px-backup-fb2-user",
+        "id": "f96edcf4-4904-0581-93d7-41348fc08be2",
+        "resource_type": "object-store-accounts"
+      },
+      "destroyed": false,
+      "time_remaining": null,
+      "space": {
+        "virtual": 115316736,
+        "unique": 31383954,
+        "snapshots": 0,
+        "data_reduction": 3.7,
+        "total_physical": 31383954,
+        "total_provisioned": null
+      },
+      "object_count": 93,
+      "versioning": "none",
+      "bucket_type": "classic",
+      "id": "b2ebb68c-833b-1b26-0cd2-2943f0dd5430",
+      "quota_limit": null,
+      "hard_limit_enabled": false,
+      "retention_lock": "unlocked",
+      "eradication_config": {
+        "manual_eradication": "enabled",
+        "eradication_delay": 86400000
+      },
+      "object_lock_config": {
+        "enabled": false,
+        "freeze_locked_objects": false,
+        "default_retention": null,
+        "default_retention_mode": null
+      }
+    },
+    {
+      "name": "me-k8s-clusters-px-backup-fb2-bucket3",
+      "created": 1662980336000,
+      "account": {
+        "name": "me-k8s-clusters-px-backup-fb2-user",
+        "id": "f96edcf4-4904-0581-93d7-41348fc08be2",
+        "resource_type": "object-store-accounts"
+      },
+      "destroyed": false,
+      "time_remaining": null,
+      "space": {
+        "virtual": 0,
+        "unique": 0,
+        "snapshots": 0,
+        "data_reduction": null,
+        "total_physical": 0,
+        "total_provisioned": null
+      },
+      "object_count": 0,
+      "versioning": "none",
+      "bucket_type": "classic",
+      "id": "2d4cdc40-a60a-a2eb-fe15-2eded03ef07c",
+      "quota_limit": null,
+      "hard_limit_enabled": false,
+      "retention_lock": "unlocked",
+      "eradication_config": {
+        "manual_eradication": "enabled",
+        "eradication_delay": 86400000
+      },
+      "object_lock_config": {
+        "enabled": false,
+        "freeze_locked_objects": false,
+        "default_retention": null,
+        "default_retention_mode": null
+      }
+    },
+    {
+      "name": "mm-repl-bucket",
+      "created": 1681753802000,
+      "account": {
+        "name": "mm-repl-test",
+        "id": "552004d2-f1b0-c851-83a0-73690cde7b78",
+        "resource_type": "object-store-accounts"
+      },
+      "destroyed": false,
+      "time_remaining": null,
+      "space": {
+        "virtual": 512,
+        "unique": 129,
+        "snapshots": 0,
+        "data_reduction": 4,
+        "total_physical": 129,
+        "total_provisioned": 1099511627776
+      },
+      "object_count": 0,
+      "versioning": "enabled",
+      "bucket_type": "multi-site-writable",
+      "id": "b859894e-f5da-47f7-7f5e-4a5fcb8178c2",
+      "quota_limit": null,
+      "hard_limit_enabled": false,
+      "retention_lock": "unlocked",
+      "eradication_config": {
+        "manual_eradication": "enabled",
+        "eradication_delay": 86400000
+      },
+      "object_lock_config": {
+        "enabled": false,
+        "freeze_locked_objects": false,
+        "default_retention": null,
+        "default_retention_mode": null
+      }
+    },
+    {
+      "name": "mwamrep",
+      "created": 1595498667000,
+      "account": {
+        "name": "mwamrep",
+        "id": "eaafc05d-8e3f-9dcc-5cec-c69f95f64bb9",
+        "resource_type": "object-store-accounts"
+      },
+      "destroyed": false,
+      "time_remaining": null,
+      "space": {
+        "virtual": 206158430208,
+        "unique": 124220391083,
+        "snapshots": 0,
+        "data_reduction": 1.7,
+        "total_physical": 124220391083,
+        "total_provisioned": null
+      },
+      "object_count": 259,
+      "versioning": "enabled",
+      "bucket_type": "classic",
+      "id": "86898095-326e-ddf0-e394-84ec3aa62242",
+      "quota_limit": null,
+      "hard_limit_enabled": false,
+      "retention_lock": "unlocked",
+      "eradication_config": {
+        "manual_eradication": "enabled",
+        "eradication_delay": 86400000
+      },
+      "object_lock_config": {
+        "enabled": false,
+        "freeze_locked_objects": false,
+        "default_retention": null,
+        "default_retention_mode": null
+      }
+    },
+    {
+      "name": "myfirst",
+      "created": 1675079892000,
+      "account": {
+        "name": "heinb-acct",
+        "id": "5bdcf72d-2cc6-3e38-538f-7299529515c2",
+        "resource_type": "object-store-accounts"
+      },
+      "destroyed": false,
+      "time_remaining": null,
+      "space": {
+        "virtual": 22551040,
+        "unique": 9900508,
+        "snapshots": 0,
+        "data_reduction": 2.3,
+        "total_physical": 9900508,
+        "total_provisioned": null
+      },
+      "object_count": 15,
+      "versioning": "enabled",
+      "bucket_type": "classic",
+      "id": "b3bb27d0-0ebc-4111-738c-1e366d278c54",
+      "quota_limit": null,
+      "hard_limit_enabled": false,
+      "retention_lock": "unlocked",
+      "eradication_config": {
+        "manual_eradication": "enabled",
+        "eradication_delay": 86400000
+      },
+      "object_lock_config": {
+        "enabled": false,
+        "freeze_locked_objects": false,
+        "default_retention": null,
+        "default_retention_mode": null
+      }
+    },
+    {
+      "name": "ngc4889",
+      "created": 1584537512000,
+      "account": {
+        "name": "object3in",
+        "id": "e543642a-51ca-7f7e-7bb6-7b6d7f36000b",
+        "resource_type": "object-store-accounts"
+      },
+      "destroyed": false,
+      "time_remaining": null,
+      "space": {
+        "virtual": 21149147648,
+        "unique": 20314763761,
+        "snapshots": 0,
+        "data_reduction": 1,
+        "total_physical": 20314763761,
+        "total_provisioned": null
+      },
+      "object_count": 1523,
+      "versioning": "none",
+      "bucket_type": "classic",
+      "id": "974dd667-7145-22fd-d832-e06e9dc8b031",
+      "quota_limit": null,
+      "hard_limit_enabled": false,
+      "retention_lock": "unlocked",
+      "eradication_config": {
+        "manual_eradication": "enabled",
+        "eradication_delay": 86400000
+      },
+      "object_lock_config": {
+        "enabled": false,
+        "freeze_locked_objects": false,
+        "default_retention": null,
+        "default_retention_mode": null
+      }
+    },
+    {
+      "name": "og-test",
+      "created": 1594385440000,
+      "account": {
+        "name": "matze",
+        "id": "75b8c954-02cf-a18b-ffc2-e01d16a76257",
+        "resource_type": "object-store-accounts"
+      },
+      "destroyed": false,
+      "time_remaining": null,
+      "space": {
+        "virtual": 152823180864,
+        "unique": 7189133949,
+        "snapshots": 0,
+        "data_reduction": 21.3,
+        "total_physical": 7189133949,
+        "total_provisioned": null
+      },
+      "object_count": 1000005,
+      "versioning": "none",
+      "bucket_type": "classic",
+      "id": "f4d16270-f2e5-6977-3f4e-8016f863ea2d",
+      "quota_limit": null,
+      "hard_limit_enabled": false,
+      "retention_lock": "unlocked",
+      "eradication_config": {
+        "manual_eradication": "enabled",
+        "eradication_delay": 86400000
+      },
+      "object_lock_config": {
+        "enabled": false,
+        "freeze_locked_objects": false,
+        "default_retention": null,
+        "default_retention_mode": null
+      }
+    },
+    {
+      "name": "onurbucket",
+      "created": 1653329147000,
+      "account": {
+        "name": "onurac",
+        "id": "bc908edd-a34d-4a82-615f-14cbaffc1922",
+        "resource_type": "object-store-accounts"
+      },
+      "destroyed": false,
+      "time_remaining": null,
+      "space": {
+        "virtual": 0,
+        "unique": 0,
+        "snapshots": 0,
+        "data_reduction": null,
+        "total_physical": 0,
+        "total_provisioned": null
+      },
+      "object_count": 0,
+      "versioning": "none",
+      "bucket_type": "classic",
+      "id": "0acbeca3-0e4f-37e0-0ebf-7d606f97d840",
+      "quota_limit": null,
+      "hard_limit_enabled": false,
+      "retention_lock": "unlocked",
+      "eradication_config": {
+        "manual_eradication": "enabled",
+        "eradication_delay": 86400000
+      },
+      "object_lock_config": {
+        "enabled": false,
+        "freeze_locked_objects": false,
+        "default_retention": null,
+        "default_retention_mode": null
+      }
+    },
+    {
+      "name": "ora-bucket",
+      "created": 1657795514000,
+      "account": {
+        "name": "ron",
+        "id": "bffd9ec2-417e-7cc8-8ef4-b9ea06e22ad0",
+        "resource_type": "object-store-accounts"
+      },
+      "destroyed": false,
+      "time_remaining": null,
+      "space": {
+        "virtual": 14231040,
+        "unique": 7205275,
+        "snapshots": 0,
+        "data_reduction": 2,
+        "total_physical": 7205275,
+        "total_provisioned": null
+      },
+      "object_count": 4,
+      "versioning": "none",
+      "bucket_type": "classic",
+      "id": "cff21635-a039-5ae5-0e36-55fcc228a52b",
+      "quota_limit": null,
+      "hard_limit_enabled": false,
+      "retention_lock": "unlocked",
+      "eradication_config": {
+        "manual_eradication": "enabled",
+        "eradication_delay": 86400000
+      },
+      "object_lock_config": {
+        "enabled": false,
+        "freeze_locked_objects": false,
+        "default_retention": null,
+        "default_retention_mode": null
+      }
+    },
+    {
+      "name": "petclinic2",
+      "created": 1625053810000,
+      "account": {
+        "name": "jo-backup",
+        "id": "56950292-7052-747c-5af5-a042506947c5",
+        "resource_type": "object-store-accounts"
+      },
+      "destroyed": false,
+      "time_remaining": null,
+      "space": {
+        "virtual": 66010112,
+        "unique": 48219806,
+        "snapshots": 0,
+        "data_reduction": 1.4,
+        "total_physical": 48219806,
+        "total_provisioned": null
+      },
+      "object_count": 71,
+      "versioning": "enabled",
+      "bucket_type": "classic",
+      "id": "8883b7c9-2db3-c0ee-8003-43465984b2d8",
+      "quota_limit": null,
+      "hard_limit_enabled": false,
+      "retention_lock": "unlocked",
+      "eradication_config": {
+        "manual_eradication": "enabled",
+        "eradication_delay": 86400000
+      },
+      "object_lock_config": {
+        "enabled": false,
+        "freeze_locked_objects": false,
+        "default_retention": null,
+        "default_retention_mode": null
+      }
+    },
+    {
+      "name": "pumarep",
+      "created": 1601019375000,
+      "account": {
+        "name": "mwamrep",
+        "id": "eaafc05d-8e3f-9dcc-5cec-c69f95f64bb9",
+        "resource_type": "object-store-accounts"
+      },
+      "destroyed": false,
+      "time_remaining": null,
+      "space": {
+        "virtual": 2844160,
+        "unique": 2837202,
+        "snapshots": 0,
+        "data_reduction": 1,
+        "total_physical": 2837202,
+        "total_provisioned": null
+      },
+      "object_count": 2,
+      "versioning": "enabled",
+      "bucket_type": "classic",
+      "id": "f33036bd-63bc-65e9-bcf0-4015ce2988fb",
+      "quota_limit": null,
+      "hard_limit_enabled": false,
+      "retention_lock": "unlocked",
+      "eradication_config": {
+        "manual_eradication": "enabled",
+        "eradication_delay": 86400000
+      },
+      "object_lock_config": {
+        "enabled": false,
+        "freeze_locked_objects": false,
+        "default_retention": null,
+        "default_retention_mode": null
+      }
+    },
+    {
+      "name": "px-backup-bucket",
+      "created": 1677718271000,
+      "account": {
+        "name": "egrosso",
+        "id": "bb4973c3-dee8-0554-f4b3-46f1df424283",
+        "resource_type": "object-store-accounts"
+      },
+      "destroyed": false,
+      "time_remaining": null,
+      "space": {
+        "virtual": 0,
+        "unique": 0,
+        "snapshots": 0,
+        "data_reduction": null,
+        "total_physical": 0,
+        "total_provisioned": null
+      },
+      "object_count": 0,
+      "versioning": "none",
+      "bucket_type": "classic",
+      "id": "80503818-f53c-a1a2-f36b-e3f9b3d2a3d4",
+      "quota_limit": null,
+      "hard_limit_enabled": false,
+      "retention_lock": "unlocked",
+      "eradication_config": {
+        "manual_eradication": "enabled",
+        "eradication_delay": 86400000
+      },
+      "object_lock_config": {
+        "enabled": false,
+        "freeze_locked_objects": false,
+        "default_retention": null,
+        "default_retention_mode": null
+      }
+    },
+    {
+      "name": "px-backup-demo",
+      "created": 1656602794000,
+      "account": {
+        "name": "egrosso",
+        "id": "bb4973c3-dee8-0554-f4b3-46f1df424283",
+        "resource_type": "object-store-accounts"
+      },
+      "destroyed": false,
+      "time_remaining": null,
+      "space": {
+        "virtual": 0,
+        "unique": 0,
+        "snapshots": 0,
+        "data_reduction": null,
+        "total_physical": 0,
+        "total_provisioned": null
+      },
+      "object_count": 0,
+      "versioning": "none",
+      "bucket_type": "classic",
+      "id": "6f4ed846-9b46-7170-272d-e9cd27415acd",
+      "quota_limit": null,
+      "hard_limit_enabled": false,
+      "retention_lock": "unlocked",
+      "eradication_config": {
+        "manual_eradication": "enabled",
+        "eradication_delay": 86400000
+      },
+      "object_lock_config": {
+        "enabled": false,
+        "freeze_locked_objects": false,
+        "default_retention": null,
+        "default_retention_mode": null
+      }
+    },
+    {
+      "name": "px-os-b84b2a3a-0316-474d-90ca-d3d018b39bd3",
+      "created": 1671132676000,
+      "account": {
+        "name": "me-k8s-clusters-px-backup-fb2-user",
+        "id": "f96edcf4-4904-0581-93d7-41348fc08be2",
+        "resource_type": "object-store-accounts"
+      },
+      "destroyed": false,
+      "time_remaining": null,
+      "space": {
+        "virtual": 14336,
+        "unique": 2038,
+        "snapshots": 0,
+        "data_reduction": 7,
+        "total_physical": 2038,
+        "total_provisioned": null
+      },
+      "object_count": 28,
+      "versioning": "none",
+      "bucket_type": "classic",
+      "id": "39b0ca96-c877-b48d-9a42-10d6f2ece378",
+      "quota_limit": null,
+      "hard_limit_enabled": false,
+      "retention_lock": "unlocked",
+      "eradication_config": {
+        "manual_eradication": "enabled",
+        "eradication_delay": 86400000
+      },
+      "object_lock_config": {
+        "enabled": false,
+        "freeze_locked_objects": false,
+        "default_retention": null,
+        "default_retention_mode": null
+      }
+    },
+    {
+      "name": "px-snapshots",
+      "created": 1676642538000,
+      "account": {
+        "name": "egrosso",
+        "id": "bb4973c3-dee8-0554-f4b3-46f1df424283",
+        "resource_type": "object-store-accounts"
+      },
+      "destroyed": false,
+      "time_remaining": null,
+      "space": {
+        "virtual": 0,
+        "unique": 0,
+        "snapshots": 0,
+        "data_reduction": null,
+        "total_physical": 0,
+        "total_provisioned": null
+      },
+      "object_count": 0,
+      "versioning": "none",
+      "bucket_type": "classic",
+      "id": "31a6dd88-3cda-7e11-68c0-f4678263f7c3",
+      "quota_limit": null,
+      "hard_limit_enabled": false,
+      "retention_lock": "unlocked",
+      "eradication_config": {
+        "manual_eradication": "enabled",
+        "eradication_delay": 86400000
+      },
+      "object_lock_config": {
+        "enabled": false,
+        "freeze_locked_objects": false,
+        "default_retention": null,
+        "default_retention_mode": null
+      }
+    },
+    {
+      "name": "rd-bucket",
+      "created": 1634230006000,
+      "account": {
+        "name": "remko1",
+        "id": "866198fe-7cb3-a3a1-5159-6d1655cf31bf",
+        "resource_type": "object-store-accounts"
+      },
+      "destroyed": false,
+      "time_remaining": null,
+      "space": {
+        "virtual": 512,
+        "unique": 130,
+        "snapshots": 0,
+        "data_reduction": 3.9,
+        "total_physical": 130,
+        "total_provisioned": null
+      },
+      "object_count": 0,
+      "versioning": "enabled",
+      "bucket_type": "classic",
+      "id": "059839cd-a33e-10a1-d64e-100a611f8ad9",
+      "quota_limit": null,
+      "hard_limit_enabled": false,
+      "retention_lock": "unlocked",
+      "eradication_config": {
+        "manual_eradication": "enabled",
+        "eradication_delay": 86400000
+      },
+      "object_lock_config": {
+        "enabled": false,
+        "freeze_locked_objects": false,
+        "default_retention": null,
+        "default_retention_mode": null
+      }
+    },
+    {
+      "name": "repl-t",
+      "created": 1617132807000,
+      "account": {
+        "name": "matze",
+        "id": "75b8c954-02cf-a18b-ffc2-e01d16a76257",
+        "resource_type": "object-store-accounts"
+      },
+      "destroyed": false,
+      "time_remaining": null,
+      "space": {
+        "virtual": 12286075,
+        "unique": 12286075,
+        "snapshots": 0,
+        "data_reduction": 1,
+        "total_physical": 12286075,
+        "total_provisioned": null
+      },
+      "object_count": 1,
+      "versioning": "enabled",
+      "bucket_type": "classic",
+      "id": "334b8303-2e82-44a5-260c-b791665ffbe0",
+      "quota_limit": null,
+      "hard_limit_enabled": false,
+      "retention_lock": "unlocked",
+      "eradication_config": {
+        "manual_eradication": "enabled",
+        "eradication_delay": 86400000
+      },
+      "object_lock_config": {
+        "enabled": false,
+        "freeze_locked_objects": false,
+        "default_retention": null,
+        "default_retention_mode": null
+      }
+    },
+    {
+      "name": "repl-test2",
+      "created": 1623308030000,
+      "account": {
+        "name": "matze",
+        "id": "75b8c954-02cf-a18b-ffc2-e01d16a76257",
+        "resource_type": "object-store-accounts"
+      },
+      "destroyed": false,
+      "time_remaining": null,
+      "space": {
+        "virtual": 1157120,
+        "unique": 267643,
+        "snapshots": 0,
+        "data_reduction": 4.3,
+        "total_physical": 267643,
+        "total_provisioned": null
+      },
+      "object_count": 6,
+      "versioning": "enabled",
+      "bucket_type": "classic",
+      "id": "6b9fb349-0a67-c4e8-7680-9c8b775d6e3a",
+      "quota_limit": null,
+      "hard_limit_enabled": false,
+      "retention_lock": "unlocked",
+      "eradication_config": {
+        "manual_eradication": "enabled",
+        "eradication_delay": 86400000
+      },
+      "object_lock_config": {
+        "enabled": false,
+        "freeze_locked_objects": false,
+        "default_retention": null,
+        "default_retention_mode": null
+      }
+    },
+    {
+      "name": "repl-uni-drr-test-classic",
+      "created": 1682055450000,
+      "account": {
+        "name": "bloom",
+        "id": "758689f4-7474-3d06-ab17-cb916878a6aa",
+        "resource_type": "object-store-accounts"
+      },
+      "destroyed": false,
+      "time_remaining": null,
+      "space": {
+        "virtual": 210484131840,
+        "unique": 98596449691,
+        "snapshots": 0,
+        "data_reduction": 2.1,
+        "total_physical": 98596449691,
+        "total_provisioned": null
+      },
+      "object_count": 653,
+      "versioning": "enabled",
+      "bucket_type": "classic",
+      "id": "bb6d43b4-a85c-25f9-671f-6819a4f04c3e",
+      "quota_limit": null,
+      "hard_limit_enabled": false,
+      "retention_lock": "unlocked",
+      "eradication_config": {
+        "manual_eradication": "enabled",
+        "eradication_delay": 86400000
+      },
+      "object_lock_config": {
+        "enabled": false,
+        "freeze_locked_objects": false,
+        "default_retention": null,
+        "default_retention_mode": null
+      }
+    },
+    {
+      "name": "s3fs-bucket",
+      "created": 1656162357000,
+      "account": {
+        "name": "rclone-test",
+        "id": "9b883e56-ba9d-5bfe-bc9d-4ce5e3a22380",
+        "resource_type": "object-store-accounts"
+      },
+      "destroyed": false,
+      "time_remaining": null,
+      "space": {
+        "virtual": 10737522176,
+        "unique": 8531956,
+        "snapshots": 0,
+        "data_reduction": 1258.5,
+        "total_physical": 8531956,
+        "total_provisioned": null
+      },
+      "object_count": 201,
+      "versioning": "none",
+      "bucket_type": "classic",
+      "id": "d3855adf-bf3d-41b7-79a5-e701c7efce64",
+      "quota_limit": null,
+      "hard_limit_enabled": false,
+      "retention_lock": "unlocked",
+      "eradication_config": {
+        "manual_eradication": "enabled",
+        "eradication_delay": 86400000
+      },
+      "object_lock_config": {
+        "enabled": false,
+        "freeze_locked_objects": false,
+        "default_retention": null,
+        "default_retention_mode": null
+      }
+    },
+    {
+      "name": "s3select-demo",
+      "created": 1660643695000,
+      "account": {
+        "name": "ron",
+        "id": "bffd9ec2-417e-7cc8-8ef4-b9ea06e22ad0",
+        "resource_type": "object-store-accounts"
+      },
+      "destroyed": false,
+      "time_remaining": null,
+      "space": {
+        "virtual": 1024,
+        "unique": 486,
+        "snapshots": 0,
+        "data_reduction": 2.1,
+        "total_physical": 486,
+        "total_provisioned": null
+      },
+      "object_count": 1,
+      "versioning": "none",
+      "bucket_type": "classic",
+      "id": "2e7ab155-5869-248c-6471-f2396c8e0076",
+      "quota_limit": null,
+      "hard_limit_enabled": false,
+      "retention_lock": "unlocked",
+      "eradication_config": {
+        "manual_eradication": "enabled",
+        "eradication_delay": 86400000
+      },
+      "object_lock_config": {
+        "enabled": false,
+        "freeze_locked_objects": false,
+        "default_retention": null,
+        "default_retention_mode": null
+      }
+    },
+    {
+      "name": "s3versions",
+      "created": 1680095080000,
+      "account": {
+        "name": "jbt",
+        "id": "665a6ba4-749b-f1c7-159c-3e1bb1afdc92",
+        "resource_type": "object-store-accounts"
+      },
+      "destroyed": false,
+      "time_remaining": null,
+      "space": {
+        "virtual": 63243264,
+        "unique": 678213,
+        "snapshots": 0,
+        "data_reduction": 93.2,
+        "total_physical": 678213,
+        "total_provisioned": null
+      },
+      "object_count": 1010,
+      "versioning": "enabled",
+      "bucket_type": "classic",
+      "id": "31f4a153-dd9c-1c14-c653-b330aeb9569b",
+      "quota_limit": null,
+      "hard_limit_enabled": false,
+      "retention_lock": "unlocked",
+      "eradication_config": {
+        "manual_eradication": "enabled",
+        "eradication_delay": 86400000
+      },
+      "object_lock_config": {
+        "enabled": false,
+        "freeze_locked_objects": false,
+        "default_retention": null,
+        "default_retention_mode": null
+      }
+    },
+    {
+      "name": "sec-1",
+      "created": 1630396901000,
+      "account": {
+        "name": "mmeppen2",
+        "id": "5f18583b-9518-0794-c0b1-ae3264b94a55",
+        "resource_type": "object-store-accounts"
+      },
+      "destroyed": false,
+      "time_remaining": null,
+      "space": {
+        "virtual": 9413,
+        "unique": 3117,
+        "snapshots": 0,
+        "data_reduction": 3,
+        "total_physical": 3117,
+        "total_provisioned": null
+      },
+      "object_count": 6,
+      "versioning": "enabled",
+      "bucket_type": "classic",
+      "id": "ee5c6dd6-b164-16f2-c7a6-4447abbdf695",
+      "quota_limit": null,
+      "hard_limit_enabled": false,
+      "retention_lock": "unlocked",
+      "eradication_config": {
+        "manual_eradication": "enabled",
+        "eradication_delay": 86400000
+      },
+      "object_lock_config": {
+        "enabled": false,
+        "freeze_locked_objects": false,
+        "default_retention": null,
+        "default_retention_mode": null
+      }
+    },
+    {
+      "name": "sec-2",
+      "created": 1630401231000,
+      "account": {
+        "name": "mmeppen2",
+        "id": "5f18583b-9518-0794-c0b1-ae3264b94a55",
+        "resource_type": "object-store-accounts"
+      },
+      "destroyed": false,
+      "time_remaining": null,
+      "space": {
+        "virtual": 3584,
+        "unique": 1408,
+        "snapshots": 0,
+        "data_reduction": 2.5,
+        "total_physical": 1408,
+        "total_provisioned": null
+      },
+      "object_count": 3,
+      "versioning": "enabled",
+      "bucket_type": "classic",
+      "id": "17047d87-a9ec-9939-bfc0-b9baee68aa17",
+      "quota_limit": null,
+      "hard_limit_enabled": false,
+      "retention_lock": "unlocked",
+      "eradication_config": {
+        "manual_eradication": "enabled",
+        "eradication_delay": 86400000
+      },
+      "object_lock_config": {
+        "enabled": false,
+        "freeze_locked_objects": false,
+        "default_retention": null,
+        "default_retention_mode": null
+      }
+    },
+    {
+      "name": "sedemo",
+      "created": 1585654099000,
+      "account": {
+        "name": "sedemo",
+        "id": "fe12f3c5-2f9a-b3c5-afcc-a7da47db02f3",
+        "resource_type": "object-store-accounts"
+      },
+      "destroyed": false,
+      "time_remaining": null,
+      "space": {
+        "virtual": 73011712,
+        "unique": 47604929,
+        "snapshots": 0,
+        "data_reduction": 1.5,
+        "total_physical": 47604929,
+        "total_provisioned": null
+      },
+      "object_count": 1,
+      "versioning": "enabled",
+      "bucket_type": "classic",
+      "id": "f1ff0fab-c759-5ac9-6f16-88f1ccba4ee9",
+      "quota_limit": null,
+      "hard_limit_enabled": false,
+      "retention_lock": "unlocked",
+      "eradication_config": {
+        "manual_eradication": "enabled",
+        "eradication_delay": 86400000
+      },
+      "object_lock_config": {
+        "enabled": false,
+        "freeze_locked_objects": false,
+        "default_retention": null,
+        "default_retention_mode": null
+      }
+    },
+    {
+      "name": "tbucker1",
+      "created": 1645551278000,
+      "account": {
+        "name": "taccount",
+        "id": "a5871533-41e3-edd2-12d5-a2640350bd6f",
+        "resource_type": "object-store-accounts"
+      },
+      "destroyed": false,
+      "time_remaining": null,
+      "space": {
+        "virtual": 56572295,
+        "unique": 55252388,
+        "snapshots": 0,
+        "data_reduction": 1,
+        "total_physical": 55252388,
+        "total_provisioned": null
+      },
+      "object_count": 8,
+      "versioning": "enabled",
+      "bucket_type": "classic",
+      "id": "9a30210b-4746-4fb6-8e66-f732029595ff",
+      "quota_limit": null,
+      "hard_limit_enabled": false,
+      "retention_lock": "unlocked",
+      "eradication_config": {
+        "manual_eradication": "enabled",
+        "eradication_delay": 86400000
+      },
+      "object_lock_config": {
+        "enabled": false,
+        "freeze_locked_objects": false,
+        "default_retention": null,
+        "default_retention_mode": null
+      }
+    },
+    {
+      "name": "tescobucket1",
+      "created": 1645631722000,
+      "account": {
+        "name": "tesco",
+        "id": "d1efd111-0597-c7f4-ca14-f44de3e67234",
+        "resource_type": "object-store-accounts"
+      },
+      "destroyed": false,
+      "time_remaining": null,
+      "space": {
+        "virtual": 0,
+        "unique": 0,
+        "snapshots": 0,
+        "data_reduction": null,
+        "total_physical": 0,
+        "total_provisioned": null
+      },
+      "object_count": 0,
+      "versioning": "enabled",
+      "bucket_type": "classic",
+      "id": "24f7adcc-372f-19fa-2823-18802cf8430e",
+      "quota_limit": null,
+      "hard_limit_enabled": false,
+      "retention_lock": "unlocked",
+      "eradication_config": {
+        "manual_eradication": "enabled",
+        "eradication_delay": 86400000
+      },
+      "object_lock_config": {
+        "enabled": false,
+        "freeze_locked_objects": false,
+        "default_retention": null,
+        "default_retention_mode": null
+      }
+    },
+    {
+      "name": "test",
+      "created": 1681480580000,
+      "account": {
+        "name": "0bc7c9a9-c448-4630-ac12-837d6c77ffbd",
+        "id": "17c77948-98b7-4852-1c0e-804ddbd0678d",
+        "resource_type": "object-store-accounts"
+      },
+      "destroyed": false,
+      "time_remaining": null,
+      "space": {
+        "virtual": 123904,
+        "unique": 110632,
+        "snapshots": 0,
+        "data_reduction": 1.1,
+        "total_physical": 110632,
+        "total_provisioned": null
+      },
+      "object_count": 1,
+      "versioning": "none",
+      "bucket_type": "classic",
+      "id": "11a6c83d-033b-a2d3-ebc7-7e654e70bc5a",
+      "quota_limit": null,
+      "hard_limit_enabled": false,
+      "retention_lock": "unlocked",
+      "eradication_config": {
+        "manual_eradication": "enabled",
+        "eradication_delay": 86400000
+      },
+      "object_lock_config": {
+        "enabled": false,
+        "freeze_locked_objects": false,
+        "default_retention": null,
+        "default_retention_mode": null
+      }
+    },
+    {
+      "name": "test-for-minio",
+      "created": 1662413674000,
+      "account": {
+        "name": "jbt",
+        "id": "665a6ba4-749b-f1c7-159c-3e1bb1afdc92",
+        "resource_type": "object-store-accounts"
+      },
+      "destroyed": false,
+      "time_remaining": null,
+      "space": {
+        "virtual": 2560,
+        "unique": 274,
+        "snapshots": 0,
+        "data_reduction": 9.3,
+        "total_physical": 274,
+        "total_provisioned": null
+      },
+      "object_count": 4,
+      "versioning": "enabled",
+      "bucket_type": "classic",
+      "id": "2f357013-4c1a-5e0a-5fcd-84ad1b5443bb",
+      "quota_limit": null,
+      "hard_limit_enabled": false,
+      "retention_lock": "unlocked",
+      "eradication_config": {
+        "manual_eradication": "enabled",
+        "eradication_delay": 86400000
+      },
+      "object_lock_config": {
+        "enabled": false,
+        "freeze_locked_objects": false,
+        "default_retention": null,
+        "default_retention_mode": null
+      }
+    },
+    {
+      "name": "test3",
+      "created": 1618992937000,
+      "account": {
+        "name": "matze",
+        "id": "75b8c954-02cf-a18b-ffc2-e01d16a76257",
+        "resource_type": "object-store-accounts"
+      },
+      "destroyed": false,
+      "time_remaining": null,
+      "space": {
+        "virtual": 0,
+        "unique": 0,
+        "snapshots": 0,
+        "data_reduction": null,
+        "total_physical": 0,
+        "total_provisioned": null
+      },
+      "object_count": 0,
+      "versioning": "none",
+      "bucket_type": "classic",
+      "id": "c8d8e287-a4c7-dd32-62a8-67df3c7e819b",
+      "quota_limit": null,
+      "hard_limit_enabled": false,
+      "retention_lock": "unlocked",
+      "eradication_config": {
+        "manual_eradication": "enabled",
+        "eradication_delay": 86400000
+      },
+      "object_lock_config": {
+        "enabled": false,
+        "freeze_locked_objects": false,
+        "default_retention": null,
+        "default_retention_mode": null
+      }
+    },
+    {
+      "name": "testcatalog",
+      "created": 1664444535000,
+      "account": {
+        "name": "2316bb83-50dc-4cc4-adad-a15c5e89207c",
+        "id": "9ce06a4a-9f55-4f1d-312c-463733ac0c09",
+        "resource_type": "object-store-accounts"
+      },
+      "destroyed": false,
+      "time_remaining": null,
+      "space": {
+        "virtual": 0,
+        "unique": 0,
+        "snapshots": 0,
+        "data_reduction": null,
+        "total_physical": 0,
+        "total_provisioned": null
+      },
+      "object_count": 0,
+      "versioning": "none",
+      "bucket_type": "classic",
+      "id": "9d3c4ce4-f1d0-bb50-6634-a29eaee171be",
+      "quota_limit": null,
+      "hard_limit_enabled": false,
+      "retention_lock": "unlocked",
+      "eradication_config": {
+        "manual_eradication": "enabled",
+        "eradication_delay": 86400000
+      },
+      "object_lock_config": {
+        "enabled": false,
+        "freeze_locked_objects": false,
+        "default_retention": null,
+        "default_retention_mode": null
+      }
+    },
+    {
+      "name": "testorgadmin",
+      "created": 1664444333000,
+      "account": {
+        "name": "2316bb83-50dc-4cc4-adad-a15c5e89207c",
+        "id": "9ce06a4a-9f55-4f1d-312c-463733ac0c09",
+        "resource_type": "object-store-accounts"
+      },
+      "destroyed": false,
+      "time_remaining": null,
+      "space": {
+        "virtual": 96768,
+        "unique": 79216,
+        "snapshots": 0,
+        "data_reduction": 1.2,
+        "total_physical": 79216,
+        "total_provisioned": null
+      },
+      "object_count": 1,
+      "versioning": "none",
+      "bucket_type": "classic",
+      "id": "a4872867-ebd4-bd0b-56d1-3d3bb5d08eb3",
+      "quota_limit": null,
+      "hard_limit_enabled": false,
+      "retention_lock": "unlocked",
+      "eradication_config": {
+        "manual_eradication": "enabled",
+        "eradication_delay": 86400000
+      },
+      "object_lock_config": {
+        "enabled": false,
+        "freeze_locked_objects": false,
+        "default_retention": null,
+        "default_retention_mode": null
+      }
+    },
+    {
+      "name": "testorguser",
+      "created": 1664444187000,
+      "account": {
+        "name": "2316bb83-50dc-4cc4-adad-a15c5e89207c",
+        "id": "9ce06a4a-9f55-4f1d-312c-463733ac0c09",
+        "resource_type": "object-store-accounts"
+      },
+      "destroyed": false,
+      "time_remaining": null,
+      "space": {
+        "virtual": 39025,
+        "unique": 39025,
+        "snapshots": 0,
+        "data_reduction": 1,
+        "total_physical": 39025,
+        "total_provisioned": null
+      },
+      "object_count": 4,
+      "versioning": "none",
+      "bucket_type": "classic",
+      "id": "79c717da-0439-0a86-201e-00441f69045a",
+      "quota_limit": null,
+      "hard_limit_enabled": false,
+      "retention_lock": "unlocked",
+      "eradication_config": {
+        "manual_eradication": "enabled",
+        "eradication_delay": 86400000
+      },
+      "object_lock_config": {
+        "enabled": false,
+        "freeze_locked_objects": false,
+        "default_retention": null,
+        "default_retention_mode": null
+      }
+    },
+    {
+      "name": "tirastel",
+      "created": 1595436671000,
+      "account": {
+        "name": "matze",
+        "id": "75b8c954-02cf-a18b-ffc2-e01d16a76257",
+        "resource_type": "object-store-accounts"
+      },
+      "destroyed": false,
+      "time_remaining": null,
+      "space": {
+        "virtual": 10266244608,
+        "unique": 9518426414,
+        "snapshots": 0,
+        "data_reduction": 1.1,
+        "total_physical": 9518426414,
+        "total_provisioned": null
+      },
+      "object_count": 156,
+      "versioning": "none",
+      "bucket_type": "classic",
+      "id": "64787e1f-178b-d513-8cc1-b7ef8b7f104f",
+      "quota_limit": null,
+      "hard_limit_enabled": false,
+      "retention_lock": "unlocked",
+      "eradication_config": {
+        "manual_eradication": "enabled",
+        "eradication_delay": 86400000
+      },
+      "object_lock_config": {
+        "enabled": false,
+        "freeze_locked_objects": false,
+        "default_retention": null,
+        "default_retention_mode": null
+      }
+    },
+    {
+      "name": "twitter",
+      "created": 1650670698000,
+      "account": {
+        "name": "egrosso",
+        "id": "bb4973c3-dee8-0554-f4b3-46f1df424283",
+        "resource_type": "object-store-accounts"
+      },
+      "destroyed": false,
+      "time_remaining": null,
+      "space": {
+        "virtual": 207872,
+        "unique": 126407,
+        "snapshots": 0,
+        "data_reduction": 1.6,
+        "total_physical": 126407,
+        "total_provisioned": null
+      },
+      "object_count": 10,
+      "versioning": "none",
+      "bucket_type": "classic",
+      "id": "e1898706-c815-a62a-63a8-07616693ce7c",
+      "quota_limit": null,
+      "hard_limit_enabled": false,
+      "retention_lock": "unlocked",
+      "eradication_config": {
+        "manual_eradication": "enabled",
+        "eradication_delay": 86400000
+      },
+      "object_lock_config": {
+        "enabled": false,
+        "freeze_locked_objects": false,
+        "default_retention": null,
+        "default_retention_mode": null
+      }
+    },
+    {
+      "name": "vcd-vapp-40f10fa6ff4cf41f3d57f647cad5bc7e",
+      "created": 1664383830000,
+      "account": {
+        "name": "8db18e81-10aa-43fe-9260-cc960ee01280",
+        "id": "bcbb7278-7dee-1764-284d-6664f3605b6f",
+        "resource_type": "object-store-accounts"
+      },
+      "destroyed": false,
+      "time_remaining": null,
+      "space": {
+        "virtual": 1523743232,
+        "unique": 1510358179,
+        "snapshots": 0,
+        "data_reduction": 1,
+        "total_physical": 1510358179,
+        "total_provisioned": null
+      },
+      "object_count": 1,
+      "versioning": "none",
+      "bucket_type": "classic",
+      "id": "b2dce25f-dbcc-b6b6-86f2-ad6af1087729",
+      "quota_limit": null,
+      "hard_limit_enabled": false,
+      "retention_lock": "unlocked",
+      "eradication_config": {
+        "manual_eradication": "enabled",
+        "eradication_delay": 86400000
+      },
+      "object_lock_config": {
+        "enabled": false,
+        "freeze_locked_objects": false,
+        "default_retention": null,
+        "default_retention_mode": null
+      }
+    },
+    {
+      "name": "veeam-fb",
+      "created": 1667904489000,
+      "account": {
+        "name": "veeam-fb",
+        "id": "39f986f6-a361-952b-d4d2-c0037034e745",
+        "resource_type": "object-store-accounts"
+      },
+      "destroyed": false,
+      "time_remaining": null,
+      "space": {
+        "virtual": 0,
+        "unique": 0,
+        "snapshots": 0,
+        "data_reduction": null,
+        "total_physical": 0,
+        "total_provisioned": null
+      },
+      "object_count": 3,
+      "versioning": "enabled",
+      "bucket_type": "classic",
+      "id": "8ec6a60b-92ce-8e84-21e2-16a238f47f46",
+      "quota_limit": null,
+      "hard_limit_enabled": false,
+      "retention_lock": "unlocked",
+      "eradication_config": {
+        "manual_eradication": "enabled",
+        "eradication_delay": 86400000
+      },
+      "object_lock_config": {
+        "enabled": false,
+        "freeze_locked_objects": false,
+        "default_retention": null,
+        "default_retention_mode": null
+      }
+    },
+    {
+      "name": "veeam-fb-no-ver",
+      "created": 1667904526000,
+      "account": {
+        "name": "veeam-fb",
+        "id": "39f986f6-a361-952b-d4d2-c0037034e745",
+        "resource_type": "object-store-accounts"
+      },
+      "destroyed": false,
+      "time_remaining": null,
+      "space": {
+        "virtual": 80071464960,
+        "unique": 79803051188,
+        "snapshots": 0,
+        "data_reduction": 1,
+        "total_physical": 79803051188,
+        "total_provisioned": null
+      },
+      "object_count": 139977,
+      "versioning": "none",
+      "bucket_type": "classic",
+      "id": "43a5397b-6135-a686-b7bb-4635043100df",
+      "quota_limit": null,
+      "hard_limit_enabled": false,
+      "retention_lock": "unlocked",
+      "eradication_config": {
+        "manual_eradication": "enabled",
+        "eradication_delay": 86400000
+      },
+      "object_lock_config": {
+        "enabled": false,
+        "freeze_locked_objects": false,
+        "default_retention": null,
+        "default_retention_mode": null
+      }
+    },
+    {
+      "name": "veeam-vmo2",
+      "created": 1647239525000,
+      "account": {
+        "name": "veeam-s3-test",
+        "id": "2d924cad-a6ae-cea0-43e5-dc1e3911d2e5",
+        "resource_type": "object-store-accounts"
+      },
+      "destroyed": false,
+      "time_remaining": null,
+      "space": {
+        "virtual": 0,
+        "unique": 0,
+        "snapshots": 0,
+        "data_reduction": null,
+        "total_physical": 0,
+        "total_provisioned": null
+      },
+      "object_count": 3,
+      "versioning": "none",
+      "bucket_type": "classic",
+      "id": "fd131293-1dcc-85ff-7f0e-c750dedf639b",
+      "quota_limit": null,
+      "hard_limit_enabled": false,
+      "retention_lock": "unlocked",
+      "eradication_config": {
+        "manual_eradication": "enabled",
+        "eradication_delay": 86400000
+      },
+      "object_lock_config": {
+        "enabled": false,
+        "freeze_locked_objects": false,
+        "default_retention": null,
+        "default_retention_mode": null
+      }
+    },
+    {
+      "name": "veeamv11",
+      "created": 1668431699000,
+      "account": {
+        "name": "veeamv11",
+        "id": "e566eb41-f920-37a3-59b9-dd3d3daf8605",
+        "resource_type": "object-store-accounts"
+      },
+      "destroyed": false,
+      "time_remaining": null,
+      "space": {
+        "virtual": 0,
+        "unique": 0,
+        "snapshots": 0,
+        "data_reduction": null,
+        "total_physical": 0,
+        "total_provisioned": null
+      },
+      "object_count": 3,
+      "versioning": "none",
+      "bucket_type": "classic",
+      "id": "8b0fc901-827a-4c8d-9d6b-89295367d8bc",
+      "quota_limit": null,
+      "hard_limit_enabled": false,
+      "retention_lock": "unlocked",
+      "eradication_config": {
+        "manual_eradication": "enabled",
+        "eradication_delay": 86400000
+      },
+      "object_lock_config": {
+        "enabled": false,
+        "freeze_locked_objects": false,
+        "default_retention": null,
+        "default_retention_mode": null
+      }
+    },
+    {
+      "name": "vertica-eon",
+      "created": 1662632540000,
+      "account": {
+        "name": "repl-dbadmin",
+        "id": "a0e74251-9df8-293e-d6d2-d8fc721512c5",
+        "resource_type": "object-store-accounts"
+      },
+      "destroyed": false,
+      "time_remaining": null,
+      "space": {
+        "virtual": 4167168,
+        "unique": 4080583,
+        "snapshots": 0,
+        "data_reduction": 1,
+        "total_physical": 4080583,
+        "total_provisioned": null
+      },
+      "object_count": 18,
+      "versioning": "enabled",
+      "bucket_type": "classic",
+      "id": "1c3fb65f-a9e4-9d66-7a1e-83ed03d8c209",
+      "quota_limit": null,
+      "hard_limit_enabled": false,
+      "retention_lock": "unlocked",
+      "eradication_config": {
+        "manual_eradication": "enabled",
+        "eradication_delay": 86400000
+      },
+      "object_lock_config": {
+        "enabled": false,
+        "freeze_locked_objects": false,
+        "default_retention": null,
+        "default_retention_mode": null
+      }
+    },
+    {
+      "name": "vesbucket1",
+      "created": 1645606027000,
+      "account": {
+        "name": "ves",
+        "id": "bd71a2e5-c260-cfc1-f5fc-8c3caa9be5f7",
+        "resource_type": "object-store-accounts"
+      },
+      "destroyed": false,
+      "time_remaining": null,
+      "space": {
+        "virtual": 6656,
+        "unique": 1644,
+        "snapshots": 0,
+        "data_reduction": 4,
+        "total_physical": 1644,
+        "total_provisioned": null
+      },
+      "object_count": 4,
+      "versioning": "enabled",
+      "bucket_type": "classic",
+      "id": "84e4bb5e-e792-72e7-9259-b2b83bcc7f2a",
+      "quota_limit": null,
+      "hard_limit_enabled": false,
+      "retention_lock": "unlocked",
+      "eradication_config": {
+        "manual_eradication": "enabled",
+        "eradication_delay": 86400000
+      },
+      "object_lock_config": {
+        "enabled": false,
+        "freeze_locked_objects": false,
+        "default_retention": null,
+        "default_retention_mode": null
+      }
+    },
+    {
+      "name": "z-da-backup",
+      "created": 1605084640000,
+      "account": {
+        "name": "z-da",
+        "id": "64e11762-c6ea-362c-3dae-6fbc27dfdda2",
+        "resource_type": "object-store-accounts"
+      },
+      "destroyed": false,
+      "time_remaining": null,
+      "space": {
+        "virtual": 0,
+        "unique": 0,
+        "snapshots": 0,
+        "data_reduction": null,
+        "total_physical": 0,
+        "total_provisioned": null
+      },
+      "object_count": 0,
+      "versioning": "none",
+      "bucket_type": "classic",
+      "id": "7b423564-6622-a470-89c6-c3b8940cb359",
+      "quota_limit": null,
+      "hard_limit_enabled": false,
+      "retention_lock": "unlocked",
+      "eradication_config": {
+        "manual_eradication": "enabled",
+        "eradication_delay": 86400000
+      },
+      "object_lock_config": {
+        "enabled": false,
+        "freeze_locked_objects": false,
+        "default_retention": null,
+        "default_retention_mode": null
+      }
+    },
+    {
+      "name": "z-da-datasets",
+      "created": 1605084648000,
+      "account": {
+        "name": "z-da",
+        "id": "64e11762-c6ea-362c-3dae-6fbc27dfdda2",
+        "resource_type": "object-store-accounts"
+      },
+      "destroyed": false,
+      "time_remaining": null,
+      "space": {
+        "virtual": 0,
+        "unique": 0,
+        "snapshots": 0,
+        "data_reduction": null,
+        "total_physical": 0,
+        "total_provisioned": null
+      },
+      "object_count": 0,
+      "versioning": "none",
+      "bucket_type": "classic",
+      "id": "6a483e2c-b959-0931-b883-a447f0d5b2c8",
+      "quota_limit": null,
+      "hard_limit_enabled": false,
+      "retention_lock": "unlocked",
+      "eradication_config": {
+        "manual_eradication": "enabled",
+        "eradication_delay": 86400000
+      },
+      "object_lock_config": {
+        "enabled": false,
+        "freeze_locked_objects": false,
+        "default_retention": null,
+        "default_retention_mode": null
+      }
+    },
+    {
+      "name": "z-da-other",
+      "created": 1605084655000,
+      "account": {
+        "name": "z-da",
+        "id": "64e11762-c6ea-362c-3dae-6fbc27dfdda2",
+        "resource_type": "object-store-accounts"
+      },
+      "destroyed": false,
+      "time_remaining": null,
+      "space": {
+        "virtual": 0,
+        "unique": 0,
+        "snapshots": 0,
+        "data_reduction": null,
+        "total_physical": 0,
+        "total_provisioned": null
+      },
+      "object_count": 0,
+      "versioning": "none",
+      "bucket_type": "classic",
+      "id": "e70752d6-d92a-904e-4d2a-a50f637e8b0b",
+      "quota_limit": null,
+      "hard_limit_enabled": false,
+      "retention_lock": "unlocked",
+      "eradication_config": {
+        "manual_eradication": "enabled",
+        "eradication_delay": 86400000
+      },
+      "object_lock_config": {
+        "enabled": false,
+        "freeze_locked_objects": false,
+        "default_retention": null,
+        "default_retention_mode": null
+      }
+    },
+    {
+      "name": "z-da-pxbckup-site1",
+      "created": 1605881110000,
+      "account": {
+        "name": "z-da",
+        "id": "64e11762-c6ea-362c-3dae-6fbc27dfdda2",
+        "resource_type": "object-store-accounts"
+      },
+      "destroyed": false,
+      "time_remaining": null,
+      "space": {
+        "virtual": 1228288000,
+        "unique": 1088006642,
+        "snapshots": 0,
+        "data_reduction": 1.1,
+        "total_physical": 1088006642,
+        "total_provisioned": null
+      },
+      "object_count": 603,
+      "versioning": "enabled",
+      "bucket_type": "classic",
+      "id": "c8ba4da4-a4ee-f012-3977-02f929fcb5bf",
+      "quota_limit": null,
+      "hard_limit_enabled": false,
+      "retention_lock": "unlocked",
+      "eradication_config": {
+        "manual_eradication": "enabled",
+        "eradication_delay": 86400000
+      },
+      "object_lock_config": {
+        "enabled": false,
+        "freeze_locked_objects": false,
+        "default_retention": null,
+        "default_retention_mode": null
+      }
+    },
+    {
+      "name": "z-da-pxbckup-site1rep",
+      "created": 1605858416000,
+      "account": {
+        "name": "z-da",
+        "id": "64e11762-c6ea-362c-3dae-6fbc27dfdda2",
+        "resource_type": "object-store-accounts"
+      },
+      "destroyed": false,
+      "time_remaining": null,
+      "space": {
+        "virtual": 210082410789,
+        "unique": 210082410789,
+        "snapshots": 0,
+        "data_reduction": 1,
+        "total_physical": 210082410789,
+        "total_provisioned": null
+      },
+      "object_count": 21636,
+      "versioning": "enabled",
+      "bucket_type": "classic",
+      "id": "fdbe1e58-e89a-9ada-2952-567eef2d7818",
+      "quota_limit": null,
+      "hard_limit_enabled": false,
+      "retention_lock": "unlocked",
+      "eradication_config": {
+        "manual_eradication": "enabled",
+        "eradication_delay": 86400000
+      },
+      "object_lock_config": {
+        "enabled": false,
+        "freeze_locked_objects": false,
+        "default_retention": null,
+        "default_retention_mode": null
+      }
+    },
+    {
+      "name": "z-da-pxbckup-site2",
+      "created": 1605858408000,
+      "account": {
+        "name": "z-da",
+        "id": "64e11762-c6ea-362c-3dae-6fbc27dfdda2",
+        "resource_type": "object-store-accounts"
+      },
+      "destroyed": false,
+      "time_remaining": null,
+      "space": {
+        "virtual": 253844480,
+        "unique": 242209700,
+        "snapshots": 0,
+        "data_reduction": 1,
+        "total_physical": 242209700,
+        "total_provisioned": null
+      },
+      "object_count": 85,
+      "versioning": "none",
+      "bucket_type": "classic",
+      "id": "6da23cb8-5096-ddb4-edc8-9ded233a5219",
+      "quota_limit": null,
+      "hard_limit_enabled": false,
+      "retention_lock": "unlocked",
+      "eradication_config": {
+        "manual_eradication": "enabled",
+        "eradication_delay": 86400000
+      },
+      "object_lock_config": {
+        "enabled": false,
+        "freeze_locked_objects": false,
+        "default_retention": null,
+        "default_retention_mode": null
+      }
+    }
+  ]
+}

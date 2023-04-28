@@ -172,6 +172,12 @@ func index(w http.ResponseWriter, r *http.Request) {
             <td>endpoint</td>
             <td>Provides only quota related metrics.</td>
         </tr>
+	<tr>
+            <td>NFS export policies metrics</td>
+            <td><a href="/metrics/policies?endpoint=host">/metrics/policies</a></td>
+            <td>endpoint</td>
+            <td>Provides only NFS policies related metrics.</td>
+        </tr>
     </tbody>
 </table>
 </body>

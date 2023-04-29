@@ -71,8 +71,8 @@ Authentication is used by the exporter as the mechanism to cross authenticate to
 - using the HTTP Authorization header of type 'Bearer', or
 - via a configuration map in a specific configuration file.
 
-The first option requires to specify the api-token value as the authorization parameter of the specific job in the Prometheus configuration file.
-The second option provides the FlashBlade/api-token key-pair map for a list of arrays in a simple YAML configuration file that is passed as paramether to the exporter. This makes possible to write more concise Prometheus configuration files and also to configure other scrapers that cannot use the HTTP authentication header.
+The first option requires specifying the api-token value as the authorization parameter of the specific job in the Prometheus configuration file.
+The second option provides the FlashBlade/api-token key-pair map for a list of arrays in a simple YAML configuration file that is passed as parameter to the exporter. This makes possible to write more concise Prometheus configuration files and also to configure other scrapers that cannot use the HTTP authentication header.
 
 ### Usage
 
@@ -123,7 +123,7 @@ The exporter understands the following requests:
 | http://\<exporter-host\>:\<port\>/metrics/array    | endpoint       | Array metrics             |
 | http://\<exporter-host\>:\<port\>/metrics/clients  | endpoint       | Clients metrics           |
 | http://\<exporter-host\>:\<port\>/metrics/usage    | endpoint       | Quotas usage metrics      |
-| http://\<exporter-host\>:\<port\>/metrics/polucies | endpoint       | NFS policies info metrics |
+| http://\<exporter-host\>:\<port\>/metrics/policies | endpoint       | NFS policies info metrics |
 
 
 Depending on the target array, scraping for the whole set of metrics could result into timeout issues, in which case it is suggested either to increase the scraping timeout or to scrape each single endpoint instead.

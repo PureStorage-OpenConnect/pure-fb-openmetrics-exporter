@@ -20,15 +20,16 @@ type ArraysList struct {
 }
 
 func (fb *FBClient) GetArrays() *ArraysList {
+	uri := "/arrays"
 	result := new(ArraysList)
 	res, _ := fb.RestClient.R().
 		SetResult(&result).
-		Get("/arrays")
+		Get(uri)
         if res.StatusCode() == 401 {
                 fb.RefreshSession()
 		fb.RestClient.R().
 			SetResult(&result).
-			Get("/arrays")
+			Get(uri)
         }
 	return result
 }

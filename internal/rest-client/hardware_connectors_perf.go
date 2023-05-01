@@ -31,15 +31,16 @@ type HwConnectorsPerformanceList struct {
 }
 
 func (fb *FBClient) GetHwConnectorsPerformance() *HwConnectorsPerformanceList {
+	uri := "/hardware-connectors/performance"
 	result := new(HwConnectorsPerformanceList)
 	res, _ := fb.RestClient.R().
 		SetResult(&result).
-		Get("/hardware-connectors/performance")
+		Get(uri)
 	if res.StatusCode() == 401 {
                 fb.RefreshSession()
 		fb.RestClient.R().
 			SetResult(&result).
-			Get("/hardware-connectors/performance")
+			Get(uri)
         }
 	return result
 }

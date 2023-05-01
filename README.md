@@ -64,6 +64,47 @@ The provided dockerfile can be used to generate a docker image of the exporter. 
 
 docker build -t pure-fb-ome:$VERSION .
 ```
+### Authentication
+
+Authentication is used by the exporter as the mechanism to cross authenticate to the scraped appliance, therefore for each array it is required to provide the REST API token for an account that has a 'readonly' role. The api-token can be provided in two ways
+
+- using the HTTP Authorization header of type 'Bearer', or
+- via a configuration map in a specific configuration file.
+
+The first option requires specifying the api-token value as the authorization parameter of the specific job in the Prometheus configuration file.
+The second option provides the FlashBlade/api-token key-pair map for a list of arrays in a simple YAML configuration file that is passed as parameter to the exporter. This makes possible to write more concise Prometheus configuration files and also to configure other scrapers that cannot use the HTTP authentication header.
+
+### Usage
+
+```shell
+
+usage: pure-fb-om-exporter [-h|--help] [-a|--address "<value>"] [-p|--port <integer>] [-d|--debug] [-t|--tokens <file>]
+
+                           Pure Storage FB OpenMetrics exporter
+
+Arguments:
+
+  -h  --help     Print help information
+  -a  --address  IP address for this exporter to bind to. Default: 0.0.0.0
+  -p  --port     Port for this exporter to listen. Default: 9490
+  -d  --debug    Enable debug. Default: false
+  -t  --tokens   API token(s) map file
+```
+
+The array token configuration file must have to following syntax:
+
+```shell
+<array_id1>:
+  address: <ip-address>|<hosname1>
+  api_token: <api-token1> 
+<array_id2>:
+  address: <ip-address2>|<hostname2>
+  api_token: <api-token2>
+...
+<array_idN>:
+  address: <ip-addressN>|<hostnameN>
+  api_token: <api-tokenN>
+```  
 
 ### Scraping endpoints
 
@@ -76,12 +117,13 @@ Authentication is used by the exporter as the mechanism to cross authenticate to
 The exporter understands the following requests:
 
 
-| URL                                               | GET parameters | description          |
-| ------------------------------------------------- | -------------- | -------------------- |
-| http://\<exporter-host\>:\<port\>/metrics         | endpoint       | Full array metrics   |
-| http://\<exporter-host\>:\<port\>/metrics/array   | endpoint       | Array metrics        |
-| http://\<exporter-host\>:\<port\>/metrics/clients | endpoint       | Clients metrics      |
-| http://\<exporter-host\>:\<port\>/metrics/usage   | endpoint       | Quotas usage metrics |
+| URL                                                | GET parameters | description               |
+| ---------------------------------------------------| -------------- | --------------------------|
+| http://\<exporter-host\>:\<port\>/metrics          | endpoint       | Full array metrics        |
+| http://\<exporter-host\>:\<port\>/metrics/array    | endpoint       | Array metrics             |
+| http://\<exporter-host\>:\<port\>/metrics/clients  | endpoint       | Clients metrics           |
+| http://\<exporter-host\>:\<port\>/metrics/usage    | endpoint       | Quotas usage metrics      |
+| http://\<exporter-host\>:\<port\>/metrics/policies | endpoint       | NFS policies info metrics |
 
 
 Depending on the target array, scraping for the whole set of metrics could result into timeout issues, in which case it is suggested either to increase the scraping timeout or to scrape each single endpoint instead.
@@ -155,6 +197,7 @@ A simple but complete example to deploy a full monitoring stack on kubernetes ca
 | purefb_shardware_connectors_performance_errors         | FlashBlade hardware connectors performance errors per sec |
 | purefb_file_system_usage_users_bytes                   | FlashBlade file system users usage                        |
 | purefb_file_system_usage_groups_bytes                  | FlashBlade file system groups usage                       |
+| purefb_nfs_export_rule                                 | FlashBlade NFS export policies information                |
 
 ## Monitoring On-Premise with Prometheus and Grafana
 Take a holistic overview of your Pure Storage FlashBlade estate on-premise with Prometheus and Grafana to summarize statistics such as:

@@ -1,0 +1,222 @@
+{
+  "total": {
+    "name": null,
+    "created": null,
+    "account": {
+      "name": null,
+      "id": null,
+      "resource_type": null
+    },
+    "destroyed": null,
+    "time_remaining": null,
+    "space": {
+      "virtual": 10822945970583,
+      "unique": 6989539778298,
+      "snapshots": 0,
+      "data_reduction": 1.5,
+      "total_physical": 6989539778298,
+      "total_provisioned": 1099511627776
+    },
+    "object_count": 138869475,
+    "versioning": null,
+    "bucket_type": null,
+    "id": null,
+    "quota_limit": null,
+    "hard_limit_enabled": null,
+    "retention_lock": null,
+    "eradication_config": {
+      "manual_eradication": null,
+      "eradication_delay": null
+    },
+    "object_lock_config": {
+      "enabled": null,
+      "freeze_locked_objects": null,
+      "default_retention": null,
+      "default_retention_mode": null
+    }
+  },
+  "continuation_token": null,
+  "total_item_count": 5,
+  "items": [
+    {
+      "name": "z-da-backup",
+      "created": 1605084640000,
+      "account": {
+        "name": "z-da",
+        "id": "64e11762-c6ea-362c-3dae-6fbc27dfdda2",
+        "resource_type": "object-store-accounts"
+      },
+      "destroyed": false,
+      "time_remaining": null,
+      "space": {
+        "virtual": 0,
+        "unique": 0,
+        "snapshots": 0,
+        "data_reduction": null,
+        "total_physical": 0,
+        "total_provisioned": null
+      },
+      "object_count": 0,
+      "versioning": "none",
+      "bucket_type": "classic",
+      "id": "7b423564-6622-a470-89c6-c3b8940cb359",
+      "quota_limit": null,
+      "hard_limit_enabled": false,
+      "retention_lock": "unlocked",
+      "eradication_config": {
+        "manual_eradication": "enabled",
+        "eradication_delay": 86400000
+      },
+      "object_lock_config": {
+        "enabled": false,
+        "freeze_locked_objects": false,
+        "default_retention": null,
+        "default_retention_mode": null
+      }
+    },
+    {
+      "name": "z-da-datasets",
+      "created": 1605084648000,
+      "account": {
+        "name": "z-da",
+        "id": "64e11762-c6ea-362c-3dae-6fbc27dfdda2",
+        "resource_type": "object-store-accounts"
+      },
+      "destroyed": false,
+      "time_remaining": null,
+      "space": {
+        "virtual": 0,
+        "unique": 0,
+        "snapshots": 0,
+        "data_reduction": null,
+        "total_physical": 0,
+        "total_provisioned": null
+      },
+      "object_count": 0,
+      "versioning": "none",
+      "bucket_type": "classic",
+      "id": "6a483e2c-b959-0931-b883-a447f0d5b2c8",
+      "quota_limit": null,
+      "hard_limit_enabled": false,
+      "retention_lock": "unlocked",
+      "eradication_config": {
+        "manual_eradication": "enabled",
+        "eradication_delay": 86400000
+      },
+      "object_lock_config": {
+        "enabled": false,
+        "freeze_locked_objects": false,
+        "default_retention": null,
+        "default_retention_mode": null
+      }
+    },
+    {
+      "name": "z-da-other",
+      "created": 1605084655000,
+      "account": {
+        "name": "z-da",
+        "id": "64e11762-c6ea-362c-3dae-6fbc27dfdda2",
+        "resource_type": "object-store-accounts"
+      },
+      "destroyed": false,
+      "time_remaining": null,
+      "space": {
+        "virtual": 0,
+        "unique": 0,
+        "snapshots": 0,
+        "data_reduction": null,
+        "total_physical": 0,
+        "total_provisioned": null
+      },
+      "object_count": 0,
+      "versioning": "none",
+      "bucket_type": "classic",
+      "id": "e70752d6-d92a-904e-4d2a-a50f637e8b0b",
+      "quota_limit": null,
+      "hard_limit_enabled": false,
+      "retention_lock": "unlocked",
+      "eradication_config": {
+        "manual_eradication": "enabled",
+        "eradication_delay": 86400000
+      },
+      "object_lock_config": {
+        "enabled": false,
+        "freeze_locked_objects": false,
+        "default_retention": null,
+        "default_retention_mode": null
+      }
+    },
+    {
+      "name": "z-da-pxbckup-site1",
+      "created": 1605881110000,
+      "account": {
+        "name": "z-da",
+        "id": "64e11762-c6ea-362c-3dae-6fbc27dfdda2",
+        "resource_type": "object-store-accounts"
+      },
+      "destroyed": false,
+      "time_remaining": null,
+      "space": {
+        "virtual": 1228288000,
+        "unique": 1088006642,
+        "snapshots": 0,
+        "data_reduction": 1.1,
+        "total_physical": 1088006642,
+        "total_provisioned": null
+      },
+      "object_count": 603,
+      "versioning": "enabled",
+      "bucket_type": "classic",
+      "id": "c8ba4da4-a4ee-f012-3977-02f929fcb5bf",
+      "quota_limit": null,
+      "hard_limit_enabled": false,
+      "retention_lock": "unlocked",
+      "eradication_config": {
+        "manual_eradication": "enabled",
+        "eradication_delay": 86400000
+      },
+      "object_lock_config": {
+        "enabled": false,
+        "freeze_locked_objects": false,
+        "default_retention": null,
+        "default_retention_mode": null
+      }
+    },
+    {
+      "name": "z-da-pxbckup-site2",
+      "created": 1605858408000,
+      "account": {
+        "name": "z-da",
+        "id": "64e11762-c6ea-362c-3dae-6fbc27dfdda2",
+        "resource_type": "object-store-accounts"
+      },
+      "destroyed": false,
+      "time_remaining": null,
+      "space": {
+        "virtual": 253844480,
+        "unique": 242209700,
+        "snapshots": 0,
+        "data_reduction": 1,
+        "total_physical": 242209700,
+        "total_provisioned": null
+      },
+      "object_count": 85,
+      "versioning": "none",
+      "bucket_type": "classic",
+      "id": "6da23cb8-5096-ddb4-edc8-9ded233a5219",
+      "quota_limit": null,
+      "hard_limit_enabled": false,
+      "retention_lock": "unlocked",
+      "eradication_config": {
+        "manual_eradication": "enabled",
+        "eradication_delay": 86400000
+      },
+      "object_lock_config": {
+        "enabled": false,
+        "freeze_locked_objects": false,
+        "default_retention": null,
+        "default_retention_mode": null
+      }
+    }
+  ]
+}

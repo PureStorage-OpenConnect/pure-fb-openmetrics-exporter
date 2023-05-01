@@ -20,6 +20,9 @@ type Smb struct {
 }
 
 type Location struct {
+        Name             string            `json:"name"`
+        Id               string            `json:"id"`
+        ResourceType     string            `jsoon:"resource_type"`
 }
 
 type Source struct {
@@ -62,15 +65,16 @@ type FileSystemsList struct {
 }
 
 func (fb *FBClient) GetFileSystems() *FileSystemsList {
+	uri := "/file-systems"
 	result := new(FileSystemsList)
 	res, _ := fb.RestClient.R().
 		SetResult(&result).
-		Get("/file-systems")
+		Get(uri)
 	if res.StatusCode() == 401 {
                 fb.RefreshSession()
 		fb.RestClient.R().
 			SetResult(&result).
-			Get("/file-systems")
+			Get(uri)
         }
 	return result
 }

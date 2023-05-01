@@ -16,19 +16,20 @@ type ArraysSpaceList struct {
 }
 
 func (fb *FBClient) GetArraysSpace(t string) *ArraysSpaceList {
+	uri := "/arrays/space"
 	result := new(ArraysSpaceList)
 	switch t {
 	case "array", "file-system", "object-store":
 		res, _ := fb.RestClient.R().
 			SetResult(&result).
 			SetQueryParam("type", t).
-			Get("/arrays/space")
+			Get(uri)
 		if res.StatusCode() == 401 {
 			fb.RefreshSession()
 			fb.RestClient.R().
 				SetResult(&result).
 				SetQueryParam("type", t).
-				Get("/arrays/space")
+				Get(uri)
 		}
 	}
 	return result

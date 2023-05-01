@@ -8,6 +8,7 @@ type BucketsS3PerformanceList struct {
 }
 
 func (fb *FBClient) GetBucketsS3Performance(b *BucketsList) *BucketsS3PerformanceList {
+	uri := "/buckets/s3-specific-performance"
 	result := new(BucketsS3PerformanceList)
 	if b == nil {
 		return result
@@ -22,13 +23,13 @@ func (fb *FBClient) GetBucketsS3Performance(b *BucketsList) *BucketsS3Performanc
 		res, _ := fb.RestClient.R().
 			SetResult(&temp).
 			SetQueryParam("names", n).
-			Get("/buckets/s3-specific-performance")
+			Get(uri)
 		if res.StatusCode() == 401 {
 			fb.RefreshSession()
 			fb.RestClient.R().
 				SetResult(&temp).
 				SetQueryParam("names", n).
-				Get("/buckets/s3-specific-performance")
+				Get(uri)
 		}
 		result.Items = append(result.Items, temp.Items...)
 	}

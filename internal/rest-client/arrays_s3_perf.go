@@ -7,15 +7,16 @@ type ArraysS3PerformanceList struct {
 }
 
 func (fb *FBClient) GetArraysS3Performance() *ArraysS3PerformanceList {
+	uri := "/arrays/s3-specific-performance"
 	result := new(ArraysS3PerformanceList)
 	res, _ := fb.RestClient.R().
 		SetResult(&result).
-		Get("/arrays/s3-specific-performance")
+		Get(uri)
 	if res.StatusCode() == 401 {
 		fb.RefreshSession()
 		fb.RestClient.R().
 			SetResult(&result).
-			Get("/arrays/s3-specific-performance")
+			Get(uri)
         }
 	return result
 }

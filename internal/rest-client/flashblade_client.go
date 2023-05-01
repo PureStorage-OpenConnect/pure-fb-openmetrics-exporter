@@ -1,7 +1,6 @@
 package client
 
 import (
-//	"log"
 	"errors"
 	"crypto/tls"
 	"github.com/go-resty/resty/v2"
@@ -58,10 +57,6 @@ func NewRestClient(endpoint string, apitoken string, apiversion string, debug bo
 	if debug {
 		fb.RestClient.SetDebug(true)
 	}
-//	fb.RestClient.OnRequestLog(func(rl *resty.RequestLog) error {
-//		fmt.Fprintln(os.Stderr, rl)
-//		return nil
-//	})
 
 	result := new(ApiVersions)
 	res, err := fb.RestClient.R().

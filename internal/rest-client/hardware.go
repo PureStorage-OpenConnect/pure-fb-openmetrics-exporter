@@ -22,15 +22,16 @@ type HardwareList struct {
 }
 
 func (fb *FBClient) GetHardware() *HardwareList {
+	uri := "/hardware"
 	result := new(HardwareList)
 	res, _ := fb.RestClient.R().
 		SetResult(&result).
-		Get("/hardware")
+		Get(uri)
 	if res.StatusCode() == 401 {
                 fb.RefreshSession()
 		fb.RestClient.R().
 			SetResult(&result).
-			Get("/hardware")
+			Get(uri)
         }
 	return result
 }

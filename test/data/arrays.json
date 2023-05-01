@@ -1,0 +1,38 @@
+{
+  "continuation_token": null,
+  "total_item_count": 1,
+  "items": [
+    {
+      "name": "fbstaines02",
+      "id": "66992c13-6d81-433f-bb31-5fc33e76fa5f",
+      "os": "Purity//FB",
+      "revision": "4007aea5",
+      "version": "4.1.2",
+      "time_zone": "Europe/London",
+      "banner": null,
+      "idle_timeout": 10800000,
+      "ntp_servers": [
+        "0.uk.pool.ntp.org",
+        "1.uk.pool.ntp.org",
+        "2.uk.pool.ntp.org"
+      ],
+      "smb_mode": "native",
+      "product_type": "FlashBlade",
+      "eradication_config": {
+        "manual_eradication": "all-enabled",
+        "eradication_delay": 86400000
+      },
+      "security_update": null,
+      "encryption": {
+        "data_at_rest": {
+          "algorithms": [
+            "AES-256-CTR"
+          ],
+          "entropy_source": "rdseed",
+          "enabled": true
+        }
+      },
+      "_as_of": 1682619711927
+    }
+  ]
+}

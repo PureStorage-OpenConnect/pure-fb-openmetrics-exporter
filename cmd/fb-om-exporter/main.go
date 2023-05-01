@@ -2,30 +2,67 @@ package main
 
 import (
 	"context"
-	"flag"
 	"fmt"
+	"io"
 	"log"
 	"net/http"
+	"os"
+	config "purestorage/fb-openmetrics-exporter/internal/config"
 	collectors "purestorage/fb-openmetrics-exporter/internal/openmetrics-exporter"
 	client "purestorage/fb-openmetrics-exporter/internal/rest-client"
 	"strings"
 
+        "github.com/akamensky/argparse"
 	"github.com/prometheus/client_golang/prometheus"
 	"github.com/prometheus/client_golang/prometheus/promhttp"
+        "gopkg.in/yaml.v3"
 )
 
 var version string = "development"
 var debug bool = false
+var arraytokens config.FlashBladeList
+
+func FileExists(args []string) error {
+        _, err := os.Stat(args[0])
+        return err
+}
 
 func main() {
 
-	host := flag.String("host", "0.0.0.0", "Address of the exporter")
-	port := flag.Int("port", 9491, "Port of the exporter")
-	d := flag.Bool("debug", false, "Debug")
-	flag.Parse()
-	addr := fmt.Sprintf("%s:%d", *host, *port)
-	debug = *d
-	log.Printf("Start Pure Storage FlashBlade exporter %s on %s", version, addr)
+        parser := argparse.NewParser("pure-fb-om-exporter", "Pure Storage FB OpenMetrics exporter")
+        host := parser.String("a", "address", &argparse.Options{Required: false, Help: "IP address for this exporter to bind to", Default: "0.0.0.0"})
+        port := parser.Int("p", "port", &argparse.Options{Required: false, Help: "Port for this exporter to listen", Default: 9491})
+        d := parser.Flag("d", "debug", &argparse.Options{Required: false, Help: "Enable debug", Default: false})
+        at := parser.File("t", "tokens", os.O_RDONLY, 0600, &argparse.Options{Required: false, Validate: FileExists, Help: "API token(s) map file"})
+        err := parser.Parse(os.Args)
+        if err != nil {
+                log.Fatalf("Error in token file: %v", err)
+        }
+        if !isNilFile(*at) {
+                defer at.Close()
+                buf := make([]byte, 1024)
+                arrlist := ""
+                for {
+                        n, err := at.Read(buf)
+                        if err == io.EOF {
+                                break
+                        }
+                        if err != nil {
+                                log.Fatalf("Reading token file: %v", err)
+                       }
+                        if n > 0 {
+                                arrlist = arrlist + string(buf[:n])
+                        }
+                }
+                buf = []byte(arrlist)
+                err := yaml.Unmarshal(buf, &arraytokens)
+                if err != nil {
+                        log.Fatalf("Unmarshalling token file: %v", err)
+                }
+        }
+        debug = *d
+        addr := fmt.Sprintf("%s:%d", *host, *port)
+        log.Printf("Start Pure FlashBlade exporter %s on %s", version, addr)
 
 	http.HandleFunc("/", index)
 	http.HandleFunc("/metrics/array", func(w http.ResponseWriter, r *http.Request) {
@@ -35,6 +72,9 @@ func main() {
 		metricsHandler(w, r)
 	})
 	http.HandleFunc("/metrics/usage", func(w http.ResponseWriter, r *http.Request) {
+		metricsHandler(w, r)
+	})
+	http.HandleFunc("/metrics/policies", func(w http.ResponseWriter, r *http.Request) {
 		metricsHandler(w, r)
 	})
 	http.HandleFunc("/metrics", func(w http.ResponseWriter, r *http.Request) {
@@ -55,6 +95,7 @@ func metricsHandler(w http.ResponseWriter, r *http.Request) {
 		case "clients":
 		case "array":
 		case "usage":
+		case "policies":
 		default:
 			metrics = "all"
 		}
@@ -70,14 +111,18 @@ func metricsHandler(w http.ResponseWriter, r *http.Request) {
 	}
 	authHeader := r.Header.Get("Authorization")
 	authFields := strings.Fields(authHeader)
-	if len(authFields) != 2 || strings.ToLower(authFields[0]) != "bearer" {
+	address, apitoken := arraytokens.GetArrayParams(endpoint)
+        if len(authFields) == 2 && strings.ToLower(authFields[0]) == "bearer" {
+                apitoken = authFields[1]
+		address = endpoint
+	}
+	if apitoken == "" {
 		http.Error(w, "Target authorization token is missing", http.StatusBadRequest)
 		return
 	}
-	apitoken := authFields[1]
 
 	registry := prometheus.NewRegistry()
-	fbclient := client.NewRestClient(endpoint, apitoken, apiver, debug)
+	fbclient := client.NewRestClient(address, apitoken, apiver, debug)
 	if fbclient.Error != nil {
 		http.Error(w, "Error connecting to FlashBlade. Check your management endpoint and/or api token are correct.", http.StatusBadRequest)
 		return
@@ -127,10 +172,21 @@ func index(w http.ResponseWriter, r *http.Request) {
             <td>endpoint</td>
             <td>Provides only quota related metrics.</td>
         </tr>
+	<tr>
+            <td>NFS export policies metrics</td>
+            <td><a href="/metrics/policies?endpoint=host">/metrics/policies</a></td>
+            <td>endpoint</td>
+            <td>Provides only NFS policies related metrics.</td>
+        </tr>
     </tbody>
 </table>
 </body>
 </html>`
 
 	fmt.Fprintf(w, "%s", msg)
+}
+
+func isNilFile(f os.File) bool {
+        var tf os.File
+        return f == tf
 }

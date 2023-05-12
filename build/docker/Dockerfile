@@ -16,4 +16,4 @@ FROM alpine
 COPY --from=build  /usr/local/bin/pure-fb-om-exporter /pure-fb-om-exporter
 EXPOSE 9491
 ENTRYPOINT ["/pure-fb-om-exporter"]
-CMD ["--host", "0.0.0.0", "--port", "9491"]
+CMD ["--address", "0.0.0.0", "--port", "9491"]

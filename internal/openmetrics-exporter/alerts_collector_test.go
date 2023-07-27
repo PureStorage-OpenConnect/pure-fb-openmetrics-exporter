@@ -51,7 +51,7 @@ func TestAlertsCollector(t *testing.T) {
 	want := make(map[string]bool)
         for a, n := range al {
                 alert := strings.Split(a, ",")
-		want[fmt.Sprintf("label:<name:\"component_name\" value:\"%s\" > label:<name:\"component_type\" value:\"%s\" > label:<name:\"severity\" value:\"%s\" > gauge:<value:%g > ", alert[0], alert[1], alert[2], n)] = true
+		want[fmt.Sprintf("label:{name:\"component_name\" value:\"%s\"} label:{name:\"component_type\" value:\"%s\"} label:{name:\"severity\" value:\"%s\"} gauge:{value:%g}", alert[0], alert[1], alert[2], n)] = true
 	}
         c := client.NewRestClient(e, "fake-api-token", "latest", false)
 	ac := NewAlertsCollector(c)

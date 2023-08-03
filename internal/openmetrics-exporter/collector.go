@@ -32,7 +32,6 @@ func Collector(ctx context.Context, metrics string, registry *prometheus.Registr
 		hardwareCollector := NewHardwareCollector(fbclient)
 		hwPerfConnectorsCollector := NewHwConnectorsPerfCollector(fbclient)
 		registry.MustRegister(
-			arrayCollector,
 			perfCollector,
 			s3perfCollector,
 			httpPerfCollector,

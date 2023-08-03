@@ -10,12 +10,13 @@ import (
 func Collector(ctx context.Context, metrics string, registry *prometheus.Registry, fbclient *client.FBClient) bool {
 	filesystems := fbclient.GetFileSystems()
 	buckets := fbclient.GetBuckets()
+	arrayCollector := NewArraysCollector(fbclient)
 	registry.MustRegister(
 		collectors.NewProcessCollector(collectors.ProcessCollectorOpts{}),
 		collectors.NewGoCollector(),
+		arrayCollector,
 	)
 	if metrics == "all" || metrics == "array" {
-		arrayCollector := NewArraysCollector(fbclient)
 		perfCollector := NewPerfCollector(fbclient)
 		s3perfCollector := NewS3PerfCollector(fbclient)
 		httpPerfCollector := NewHttpPerfCollector(fbclient)

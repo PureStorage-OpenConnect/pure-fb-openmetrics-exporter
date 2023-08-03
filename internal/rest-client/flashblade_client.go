@@ -6,6 +6,8 @@ import (
 	"github.com/go-resty/resty/v2"
 )
 
+const FBRestUserAgent = "Pure_FB_OpenMetrics_exporter/1.0"
+
 type Client interface {
 	GetAlerts(filter string) *AlertsList
 	GetArrays() *ArraysList
@@ -89,6 +91,7 @@ func NewRestClient(endpoint string, apitoken string, apiversion string, debug bo
 	fb.XAuthToken = res.Header().Get("x-auth-token")
 	fb.RestClient.SetBaseURL("https://" + endpoint + "/api/" + fb.ApiVersion)
 	fb.RestClient.SetHeader("x-auth-token", fb.XAuthToken)
+	fb.RestClient.SetHeader("User-Agent", FBRestUserAgent)
 	return fb
 }
 

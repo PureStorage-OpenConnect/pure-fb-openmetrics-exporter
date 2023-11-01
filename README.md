@@ -88,7 +88,7 @@ Arguments:
 
   -h  --help     Print help information
   -a  --address  IP address for this exporter to bind to. Default: 0.0.0.0
-  -p  --port     Port for this exporter to listen. Default: 9490
+  -p  --port     Port for this exporter to listen. Default: 9491
   -d  --debug    Enable debug. Default: false
   -t  --tokens   API token(s) map file
   -c  --cert     SSL/TLS certificate file. Required only for TLS

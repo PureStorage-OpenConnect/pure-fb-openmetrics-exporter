@@ -1,5 +1,5 @@
 FROM golang:alpine as build
-ARG VERSION=1.0.6
+ARG VERSION=1.0.7
 
 WORKDIR /usr/src/app
 
@@ -13,7 +13,13 @@ RUN CGO_ENABLED=1 go build -a -tags 'netgo osusergo static_build' -ldflags="-X m
 
 # alpine is used here as it seems to be the minimal image that passes quay.io vulnerability scan
 FROM alpine
+# update ssl packages for CVEs
+RUN apk update && apk upgrade --no-cache libcrypto3 libssl3
 COPY --from=build  /usr/local/bin/pure-fb-om-exporter /pure-fb-om-exporter
+
+# create an empty tokens file for use with volumes if required. You can use a mounted volume to /etc/pure-fa-om-exporter/ to pass the `tokens.yaml` file. File must be named `tokens.yaml`.
+RUN mkdir /etc/pure-fb-om-exporter && touch /etc/pure-fb-om-exporter/tokens.yaml
+
 EXPOSE 9491
 ENTRYPOINT ["/pure-fb-om-exporter"]
-CMD ["--address", "0.0.0.0", "--port", "9491"]
+CMD ["--address", "0.0.0.0", "--port", "9491", "--tokens", "/etc/pure-fb-om-exporter/tokens.yaml"]

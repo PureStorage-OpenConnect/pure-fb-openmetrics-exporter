@@ -9,10 +9,11 @@ import (
 )
 
 type BucketsSpaceCollector struct {
-	ReductionDesc   *prometheus.Desc
-	SpaceDesc       *prometheus.Desc
-	BucketQuotaDesc *prometheus.Desc
-	Buckets         *client.BucketsList
+	ReductionDesc         *prometheus.Desc
+	SpaceDesc             *prometheus.Desc
+	BucketQuotaDesc       *prometheus.Desc
+	BucketObjectCountDesc *prometheus.Desc
+	Buckets               *client.BucketsList
 }
 
 func (c *BucketsSpaceCollector) Describe(ch chan<- *prometheus.Desc) {
@@ -61,6 +62,12 @@ func (c *BucketsSpaceCollector) Collect(ch chan<- prometheus.Metric) {
 			bucket.Name, "object_count",
 		)
 		ch <- prometheus.MustNewConstMetric(
+			c.BucketObjectCountDesc,
+			prometheus.GaugeValue,
+			bucket.ObjectCount,
+			bucket.Name,
+		)
+		ch <- prometheus.MustNewConstMetric(
 			c.BucketQuotaDesc,
 			prometheus.GaugeValue,
 			bucket.QuotaLimit,
@@ -87,6 +94,12 @@ func NewBucketsSpaceCollector(bl *client.BucketsList) *BucketsSpaceCollector {
 			"purefb_buckets_quota_space_bytes",
 			"FlashBlade buckets quota space in bytes",
 			[]string{"name", "hard_limit_enabled"},
+			prometheus.Labels{},
+		),
+		BucketObjectCountDesc: prometheus.NewDesc(
+			"purefb_buckets_object_count",
+			"FlashBlade buckets object count",
+			[]string{"name"},
 			prometheus.Labels{},
 		),
 		Buckets: bl,

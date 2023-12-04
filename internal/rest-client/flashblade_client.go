@@ -1,8 +1,9 @@
 package client
 
 import (
-	"errors"
 	"crypto/tls"
+	"errors"
+
 	"github.com/go-resty/resty/v2"
 )
 
@@ -26,8 +27,8 @@ type Client interface {
 	GetFileSystemsPerformance(f *FileSystemsList, protocol string) *FileSystemsPerformanceList
 	GetHwConnectorsPerformance() *HwConnectorsPerformanceList
 	GetHardware() *HardwareList
-	GetUsageUsers(f* FileSystemsList) *UsageUsersList
-	GetUsageGroups(f* FileSystemsList) *UsageGroupsList
+	GetUsageUsers(f *FileSystemsList) *UsageUsersList
+	GetUsageGroups(f *FileSystemsList) *UsageGroupsList
 }
 
 type FBClient struct {

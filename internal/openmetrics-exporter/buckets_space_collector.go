@@ -1,14 +1,18 @@
 package collectors
 
 import (
+	"strconv"
+
+	client "purestorage/fb-openmetrics-exporter/internal/rest-client"
+
 	"github.com/prometheus/client_golang/prometheus"
-	"purestorage/fb-openmetrics-exporter/internal/rest-client"
 )
 
 type BucketsSpaceCollector struct {
-	ReductionDesc *prometheus.Desc
-	SpaceDesc     *prometheus.Desc
-	Buckets       *client.BucketsList
+	ReductionDesc   *prometheus.Desc
+	SpaceDesc       *prometheus.Desc
+	BucketQuotaDesc *prometheus.Desc
+	Buckets         *client.BucketsList
 }
 
 func (c *BucketsSpaceCollector) Describe(ch chan<- *prometheus.Desc) {
@@ -53,8 +57,14 @@ func (c *BucketsSpaceCollector) Collect(ch chan<- prometheus.Metric) {
 		ch <- prometheus.MustNewConstMetric(
 			c.SpaceDesc,
 			prometheus.GaugeValue,
-			float64(bucket.ObjectCount),
+			bucket.ObjectCount,
 			bucket.Name, "object_count",
+		)
+		ch <- prometheus.MustNewConstMetric(
+			c.BucketQuotaDesc,
+			prometheus.GaugeValue,
+			bucket.QuotaLimit,
+			bucket.Name, strconv.FormatBool(bucket.HardLimitEnabled),
 		)
 	}
 }
@@ -71,6 +81,12 @@ func NewBucketsSpaceCollector(bl *client.BucketsList) *BucketsSpaceCollector {
 			"purefb_buckets_space_bytes",
 			"FlashBlade buckets space in bytes",
 			[]string{"name", "space"},
+			prometheus.Labels{},
+		),
+		BucketQuotaDesc: prometheus.NewDesc(
+			"purefb_buckets_quota_space_bytes",
+			"FlashBlade buckets quota space in bytes",
+			[]string{"name", "hard_limit_enabled"},
 			prometheus.Labels{},
 		),
 		Buckets: bl,

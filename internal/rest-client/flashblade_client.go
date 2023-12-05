@@ -70,11 +70,11 @@ func NewRestClient(endpoint string, apitoken string, apiversion string, debug bo
 		return fb
 	}
 	if res.StatusCode() != 200 {
-		fb.Error = errors.New("Not a valid FlashBlade REST API server")
+		fb.Error = errors.New("not a valid FlashBlade REST API server")
 		return fb
 	}
 	if len(result.Versions) == 0 {
-		fb.Error = errors.New("Not a valid FlashBlade REST API version")
+		fb.Error = errors.New("not a valid FlashBlade REST API version")
 		return fb
 	}
 	if apiversion == "latest" {

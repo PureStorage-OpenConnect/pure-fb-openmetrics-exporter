@@ -28,49 +28,49 @@ func (c *BucketsSpaceCollector) Collect(ch chan<- prometheus.Metric) {
 		ch <- prometheus.MustNewConstMetric(
 			c.ReductionDesc,
 			prometheus.GaugeValue,
-			bucket.Space.DataReduction,
+			float64(bucket.Space.DataReduction),
 			bucket.Name,
 		)
 		ch <- prometheus.MustNewConstMetric(
 			c.SpaceDesc,
 			prometheus.GaugeValue,
-			bucket.Space.Snapshots,
+			float64(bucket.Space.Snapshots),
 			bucket.Name, "snapshots",
 		)
 		ch <- prometheus.MustNewConstMetric(
 			c.SpaceDesc,
 			prometheus.GaugeValue,
-			bucket.Space.TotalPhysical,
+			float64(bucket.Space.TotalPhysical),
 			bucket.Name, "total_physical",
 		)
 		ch <- prometheus.MustNewConstMetric(
 			c.SpaceDesc,
 			prometheus.GaugeValue,
-			bucket.Space.Unique,
+			float64(bucket.Space.Unique),
 			bucket.Name, "unique",
 		)
 		ch <- prometheus.MustNewConstMetric(
 			c.SpaceDesc,
 			prometheus.GaugeValue,
-			bucket.Space.Virtual,
+			float64(bucket.Space.Virtual),
 			bucket.Name, "virtual",
 		)
 		ch <- prometheus.MustNewConstMetric(
 			c.SpaceDesc,
 			prometheus.GaugeValue,
-			bucket.ObjectCount,
+			float64(bucket.ObjectCount),
 			bucket.Name, "object_count",
 		)
 		ch <- prometheus.MustNewConstMetric(
 			c.BucketObjectCountDesc,
 			prometheus.GaugeValue,
-			bucket.ObjectCount,
+			float64(bucket.ObjectCount),
 			bucket.Name,
 		)
 		ch <- prometheus.MustNewConstMetric(
 			c.BucketQuotaDesc,
 			prometheus.GaugeValue,
-			bucket.QuotaLimit,
+			float64(bucket.QuotaLimit),
 			bucket.Name, strconv.FormatBool(bucket.HardLimitEnabled),
 		)
 	}

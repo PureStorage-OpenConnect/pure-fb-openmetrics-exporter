@@ -1,6 +1,6 @@
-# Semantic Conventions for Pure FlashArray Metrics <!-- omit from toc -->
+# Semantic Conventions for Pure FlashBlade Metrics <!-- omit from toc -->
 
-This document describes the semantic conventions for Pure FlashArray Metrics.
+This document describes the semantic conventions for Pure FlashBlade Metrics.
 
 
 <!-- toc -->
@@ -9,9 +9,9 @@ This document describes the semantic conventions for Pure FlashArray Metrics.
 - [Metric Statuses](#metric-statuses)
 - [Metric Instruments](#metric-instruments)
   - [`purefb_info` - FlashBlade System Information](#purefb_info---flashblade-system-information)
-  - [`purefa_alerts` - FlashBlade Alerts Information](#purefa_alerts---flashblade-alerts-information)
+  - [`purefb_alerts` - FlashBlade Alerts Information](#purefb_alerts---flashblade-alerts-information)
   - [`purefb_array` - FlashBlade Array Metrics](#purefb_array---flashblade-array-metrics)
-  - [`purefa_buckets` - FlashBlade Bucket metrics](#purefa_buckets---flashblade-bucket-metrics)
+  - [`purefb_buckets` - FlashBlade Bucket metrics](#purefb_buckets---flashblade-bucket-metrics)
   - [`purefb_clients` - FlashBlade Client metrics](#purefb_clients---flashblade-client-metrics)
   - [`purefb_file_systems` - FlashBlade File System metrics](#purefb_file_systems---flashblade-file-system-metrics)
   - [`purefb_file_system_usage` - FlashBlade File System Usage metrics](#purefb_file_system_usage---flashblade-file-system-usage-metrics)
@@ -56,7 +56,7 @@ This document describes the semantic conventions for Pure FlashArray Metrics.
 |           |             |                               |       |                                                                                                                         |            | `version`     | (array purity version) |
 
 
-### `purefa_alerts` - FlashBlade Alerts Information
+### `purefb_alerts` - FlashBlade Alerts Information
 
 **Description:** FlashBlade Open Alerts
 
@@ -70,7 +70,7 @@ This document describes the semantic conventions for Pure FlashArray Metrics.
 
 **Description:** TODO
 
-### `purefa_buckets` - FlashBlade Bucket metrics
+### `purefb_buckets` - FlashBlade Bucket metrics
 
 | Status                                                                                                                                                                                                                    | Name                                                   | Description                                                        | Units            | Metric Type ([*](https://github.com/OpenObservability/OpenMetrics/blob/main/specification/OpenMetrics.md#metric-types)) | Value Type | Attribute Key        | Attribute Values                                                                                                   |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------ | ------------------------------------------------------------------ | ---------------- | ----------------------------------------------------------------------------------------------------------------------- | ---------- | -------------------- | ------------------------------------------------------------------------------------------------------------------ |

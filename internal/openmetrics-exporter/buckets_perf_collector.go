@@ -1,8 +1,9 @@
 package collectors
 
 import (
+	client "purestorage/fb-openmetrics-exporter/internal/rest-client"
+
 	"github.com/prometheus/client_golang/prometheus"
-	"purestorage/fb-openmetrics-exporter/internal/rest-client"
 )
 
 type BucketsPerfCollector struct {
@@ -99,25 +100,25 @@ func NewBucketsPerfCollector(fb *client.FBClient,
 	return &BucketsPerfCollector{
 		LatencyDesc: prometheus.NewDesc(
 			"purefb_buckets_performance_latency_usec",
-			"FlashBlade buckets latency",
+			"FlashBlade buckets latency in microseconds",
 			[]string{"name", "dimension"},
 			prometheus.Labels{},
 		),
 		ThroughputDesc: prometheus.NewDesc(
 			"purefb_buckets_performance_throughput_iops",
-			"FlashBlade buckets throughput",
+			"FlashBlade buckets throughput in operations per second",
 			[]string{"name", "dimension"},
 			prometheus.Labels{},
 		),
 		BandwidthDesc: prometheus.NewDesc(
 			"purefb_buckets_performance_bandwidth_bytes",
-			"FlashBlade buckets bandwidth",
+			"FlashBlade buckets bandwidth in bytes per second",
 			[]string{"name", "dimension"},
 			prometheus.Labels{},
 		),
 		AverageSizeDesc: prometheus.NewDesc(
 			"purefb_buckets_performance_average_bytes",
-			"FlashBlade buckets average operations size",
+			"FlashBlade buckets average operations size in bytes",
 			[]string{"name", "dimension"},
 			prometheus.Labels{},
 		),

@@ -12,7 +12,7 @@
       "name": "VAR_DASHBOARDVERSION",
       "type": "constant",
       "label": "DashboardVersion",
-      "value": "1.0.2",
+      "value": "1.0.3",
       "description": ""
     }
   ],
@@ -22,7 +22,7 @@
       "type": "grafana",
       "id": "grafana",
       "name": "Grafana",
-      "version": "9.3.2"
+      "version": "10.2.2"
     },
     {
       "type": "panel",
@@ -34,7 +34,7 @@
       "type": "datasource",
       "id": "prometheus",
       "name": "Prometheus",
-      "version": "2.41.0"
+      "version": "2.45.1"
     },
     {
       "type": "panel",
@@ -109,10 +109,10 @@
           "showLineNumbers": false,
           "showMiniMap": false
         },
-        "content": "<img src=\"https://www.purestorage.com/content/dam/purestorage/knowledge/pure-storage.png.imgo.png\">",
+        "content": "<img src=\"https://www.purestorage.com/content/dam/pure/logos/pure_storage/primary/pure-logo.png\" width=\"100%\">  ",
         "mode": "markdown"
       },
-      "pluginVersion": "9.3.2",
+      "pluginVersion": "10.2.2",
       "type": "text"
     },
     {
@@ -128,7 +128,10 @@
           },
           "custom": {
             "align": "center",
-            "displayMode": "auto",
+            "cellOptions": {
+              "mode": "basic",
+              "type": "color-background"
+            },
             "filterable": false,
             "inspect": false
           },
@@ -179,8 +182,11 @@
                 }
               },
               {
-                "id": "custom.displayMode",
-                "value": "color-background"
+                "id": "custom.cellOptions",
+                "value": {
+                  "mode": "gradient",
+                  "type": "color-background"
+                }
               }
             ]
           },
@@ -239,12 +245,15 @@
                 "value": 125
               },
               {
-                "id": "max",
-                "value": 100
+                "id": "custom.cellOptions",
+                "value": {
+                  "mode": "gradient",
+                  "type": "gauge"
+                }
               },
               {
-                "id": "custom.displayMode",
-                "value": "gradient-gauge"
+                "id": "max",
+                "value": 100
               }
             ]
           },
@@ -283,8 +292,11 @@
                 "value": 125
               },
               {
-                "id": "custom.displayMode",
-                "value": "color-background"
+                "id": "custom.cellOptions",
+                "value": {
+                  "mode": "gradient",
+                  "type": "color-background"
+                }
               }
             ]
           },
@@ -317,6 +329,13 @@
               {
                 "id": "custom.width",
                 "value": 125
+              },
+              {
+                "id": "custom.cellOptions",
+                "value": {
+                  "mode": "gradient",
+                  "type": "color-background"
+                }
               }
             ]
           },
@@ -355,8 +374,11 @@
                 "value": 0
               },
               {
-                "id": "custom.displayMode",
-                "value": "color-background"
+                "id": "custom.cellOptions",
+                "value": {
+                  "mode": "gradient",
+                  "type": "color-background"
+                }
               }
             ]
           },
@@ -406,6 +428,7 @@
       },
       "id": 163,
       "options": {
+        "cellHeight": "sm",
         "footer": {
           "countRows": false,
           "fields": "",
@@ -418,7 +441,7 @@
         "showHeader": true,
         "sortBy": []
       },
-      "pluginVersion": "9.3.2",
+      "pluginVersion": "10.2.2",
       "targets": [
         {
           "datasource": {
@@ -601,7 +624,7 @@
         "content": "# **PURE** STORAGE\n\n## Overview\n\nThis dashboard provides performance and capacity details for Pure Storage FlashBlades.\nGroup arrays by customer defined environment, whole fleets, or view arrays individually.",
         "mode": "markdown"
       },
-      "pluginVersion": "9.3.2",
+      "pluginVersion": "10.2.2",
       "type": "text"
     },
     {
@@ -616,7 +639,10 @@
           },
           "custom": {
             "align": "auto",
-            "displayMode": "auto",
+            "cellOptions": {
+              "mode": "basic",
+              "type": "color-background"
+            },
             "inspect": false
           },
           "mappings": [
@@ -672,8 +698,11 @@
                 "value": "center"
               },
               {
-                "id": "custom.displayMode",
-                "value": "color-background"
+                "id": "custom.cellOptions",
+                "value": {
+                  "mode": "gradient",
+                  "type": "color-background"
+                }
               }
             ]
           },
@@ -708,8 +737,11 @@
                 "value": "center"
               },
               {
-                "id": "custom.displayMode",
-                "value": "color-background"
+                "id": "custom.cellOptions",
+                "value": {
+                  "mode": "gradient",
+                  "type": "color-background"
+                }
               }
             ]
           },
@@ -744,8 +776,11 @@
                 "value": "center"
               },
               {
-                "id": "custom.displayMode",
-                "value": "color-background"
+                "id": "custom.cellOptions",
+                "value": {
+                  "mode": "gradient",
+                  "type": "color-background"
+                }
               }
             ]
           },
@@ -762,6 +797,13 @@
               {
                 "id": "custom.align",
                 "value": "center"
+              },
+              {
+                "id": "custom.cellOptions",
+                "value": {
+                  "mode": "gradient",
+                  "type": "color-background"
+                }
               },
               {
                 "id": "thresholds",
@@ -791,6 +833,7 @@
       },
       "id": 180,
       "options": {
+        "cellHeight": "sm",
         "footer": {
           "countRows": false,
           "fields": "",
@@ -802,7 +845,7 @@
         "showHeader": true,
         "sortBy": []
       },
-      "pluginVersion": "9.3.2",
+      "pluginVersion": "10.2.2",
       "targets": [
         {
           "datasource": {
@@ -931,7 +974,7 @@
         "content": "## Metrics\n\n`All metrics are prefixed with purefb_`\n\nBelow are the metrics names available:\n\n### Collected with endpoint /metrics/array\n\n    * info\n    * alerts_open\n    * hardware_health\n    * array_http_specific_performance_latency_usec\n    * array_http_specific_performance_throughput_iops\n    * array_nfs_latency_usec\n    * array_nfs_throughput_iops\n    * array_performance_average_bytes\n    * array_performance_bandwidth_bytes\n    * array_performance_latency_usec\n    * array_performance_throughput_iops\n    * array_s3_specific_performance_latency_usec\n    * array_s3_specific_performance_throughput_iops\n    * array_space_bytes\n    * array_space_data_reduction_ratio\n    * array_space_parity\n    * bucket_replica_links_lag_msec\n    * buckets_performance_average_bytes\n    * buckets_performance_bandwidth_bytes\n    * buckets_performance_latency_usec\n    * buckets_performance_throughput_iops\n    * buckets_s3_specific_performance_latency_usec\n    * buckets_s3_specific_performance_throughput_iops\n    * buckets_space_bytes\n    * buckets_space_data_reduction_ratio\n    * buckets_space_objects\n    * file_system_links_lag_msec\n    * file_systems_performance_average_bytes\n    * file_systems_performance_bandwidth_bytes\n    * file_systems_performance_latency_usec\n    * file_systems_performance_throughput_iops\n    * file_systems_space_bytes\n    * file_systems_space_data_reduction_ratio\n    * hardware_connectors_performance_bandwidth_bytes\n    * hardware_connectors_performance_errors\n    * hardware_connectors_performance_throughput_pkts\n\n### Collected with endpoint /metrics/usage\n    * file_system_usage_groups_bytes\n    * file_system_usage_users_bytes\n    \n### Collected with endpoint /metrics/clients\nCollecting client performance information may require increasing scrape collection it is therefore recommended as an optional configuration item.\n \n    * array_clients_performance_avg_size_bytes\n    * array_clients_performance_bandwidth_bytes\n    * array_clients_performance_latency_usec\n    * array_clients_performance_throughput_iops\n\n\n\n",
         "mode": "markdown"
       },
-      "pluginVersion": "9.3.2",
+      "pluginVersion": "10.2.2",
       "type": "text"
     },
     {
@@ -1446,6 +1489,7 @@
             "mode": "palette-classic"
           },
           "custom": {
+            "axisBorderShow": false,
             "axisCenteredZero": false,
             "axisColorMode": "text",
             "axisLabel": "",
@@ -1459,6 +1503,7 @@
               "tooltip": false,
               "viz": false
             },
+            "insertNulls": false,
             "lineInterpolation": "smooth",
             "lineStyle": {
               "fill": "solid"
@@ -1547,6 +1592,7 @@
             "mode": "palette-classic"
           },
           "custom": {
+            "axisBorderShow": false,
             "axisCenteredZero": false,
             "axisColorMode": "text",
             "axisLabel": "",
@@ -1560,6 +1606,7 @@
               "tooltip": false,
               "viz": false
             },
+            "insertNulls": false,
             "lineInterpolation": "smooth",
             "lineStyle": {
               "fill": "solid"
@@ -1648,6 +1695,7 @@
             "mode": "palette-classic"
           },
           "custom": {
+            "axisBorderShow": false,
             "axisCenteredZero": false,
             "axisColorMode": "text",
             "axisLabel": "",
@@ -1661,6 +1709,7 @@
               "tooltip": false,
               "viz": false
             },
+            "insertNulls": false,
             "lineInterpolation": "smooth",
             "lineStyle": {
               "fill": "solid"
@@ -1686,11 +1735,12 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               }
             ]
           },
-          "unit": "Bps"
+          "unit": "bytes"
         },
         "overrides": []
       },
@@ -1751,6 +1801,7 @@
             "mode": "palette-classic"
           },
           "custom": {
+            "axisBorderShow": false,
             "axisCenteredZero": false,
             "axisColorMode": "text",
             "axisLabel": "",
@@ -1764,6 +1815,7 @@
               "tooltip": false,
               "viz": false
             },
+            "insertNulls": false,
             "lineInterpolation": "smooth",
             "lineStyle": {
               "fill": "solid"
@@ -1789,7 +1841,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               }
             ]
           },
@@ -1846,12 +1899,14 @@
         "type": "prometheus",
         "uid": "${DS_PROMETHEUS}"
       },
+      "description": "This query is very expensive on Prometheus and the browser. For large environments it may be advisable to reduce scope by using the filter and narrower time frame, use a tabular view or create a recording rule.",
       "fieldConfig": {
         "defaults": {
           "color": {
             "mode": "palette-classic"
           },
           "custom": {
+            "axisBorderShow": false,
             "axisCenteredZero": false,
             "axisColorMode": "text",
             "axisLabel": "",
@@ -1866,6 +1921,7 @@
               "tooltip": false,
               "viz": false
             },
+            "insertNulls": false,
             "lineInterpolation": "smooth",
             "lineStyle": {
               "fill": "solid"
@@ -1891,7 +1947,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               }
             ]
           },
@@ -1955,6 +2012,7 @@
             "mode": "palette-classic"
           },
           "custom": {
+            "axisBorderShow": false,
             "axisCenteredZero": false,
             "axisColorMode": "text",
             "axisLabel": "",
@@ -1968,6 +2026,7 @@
               "tooltip": false,
               "viz": false
             },
+            "insertNulls": false,
             "lineInterpolation": "smooth",
             "lineStyle": {
               "fill": "solid"
@@ -1993,7 +2052,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               }
             ]
           },
@@ -2057,6 +2117,7 @@
             "mode": "palette-classic"
           },
           "custom": {
+            "axisBorderShow": false,
             "axisCenteredZero": false,
             "axisColorMode": "text",
             "axisLabel": "",
@@ -2070,6 +2131,7 @@
               "tooltip": false,
               "viz": false
             },
+            "insertNulls": false,
             "lineInterpolation": "smooth",
             "lineStyle": {
               "fill": "solid"
@@ -2094,7 +2156,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               }
             ]
           },
@@ -2238,6 +2301,7 @@
             "mode": "palette-classic"
           },
           "custom": {
+            "axisBorderShow": false,
             "axisCenteredZero": false,
             "axisColorMode": "text",
             "axisLabel": "",
@@ -2251,6 +2315,7 @@
               "tooltip": false,
               "viz": false
             },
+            "insertNulls": false,
             "lineInterpolation": "smooth",
             "lineStyle": {
               "fill": "solid"
@@ -2276,7 +2341,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               }
             ]
           },
@@ -2405,6 +2471,7 @@
             "mode": "palette-classic"
           },
           "custom": {
+            "axisBorderShow": false,
             "axisCenteredZero": false,
             "axisColorMode": "text",
             "axisLabel": "",
@@ -2418,6 +2485,7 @@
               "tooltip": false,
               "viz": false
             },
+            "insertNulls": false,
             "lineInterpolation": "smooth",
             "lineStyle": {
               "fill": "solid"
@@ -2443,7 +2511,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               }
             ]
           },
@@ -2563,8 +2632,7 @@
   ],
   "refresh": "",
   "revision": 1,
-  "schemaVersion": 37,
-  "style": "dark",
+  "schemaVersion": 38,
   "tags": [
     "pure storage",
     "flashblade",
@@ -2667,7 +2735,7 @@
       },
       {
         "current": {
-          "selected": true,
+          "selected": false,
           "text": "5",
           "value": "5"
         },
@@ -2770,7 +2838,7 @@
     ]
   },
   "time": {
-    "from": "now-3h",
+    "from": "now-15m",
     "to": "now"
   },
   "timepicker": {

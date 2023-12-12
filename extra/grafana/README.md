@@ -139,7 +139,7 @@ Let's take a walkthrough an example of scraping the `/metrics/array` endpoint.
 
 5. Restart Prometheus to ensure changes take effect
 
-6. Navigate to your Prometheus instance via web browser http://prometheus:9090
+6. Navigate to your Prometheus instance via web browser http://prometheus-server.fqdn.com:9090
   -  Type `purefb_info` in the query box and hit return
   
 7. All going well, you will see your device listed:

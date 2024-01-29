@@ -51,11 +51,16 @@ Grafana can be configured to query all of the metrics available in the Prometheu
 This deployment assumes the [Pure Storage FlashBlade OpenMetrics Exporter][1] is previously been setup and configured.
 Supported operating system platforms are available to install Prometheus and Grafana.
 
-The Grafana dashboards have been developed and tested using the following software versions:
-* Prometheus v2.41.1
-* Grafana v9.3.2 & v9.4.1
-* Pure Storage OpenMetrics Exporter v1.0.5.hotfix1
+Prometheus and Grafana are open source platforms which are under constant development, therefore updates to our overview dashboard cannot be tested with every version. When new versions of the dashboard is released we endeavor to test between current and previous tested versions.
 
+The Grafana dashboards have been developed and tested using the following software versions:
+| OME            | Prometheus  | Grafana        |
+| -------------- | ----------- |--------------- |
+| v1.0.7         | 2.45.1      | 9.3.2, 10.1.15, 10.2.2 |
+| v1.0.7         | 2.45.0      | 9.3.2, 10.0.1 |
+| v1.0.5.hotfix1 | 2.41.1      | 9.3.2, 9.4.1  |
+
+Purity 6.1.0 and above (REST API 2.x continues to be developed in later Purity versions)
 Dashboards may have limited functionality with earlier versions and some modifications may be required.
 
 ## Prometheus
@@ -63,16 +68,28 @@ Dashboards may have limited functionality with earlier versions and some modific
 
 2. Generate an API token for your chosen user account.
 In this case we are using a remote LDAP user account with read-only permissions.
-```console
-pureuser@arrayname01> pureadmin list
-Name         Type    Role
-pureuser     local   array_admin
-svc-readonly remote  readonly
 
-pureuser@arrayname01> pureadmin create --api-token svc-readonly
-Name          Type    API Token                             Created                  Expires
-svc-readonly  remote  a12345bc6-d78e-901f-23a4-56b07b89012  2022-11-30 08:58:40 EST  -    
-```
+      <details>
+      <summary>Expand for CLI example</summary>
+
+      ```console
+      pureuser@arrayname01> pureadmin list
+      Name          Type    Role
+      pureuser      local   array_admin
+      o11y-readonly remote  readonly
+
+      pureuser@arrayname01> pureadmin create --api-token o11y-readonly
+      Name           Type    API Token                               Created                  Expires
+      o11y-readonly  remote  T-11111111-1111-1111-1111-111111111111  2023-01-01 12:00:00 EST  -    
+      ```
+
+      </details>
+
+      <details>
+      <summary>Expand for GUI example</summary>
+
+      ![Alt text](images/purefb_create_api_token.png)
+      </details>
 
 3. Configure `/etc/prometheus/prometheus.yaml` to point use the OpenMetrics exporter to query the device endpoint.
 
@@ -88,7 +105,7 @@ Let's take a walkthrough an example of scraping the `/metrics/array` endpoint.
     metrics_path: /metrics/array
     # Provide FlashBlade authorization API token
     authorization:
-      credentials: T-a12345bc6-d78e-901f-23a4-56b07b89012
+      credentials: T-11111111-1111-1111-1111-111111111111
     # Provide parameters to pass the exporter the device to connect to. Provide FQDN or IP address
     params:
       endpoint: ['arrayname01.fqdn.com']
@@ -96,7 +113,7 @@ Let's take a walkthrough an example of scraping the `/metrics/array` endpoint.
     static_configs:
     # Tell Prometheus which exporter to make the request
     - targets:
-      - 10.0.2.10:9491
+      - purefa-openmetrics-exporter.fqdn.com:9491
       # Finally provide labels to the device.
       labels:
         # Instance should be the device name and is used to correlate metrics between different endpoints in Prometheus and Grafana. Ensure this is the same for each endpoint for the same device.
@@ -106,27 +123,30 @@ Let's take a walkthrough an example of scraping the `/metrics/array` endpoint.
         site: London
         env: production
 
-# Repeat for the above for additional endpoints but note the limitations of collecting these in https://github.com/PureStorage-OpenConnect/pure-fb-openmetrics-exporter.
+# Repeat for the above for additional endpoints (if required) but note the limitations of collecting these in https://github.com/PureStorage-OpenConnect/pure-fb-openmetrics-exporter.
 # /metrics/usage
 # /metrics/clients 
 
 # Repeat again for more Pure Storage FlashBlades
 ```
 4. Test the prometheus.yaml file is valid
-```console
-> promtool check config /etc/prometheus/prometheus.yml
-Checking prometheus.yml
- SUCCESS: prometheus.yml is valid prometheus config file syntax
-```
+
+    ```console
+    > promtool check config /etc/prometheus/prometheus.yml
+    Checking prometheus.yml
+    SUCCESS: prometheus.yml is valid prometheus config file syntax
+    ```
+
 5. Restart Prometheus to ensure changes take effect
 
-6. Navigate to your Prometheus instance via web browser http://prometheus:9090
+6. Navigate to your Prometheus instance via web browser http://prometheus-server.fqdn.com:9090
   -  Type `purefb_info` in the query box and hit return
   
 7. All going well, you will see your device listed:
-  ```
-  purefb_info{array_name="ARRAYNAME01", env="production", instance="arrayname01", job="purefb_array_arrayname01", location="uk", os="Purity//FB", site="London", system_id="a1234bc5-a111-3c31-4170-a5a4-ae72f5e9ad9f", version="4.1.0"}
-  ```
+
+    ```
+    purefb_info{array_name="ARRAYNAME01", env="production", instance="arrayname01", job="purefb_array_arrayname01", location="uk", os="Purity//FB", site="London", system_id="11111111-1111-1111-1111-1111-111111111111", version="4.3.1"}
+    ```
 
 ## Grafana
 
@@ -157,9 +177,10 @@ Check the data is accessible at component in the stack. If at any on these point
 
 ### Check Pure OpenMetrics Exporter
 1. Run cURL against the exporter and pass is the bearer token and endpoint. 
-```
-curl -H 'Authorization: Bearer a12345bc6-d78e-901f-23a4-56b07b89012' -X GET 'http://<exporter_ip>:9490/metrics/array?endpoint=arrayname01.fqdn.com'
-```
+
+    ```
+    curl -H 'Authorization: Bearer T-11111111-1111-1111-1111-111111111111' -X GET 'http://<exporter_ip>:9491/metrics/array?endpoint=arrayname01.fqdn.com'
+    ```
 
 ### Check Prometheus
 2. Using the Prometheus UI, run a simple query to see if any results are returned.
@@ -171,12 +192,15 @@ curl -H 'Authorization: Bearer a12345bc6-d78e-901f-23a4-56b07b89012' -X GET 'htt
 <br>
 <img src="./images/prometheus_purefb_target_status.png" width="40%" height="40%">
 <br>
-4. Run prometheus.yaml through the yaml checker. Check the configuration is correct and retsart Prometheus.
-```console
-> promtool check config /etc/prometheus/prometheus.yml
-Checking prometheus.yml
- SUCCESS: prometheus.yml is valid prometheus config file syntax
-```
+
+4. Run prometheus.yaml through the yaml checker. Check the configuration is correct and restart Prometheus.
+
+    ```console
+    > promtool check config /etc/prometheus/prometheus.yml
+    Checking prometheus.yml
+    SUCCESS: prometheus.yml is valid prometheus config file syntax
+    ```
+
 5. Check messages log for Prometheus errors.
 
 ### Check Grafana

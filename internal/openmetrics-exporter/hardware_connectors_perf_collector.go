@@ -1,8 +1,9 @@
 package collectors
 
 import (
+	client "purestorage/fb-openmetrics-exporter/internal/rest-client"
+
 	"github.com/prometheus/client_golang/prometheus"
-	"purestorage/fb-openmetrics-exporter/internal/rest-client"
 )
 
 type HwConnectorsPerfCollector struct {
@@ -98,7 +99,7 @@ func NewHwConnectorsPerfCollector(fb *client.FBClient) *HwConnectorsPerfCollecto
 			prometheus.Labels{},
 		),
 		ErrorsDesc: prometheus.NewDesc(
-			"purefb_shardware_connectors_performance_errors",
+			"purefb_hardware_connectors_performance_errors",
 			"FlashBlade hardware connectors performance errors per sec",
 			[]string{"name", "dimension"},
 			prometheus.Labels{},

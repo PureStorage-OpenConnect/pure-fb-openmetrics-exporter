@@ -1,9 +1,10 @@
 package collectors
 
 import (
-	"github.com/prometheus/client_golang/prometheus"
-	"purestorage/fb-openmetrics-exporter/internal/rest-client"
+	client "purestorage/fb-openmetrics-exporter/internal/rest-client"
 	"strings"
+
+	"github.com/prometheus/client_golang/prometheus"
 )
 
 type FileSystemsSpaceCollector struct {
@@ -44,7 +45,7 @@ func (c *FileSystemsSpaceCollector) Collect(ch chan<- prometheus.Metric) {
 		ch <- prometheus.MustNewConstMetric(
 			c.ReductionDesc,
 			prometheus.GaugeValue,
-			fs.Space.DataReduction,
+			float64(fs.Space.DataReduction),
 			fs.Name, nfs, smb,
 		)
 		ch <- prometheus.MustNewConstMetric(
@@ -56,25 +57,25 @@ func (c *FileSystemsSpaceCollector) Collect(ch chan<- prometheus.Metric) {
 		ch <- prometheus.MustNewConstMetric(
 			c.SpaceDesc,
 			prometheus.GaugeValue,
-			fs.Space.Snapshots,
+			float64(fs.Space.Snapshots),
 			fs.Name, nfs, smb, "snapshots",
 		)
 		ch <- prometheus.MustNewConstMetric(
 			c.SpaceDesc,
 			prometheus.GaugeValue,
-			fs.Space.TotalPhysical,
+			float64(fs.Space.TotalPhysical),
 			fs.Name, nfs, smb, "total_physical",
 		)
 		ch <- prometheus.MustNewConstMetric(
 			c.SpaceDesc,
 			prometheus.GaugeValue,
-			fs.Space.Unique,
+			float64(fs.Space.Unique),
 			fs.Name, nfs, smb, "unique",
 		)
 		ch <- prometheus.MustNewConstMetric(
 			c.SpaceDesc,
 			prometheus.GaugeValue,
-			fs.Space.Virtual,
+			float64(fs.Space.Virtual),
 			fs.Name, nfs, smb, "virtual",
 		)
 	}

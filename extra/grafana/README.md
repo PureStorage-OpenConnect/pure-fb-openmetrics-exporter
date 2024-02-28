@@ -56,9 +56,10 @@ Prometheus and Grafana are open source platforms which are under constant develo
 The Grafana dashboards have been developed and tested using the following software versions:
 | OME            | Prometheus  | Grafana        |
 | -------------- | ----------- |--------------- |
-| v1.0.7         | 2.45.1      | 9.3.2, 10.1.15, 10.2.2 |
-| v1.0.7         | 2.45.0      | 9.3.2, 10.0.1 |
-| v1.0.5.hotfix1 | 2.41.1      | 9.3.2, 9.4.1  |
+| v1.0.9         | 2.45.1 LTS     | 9.3.2, 10.1.5, 10.3.3 |
+| v1.0.7         | 2.45.1 LTS     | 9.3.2, 10.1.15, 10.2.2 |
+| v1.0.7         | 2.45.0         | 9.3.2, 10.0.1 |
+| v1.0.5.hotfix1 | 2.41.1 LTS     | 9.3.2, 9.4.1  |
 
 Purity 6.1.0 and above (REST API 2.x continues to be developed in later Purity versions)
 Dashboards may have limited functionality with earlier versions and some modifications may be required.

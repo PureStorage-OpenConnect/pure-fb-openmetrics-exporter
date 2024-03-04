@@ -12,7 +12,7 @@
       "name": "VAR_DASHBOARDVERSION",
       "type": "constant",
       "label": "DashboardVersion",
-      "value": "1.0.3",
+      "value": "1.0.4",
       "description": ""
     }
   ],
@@ -22,7 +22,7 @@
       "type": "grafana",
       "id": "grafana",
       "name": "Grafana",
-      "version": "10.2.2"
+      "version": "10.1.5"
     },
     {
       "type": "panel",
@@ -77,6 +77,7 @@
       }
     ]
   },
+  "description": "This dashboard provides an overview of your fleet to give you early indications of potential issues and a look back in time to recent history. Once you are pulling the metrics, you can create your own dashboards bespoke to your environment, even correlating metrics from other technologies.",
   "editable": false,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 1,
@@ -112,7 +113,7 @@
         "content": "<img src=\"https://www.purestorage.com/content/dam/pure/logos/pure_storage/primary/pure-logo.png\" width=\"100%\">  ",
         "mode": "markdown"
       },
-      "pluginVersion": "10.2.2",
+      "pluginVersion": "10.1.5",
       "type": "text"
     },
     {
@@ -441,7 +442,7 @@
         "showHeader": true,
         "sortBy": []
       },
-      "pluginVersion": "10.2.2",
+      "pluginVersion": "10.1.5",
       "targets": [
         {
           "datasource": {
@@ -624,7 +625,7 @@
         "content": "# **PURE** STORAGE\n\n## Overview\n\nThis dashboard provides performance and capacity details for Pure Storage FlashBlades.\nGroup arrays by customer defined environment, whole fleets, or view arrays individually.",
         "mode": "markdown"
       },
-      "pluginVersion": "10.2.2",
+      "pluginVersion": "10.1.5",
       "type": "text"
     },
     {
@@ -845,7 +846,7 @@
         "showHeader": true,
         "sortBy": []
       },
-      "pluginVersion": "10.2.2",
+      "pluginVersion": "10.1.5",
       "targets": [
         {
           "datasource": {
@@ -974,7 +975,7 @@
         "content": "## Metrics\n\n`All metrics are prefixed with purefb_`\n\nBelow are the metrics names available:\n\n### Collected with endpoint /metrics/array\n\n    * info\n    * alerts_open\n    * hardware_health\n    * array_http_specific_performance_latency_usec\n    * array_http_specific_performance_throughput_iops\n    * array_nfs_latency_usec\n    * array_nfs_throughput_iops\n    * array_performance_average_bytes\n    * array_performance_bandwidth_bytes\n    * array_performance_latency_usec\n    * array_performance_throughput_iops\n    * array_s3_specific_performance_latency_usec\n    * array_s3_specific_performance_throughput_iops\n    * array_space_bytes\n    * array_space_data_reduction_ratio\n    * array_space_parity\n    * bucket_replica_links_lag_msec\n    * buckets_performance_average_bytes\n    * buckets_performance_bandwidth_bytes\n    * buckets_performance_latency_usec\n    * buckets_performance_throughput_iops\n    * buckets_s3_specific_performance_latency_usec\n    * buckets_s3_specific_performance_throughput_iops\n    * buckets_space_bytes\n    * buckets_space_data_reduction_ratio\n    * buckets_space_objects\n    * file_system_links_lag_msec\n    * file_systems_performance_average_bytes\n    * file_systems_performance_bandwidth_bytes\n    * file_systems_performance_latency_usec\n    * file_systems_performance_throughput_iops\n    * file_systems_space_bytes\n    * file_systems_space_data_reduction_ratio\n    * hardware_connectors_performance_bandwidth_bytes\n    * hardware_connectors_performance_errors\n    * hardware_connectors_performance_throughput_pkts\n\n### Collected with endpoint /metrics/usage\n    * file_system_usage_groups_bytes\n    * file_system_usage_users_bytes\n    \n### Collected with endpoint /metrics/clients\nCollecting client performance information may require increasing scrape collection it is therefore recommended as an optional configuration item.\n \n    * array_clients_performance_avg_size_bytes\n    * array_clients_performance_bandwidth_bytes\n    * array_clients_performance_latency_usec\n    * array_clients_performance_throughput_iops\n\n\n\n",
         "mode": "markdown"
       },
-      "pluginVersion": "10.2.2",
+      "pluginVersion": "10.1.5",
       "type": "text"
     },
     {
@@ -1489,7 +1490,6 @@
             "mode": "palette-classic"
           },
           "custom": {
-            "axisBorderShow": false,
             "axisCenteredZero": false,
             "axisColorMode": "text",
             "axisLabel": "",
@@ -1592,7 +1592,6 @@
             "mode": "palette-classic"
           },
           "custom": {
-            "axisBorderShow": false,
             "axisCenteredZero": false,
             "axisColorMode": "text",
             "axisLabel": "",
@@ -1695,7 +1694,6 @@
             "mode": "palette-classic"
           },
           "custom": {
-            "axisBorderShow": false,
             "axisCenteredZero": false,
             "axisColorMode": "text",
             "axisLabel": "",
@@ -1735,8 +1733,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               }
             ]
           },
@@ -1801,7 +1798,6 @@
             "mode": "palette-classic"
           },
           "custom": {
-            "axisBorderShow": false,
             "axisCenteredZero": false,
             "axisColorMode": "text",
             "axisLabel": "",
@@ -1841,8 +1837,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               }
             ]
           },
@@ -1906,7 +1901,6 @@
             "mode": "palette-classic"
           },
           "custom": {
-            "axisBorderShow": false,
             "axisCenteredZero": false,
             "axisColorMode": "text",
             "axisLabel": "",
@@ -1947,8 +1941,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               }
             ]
           },
@@ -2012,7 +2005,6 @@
             "mode": "palette-classic"
           },
           "custom": {
-            "axisBorderShow": false,
             "axisCenteredZero": false,
             "axisColorMode": "text",
             "axisLabel": "",
@@ -2052,8 +2044,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               }
             ]
           },
@@ -2117,7 +2108,6 @@
             "mode": "palette-classic"
           },
           "custom": {
-            "axisBorderShow": false,
             "axisCenteredZero": false,
             "axisColorMode": "text",
             "axisLabel": "",
@@ -2156,8 +2146,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               }
             ]
           },
@@ -2245,7 +2234,7 @@
           },
           "editorMode": "code",
           "exemplar": false,
-          "expr": "sum(avg_over_time(purefb_array_performance_latency_usec{instance=~\"^$instance\",env=~\"^$env\",dimension=\"usec_per_read_op\"}[$__interval]))",
+          "expr": "avg(purefb_array_performance_latency_usec{instance=~\"^$instance\",env=~\"^$env\",dimension=\"usec_per_read_op\"})",
           "format": "time_series",
           "instant": false,
           "interval": "",
@@ -2260,7 +2249,7 @@
           },
           "editorMode": "code",
           "exemplar": false,
-          "expr": "sum(avg_over_time(purefb_array_performance_latency_usec{instance=~\"^$instance\",env=~\"^$env\",dimension=\"usec_per_write_op\"}[$__interval]))",
+          "expr": "avg(purefb_array_performance_latency_usec{instance=~\"^$instance\",env=~\"^$env\",dimension=\"usec_per_write_op\"})",
           "format": "time_series",
           "hide": false,
           "instant": false,
@@ -2276,7 +2265,7 @@
           },
           "editorMode": "code",
           "exemplar": false,
-          "expr": "sum(avg_over_time(purefb_array_performance_latency_usec{instance=~\"^$instance\",env=~\"^$env\",dimension=\"usec_per_other_op\"}[$__interval]))",
+          "expr": "avg(purefb_array_performance_latency_usec{instance=~\"^$instance\",env=~\"^$env\",dimension=\"usec_per_other_op\"})",
           "format": "time_series",
           "hide": false,
           "instant": false,
@@ -2301,7 +2290,6 @@
             "mode": "palette-classic"
           },
           "custom": {
-            "axisBorderShow": false,
             "axisCenteredZero": false,
             "axisColorMode": "text",
             "axisLabel": "",
@@ -2341,8 +2329,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               }
             ]
           },
@@ -2374,6 +2361,21 @@
                 "id": "color",
                 "value": {
                   "fixedColor": "#ff8316",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "other_per_sec"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "#662e9c",
                   "mode": "fixed"
                 }
               }
@@ -2415,7 +2417,7 @@
           },
           "editorMode": "code",
           "exemplar": false,
-          "expr": "sum(avg_over_time(purefb_array_performance_throughput_iops{instance=~\"^$instance\",env=~\"^$env\",dimension=\"reads_per_sec\"}[$__interval]))",
+          "expr": "avg(purefb_array_performance_throughput_iops{instance=~\"^$instance\",env=~\"^$env\",dimension=\"reads_per_sec\"})",
           "format": "time_series",
           "instant": false,
           "interval": "",
@@ -2430,7 +2432,7 @@
           },
           "editorMode": "code",
           "exemplar": false,
-          "expr": "sum(avg_over_time(purefb_array_performance_throughput_iops{instance=~\"^$instance\",env=~\"^$env\",dimension=\"writes_per_sec\"}[$__interval]))",
+          "expr": "avg(purefb_array_performance_throughput_iops{instance=~\"^$instance\",env=~\"^$env\",dimension=\"writes_per_sec\"})",
           "format": "time_series",
           "hide": false,
           "instant": false,
@@ -2446,7 +2448,7 @@
           },
           "editorMode": "code",
           "exemplar": false,
-          "expr": "sum(avg_over_time(purefb_array_performance_throughput_iops{instance=~\"^$instance\",env=~\"^$env\",dimension=\"other_per_sec\"}[$__interval]))",
+          "expr": "avg(purefb_array_performance_throughput_iops{instance=~\"^$instance\",env=~\"^$env\",dimension=\"others_per_sec\"})",
           "format": "time_series",
           "hide": false,
           "instant": false,
@@ -2471,7 +2473,6 @@
             "mode": "palette-classic"
           },
           "custom": {
-            "axisBorderShow": false,
             "axisCenteredZero": false,
             "axisColorMode": "text",
             "axisLabel": "",
@@ -2511,8 +2512,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               }
             ]
           },
@@ -2585,7 +2585,7 @@
           },
           "editorMode": "code",
           "exemplar": false,
-          "expr": "sum(avg_over_time(purefb_array_performance_bandwidth_bytes{instance=~\"^$instance\",env=~\"^$env\",dimension=\"read_bytes_per_sec\"}[$__interval]))",
+          "expr": "avg(purefb_array_performance_bandwidth_bytes{instance=~\"^$instance\",env=~\"^$env\",dimension=\"read_bytes_per_sec\"})",
           "format": "time_series",
           "instant": false,
           "interval": "",
@@ -2600,7 +2600,7 @@
           },
           "editorMode": "code",
           "exemplar": false,
-          "expr": "sum(avg_over_time(purefb_array_performance_bandwidth_bytes{instance=~\"^$instance\",env=~\"^$env\",dimension=\"write_bytes_per_sec\"}[$__interval]))",
+          "expr": "avg(purefb_array_performance_bandwidth_bytes{instance=~\"^$instance\",env=~\"^$env\",dimension=\"write_bytes_per_sec\"})",
           "format": "time_series",
           "hide": false,
           "instant": false,
@@ -2616,7 +2616,7 @@
           },
           "editorMode": "code",
           "exemplar": false,
-          "expr": "sum(avg_over_time(purefb_array_performance_bandwidth_bytes{instance=~\"^$instance\",env=~\"^$env\",dimension=\"other_bytes_per_sec\"}[$__interval]))",
+          "expr": "avg(purefb_array_performance_bandwidth_bytes{instance=~\"^$instance\",env=~\"^$env\",dimension=\"other_bytes_per_sec\"})",
           "format": "time_series",
           "hide": false,
           "instant": false,
@@ -2628,14 +2628,333 @@
       ],
       "title": "Average Total Bandwidth by $instance array(s) and $protocol protocol(s)",
       "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${DS_PROMETHEUS}"
+      },
+      "description": "Recommended for single array only.\n\nPanel will display \"No Data\" until there is at least 12 hours of data in the data source as this panel displays the last 90 days at 12 hour intervals.",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "axisSoftMin": 0,
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 100,
+            "gradientMode": "opacity",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "smooth",
+            "lineWidth": 1,
+            "pointSize": 0,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "never",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "normal"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green"
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "bytes"
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "capacity"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "#646464",
+                  "mode": "fixed"
+                }
+              },
+              {
+                "id": "custom.stacking",
+                "value": {
+                  "group": "A",
+                  "mode": "none"
+                }
+              },
+              {
+                "id": "custom.fillOpacity",
+                "value": 0
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "total_physical"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "#2ae5f2",
+                  "mode": "fixed"
+                }
+              },
+              {
+                "id": "custom.stacking",
+                "value": {
+                  "group": "A",
+                  "mode": "none"
+                }
+              },
+              {
+                "id": "custom.fillOpacity",
+                "value": 100
+              },
+              {
+                "id": "custom.lineWidth",
+                "value": 1
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Array DRR"
+            },
+            "properties": [
+              {
+                "id": "custom.axisPlacement",
+                "value": "right"
+              },
+              {
+                "id": "unit",
+                "value": ":1"
+              },
+              {
+                "id": "custom.lineStyle",
+                "value": {
+                  "dash": [
+                    0,
+                    10
+                  ],
+                  "fill": "dot"
+                }
+              },
+              {
+                "id": "custom.lineWidth",
+                "value": 3
+              },
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "#00b89e",
+                  "mode": "fixed"
+                }
+              },
+              {
+                "id": "custom.fillOpacity",
+                "value": 0
+              },
+              {
+                "id": "custom.axisLabel",
+                "value": "Data Reduction Ratio"
+              },
+              {
+                "id": "custom.axisColorMode",
+                "value": "series"
+              },
+              {
+                "id": "custom.axisSoftMax",
+                "value": 5
+              },
+              {
+                "id": "custom.stacking",
+                "value": {
+                  "group": "A",
+                  "mode": "none"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "fs snapshots"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "#fe7800",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "fs unique"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "#fa6400",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "obj unique"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "#00b89e",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "obj snapshots"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "#2ae5f2",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 18,
+        "x": 6,
+        "y": 67
+      },
+      "id": 197,
+      "interval": "12h",
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_PROMETHEUS}"
+          },
+          "editorMode": "code",
+          "expr": "sum(purefb_array_space_bytes{instance=~\"^$instance\",env=~\"^$env\",type=\"file-system\",space=~\"snapshots|unique|destroyed\"}) by (space)\n#\"optional granular detail\"\n#\"using sum() to show total of all arrays\"",
+          "hide": true,
+          "instant": false,
+          "legendFormat": "fs {{space}}",
+          "range": true,
+          "refId": "Filesystem Capacity"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_PROMETHEUS}"
+          },
+          "editorMode": "code",
+          "expr": "sum(purefb_array_space_bytes{instance=~\"^$instance\",env=~\"^$env\",type=\"object-store\",space=~\"snapshots|unique|destroyed\"}) by (space)\n#\"optional granular detail\"\n#\"using sum() to show total of all arrays\"",
+          "hide": true,
+          "instant": false,
+          "legendFormat": "obj {{space}}",
+          "range": true,
+          "refId": "Object Capacity"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_PROMETHEUS}"
+          },
+          "editorMode": "code",
+          "expr": "sum(purefb_array_space_bytes{instance=~\"^$instance\",env=~\"^$env\",type=\"array\",space=~\"total_physical|capacity\"}) by (space)\n#\"using sum() to show total of all arrays\"",
+          "hide": false,
+          "instant": false,
+          "legendFormat": "{{space}}",
+          "range": true,
+          "refId": "Capacity"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_PROMETHEUS}"
+          },
+          "editorMode": "code",
+          "expr": "avg(purefb_array_space_data_reduction_ratio{instance=~\"^$instance\",env=~\"^$env\",type=\"array\"}) ",
+          "hide": false,
+          "instant": false,
+          "legendFormat": "Array DRR",
+          "range": true,
+          "refId": "DRR"
+        }
+      ],
+      "timeFrom": "90d",
+      "title": "Capacity Utilization by Type & $instance array(s)",
+      "type": "timeseries"
     }
   ],
   "refresh": "",
   "revision": 1,
   "schemaVersion": 38,
+  "style": "dark",
   "tags": [
-    "pure storage",
+    "pure",
+    "storage",
+    "purestorage",
     "flashblade",
+    "fb",
     "prometheus"
   ],
   "templating": {
@@ -2686,6 +3005,7 @@
           "uid": "$datasource"
         },
         "definition": "label_values(purefb_info, env)",
+        "description": "Dependency: Prometheus metrics MUST be tagged with an environment.",
         "hide": 0,
         "includeAll": true,
         "label": "Env",
@@ -2735,7 +3055,7 @@
       },
       {
         "current": {
-          "selected": false,
+          "selected": true,
           "text": "5",
           "value": "5"
         },
@@ -2838,7 +3158,7 @@
     ]
   },
   "time": {
-    "from": "now-15m",
+    "from": "now-3h",
     "to": "now"
   },
   "timepicker": {
@@ -2863,6 +3183,6 @@
   "timezone": "",
   "title": "Pure Storage FlashBlade - Overview",
   "uid": "z0BG6-vVz",
-  "version": 2,
+  "version": 213,
   "weekStart": ""
 }

@@ -3,15 +3,13 @@ package collectors
 
 import (
 	"fmt"
-	"testing"
-        "regexp"
-        "strings"
 	"net/http"
 	"net/http/httptest"
-	"encoding/json"
 	"os"
-
-	"purestorage/fb-openmetrics-exporter/internal/rest-client"
+	client "purestorage/fb-openmetrics-exporter/internal/rest-client"
+	"regexp"
+	"strings"
+	"testing"
 )
 
 func TestAlertsCollector(t *testing.T) {
@@ -46,12 +44,12 @@ func TestAlertsCollector(t *testing.T) {
         e := endp[len(endp)-1]
         al := make(map[string]float64)
         for _, a := range aopen.Items {
-		al[fmt.Sprintf("%s,%s,%s", a.ComponentName, a.ComponentType, a.Severity)] += 1
+		al[fmt.Sprintf("%s,%d,%s,%s,%d,%s,%s,%s", a.Action, a.Code, a.ComponentName, a.ComponentType, a.Created, a.KBurl, a.Severity, a.Summary)] += 1
         }
 	want := make(map[string]bool)
         for a, n := range al {
                 alert := strings.Split(a, ",")
-		want[fmt.Sprintf("label:{name:\"component_name\" value:\"%s\"} label:{name:\"component_type\" value:\"%s\"} label:{name:\"severity\" value:\"%s\"} gauge:{value:%g}", alert[0], alert[1], alert[2], n)] = true
+		want[fmt.Sprintf("label:{name:\"action\" value:\"%s\"} label:{name:\"code\" value:\"%s\"} label:{name:\"component_name\" value:\"%s\"} label:{name:\"component_type\" value:\"%s\"} label:{name:\"created\" value:\"%s\"} label:{name:\"kburl\" value:\"%s\"} label:{name:\"severity\" value:\"%s\"} label:{name:\"summary\" value:\"%s\"} gauge:{value:%g}", alert[0], alert[1], alert[2], alert[3], alert[4], alert[5], alert[6], alert[7], n)] = true
 	}
         c := client.NewRestClient(e, "fake-api-token", "latest", false)
 	ac := NewAlertsCollector(c)

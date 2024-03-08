@@ -36,7 +36,7 @@ func TestBlades(t *testing.T) {
         e := endp[len(endp)-1]
         t.Run("blades_1", func(t *testing.T) {
             defer server.Close()
-	    c := NewRestClient(e, "fake-api-token", "latest", false)
+	    c := NewRestClient(e, "fake-api-token", "latest", "test-user-agent-string", false)
             bl := c.GetBlades()
 	    if diff := cmp.Diff(bl.Items, abl.Items); diff != "" {
                 t.Errorf("Mismatch (-want +got):\n%s", diff)

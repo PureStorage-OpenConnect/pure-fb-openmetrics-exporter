@@ -36,7 +36,7 @@ func TestArraysNfsPerfCollector(t *testing.T) {
         endp := strings.Split(server.URL, "/")
         e := endp[len(endp)-1]
 	want := make(map[string]bool)
-        c := client.NewRestClient(e, "fake-api-token", "latest", false)
+        c := client.NewRestClient(e, "fake-api-token", "latest", "test-user-agent-string", false)
         for _, p := range arrs.Items {
 		want[fmt.Sprintf("label:{name:\"dimension\" value:\"fsinfos_per_sec\"} gauge:{value:%g}", p.FsinfosPerSec)] = true
 		want[fmt.Sprintf("label:{name:\"dimension\" value:\"fsstats_per_sec\"} gauge:{value:%g}", p.FsstatsPerSec)] = true

@@ -40,7 +40,7 @@ type FBClient struct {
 	Error      error
 }
 
-func NewRestClient(endpoint string, apitoken string, apiversion string, debug bool) *FBClient {
+func NewRestClient(endpoint string, apitoken string, apiversion string, uagent string, debug bool) *FBClient {
 	type ApiVersions struct {
 		Versions []string `json:"versions"`
 	}
@@ -92,7 +92,7 @@ func NewRestClient(endpoint string, apitoken string, apiversion string, debug bo
 	fb.XAuthToken = res.Header().Get("x-auth-token")
 	fb.RestClient.SetBaseURL("https://" + endpoint + "/api/" + fb.ApiVersion)
 	fb.RestClient.SetHeader("x-auth-token", fb.XAuthToken)
-	fb.RestClient.SetHeader("User-Agent", FBRestUserAgent)
+	fb.RestClient.SetHeader("User-Agent", FBRestUserAgent + " (" + uagent + ")")
 	return fb
 }
 

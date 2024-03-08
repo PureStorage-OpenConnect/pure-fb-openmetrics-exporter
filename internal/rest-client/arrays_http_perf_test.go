@@ -36,7 +36,7 @@ func TestArraysHttpPerformance(t *testing.T) {
         e := endp[len(endp)-1]
         t.Run("arrays_http_performance_1", func(t *testing.T) {
             defer server.Close()
-	    c := NewRestClient(e, "fake-api-token", "latest", false)
+	    c := NewRestClient(e, "fake-api-token", "latest", "test-user-agent-string", false)
             ahpl := c.GetArraysHttpPerformance()
 	    if diff := cmp.Diff(ahpl.Items[0], arrhp.Items[0]); diff != "" {
                 t.Errorf("Mismatch (-want +got):\n%s", diff)

@@ -37,7 +37,7 @@ func TestArraysPerformanceReplication(t *testing.T) {
         e := endp[len(endp)-1]
         t.Run("array_performance_replication_1", func(t *testing.T) {
 	    defer server.Close()
-            c := NewRestClient(e, "fake-api-token", "latest", false)
+            c := NewRestClient(e, "fake-api-token", "latest", "test-user-agent-string", false)
 	    aprl := c.GetArraysPerformanceReplication()
 	    if diff := cmp.Diff(aprl.Items, arrpr.Items); diff != "" {
                 t.Errorf("Mismatch (-want +got):\n%s", diff)

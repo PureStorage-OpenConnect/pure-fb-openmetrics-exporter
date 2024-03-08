@@ -145,8 +145,9 @@ func metricsHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
+	uagent := r.Header.Get("User-Agent")
 	registry := prometheus.NewRegistry()
-	fbclient := client.NewRestClient(address, apitoken, apiver, debug)
+	fbclient := client.NewRestClient(address, apitoken, apiver, uagent, debug)
 	if fbclient.Error != nil {
 		http.Error(w, "Error connecting to FlashBlade. Check your management endpoint and/or api token are correct.", http.StatusBadRequest)
 		return

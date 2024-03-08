@@ -43,7 +43,7 @@ func TestBucketsS3Performance(t *testing.T) {
         e := endp[len(endp)-1]
         t.Run("buckets_s3_performance_1", func(t *testing.T) {
             defer server.Close()
-	    c := NewRestClient(e, "fake-api-token", "latest", false)
+	    c := NewRestClient(e, "fake-api-token", "latest", "test-user-agent-string", false)
 	    b := c.GetBuckets()
             pl := c.GetBucketsS3Performance(b)
 	    if diff := cmp.Diff(pl.Items, bpl.Items); diff != "" {

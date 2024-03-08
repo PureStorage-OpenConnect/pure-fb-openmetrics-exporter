@@ -55,6 +55,12 @@ make build
 
 The newly built exporter executable can be found in the <kbd>./out/bin</kbd> directory.
 
+Optionally, to build the binary with the vendor cache, you may use
+
+````
+make build-with-vendor
+````
+
 
 ### Docker image
 

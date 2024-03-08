@@ -62,9 +62,15 @@ This document describes the semantic conventions for Pure FlashBlade Metrics.
 
 | Status    | Name               | Description                  | Units | Metric Type ([*](https://github.com/OpenObservability/OpenMetrics/blob/main/specification/OpenMetrics.md#metric-types)) | Value Type | Attribute Key    | Attribute Values              |
 | --------- | ------------------ | ---------------------------- | ----- | ----------------------------------------------------------------------------------------------------------------------- | ---------- | ---------------- | ----------------------------- |
-| Available | purefb_alerts_open | FlashBlade open alert events |       | Gauge                                                                                                                   | Double     | `component_name` | (component name)              |
+| Available | purefb_alerts_open | FlashBlade open alert events |       | Gauge                                                                                                                   | Double     | `name`           | (name)                        |
+|           |                    |                              |       |                                                                                                                         |            | `action`         | (action)                      |
+|           |                    |                              |       | The code number of the event                                                                                            |            | `code`           | (code)                        |
+|           |                    |                              |       |                                                                                                                         |            | `component_name` | (component name)              |
 |           |                    |                              |       |                                                                                                                         |            | `component_type` | (component type)              |
+|           |                    |                              |       | The time the alert was created in milliseconds since the UNIX epoch                                                     |            | `created`        | (created)                     |
+|           |                    |                              |       | Knowledge Base URL related to the alert                                                                                 |            | `kburl`          | (kburl)                       |
 |           |                    |                              |       |                                                                                                                         |            | `severity`       | `info`, `warning`, `critical` |
+|           |                    |                              |       | A summary of the alert                                                                                                  |            | `summary`        | (summary)                     |
 
 ### `purefb_array` - FlashBlade Array Metrics
 

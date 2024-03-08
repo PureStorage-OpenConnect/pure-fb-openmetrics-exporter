@@ -1,0 +1,12 @@
+# This example are for demonstration purposes only, ensure configurations are adjusted to meet the requirements of your solution.
+groups:
+  # purefb_alerts_open fires an alert on any open FlashBlade alert
+   - name: purefb_alerts_open
+     interval: 60s
+     rules:
+       - alert: purefb_alerts_open
+         expr: purefb_alerts_open
+         annotations:
+           title: "Pure Storage //FB Alert {{ $labels.code }} / {{ $labels.instance }} / {{ $labels.component_name }}"
+           summary: "{{ $labels.summary }}"
+           description: "FlashBlade `{{ $labels.instance }}` reported `{{ $labels.severity }}` alert for `{{ $labels.component_type }}/{{ $labels.component_name }}`. For more details, lookup alert code `{{ $labels.code }}` at https://support.purestorage.com/FlashBlade/Purity_FB/Purity_FB_Alerts"

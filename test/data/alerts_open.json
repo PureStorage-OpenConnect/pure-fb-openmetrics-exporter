@@ -14,10 +14,10 @@
       "created": 1627892727562,
       "updated": 1682296234185,
       "notified": 1631814626487,
-      "summary": "File system 'AIRI' approaching space quota",
+      "summary": "File system 'AIRI' approaching, space quota",
       "description": "The 'AIRI' file system is at 89% of its space quota of 170.00 G. Pure Storage Support is not notified of this alert. If you would like assistance from our support team, you can open a case by emailing support@purestorage.com. As an INFO-level alert, there will be no reminder notifications unless the issue worsens.",
       "knowledge_base_url": "https://support.purestorage.com/?cid=Alert_1101",
-      "action": "Remove data from the file system or increase its space quota.",
+      "action": "Remove data, from the file system or increase its space quota.",
       "variables": {
         "CurrentUtilization": "0.893411406348733",
         "FileSystemName": "AIRI"

@@ -25,7 +25,7 @@ init:
 
 build: ## Build project and put the output binary in out/bin/
 	mkdir -p out/bin
-	CGO_ENABLED=0 GO111MODULE=on $(GOCMD) build -a -mod=readonly -tags 'netgo osusergo static_build' -ldflags="-X 'main.version=v$(VERSION)' -X 'purestorage/fb-openmetrics-exporter/internal/rest-client.UserAgentString=$(VERSION)'" -o out/bin/$(BINARY_NAME) cmd/fb-om-exporter/main.go
+	CGO_ENABLED=0 GO111MODULE=on $(GOCMD) build -a -mod=readonly -tags 'netgo osusergo static_build' -ldflags="-X 'main.version=v$(VERSION)' -X 'purestorage/fb-openmetrics-exporter/internal/rest-client.UserAgentVersion=$(VERSION)'" -o out/bin/$(BINARY_NAME) cmd/fb-om-exporter/main.go
 
 build-with-vendor: ## Build project using the vendor directory and put the output binary in out/bin/
 	mkdir -p out/bin

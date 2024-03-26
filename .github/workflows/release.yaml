@@ -4,15 +4,24 @@ on:
   release:
     types: [created]
 
+permissions:
+    contents: write
+    packages: write
+
 jobs:
-  release-linux-amd64:
-    name: release linux/amd64
+  releases-matrix:
+    name: Release Go Binary
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        # build and publish in parallel: linux/386, linux/amd64, linux/arm64, windows/386, windows/amd64, darwin/amd64, darwin/arm64
+        goos: [linux, windows]
+        goarch: [amd64]
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
     - uses: wangyoucao577/go-release-action@v1
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
-        goos: linux
-        goarch: amd64
-        project_path: cmd/fb-om-exporter
+        goos: ${{ matrix.goos }}
+        goarch: ${{ matrix.goarch }}
+        project_path: "./cmd/fb-om-exporter"

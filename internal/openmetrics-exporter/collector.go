@@ -2,9 +2,10 @@ package collectors
 
 import (
 	"context"
+	client "purestorage/fb-openmetrics-exporter/internal/rest-client"
+
 	"github.com/prometheus/client_golang/prometheus"
-	"github.com/prometheus/client_golang/prometheus/collectors"
-	"purestorage/fb-openmetrics-exporter/internal/rest-client"
+	// "github.com/prometheus/client_golang/prometheus/collectors"
 )
 
 func Collector(ctx context.Context, metrics string, registry *prometheus.Registry, fbclient *client.FBClient) bool {
@@ -12,8 +13,8 @@ func Collector(ctx context.Context, metrics string, registry *prometheus.Registr
 	buckets := fbclient.GetBuckets()
 	arrayCollector := NewArraysCollector(fbclient)
 	registry.MustRegister(
-		collectors.NewProcessCollector(collectors.ProcessCollectorOpts{}),
-		collectors.NewGoCollector(),
+		// collectors.NewProcessCollector(collectors.ProcessCollectorOpts{}),
+		// collectors.NewGoCollector(),
 		arrayCollector,
 	)
 	if metrics == "all" || metrics == "array" {

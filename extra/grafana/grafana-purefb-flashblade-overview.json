@@ -1303,10 +1303,10 @@
           "exemplar": false,
           "expr": "sum(avg_over_time(purefb_array_performance_throughput_iops{instance=~\"$instance\",env=~\"$env\"}[$__range])) by (dimension)",
           "format": "time_series",
-          "instant": true,
+          "instant": false,
           "interval": "",
           "legendFormat": "__auto",
-          "range": false,
+          "range": true,
           "refId": "Average IOPS"
         }
       ],

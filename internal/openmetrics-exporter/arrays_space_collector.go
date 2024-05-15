@@ -37,6 +37,18 @@ func (c *ArraySpaceCollector) Collect(ch chan<- prometheus.Metric) {
 		ch <- prometheus.MustNewConstMetric(
 			c.SpaceDesc,
 			prometheus.GaugeValue,
+			float64(as.Space.Destroyed),
+			t, "destroyed",
+		)
+		ch <- prometheus.MustNewConstMetric(
+			c.SpaceDesc,
+			prometheus.GaugeValue,
+			float64(as.Space.DestroyedVirtual),
+			t, "destroyed_virtual",
+		)
+		ch <- prometheus.MustNewConstMetric(
+			c.SpaceDesc,
+			prometheus.GaugeValue,
 			float64(as.Space.Snapshots),
 			t, "snapshots",
 		)

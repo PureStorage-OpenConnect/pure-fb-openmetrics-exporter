@@ -61,7 +61,7 @@
       }
     ]
   },
-  "description": "v1.0.5 Fixes a bug with Grafana setting datasource \"uid\": \"${DS_PROMETHEUS}\" causing some user panels not to successfully load. Fix involves manually overriding with \"uid\": \"$datasource\".",
+  "description": "v1.0.6 Fixes a bug with Grafana setting datasource \"uid\": \"${DS_PROMETHEUS}\" causing some user panels not to successfully load. Fix involves manually overriding with \"uid\": \"$datasource\".",
   "editable": false,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 1,
@@ -2954,8 +2954,8 @@
       {
         "current": {
           "selected": false,
-          "text": "1.0.5",
-          "value": "1.0.5"
+          "text": "1.0.6",
+          "value": "1.0.6"
         },
         "hide": 2,
         "includeAll": false,
@@ -2964,11 +2964,11 @@
         "options": [
           {
             "selected": true,
-            "text": "1.0.5",
-            "value": "1.0.5"
+            "text": "1.0.6",
+            "value": "1.0.6"
           }
         ],
-        "query": "1.0.5",
+        "query": "1.0.6",
         "skipUrlSync": false,
         "type": "custom"
       },

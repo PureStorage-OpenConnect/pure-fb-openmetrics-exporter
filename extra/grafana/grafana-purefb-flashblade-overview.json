@@ -61,7 +61,7 @@
       }
     ]
   },
-  "description": "v1.0.6 Fixes a bug with Grafana setting datasource \"uid\": \"${DS_PROMETHEUS}\" causing some user panels not to successfully load. Fix involves manually overriding with \"uid\": \"$datasource\".",
+  "description": "v1.0.6 Fix: Changes Average IOPS by IO Type and array(s) from Instant to Range to calculate average over range rather returning a single average value.",
   "editable": false,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 1,

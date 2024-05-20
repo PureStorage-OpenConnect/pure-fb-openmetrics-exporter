@@ -61,7 +61,7 @@
       }
     ]
   },
-  "description": "v1.0.5 Fixes a bug with Grafana setting datasource \"uid\": \"${DS_PROMETHEUS}\" causing some user panels not to successfully load. Fix involves manually overriding with \"uid\": \"$datasource\".",
+  "description": "v1.0.6 Fix: Changes Average IOPS by IO Type and array(s) from Instant to Range to calculate average over range rather returning a single average value.",
   "editable": false,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 1,
@@ -1303,10 +1303,10 @@
           "exemplar": false,
           "expr": "sum(avg_over_time(purefb_array_performance_throughput_iops{instance=~\"$instance\",env=~\"$env\"}[$__range])) by (dimension)",
           "format": "time_series",
-          "instant": true,
+          "instant": false,
           "interval": "",
           "legendFormat": "__auto",
-          "range": false,
+          "range": true,
           "refId": "Average IOPS"
         }
       ],
@@ -2954,8 +2954,8 @@
       {
         "current": {
           "selected": false,
-          "text": "1.0.5",
-          "value": "1.0.5"
+          "text": "1.0.6",
+          "value": "1.0.6"
         },
         "hide": 2,
         "includeAll": false,
@@ -2964,11 +2964,11 @@
         "options": [
           {
             "selected": true,
-            "text": "1.0.5",
-            "value": "1.0.5"
+            "text": "1.0.6",
+            "value": "1.0.6"
           }
         ],
-        "query": "1.0.5",
+        "query": "1.0.6",
         "skipUrlSync": false,
         "type": "custom"
       },
@@ -3177,6 +3177,6 @@
   "timezone": "",
   "title": "Pure Storage FlashBlade - Overview",
   "uid": "z0BG6-vVz",
-  "version": 217,
+  "version": 218,
   "weekStart": ""
 }

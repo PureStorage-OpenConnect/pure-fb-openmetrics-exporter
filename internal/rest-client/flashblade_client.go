@@ -91,6 +91,10 @@ func NewRestClient(endpoint string, apitoken string, apiversion string, uagent s
 		fb.Error = err
 		return fb
 	}
+	if res.StatusCode() != 200 {
+		fb.Error = errors.New("failed to login to FlashBlade, check API Token")
+		return fb
+	}
 	fb.XAuthToken = res.Header().Get("x-auth-token")
 	fb.RestClient.SetBaseURL("https://" + endpoint + "/api/" + fb.ApiVersion)
 	fb.RestClient.SetHeader("x-auth-token", fb.XAuthToken)

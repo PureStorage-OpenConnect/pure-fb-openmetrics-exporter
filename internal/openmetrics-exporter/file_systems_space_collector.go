@@ -46,37 +46,37 @@ func (c *FileSystemsSpaceCollector) Collect(ch chan<- prometheus.Metric) {
 			c.ReductionDesc,
 			prometheus.GaugeValue,
 			float64(fs.Space.DataReduction),
-			fs.Name, nfs, smb,
+			fs.Name, fs.Nfs.ExportPolicy.Name, nfs, smb,
 		)
 		ch <- prometheus.MustNewConstMetric(
 			c.SpaceDesc,
 			prometheus.GaugeValue,
 			float64(fs.Provisioned),
-			fs.Name, nfs, smb, "provisioned",
+			fs.Name, fs.Nfs.ExportPolicy.Name, nfs, smb, "provisioned",
 		)
 		ch <- prometheus.MustNewConstMetric(
 			c.SpaceDesc,
 			prometheus.GaugeValue,
 			float64(fs.Space.Snapshots),
-			fs.Name, nfs, smb, "snapshots",
+			fs.Name, fs.Nfs.ExportPolicy.Name, nfs, smb, "snapshots",
 		)
 		ch <- prometheus.MustNewConstMetric(
 			c.SpaceDesc,
 			prometheus.GaugeValue,
 			float64(fs.Space.TotalPhysical),
-			fs.Name, nfs, smb, "total_physical",
+			fs.Name, fs.Nfs.ExportPolicy.Name, nfs, smb, "total_physical",
 		)
 		ch <- prometheus.MustNewConstMetric(
 			c.SpaceDesc,
 			prometheus.GaugeValue,
 			float64(fs.Space.Unique),
-			fs.Name, nfs, smb, "unique",
+			fs.Name, fs.Nfs.ExportPolicy.Name, nfs, smb, "unique",
 		)
 		ch <- prometheus.MustNewConstMetric(
 			c.SpaceDesc,
 			prometheus.GaugeValue,
 			float64(fs.Space.Virtual),
-			fs.Name, nfs, smb, "virtual",
+			fs.Name, fs.Nfs.ExportPolicy.Name, nfs, smb, "virtual",
 		)
 	}
 }
@@ -86,13 +86,13 @@ func NewFileSystemsSpaceCollector(fl *client.FileSystemsList) *FileSystemsSpaceC
 		ReductionDesc: prometheus.NewDesc(
 			"purefb_file_systems_space_data_reduction_ratio",
 			"FlashBlade file systems space data reduction",
-			[]string{"name", "nfs", "smb"},
+			[]string{"name", "nfspolicy", "nfs", "smb"},
 			prometheus.Labels{},
 		),
 		SpaceDesc: prometheus.NewDesc(
 			"purefb_file_systems_space_bytes",
 			"FlashBlade file systems space in bytes",
-			[]string{"name", "nfs", "smb", "space"},
+			[]string{"name", "nfspolicy", "nfs", "smb", "space"},
 			prometheus.Labels{},
 		),
 		FileSystems: fl,

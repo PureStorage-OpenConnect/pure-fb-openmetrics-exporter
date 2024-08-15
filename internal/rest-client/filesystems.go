@@ -10,9 +10,10 @@ type MultiProtocol struct {
 }
 
 type Nfs struct {
-	V3Enabled  bool   `json:"v3_enabled"`
-	V41Enabled bool   `json:"v4_1_enabled"`
-	Rules      string `json:"rules"`
+	V3Enabled    bool             `json:"v3_enabled"`
+	V41Enabled   bool             `json:"v4_1_enabled"`
+	Rules        string           `json:"rules"`
+	ExportPolicy ExportRulePolicy `json:"export_policy"`
 }
 
 type Smb struct {
@@ -20,9 +21,9 @@ type Smb struct {
 }
 
 type Location struct {
-        Name             string            `json:"name"`
-        Id               string            `json:"id"`
-        ResourceType     string            `jsoon:"resource_type"`
+	Name         string `json:"name"`
+	Id           string `json:"id"`
+	ResourceType string `jsoon:"resource_type"`
 }
 
 type Source struct {
@@ -71,10 +72,10 @@ func (fb *FBClient) GetFileSystems() *FileSystemsList {
 		SetResult(&result).
 		Get(uri)
 	if res.StatusCode() == 401 {
-                fb.RefreshSession()
+		fb.RefreshSession()
 		fb.RestClient.R().
 			SetResult(&result).
 			Get(uri)
-        }
+	}
 	return result
 }

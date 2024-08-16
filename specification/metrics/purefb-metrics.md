@@ -117,7 +117,7 @@ This document describes the semantic conventions for Pure FlashBlade Metrics.
 |           |                                                |                                              |       |                                                                                                                         |            | `nfs`         | (NFS versions)                                                    |
 |           |                                                |                                              |       |                                                                                                                         |            | `smb`         | (SMB versions)                                                    |
 |           |                                                |                                              |       |                                                                                                                         |            | `space`       | `provisioned`, `snapshots`, `total_physical`, `unique`, `virtual` |
-|           |
+
 ### `purefb_file_system_usage` - FlashBlade File System Usage metrics
 
 **Description:** TODO

@@ -29,49 +29,49 @@ func (c *BucketsSpaceCollector) Collect(ch chan<- prometheus.Metric) {
 			c.ReductionDesc,
 			prometheus.GaugeValue,
 			float64(bucket.Space.DataReduction),
-			bucket.Name,
+			bucket.Name, bucket.Account.Name,
 		)
 		ch <- prometheus.MustNewConstMetric(
 			c.SpaceDesc,
 			prometheus.GaugeValue,
 			float64(bucket.Space.Snapshots),
-			bucket.Name, "snapshots",
+			bucket.Name, bucket.Account.Name, "snapshots",
 		)
 		ch <- prometheus.MustNewConstMetric(
 			c.SpaceDesc,
 			prometheus.GaugeValue,
 			float64(bucket.Space.TotalPhysical),
-			bucket.Name, "total_physical",
+			bucket.Name, bucket.Account.Name, "total_physical",
 		)
 		ch <- prometheus.MustNewConstMetric(
 			c.SpaceDesc,
 			prometheus.GaugeValue,
 			float64(bucket.Space.Unique),
-			bucket.Name, "unique",
+			bucket.Name, bucket.Account.Name, "unique",
 		)
 		ch <- prometheus.MustNewConstMetric(
 			c.SpaceDesc,
 			prometheus.GaugeValue,
 			float64(bucket.Space.Virtual),
-			bucket.Name, "virtual",
+			bucket.Name, bucket.Account.Name, "virtual",
 		)
 		ch <- prometheus.MustNewConstMetric(
 			c.SpaceDesc,
 			prometheus.GaugeValue,
 			float64(bucket.ObjectCount),
-			bucket.Name, "object_count",
+			bucket.Name, bucket.Account.Name, "object_count",
 		)
 		ch <- prometheus.MustNewConstMetric(
 			c.BucketObjectCountDesc,
 			prometheus.GaugeValue,
 			float64(bucket.ObjectCount),
-			bucket.Name,
+			bucket.Name, bucket.Account.Name,
 		)
 		ch <- prometheus.MustNewConstMetric(
 			c.BucketQuotaDesc,
 			prometheus.GaugeValue,
 			float64(bucket.QuotaLimit),
-			bucket.Name, strconv.FormatBool(bucket.HardLimitEnabled),
+			bucket.Name, bucket.Account.Name, strconv.FormatBool(bucket.HardLimitEnabled),
 		)
 	}
 }
@@ -81,25 +81,25 @@ func NewBucketsSpaceCollector(bl *client.BucketsList) *BucketsSpaceCollector {
 		ReductionDesc: prometheus.NewDesc(
 			"purefb_buckets_space_data_reduction_ratio",
 			"FlashBlade buckets space data reduction",
-			[]string{"name"},
+			[]string{"name", "account"},
 			prometheus.Labels{},
 		),
 		SpaceDesc: prometheus.NewDesc(
 			"purefb_buckets_space_bytes",
 			"FlashBlade buckets space in bytes",
-			[]string{"name", "space"},
+			[]string{"name", "account", "space"},
 			prometheus.Labels{},
 		),
 		BucketQuotaDesc: prometheus.NewDesc(
 			"purefb_buckets_quota_space_bytes",
 			"FlashBlade buckets quota space in bytes",
-			[]string{"name", "hard_limit_enabled"},
+			[]string{"name", "account", "hard_limit_enabled"},
 			prometheus.Labels{},
 		),
 		BucketObjectCountDesc: prometheus.NewDesc(
 			"purefb_buckets_object_count",
 			"FlashBlade buckets object count",
-			[]string{"name"},
+			[]string{"name", "account"},
 			prometheus.Labels{},
 		),
 		Buckets: bl,

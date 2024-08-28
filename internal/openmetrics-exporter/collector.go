@@ -32,6 +32,7 @@ func Collector(ctx context.Context, metrics string, registry *prometheus.Registr
 		alertsCollector := NewAlertsCollector(fbclient)
 		hardwareCollector := NewHardwareCollector(fbclient)
 		hwPerfConnectorsCollector := NewHwConnectorsPerfCollector(fbclient)
+		objstoreacctsCollector := NewObjectStoreAccountsCollector(fbclient)
 		registry.MustRegister(
 			perfCollector,
 			s3perfCollector,
@@ -47,6 +48,7 @@ func Collector(ctx context.Context, metrics string, registry *prometheus.Registr
 			alertsCollector,
 			hardwareCollector,
 			hwPerfConnectorsCollector,
+		        objstoreacctsCollector,
 		)
 	}
 	if metrics == "all" || metrics == "clients" {

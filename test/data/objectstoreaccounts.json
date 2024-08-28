@@ -1,0 +1,1714 @@
+{
+  "total": {
+    "name": null,
+    "created": null,
+    "space": {
+      "virtual": 10299909674641,
+      "unique": 6717715911886,
+      "snapshots": 0,
+      "data_reduction": 1.5,
+      "total_physical": 6717715911886,
+      "destroyed_virtual": 0,
+      "destroyed": 0,
+      "total_provisioned": 1099511627776,
+      "available_provisioned": -9200398046865,
+      "available_ratio": -8.367713
+    },
+    "object_count": 154060057,
+    "id": null,
+    "quota_limit": 2199023255552,
+    "hard_limit_enabled": null,
+    "bucket_defaults": {
+      "quota_limit": null,
+      "hard_limit_enabled": null
+    },
+    "public_access_config": {
+      "block_new_public_policies": false,
+      "block_public_access": false
+    }
+  },
+  "continuation_token": null,
+  "total_item_count": 60,
+  "items": [
+    {
+      "name": "438b70a8-f7a1-45f1-9563-dd82ec279b77",
+      "created": 1695035271000,
+      "space": {
+        "virtual": 0,
+        "unique": 0,
+        "snapshots": 0,
+        "data_reduction": null,
+        "total_physical": 0,
+        "destroyed_virtual": 0,
+        "destroyed": 0,
+        "total_provisioned": null,
+        "available_provisioned": null,
+        "available_ratio": null
+      },
+      "object_count": 0,
+      "id": "7a89fd6a-7a9f-c686-c263-86859292d2a5",
+      "quota_limit": null,
+      "hard_limit_enabled": false,
+      "bucket_defaults": {
+        "quota_limit": null,
+        "hard_limit_enabled": false
+      },
+      "public_access_config": {
+        "block_new_public_policies": true,
+        "block_public_access": true
+      }
+    },
+    {
+      "name": "agirc-arrco-tests",
+      "created": 1687854214000,
+      "space": {
+        "virtual": 12149692,
+        "unique": 12149692,
+        "snapshots": 0,
+        "data_reduction": 1,
+        "total_physical": 12149692,
+        "destroyed_virtual": 0,
+        "destroyed": 0,
+        "total_provisioned": null,
+        "available_provisioned": null,
+        "available_ratio": null
+      },
+      "object_count": 2,
+      "id": "3fcac14e-b4d8-c5fb-2f94-da8847195847",
+      "quota_limit": null,
+      "hard_limit_enabled": false,
+      "bucket_defaults": {
+        "quota_limit": null,
+        "hard_limit_enabled": false
+      },
+      "public_access_config": {
+        "block_new_public_policies": true,
+        "block_public_access": true
+      }
+    },
+    {
+      "name": "alex",
+      "created": 1591174382000,
+      "space": {
+        "virtual": 0,
+        "unique": 0,
+        "snapshots": 0,
+        "data_reduction": null,
+        "total_physical": 0,
+        "destroyed_virtual": 0,
+        "destroyed": 0,
+        "total_provisioned": null,
+        "available_provisioned": null,
+        "available_ratio": null
+      },
+      "object_count": 0,
+      "id": "5888a1b8-0fda-7b92-3436-4b9baa798075",
+      "quota_limit": null,
+      "hard_limit_enabled": false,
+      "bucket_defaults": {
+        "quota_limit": null,
+        "hard_limit_enabled": false
+      },
+      "public_access_config": {
+        "block_new_public_policies": true,
+        "block_public_access": true
+      }
+    },
+    {
+      "name": "anthos",
+      "created": 1593899371000,
+      "space": {
+        "virtual": 496269646336,
+        "unique": 259995842615,
+        "snapshots": 0,
+        "data_reduction": 1.9,
+        "total_physical": 259995842615,
+        "destroyed_virtual": 0,
+        "destroyed": 0,
+        "total_provisioned": null,
+        "available_provisioned": null,
+        "available_ratio": null
+      },
+      "object_count": 220,
+      "id": "aba8d1ee-1cca-8b02-0473-be186660ab07",
+      "quota_limit": null,
+      "hard_limit_enabled": false,
+      "bucket_defaults": {
+        "quota_limit": null,
+        "hard_limit_enabled": false
+      },
+      "public_access_config": {
+        "block_new_public_policies": true,
+        "block_public_access": true
+      }
+    },
+    {
+      "name": "ashtest",
+      "created": 1621698757000,
+      "space": {
+        "virtual": 116022272,
+        "unique": 4127832,
+        "snapshots": 0,
+        "data_reduction": 28.1,
+        "total_physical": 4127832,
+        "destroyed_virtual": 0,
+        "destroyed": 0,
+        "total_provisioned": null,
+        "available_provisioned": null,
+        "available_ratio": null
+      },
+      "object_count": 54,
+      "id": "b27ca6ce-658f-75a8-0012-7236cc639e91",
+      "quota_limit": null,
+      "hard_limit_enabled": false,
+      "bucket_defaults": {
+        "quota_limit": null,
+        "hard_limit_enabled": false
+      },
+      "public_access_config": {
+        "block_new_public_policies": true,
+        "block_public_access": true
+      }
+    },
+    {
+      "name": "awscli",
+      "created": 1694440006000,
+      "space": {
+        "virtual": 2048,
+        "unique": 308,
+        "snapshots": 0,
+        "data_reduction": 6.6,
+        "total_physical": 308,
+        "destroyed_virtual": 0,
+        "destroyed": 0,
+        "total_provisioned": null,
+        "available_provisioned": null,
+        "available_ratio": null
+      },
+      "object_count": 4,
+      "id": "182ad1da-8a78-035d-ca8b-16830429ffb4",
+      "quota_limit": null,
+      "hard_limit_enabled": false,
+      "bucket_defaults": {
+        "quota_limit": null,
+        "hard_limit_enabled": false
+      },
+      "public_access_config": {
+        "block_new_public_policies": true,
+        "block_public_access": true
+      }
+    },
+    {
+      "name": "awsvirtstyle",
+      "created": 1695563496000,
+      "space": {
+        "virtual": 0,
+        "unique": 0,
+        "snapshots": 0,
+        "data_reduction": null,
+        "total_physical": 0,
+        "destroyed_virtual": 0,
+        "destroyed": 0,
+        "total_provisioned": null,
+        "available_provisioned": null,
+        "available_ratio": null
+      },
+      "object_count": 0,
+      "id": "32f7807a-891d-664d-4551-cbac9b4f30c1",
+      "quota_limit": null,
+      "hard_limit_enabled": false,
+      "bucket_defaults": {
+        "quota_limit": null,
+        "hard_limit_enabled": false
+      },
+      "public_access_config": {
+        "block_new_public_policies": true,
+        "block_public_access": true
+      }
+    },
+    {
+      "name": "azure-data-factory",
+      "created": 1582290727000,
+      "space": {
+        "virtual": 1078056801280,
+        "unique": 403930916079,
+        "snapshots": 0,
+        "data_reduction": 2.7,
+        "total_physical": 403930916079,
+        "destroyed_virtual": 0,
+        "destroyed": 0,
+        "total_provisioned": null,
+        "available_provisioned": null,
+        "available_ratio": null
+      },
+      "object_count": 1845,
+      "id": "88c471b6-305c-570a-ac66-e9933fe3040c",
+      "quota_limit": null,
+      "hard_limit_enabled": false,
+      "bucket_defaults": {
+        "quota_limit": null,
+        "hard_limit_enabled": false
+      },
+      "public_access_config": {
+        "block_new_public_policies": true,
+        "block_public_access": true
+      }
+    },
+    {
+      "name": "bcatic",
+      "created": 1585755394000,
+      "space": {
+        "virtual": 3080528,
+        "unique": 3080528,
+        "snapshots": 0,
+        "data_reduction": 1,
+        "total_physical": 3080528,
+        "destroyed_virtual": 0,
+        "destroyed": 0,
+        "total_provisioned": null,
+        "available_provisioned": null,
+        "available_ratio": null
+      },
+      "object_count": 212,
+      "id": "ba3be33c-9733-10da-dcad-e8480854f696",
+      "quota_limit": null,
+      "hard_limit_enabled": false,
+      "bucket_defaults": {
+        "quota_limit": null,
+        "hard_limit_enabled": false
+      },
+      "public_access_config": {
+        "block_new_public_policies": true,
+        "block_public_access": true
+      }
+    },
+    {
+      "name": "bttest",
+      "created": 1710413349000,
+      "space": {
+        "virtual": 0,
+        "unique": 0,
+        "snapshots": 0,
+        "data_reduction": null,
+        "total_physical": 0,
+        "destroyed_virtual": 0,
+        "destroyed": 0,
+        "total_provisioned": null,
+        "available_provisioned": null,
+        "available_ratio": null
+      },
+      "object_count": 0,
+      "id": "430d06d8-33cf-f89a-a982-902f523370c0",
+      "quota_limit": null,
+      "hard_limit_enabled": false,
+      "bucket_defaults": {
+        "quota_limit": null,
+        "hard_limit_enabled": false
+      },
+      "public_access_config": {
+        "block_new_public_policies": true,
+        "block_public_access": true
+      }
+    },
+    {
+      "name": "bttestaccount",
+      "created": 1687944379000,
+      "space": {
+        "virtual": 0,
+        "unique": 0,
+        "snapshots": 0,
+        "data_reduction": null,
+        "total_physical": 0,
+        "destroyed_virtual": 0,
+        "destroyed": 0,
+        "total_provisioned": null,
+        "available_provisioned": null,
+        "available_ratio": null
+      },
+      "object_count": 0,
+      "id": "1607af79-6183-4a25-c6d3-0acc18fe2cc3",
+      "quota_limit": null,
+      "hard_limit_enabled": false,
+      "bucket_defaults": {
+        "quota_limit": null,
+        "hard_limit_enabled": false
+      },
+      "public_access_config": {
+        "block_new_public_policies": true,
+        "block_public_access": true
+      }
+    },
+    {
+      "name": "d2160162-db4f-4a7e-9071-b7a04b31e4a6",
+      "created": 1695060419000,
+      "space": {
+        "virtual": 665839,
+        "unique": 397875,
+        "snapshots": 0,
+        "data_reduction": 1.7,
+        "total_physical": 397875,
+        "destroyed_virtual": 0,
+        "destroyed": 0,
+        "total_provisioned": null,
+        "available_provisioned": null,
+        "available_ratio": null
+      },
+      "object_count": 2,
+      "id": "58b1b535-d823-b0d7-a088-08836e10edf2",
+      "quota_limit": null,
+      "hard_limit_enabled": false,
+      "bucket_defaults": {
+        "quota_limit": null,
+        "hard_limit_enabled": false
+      },
+      "public_access_config": {
+        "block_new_public_policies": true,
+        "block_public_access": true
+      }
+    },
+    {
+      "name": "datapipeline",
+      "created": 1606128833000,
+      "space": {
+        "virtual": 4355715432960,
+        "unique": 4241167828434,
+        "snapshots": 0,
+        "data_reduction": 1,
+        "total_physical": 4241167828434,
+        "destroyed_virtual": 0,
+        "destroyed": 0,
+        "total_provisioned": null,
+        "available_provisioned": null,
+        "available_ratio": null
+      },
+      "object_count": 217048,
+      "id": "b3d1332f-7f0c-885e-6330-6baacd87b403",
+      "quota_limit": null,
+      "hard_limit_enabled": false,
+      "bucket_defaults": {
+        "quota_limit": null,
+        "hard_limit_enabled": false
+      },
+      "public_access_config": {
+        "block_new_public_policies": true,
+        "block_public_access": true
+      }
+    },
+    {
+      "name": "deleteme-go-plumb-account-go-plumbing-fb02-fppjf",
+      "created": 1674657073000,
+      "space": {
+        "virtual": 151321563,
+        "unique": 151321563,
+        "snapshots": 0,
+        "data_reduction": 1,
+        "total_physical": 151321563,
+        "destroyed_virtual": 0,
+        "destroyed": 0,
+        "total_provisioned": null,
+        "available_provisioned": null,
+        "available_ratio": null
+      },
+      "object_count": 18,
+      "id": "4bf05eea-e8f9-fb66-81ce-92365abe31b0",
+      "quota_limit": null,
+      "hard_limit_enabled": false,
+      "bucket_defaults": {
+        "quota_limit": null,
+        "hard_limit_enabled": false
+      },
+      "public_access_config": {
+        "block_new_public_policies": true,
+        "block_public_access": true
+      }
+    },
+    {
+      "name": "dmiller",
+      "created": 1662991971000,
+      "space": {
+        "virtual": 140639232,
+        "unique": 101403711,
+        "snapshots": 0,
+        "data_reduction": 1.4,
+        "total_physical": 101403711,
+        "destroyed_virtual": 0,
+        "destroyed": 0,
+        "total_provisioned": null,
+        "available_provisioned": null,
+        "available_ratio": null
+      },
+      "object_count": 236,
+      "id": "a8f23a74-e2ae-504f-ac90-1cdd3f40e606",
+      "quota_limit": null,
+      "hard_limit_enabled": false,
+      "bucket_defaults": {
+        "quota_limit": null,
+        "hard_limit_enabled": false
+      },
+      "public_access_config": {
+        "block_new_public_policies": true,
+        "block_public_access": true
+      }
+    },
+    {
+      "name": "ecc1de8e-2fc0-404b-a79f-46fdb9324551",
+      "created": 1695040593000,
+      "space": {
+        "virtual": 731598,
+        "unique": 731598,
+        "snapshots": 0,
+        "data_reduction": 1,
+        "total_physical": 731598,
+        "destroyed_virtual": 0,
+        "destroyed": 0,
+        "total_provisioned": null,
+        "available_provisioned": null,
+        "available_ratio": null
+      },
+      "object_count": 2,
+      "id": "8d98747f-ba20-a585-5772-50176d76ad74",
+      "quota_limit": null,
+      "hard_limit_enabled": false,
+      "bucket_defaults": {
+        "quota_limit": null,
+        "hard_limit_enabled": false
+      },
+      "public_access_config": {
+        "block_new_public_policies": true,
+        "block_public_access": true
+      }
+    },
+    {
+      "name": "egrosso",
+      "created": 1644815781000,
+      "space": {
+        "virtual": 0,
+        "unique": 0,
+        "snapshots": 0,
+        "data_reduction": null,
+        "total_physical": 0,
+        "destroyed_virtual": 0,
+        "destroyed": 0,
+        "total_provisioned": null,
+        "available_provisioned": null,
+        "available_ratio": null
+      },
+      "object_count": 0,
+      "id": "bb4973c3-dee8-0554-f4b3-46f1df424283",
+      "quota_limit": null,
+      "hard_limit_enabled": false,
+      "bucket_defaults": {
+        "quota_limit": null,
+        "hard_limit_enabled": false
+      },
+      "public_access_config": {
+        "block_new_public_policies": true,
+        "block_public_access": true
+      }
+    },
+    {
+      "name": "fbstaines02",
+      "created": 1654311692000,
+      "space": {
+        "virtual": 12372346,
+        "unique": 12372346,
+        "snapshots": 0,
+        "data_reduction": 1,
+        "total_physical": 12372346,
+        "destroyed_virtual": 0,
+        "destroyed": 0,
+        "total_provisioned": null,
+        "available_provisioned": null,
+        "available_ratio": null
+      },
+      "object_count": 2000,
+      "id": "4e2da6ce-19cd-774d-af1e-c9c8cefc8960",
+      "quota_limit": null,
+      "hard_limit_enabled": false,
+      "bucket_defaults": {
+        "quota_limit": null,
+        "hard_limit_enabled": false
+      },
+      "public_access_config": {
+        "block_new_public_policies": true,
+        "block_public_access": true
+      }
+    },
+    {
+      "name": "gse-s3-test-migration",
+      "created": 1587467015000,
+      "space": {
+        "virtual": 629152768,
+        "unique": 458124,
+        "snapshots": 0,
+        "data_reduction": 1373.3,
+        "total_physical": 458124,
+        "destroyed_virtual": 0,
+        "destroyed": 0,
+        "total_provisioned": null,
+        "available_provisioned": null,
+        "available_ratio": null
+      },
+      "object_count": 18,
+      "id": "c3f45a45-1fbc-d088-47b2-598bca488b1a",
+      "quota_limit": null,
+      "hard_limit_enabled": false,
+      "bucket_defaults": {
+        "quota_limit": null,
+        "hard_limit_enabled": false
+      },
+      "public_access_config": {
+        "block_new_public_policies": true,
+        "block_public_access": true
+      }
+    },
+    {
+      "name": "gwillett-px-backup",
+      "created": 1639651263000,
+      "space": {
+        "virtual": 110592,
+        "unique": 43989,
+        "snapshots": 0,
+        "data_reduction": 2.5,
+        "total_physical": 43989,
+        "destroyed_virtual": 0,
+        "destroyed": 0,
+        "total_provisioned": null,
+        "available_provisioned": null,
+        "available_ratio": null
+      },
+      "object_count": 48,
+      "id": "95a39da8-0cde-c256-0ef5-dbe6813c9cfe",
+      "quota_limit": null,
+      "hard_limit_enabled": false,
+      "bucket_defaults": {
+        "quota_limit": null,
+        "hard_limit_enabled": false
+      },
+      "public_access_config": {
+        "block_new_public_policies": true,
+        "block_public_access": true
+      }
+    },
+    {
+      "name": "heinb-acct",
+      "created": 1675079619000,
+      "space": {
+        "virtual": 22551040,
+        "unique": 9900548,
+        "snapshots": 0,
+        "data_reduction": 2.3,
+        "total_physical": 9900548,
+        "destroyed_virtual": 0,
+        "destroyed": 0,
+        "total_provisioned": null,
+        "available_provisioned": null,
+        "available_ratio": null
+      },
+      "object_count": 15,
+      "id": "5bdcf72d-2cc6-3e38-538f-7299529515c2",
+      "quota_limit": null,
+      "hard_limit_enabled": false,
+      "bucket_defaults": {
+        "quota_limit": null,
+        "hard_limit_enabled": false
+      },
+      "public_access_config": {
+        "block_new_public_policies": true,
+        "block_public_access": true
+      }
+    },
+    {
+      "name": "jbt",
+      "created": 1583411919000,
+      "space": {
+        "virtual": 3435043308855,
+        "unique": 1225314765856,
+        "snapshots": 0,
+        "data_reduction": 2.8,
+        "total_physical": 1225314765856,
+        "destroyed_virtual": 0,
+        "destroyed": 0,
+        "total_provisioned": null,
+        "available_provisioned": null,
+        "available_ratio": null
+      },
+      "object_count": 152722143,
+      "id": "665a6ba4-749b-f1c7-159c-3e1bb1afdc92",
+      "quota_limit": null,
+      "hard_limit_enabled": false,
+      "bucket_defaults": {
+        "quota_limit": null,
+        "hard_limit_enabled": false
+      },
+      "public_access_config": {
+        "block_new_public_policies": true,
+        "block_public_access": true
+      }
+    },
+    {
+      "name": "jo-backup",
+      "created": 1625053800000,
+      "space": {
+        "virtual": 66010112,
+        "unique": 48219854,
+        "snapshots": 0,
+        "data_reduction": 1.4,
+        "total_physical": 48219854,
+        "destroyed_virtual": 0,
+        "destroyed": 0,
+        "total_provisioned": null,
+        "available_provisioned": null,
+        "available_ratio": null
+      },
+      "object_count": 71,
+      "id": "56950292-7052-747c-5af5-a042506947c5",
+      "quota_limit": null,
+      "hard_limit_enabled": false,
+      "bucket_defaults": {
+        "quota_limit": null,
+        "hard_limit_enabled": false
+      },
+      "public_access_config": {
+        "block_new_public_policies": true,
+        "block_public_access": true
+      }
+    },
+    {
+      "name": "jslater",
+      "created": 1607617686000,
+      "space": {
+        "virtual": 0,
+        "unique": 0,
+        "snapshots": 0,
+        "data_reduction": null,
+        "total_physical": 0,
+        "destroyed_virtual": 0,
+        "destroyed": 0,
+        "total_provisioned": null,
+        "available_provisioned": null,
+        "available_ratio": null
+      },
+      "object_count": 0,
+      "id": "c78dab01-3445-5991-8c95-81ce4fc30273",
+      "quota_limit": null,
+      "hard_limit_enabled": false,
+      "bucket_defaults": {
+        "quota_limit": null,
+        "hard_limit_enabled": false
+      },
+      "public_access_config": {
+        "block_new_public_policies": true,
+        "block_public_access": true
+      }
+    },
+    {
+      "name": "jwps",
+      "created": 1582211016000,
+      "space": {
+        "virtual": 0,
+        "unique": 0,
+        "snapshots": 0,
+        "data_reduction": null,
+        "total_physical": 0,
+        "destroyed_virtual": 0,
+        "destroyed": 0,
+        "total_provisioned": null,
+        "available_provisioned": null,
+        "available_ratio": null
+      },
+      "object_count": 0,
+      "id": "70cf93fa-5327-9a90-4567-853fb3e982f5",
+      "quota_limit": null,
+      "hard_limit_enabled": false,
+      "bucket_defaults": {
+        "quota_limit": null,
+        "hard_limit_enabled": false
+      },
+      "public_access_config": {
+        "block_new_public_policies": true,
+        "block_public_access": true
+      }
+    },
+    {
+      "name": "luca",
+      "created": 1620905603000,
+      "space": {
+        "virtual": 35840,
+        "unique": 8396,
+        "snapshots": 0,
+        "data_reduction": 4.3,
+        "total_physical": 8396,
+        "destroyed_virtual": 0,
+        "destroyed": 0,
+        "total_provisioned": null,
+        "available_provisioned": null,
+        "available_ratio": null
+      },
+      "object_count": 18,
+      "id": "b260fc84-6770-dce6-2c52-2c62d6c5442c",
+      "quota_limit": null,
+      "hard_limit_enabled": false,
+      "bucket_defaults": {
+        "quota_limit": null,
+        "hard_limit_enabled": false
+      },
+      "public_access_config": {
+        "block_new_public_policies": true,
+        "block_public_access": true
+      }
+    },
+    {
+      "name": "makadmeh-fb",
+      "created": 1675495104000,
+      "space": {
+        "virtual": 2312403456,
+        "unique": 1774570677,
+        "snapshots": 0,
+        "data_reduction": 1.3,
+        "total_physical": 1774570677,
+        "destroyed_virtual": 0,
+        "destroyed": 0,
+        "total_provisioned": null,
+        "available_provisioned": null,
+        "available_ratio": null
+      },
+      "object_count": 960,
+      "id": "bef6fd5d-cec8-2bb1-142d-0f9069a4dfb8",
+      "quota_limit": null,
+      "hard_limit_enabled": false,
+      "bucket_defaults": {
+        "quota_limit": null,
+        "hard_limit_enabled": false
+      },
+      "public_access_config": {
+        "block_new_public_policies": true,
+        "block_public_access": true
+      }
+    },
+    {
+      "name": "makadmeh-px-s3",
+      "created": 1715767048000,
+      "space": {
+        "virtual": 0,
+        "unique": 0,
+        "snapshots": 0,
+        "data_reduction": null,
+        "total_physical": 0,
+        "destroyed_virtual": 0,
+        "destroyed": 0,
+        "total_provisioned": null,
+        "available_provisioned": null,
+        "available_ratio": null
+      },
+      "object_count": 0,
+      "id": "ed165849-a1a7-ea48-1899-e6da457013ee",
+      "quota_limit": null,
+      "hard_limit_enabled": false,
+      "bucket_defaults": {
+        "quota_limit": null,
+        "hard_limit_enabled": false
+      },
+      "public_access_config": {
+        "block_new_public_policies": true,
+        "block_public_access": true
+      }
+    },
+    {
+      "name": "makadmeh-px-s3-2",
+      "created": 1715769415000,
+      "space": {
+        "virtual": 0,
+        "unique": 0,
+        "snapshots": 0,
+        "data_reduction": null,
+        "total_physical": 0,
+        "destroyed_virtual": 0,
+        "destroyed": 0,
+        "total_provisioned": null,
+        "available_provisioned": null,
+        "available_ratio": null
+      },
+      "object_count": 0,
+      "id": "91fe95be-c56c-1bf2-db5e-275de12d7b76",
+      "quota_limit": null,
+      "hard_limit_enabled": false,
+      "bucket_defaults": {
+        "quota_limit": null,
+        "hard_limit_enabled": false
+      },
+      "public_access_config": {
+        "block_new_public_policies": true,
+        "block_public_access": true
+      }
+    },
+    {
+      "name": "matze",
+      "created": 1592334719000,
+      "space": {
+        "virtual": 163102868677,
+        "unique": 16720116179,
+        "snapshots": 0,
+        "data_reduction": 9.8,
+        "total_physical": 16720116179,
+        "destroyed_virtual": 0,
+        "destroyed": 0,
+        "total_provisioned": null,
+        "available_provisioned": null,
+        "available_ratio": null
+      },
+      "object_count": 1000168,
+      "id": "75b8c954-02cf-a18b-ffc2-e01d16a76257",
+      "quota_limit": null,
+      "hard_limit_enabled": false,
+      "bucket_defaults": {
+        "quota_limit": null,
+        "hard_limit_enabled": false
+      },
+      "public_access_config": {
+        "block_new_public_policies": true,
+        "block_public_access": true
+      }
+    },
+    {
+      "name": "me-k8s-cluster1-px-fb2-object-da-user",
+      "created": 1671109673000,
+      "space": {
+        "virtual": 0,
+        "unique": 0,
+        "snapshots": 0,
+        "data_reduction": null,
+        "total_physical": 0,
+        "destroyed_virtual": 0,
+        "destroyed": 0,
+        "total_provisioned": null,
+        "available_provisioned": null,
+        "available_ratio": null
+      },
+      "object_count": 0,
+      "id": "374d7c69-c3cf-9e85-dd08-e1d946e7c6e4",
+      "quota_limit": null,
+      "hard_limit_enabled": false,
+      "bucket_defaults": {
+        "quota_limit": null,
+        "hard_limit_enabled": false
+      },
+      "public_access_config": {
+        "block_new_public_policies": true,
+        "block_public_access": true
+      }
+    },
+    {
+      "name": "me-k8s-clusters-px-backup-fb2-user",
+      "created": 1659000342000,
+      "space": {
+        "virtual": 980800512,
+        "unique": 247064201,
+        "snapshots": 0,
+        "data_reduction": 4,
+        "total_physical": 247064201,
+        "destroyed_virtual": 0,
+        "destroyed": 0,
+        "total_provisioned": null,
+        "available_provisioned": null,
+        "available_ratio": null
+      },
+      "object_count": 845,
+      "id": "f96edcf4-4904-0581-93d7-41348fc08be2",
+      "quota_limit": null,
+      "hard_limit_enabled": false,
+      "bucket_defaults": {
+        "quota_limit": null,
+        "hard_limit_enabled": false
+      },
+      "public_access_config": {
+        "block_new_public_policies": true,
+        "block_public_access": true
+      }
+    },
+    {
+      "name": "me-k8s-clusters-px-backup-user",
+      "created": 1663082294000,
+      "space": {
+        "virtual": 2760214016,
+        "unique": 2182488611,
+        "snapshots": 0,
+        "data_reduction": 1.3,
+        "total_physical": 2182488611,
+        "destroyed_virtual": 0,
+        "destroyed": 0,
+        "total_provisioned": null,
+        "available_provisioned": null,
+        "available_ratio": null
+      },
+      "object_count": 3571,
+      "id": "8ec0948f-ba09-8b80-1f90-6dc3b6ae2f27",
+      "quota_limit": null,
+      "hard_limit_enabled": false,
+      "bucket_defaults": {
+        "quota_limit": null,
+        "hard_limit_enabled": false
+      },
+      "public_access_config": {
+        "block_new_public_policies": true,
+        "block_public_access": true
+      }
+    },
+    {
+      "name": "mm-ericsson",
+      "created": 1707227750000,
+      "space": {
+        "virtual": 0,
+        "unique": 0,
+        "snapshots": 0,
+        "data_reduction": null,
+        "total_physical": 0,
+        "destroyed_virtual": 0,
+        "destroyed": 0,
+        "total_provisioned": null,
+        "available_provisioned": null,
+        "available_ratio": null
+      },
+      "object_count": 0,
+      "id": "ab0aa16d-bf8b-90ad-e412-5eb4b98daa57",
+      "quota_limit": 1099511627776,
+      "hard_limit_enabled": false,
+      "bucket_defaults": {
+        "quota_limit": 10737418240,
+        "hard_limit_enabled": true
+      },
+      "public_access_config": {
+        "block_new_public_policies": true,
+        "block_public_access": true
+      }
+    },
+    {
+      "name": "mm-repl-test",
+      "created": 1681753617000,
+      "space": {
+        "virtual": 512,
+        "unique": 131,
+        "snapshots": 0,
+        "data_reduction": 3.9,
+        "total_physical": 131,
+        "destroyed_virtual": 0,
+        "destroyed": 0,
+        "total_provisioned": 1099511627776,
+        "available_provisioned": 1099511627264,
+        "available_ratio": 1
+      },
+      "object_count": 0,
+      "id": "552004d2-f1b0-c851-83a0-73690cde7b78",
+      "quota_limit": 1099511627776,
+      "hard_limit_enabled": true,
+      "bucket_defaults": {
+        "quota_limit": null,
+        "hard_limit_enabled": false
+      },
+      "public_access_config": {
+        "block_new_public_policies": true,
+        "block_public_access": true
+      }
+    },
+    {
+      "name": "mm-tahakom",
+      "created": 1700491734000,
+      "space": {
+        "virtual": 512,
+        "unique": 125,
+        "snapshots": 0,
+        "data_reduction": 4.1,
+        "total_physical": 125,
+        "destroyed_virtual": 0,
+        "destroyed": 0,
+        "total_provisioned": null,
+        "available_provisioned": null,
+        "available_ratio": null
+      },
+      "object_count": 0,
+      "id": "6029e8e8-1f76-9bf1-756d-f25bf7a6f422",
+      "quota_limit": null,
+      "hard_limit_enabled": false,
+      "bucket_defaults": {
+        "quota_limit": null,
+        "hard_limit_enabled": false
+      },
+      "public_access_config": {
+        "block_new_public_policies": true,
+        "block_public_access": true
+      }
+    },
+    {
+      "name": "mmeppen2",
+      "created": 1630396692000,
+      "space": {
+        "virtual": 12997,
+        "unique": 4525,
+        "snapshots": 0,
+        "data_reduction": 2.9,
+        "total_physical": 4525,
+        "destroyed_virtual": 0,
+        "destroyed": 0,
+        "total_provisioned": null,
+        "available_provisioned": null,
+        "available_ratio": null
+      },
+      "object_count": 9,
+      "id": "5f18583b-9518-0794-c0b1-ae3264b94a55",
+      "quota_limit": null,
+      "hard_limit_enabled": false,
+      "bucket_defaults": {
+        "quota_limit": null,
+        "hard_limit_enabled": false
+      },
+      "public_access_config": {
+        "block_new_public_policies": true,
+        "block_public_access": true
+      }
+    },
+    {
+      "name": "mwamrep",
+      "created": 1595497935000,
+      "space": {
+        "virtual": 209073356288,
+        "unique": 127038206954,
+        "snapshots": 0,
+        "data_reduction": 1.6,
+        "total_physical": 127038206954,
+        "destroyed_virtual": 0,
+        "destroyed": 0,
+        "total_provisioned": null,
+        "available_provisioned": null,
+        "available_ratio": null
+      },
+      "object_count": 271,
+      "id": "eaafc05d-8e3f-9dcc-5cec-c69f95f64bb9",
+      "quota_limit": null,
+      "hard_limit_enabled": false,
+      "bucket_defaults": {
+        "quota_limit": null,
+        "hard_limit_enabled": false
+      },
+      "public_access_config": {
+        "block_new_public_policies": true,
+        "block_public_access": true
+      }
+    },
+    {
+      "name": "object3in",
+      "created": 1584537461000,
+      "space": {
+        "virtual": 21149147648,
+        "unique": 20314764023,
+        "snapshots": 0,
+        "data_reduction": 1,
+        "total_physical": 20314764023,
+        "destroyed_virtual": 0,
+        "destroyed": 0,
+        "total_provisioned": null,
+        "available_provisioned": null,
+        "available_ratio": null
+      },
+      "object_count": 1523,
+      "id": "e543642a-51ca-7f7e-7bb6-7b6d7f36000b",
+      "quota_limit": null,
+      "hard_limit_enabled": false,
+      "bucket_defaults": {
+        "quota_limit": null,
+        "hard_limit_enabled": false
+      },
+      "public_access_config": {
+        "block_new_public_policies": true,
+        "block_public_access": true
+      }
+    },
+    {
+      "name": "onurac",
+      "created": 1601364712000,
+      "space": {
+        "virtual": 0,
+        "unique": 0,
+        "snapshots": 0,
+        "data_reduction": null,
+        "total_physical": 0,
+        "destroyed_virtual": 0,
+        "destroyed": 0,
+        "total_provisioned": null,
+        "available_provisioned": null,
+        "available_ratio": null
+      },
+      "object_count": 0,
+      "id": "bc908edd-a34d-4a82-615f-14cbaffc1922",
+      "quota_limit": null,
+      "hard_limit_enabled": false,
+      "bucket_defaults": {
+        "quota_limit": null,
+        "hard_limit_enabled": false
+      },
+      "public_access_config": {
+        "block_new_public_policies": true,
+        "block_public_access": true
+      }
+    },
+    {
+      "name": "onurac2",
+      "created": 1653334686000,
+      "space": {
+        "virtual": 0,
+        "unique": 0,
+        "snapshots": 0,
+        "data_reduction": null,
+        "total_physical": 0,
+        "destroyed_virtual": 0,
+        "destroyed": 0,
+        "total_provisioned": null,
+        "available_provisioned": null,
+        "available_ratio": null
+      },
+      "object_count": 0,
+      "id": "9ced9f48-7207-a423-a546-8d3a5f5a8517",
+      "quota_limit": null,
+      "hard_limit_enabled": false,
+      "bucket_defaults": {
+        "quota_limit": null,
+        "hard_limit_enabled": false
+      },
+      "public_access_config": {
+        "block_new_public_policies": true,
+        "block_public_access": true
+      }
+    },
+    {
+      "name": "oracle",
+      "created": 1584536629000,
+      "space": {
+        "virtual": 277314560,
+        "unique": 64722266,
+        "snapshots": 0,
+        "data_reduction": 4.3,
+        "total_physical": 64722266,
+        "destroyed_virtual": 0,
+        "destroyed": 0,
+        "total_provisioned": null,
+        "available_provisioned": null,
+        "available_ratio": null
+      },
+      "object_count": 4,
+      "id": "e20e09f2-8ead-cd8e-4ce3-0b361f125cba",
+      "quota_limit": null,
+      "hard_limit_enabled": false,
+      "bucket_defaults": {
+        "quota_limit": null,
+        "hard_limit_enabled": false
+      },
+      "public_access_config": {
+        "block_new_public_policies": true,
+        "block_public_access": true
+      }
+    },
+    {
+      "name": "plumbing",
+      "created": 1653456775000,
+      "space": {
+        "virtual": 128807075840,
+        "unique": 114255264450,
+        "snapshots": 0,
+        "data_reduction": 1.1,
+        "total_physical": 114255264450,
+        "destroyed_virtual": 0,
+        "destroyed": 0,
+        "total_provisioned": null,
+        "available_provisioned": null,
+        "available_ratio": null
+      },
+      "object_count": 174,
+      "id": "499e4bdd-24f1-6d35-2e7e-23bee82e2c1b",
+      "quota_limit": null,
+      "hard_limit_enabled": false,
+      "bucket_defaults": {
+        "quota_limit": null,
+        "hard_limit_enabled": false
+      },
+      "public_access_config": {
+        "block_new_public_policies": true,
+        "block_public_access": true
+      }
+    },
+    {
+      "name": "rclone-test",
+      "created": 1655522035000,
+      "space": {
+        "virtual": 178632224863,
+        "unique": 79121582865,
+        "snapshots": 0,
+        "data_reduction": 2.3,
+        "total_physical": 79121582865,
+        "destroyed_virtual": 0,
+        "destroyed": 0,
+        "total_provisioned": null,
+        "available_provisioned": null,
+        "available_ratio": null
+      },
+      "object_count": 84896,
+      "id": "9b883e56-ba9d-5bfe-bc9d-4ce5e3a22380",
+      "quota_limit": null,
+      "hard_limit_enabled": false,
+      "bucket_defaults": {
+        "quota_limit": null,
+        "hard_limit_enabled": false
+      },
+      "public_access_config": {
+        "block_new_public_policies": true,
+        "block_public_access": true
+      }
+    },
+    {
+      "name": "remko1",
+      "created": 1634230004000,
+      "space": {
+        "virtual": 512,
+        "unique": 130,
+        "snapshots": 0,
+        "data_reduction": 3.9,
+        "total_physical": 130,
+        "destroyed_virtual": 0,
+        "destroyed": 0,
+        "total_provisioned": null,
+        "available_provisioned": null,
+        "available_ratio": null
+      },
+      "object_count": 0,
+      "id": "866198fe-7cb3-a3a1-5159-6d1655cf31bf",
+      "quota_limit": null,
+      "hard_limit_enabled": false,
+      "bucket_defaults": {
+        "quota_limit": null,
+        "hard_limit_enabled": false
+      },
+      "public_access_config": {
+        "block_new_public_policies": true,
+        "block_public_access": true
+      }
+    },
+    {
+      "name": "repl-bi-fb02",
+      "created": 1686311662000,
+      "space": {
+        "virtual": 0,
+        "unique": 0,
+        "snapshots": 0,
+        "data_reduction": null,
+        "total_physical": 0,
+        "destroyed_virtual": 0,
+        "destroyed": 0,
+        "total_provisioned": null,
+        "available_provisioned": null,
+        "available_ratio": null
+      },
+      "object_count": 0,
+      "id": "c16508ee-ad5b-5fe6-571a-2901aea9fe6a",
+      "quota_limit": null,
+      "hard_limit_enabled": false,
+      "bucket_defaults": {
+        "quota_limit": null,
+        "hard_limit_enabled": false
+      },
+      "public_access_config": {
+        "block_new_public_policies": true,
+        "block_public_access": true
+      }
+    },
+    {
+      "name": "repl-dbadmin",
+      "created": 1662632476000,
+      "space": {
+        "virtual": 4167168,
+        "unique": 4080578,
+        "snapshots": 0,
+        "data_reduction": 1,
+        "total_physical": 4080578,
+        "destroyed_virtual": 0,
+        "destroyed": 0,
+        "total_provisioned": null,
+        "available_provisioned": null,
+        "available_ratio": null
+      },
+      "object_count": 18,
+      "id": "a0e74251-9df8-293e-d6d2-d8fc721512c5",
+      "quota_limit": null,
+      "hard_limit_enabled": false,
+      "bucket_defaults": {
+        "quota_limit": null,
+        "hard_limit_enabled": false
+      },
+      "public_access_config": {
+        "block_new_public_policies": true,
+        "block_public_access": true
+      }
+    },
+    {
+      "name": "ron",
+      "created": 1657795135000,
+      "space": {
+        "virtual": 14232064,
+        "unique": 7205745,
+        "snapshots": 0,
+        "data_reduction": 2,
+        "total_physical": 7205745,
+        "destroyed_virtual": 0,
+        "destroyed": 0,
+        "total_provisioned": null,
+        "available_provisioned": null,
+        "available_ratio": null
+      },
+      "object_count": 5,
+      "id": "bffd9ec2-417e-7cc8-8ef4-b9ea06e22ad0",
+      "quota_limit": null,
+      "hard_limit_enabled": false,
+      "bucket_defaults": {
+        "quota_limit": null,
+        "hard_limit_enabled": false
+      },
+      "public_access_config": {
+        "block_new_public_policies": true,
+        "block_public_access": true
+      }
+    },
+    {
+      "name": "sbaileytest",
+      "created": 1706191057000,
+      "space": {
+        "virtual": 2560,
+        "unique": 389,
+        "snapshots": 0,
+        "data_reduction": 6.6,
+        "total_physical": 389,
+        "destroyed_virtual": 0,
+        "destroyed": 0,
+        "total_provisioned": null,
+        "available_provisioned": null,
+        "available_ratio": null
+      },
+      "object_count": 4,
+      "id": "4a929a55-c300-8ab1-8bf7-1133fe5f1530",
+      "quota_limit": null,
+      "hard_limit_enabled": false,
+      "bucket_defaults": {
+        "quota_limit": null,
+        "hard_limit_enabled": false
+      },
+      "public_access_config": {
+        "block_new_public_policies": true,
+        "block_public_access": true
+      }
+    },
+    {
+      "name": "sedemo",
+      "created": 1585654033000,
+      "space": {
+        "virtual": 73011712,
+        "unique": 47604839,
+        "snapshots": 0,
+        "data_reduction": 1.5,
+        "total_physical": 47604839,
+        "destroyed_virtual": 0,
+        "destroyed": 0,
+        "total_provisioned": null,
+        "available_provisioned": null,
+        "available_ratio": null
+      },
+      "object_count": 1,
+      "id": "fe12f3c5-2f9a-b3c5-afcc-a7da47db02f3",
+      "quota_limit": null,
+      "hard_limit_enabled": false,
+      "bucket_defaults": {
+        "quota_limit": null,
+        "hard_limit_enabled": false
+      },
+      "public_access_config": {
+        "block_new_public_policies": true,
+        "block_public_access": true
+      }
+    },
+    {
+      "name": "semih-px",
+      "created": 1609056276000,
+      "space": {
+        "virtual": 244851200,
+        "unique": 130208702,
+        "snapshots": 0,
+        "data_reduction": 1.9,
+        "total_physical": 130208702,
+        "destroyed_virtual": 0,
+        "destroyed": 0,
+        "total_provisioned": null,
+        "available_provisioned": null,
+        "available_ratio": null
+      },
+      "object_count": 183,
+      "id": "db732280-4628-3689-8935-02c11a308177",
+      "quota_limit": null,
+      "hard_limit_enabled": false,
+      "bucket_defaults": {
+        "quota_limit": null,
+        "hard_limit_enabled": false
+      },
+      "public_access_config": {
+        "block_new_public_policies": true,
+        "block_public_access": true
+      }
+    },
+    {
+      "name": "taccount",
+      "created": 1645479973000,
+      "space": {
+        "virtual": 56572295,
+        "unique": 55252375,
+        "snapshots": 0,
+        "data_reduction": 1,
+        "total_physical": 55252375,
+        "destroyed_virtual": 0,
+        "destroyed": 0,
+        "total_provisioned": null,
+        "available_provisioned": null,
+        "available_ratio": null
+      },
+      "object_count": 8,
+      "id": "a5871533-41e3-edd2-12d5-a2640350bd6f",
+      "quota_limit": null,
+      "hard_limit_enabled": false,
+      "bucket_defaults": {
+        "quota_limit": null,
+        "hard_limit_enabled": false
+      },
+      "public_access_config": {
+        "block_new_public_policies": true,
+        "block_public_access": true
+      }
+    },
+    {
+      "name": "tesco",
+      "created": 1645631488000,
+      "space": {
+        "virtual": 0,
+        "unique": 0,
+        "snapshots": 0,
+        "data_reduction": null,
+        "total_physical": 0,
+        "destroyed_virtual": 0,
+        "destroyed": 0,
+        "total_provisioned": null,
+        "available_provisioned": null,
+        "available_ratio": null
+      },
+      "object_count": 0,
+      "id": "d1efd111-0597-c7f4-ca14-f44de3e67234",
+      "quota_limit": null,
+      "hard_limit_enabled": false,
+      "bucket_defaults": {
+        "quota_limit": null,
+        "hard_limit_enabled": false
+      },
+      "public_access_config": {
+        "block_new_public_policies": true,
+        "block_public_access": true
+      }
+    },
+    {
+      "name": "test",
+      "created": 1716293250000,
+      "space": {
+        "virtual": 0,
+        "unique": 0,
+        "snapshots": 0,
+        "data_reduction": null,
+        "total_physical": 0,
+        "destroyed_virtual": 0,
+        "destroyed": 0,
+        "total_provisioned": null,
+        "available_provisioned": null,
+        "available_ratio": null
+      },
+      "object_count": 0,
+      "id": "dab1e4fc-4efe-1263-5094-5817b6ba7ba6",
+      "quota_limit": null,
+      "hard_limit_enabled": false,
+      "bucket_defaults": {
+        "quota_limit": null,
+        "hard_limit_enabled": false
+      },
+      "public_access_config": {
+        "block_new_public_policies": true,
+        "block_public_access": true
+      }
+    },
+    {
+      "name": "veritas-fb-cloud",
+      "created": 1712411498000,
+      "space": {
+        "virtual": 14616752640,
+        "unique": 13586508257,
+        "snapshots": 0,
+        "data_reduction": 1.1,
+        "total_physical": 13586508257,
+        "destroyed_virtual": 0,
+        "destroyed": 0,
+        "total_provisioned": null,
+        "available_provisioned": null,
+        "available_ratio": null
+      },
+      "object_count": 1092,
+      "id": "29cf8305-a3ac-05f8-704c-ab4b90e7532b",
+      "quota_limit": null,
+      "hard_limit_enabled": false,
+      "bucket_defaults": {
+        "quota_limit": null,
+        "hard_limit_enabled": false
+      },
+      "public_access_config": {
+        "block_new_public_policies": true,
+        "block_public_access": true
+      }
+    },
+    {
+      "name": "veritas-immutable-test",
+      "created": 1713160844000,
+      "space": {
+        "virtual": 0,
+        "unique": 0,
+        "snapshots": 0,
+        "data_reduction": null,
+        "total_physical": 0,
+        "destroyed_virtual": 0,
+        "destroyed": 0,
+        "total_provisioned": null,
+        "available_provisioned": null,
+        "available_ratio": null
+      },
+      "object_count": 0,
+      "id": "d71d4a74-9b30-7a3e-4b98-87badc45e998",
+      "quota_limit": null,
+      "hard_limit_enabled": false,
+      "bucket_defaults": {
+        "quota_limit": null,
+        "hard_limit_enabled": false
+      },
+      "public_access_config": {
+        "block_new_public_policies": true,
+        "block_public_access": true
+      }
+    },
+    {
+      "name": "ves",
+      "created": 1645605910000,
+      "space": {
+        "virtual": 6656,
+        "unique": 1644,
+        "snapshots": 0,
+        "data_reduction": 4,
+        "total_physical": 1644,
+        "destroyed_virtual": 0,
+        "destroyed": 0,
+        "total_provisioned": null,
+        "available_provisioned": null,
+        "available_ratio": null
+      },
+      "object_count": 4,
+      "id": "bd71a2e5-c260-cfc1-f5fc-8c3caa9be5f7",
+      "quota_limit": null,
+      "hard_limit_enabled": false,
+      "bucket_defaults": {
+        "quota_limit": null,
+        "hard_limit_enabled": false
+      },
+      "public_access_config": {
+        "block_new_public_policies": true,
+        "block_public_access": true
+      }
+    },
+    {
+      "name": "z-adr-x50-stn",
+      "created": 1698679868000,
+      "space": {
+        "virtual": 0,
+        "unique": 0,
+        "snapshots": 0,
+        "data_reduction": null,
+        "total_physical": 0,
+        "destroyed_virtual": 0,
+        "destroyed": 0,
+        "total_provisioned": null,
+        "available_provisioned": null,
+        "available_ratio": null
+      },
+      "object_count": 0,
+      "id": "e4e81442-72e8-82d5-d990-4f51e4ed7620",
+      "quota_limit": null,
+      "hard_limit_enabled": false,
+      "bucket_defaults": {
+        "quota_limit": null,
+        "hard_limit_enabled": false
+      },
+      "public_access_config": {
+        "block_new_public_policies": true,
+        "block_public_access": true
+      }
+    },
+    {
+      "name": "z-da",
+      "created": 1605084409000,
+      "space": {
+        "virtual": 211564602060,
+        "unique": 211412686181,
+        "snapshots": 0,
+        "data_reduction": 1,
+        "total_physical": 211412686181,
+        "destroyed_virtual": 0,
+        "destroyed": 0,
+        "total_provisioned": null,
+        "available_provisioned": null,
+        "available_ratio": null
+      },
+      "object_count": 22324,
+      "id": "64e11762-c6ea-362c-3dae-6fbc27dfdda2",
+      "quota_limit": null,
+      "hard_limit_enabled": false,
+      "bucket_defaults": {
+        "quota_limit": null,
+        "hard_limit_enabled": false
+      },
+      "public_access_config": {
+        "block_new_public_policies": true,
+        "block_public_access": true
+      }
+    },
+    {
+      "name": "z-x90-a-offload",
+      "created": 1698751127000,
+      "space": {
+        "virtual": 20992,
+        "unique": 8691,
+        "snapshots": 0,
+        "data_reduction": 2.4,
+        "total_physical": 8691,
+        "destroyed_virtual": 0,
+        "destroyed": 0,
+        "total_provisioned": null,
+        "available_provisioned": null,
+        "available_ratio": null
+      },
+      "object_count": 41,
+      "id": "047719eb-7252-e469-404a-37b500d9c13d",
+      "quota_limit": null,
+      "hard_limit_enabled": false,
+      "bucket_defaults": {
+        "quota_limit": null,
+        "hard_limit_enabled": false
+      },
+      "public_access_config": {
+        "block_new_public_policies": true,
+        "block_public_access": true
+      }
+    }
+  ]
+}

@@ -9,19 +9,19 @@ type Alert struct {
 	Name          string    `json:"name"`
 	Id            string    `json:"id"`
 	Action        string    `json:"action"`
-	Code          int       `json:"code"`
+	Code          int64     `json:"code"`
 	ComponentName string    `json:"component_name"`
 	ComponentType string    `json:"component_type"`
-	Created       int       `json:"created"`
+	Created       int64     `json:"created"`
 	Description   string    `json:"description"`
 	Flagged       bool      `json:"flagged"`
-	Index         int       `json:"index"`
+	Index         int64     `json:"index"`
 	KBurl         string    `json:"knowledge_base_url"`
-	Notified      int       `json:"notified"`
+	Notified      int64     `json:"notified"`
 	Severity      string    `json:"severity"`
 	State         string    `json:"state"`
 	Summary       string    `json:"summary"`
-	Updated       int       `json:"updated"`
+	Updated       int64     `json:"updated"`
 	Vars          Variables `json:"variables"`
 }
 

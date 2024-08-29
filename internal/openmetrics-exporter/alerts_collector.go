@@ -25,15 +25,14 @@ func (c *AlertsCollector) Collect(ch chan<- prometheus.Metric) {
 	al := make(map[string]float64)
 	for _, alert := range alerts.Items {
 		al[fmt.Sprintf("%s\n%d\n%s\n%s\n%d\n%s\n%s\n%s",
-			alert.Action,
+			strings.Replace(alert.Action, "\n", " ", -1),
 			alert.Code,
 			alert.ComponentName,
 			alert.ComponentType,
 			alert.Created,
 			alert.KBurl,
 			alert.Severity,
-			alert.Summary,
-		)] += 1
+			strings.Replace(alert.Summary, "\n", " ", -1))] += 1
 	}
 	for a, n := range al {
 		alert := strings.Split(a, "\n")

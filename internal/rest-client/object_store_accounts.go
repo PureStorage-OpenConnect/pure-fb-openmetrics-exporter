@@ -14,8 +14,8 @@ type PublicAccessConfig struct {
 type ObjectStoreAccount struct {
 	Name                       string             `json:"name"`
 	Id                         string             `json:"id"`
-	Created                    int                `json:"created"`
-	ObjectCount                int                `json:"object_count"`
+	Created                    int64              `json:"created"`
+	ObjectCount                int64              `json:"object_count"`
 	BucketDefaults             BucketDefaults     `json:"bucket_defaults"`
 	HardLimitEnabled           bool               `json:"hard_limit_enabled"`
 	Space                      Space              `json:"space"`

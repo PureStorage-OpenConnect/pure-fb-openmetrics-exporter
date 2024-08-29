@@ -7,10 +7,10 @@ import (
 )
 
 type ObjectStoreAccountsCollector struct {
-	ReductionDesc         *prometheus.Desc
-	SpaceDesc             *prometheus.Desc
-	ObjectCountDesc       *prometheus.Desc
-	Client                *client.FBClient
+	ReductionDesc   *prometheus.Desc
+	SpaceDesc       *prometheus.Desc
+	ObjectCountDesc *prometheus.Desc
+	Client          *client.FBClient
 }
 
 func (c *ObjectStoreAccountsCollector) Describe(ch chan<- *prometheus.Desc) {
@@ -27,61 +27,61 @@ func (c *ObjectStoreAccountsCollector) Collect(ch chan<- prometheus.Metric) {
 			c.ReductionDesc,
 			prometheus.GaugeValue,
 			float64(acct.Space.DataReduction),
-			acct.Name, acct.Id,
+			acct.Id, acct.Name,
 		)
 		ch <- prometheus.MustNewConstMetric(
 			c.SpaceDesc,
 			prometheus.GaugeValue,
 			float64(acct.Space.Snapshots),
-			acct.Name, acct.Id, "snapshots",
+			acct.Id, acct.Name, "snapshots",
 		)
 		ch <- prometheus.MustNewConstMetric(
 			c.SpaceDesc,
 			prometheus.GaugeValue,
 			float64(acct.Space.TotalPhysical),
-			acct.Name, acct.Id, "total_physical",
+			acct.Id, acct.Name, "total_physical",
 		)
 		ch <- prometheus.MustNewConstMetric(
 			c.SpaceDesc,
 			prometheus.GaugeValue,
 			float64(acct.Space.Unique),
-			acct.Name, acct.Id, "unique",
+			acct.Id, acct.Name, "unique",
 		)
 		ch <- prometheus.MustNewConstMetric(
 			c.SpaceDesc,
 			prometheus.GaugeValue,
 			float64(acct.Space.Virtual),
-			acct.Name, acct.Id, "virtual",
+			acct.Id, acct.Name, "virtual",
 		)
 		ch <- prometheus.MustNewConstMetric(
 			c.SpaceDesc,
 			prometheus.GaugeValue,
 			float64(acct.Space.TotalProvisioned),
-			acct.Name, acct.Id, "total_provisioned",
+			acct.Id, acct.Name, "total_provisioned",
 		)
 		ch <- prometheus.MustNewConstMetric(
 			c.SpaceDesc,
 			prometheus.GaugeValue,
 			float64(acct.Space.AvailableProvisioned),
-			acct.Name, acct.Id, "available_provisioned",
+			acct.Id, acct.Name, "available_provisioned",
 		)
 		ch <- prometheus.MustNewConstMetric(
 			c.SpaceDesc,
 			prometheus.GaugeValue,
 			float64(acct.Space.Destroyed),
-			acct.Name, acct.Id, "destroyed",
+			acct.Id, acct.Name, "destroyed",
 		)
 		ch <- prometheus.MustNewConstMetric(
 			c.SpaceDesc,
 			prometheus.GaugeValue,
 			float64(acct.Space.DestroyedVirtual),
-			acct.Name, acct.Id, "destroyed_virtual",
+			acct.Id, acct.Name, "destroyed_virtual",
 		)
 		ch <- prometheus.MustNewConstMetric(
 			c.ObjectCountDesc,
 			prometheus.GaugeValue,
 			float64(acct.ObjectCount),
-			acct.Name, acct.Id,
+			acct.Id, acct.Name,
 		)
 	}
 }
@@ -91,19 +91,19 @@ func NewObjectStoreAccountsCollector(fb *client.FBClient) *ObjectStoreAccountsCo
 		ReductionDesc: prometheus.NewDesc(
 			"purefb_object_store_accounts_data_reduction_ratio",
 			"FlashBlade object store accounts data reduction",
-			[]string{"name", "id"},
+			[]string{"id", "name"},
 			prometheus.Labels{},
 		),
 		SpaceDesc: prometheus.NewDesc(
 			"purefb_object_store_accounts_space_bytes",
 			"FlashBlade object store accounts space in bytes",
-			[]string{"name", "id", "space"},
+			[]string{"id", "name", "space"},
 			prometheus.Labels{},
 		),
 		ObjectCountDesc: prometheus.NewDesc(
 			"purefb_object_store_accounts_object_count",
 			"FlashBlade object store accounts object count",
-			[]string{"name", "id"},
+			[]string{"id", "name"},
 			prometheus.Labels{},
 		),
 		Client: fb,

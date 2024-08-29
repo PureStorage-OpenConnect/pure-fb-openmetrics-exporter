@@ -1,26 +1,25 @@
 package client
 
-
 type BucketDefaults struct {
-	HardLimitEnabled      bool         `json:"hard_limit_enabled"`
-	QuotaLimit            int          `json:"quota_limit"`
+	HardLimitEnabled bool `json:"hard_limit_enabled"`
+	QuotaLimit       int  `json:"quota_limit"`
 }
 
 type PublicAccessConfig struct {
-	BlockNewPublicPolicies      bool         `json:"block_new_public_policies"`
-	BlockPublicAccess           bool         `json:"block_public_access"`
+	BlockNewPublicPolicies bool `json:"block_new_public_policies"`
+	BlockPublicAccess      bool `json:"block_public_access"`
 }
 
 type ObjectStoreAccount struct {
-	Name                       string             `json:"name"`
-	Id                         string             `json:"id"`
-	Created                    int64              `json:"created"`
-	ObjectCount                int64              `json:"object_count"`
-	BucketDefaults             BucketDefaults     `json:"bucket_defaults"`
-	HardLimitEnabled           bool               `json:"hard_limit_enabled"`
-	Space                      Space              `json:"space"`
-	QuotaLimit                 int                `json:"quota_limit"`
-	PublicAccessConfig         PublicAccessConfig `json:"public_access_config"`
+	Name               string             `json:"name"`
+	Id                 string             `json:"id"`
+	Created            int64              `json:"created"`
+	ObjectCount        int64              `json:"object_count"`
+	BucketDefaults     BucketDefaults     `json:"bucket_defaults"`
+	HardLimitEnabled   bool               `json:"hard_limit_enabled"`
+	Space              Space              `json:"space"`
+	QuotaLimit         int                `json:"quota_limit"`
+	PublicAccessConfig PublicAccessConfig `json:"public_access_config"`
 }
 
 type ObjectStoreAccountsList struct {

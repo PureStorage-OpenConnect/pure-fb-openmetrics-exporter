@@ -48,7 +48,7 @@ func Collector(ctx context.Context, metrics string, registry *prometheus.Registr
 			alertsCollector,
 			hardwareCollector,
 			hwPerfConnectorsCollector,
-		        objstoreacctsCollector,
+			objstoreacctsCollector,
 		)
 	}
 	if metrics == "all" || metrics == "clients" {

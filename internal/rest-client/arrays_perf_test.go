@@ -71,7 +71,7 @@ func TestArraysPerformance(t *testing.T) {
         endp := strings.Split(server.URL, "/")
         e := endp[len(endp)-1]
         t.Run("array_perf_all", func(t *testing.T) {
-            c := NewRestClient(e, "fake-api-token", "latest", "test-user-agent-string", false)
+            c := NewRestClient(e, "fake-api-token", "latest", "test-user-agent-string", false, false)
 	    pl := c.GetArraysPerformance("all")
 	    if diff := cmp.Diff(pl.Items, aall.Items); diff != "" {
                 t.Errorf("Mismatch (-want +got):\n%s", diff)
@@ -79,7 +79,7 @@ func TestArraysPerformance(t *testing.T) {
             }
         })
         t.Run("array_perf_http", func(t *testing.T) {
-            c := NewRestClient(e, "fake-api-token", "latest", "test-user-agent-string", false)
+            c := NewRestClient(e, "fake-api-token", "latest", "test-user-agent-string", false, false)
 	    pl := c.GetArraysPerformance("HTTP")
 	    if diff := cmp.Diff(pl.Items, ahttp.Items); diff != "" {
                 t.Errorf("Mismatch (-want +got):\n%s", diff)
@@ -87,7 +87,7 @@ func TestArraysPerformance(t *testing.T) {
             }
         })
         t.Run("array_perf_nfs", func(t *testing.T) {
-            c := NewRestClient(e, "fake-api-token", "latest", "test-user-agent-string", false)
+            c := NewRestClient(e, "fake-api-token", "latest", "test-user-agent-string", false, false)
 	    pl := c.GetArraysPerformance("NFS")
 	    if diff := cmp.Diff(pl.Items, anfs.Items); diff != "" {
                 t.Errorf("Mismatch (-want +got):\n%s", diff)
@@ -95,7 +95,7 @@ func TestArraysPerformance(t *testing.T) {
             }
         })
         t.Run("array_perf_smb", func(t *testing.T) {
-            c := NewRestClient(e, "fake-api-token", "latest", "test-user-agent-string", false)
+            c := NewRestClient(e, "fake-api-token", "latest", "test-user-agent-string", false, false)
 	    pl := c.GetArraysPerformance("SMB")
 	    if diff := cmp.Diff(pl.Items, asmb.Items); diff != "" {
                 t.Errorf("Mismatch (-want +got):\n%s", diff)
@@ -103,7 +103,7 @@ func TestArraysPerformance(t *testing.T) {
             }
         })
         t.Run("array_perf_s3", func(t *testing.T) {
-            c := NewRestClient(e, "fake-api-token", "latest", "test-user-agent-string", false)
+            c := NewRestClient(e, "fake-api-token", "latest", "test-user-agent-string", false, false)
 	    pl := c.GetArraysPerformance("S3")
 	    if diff := cmp.Diff(pl.Items, as3.Items); diff != "" {
                 t.Errorf("Mismatch (-want +got):\n%s", diff)

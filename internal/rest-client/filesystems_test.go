@@ -35,7 +35,7 @@ func TestFileSystems(t *testing.T) {
         e := endp[len(endp)-1]
         t.Run("filesystems_1", func(t *testing.T) {
             defer server.Close()
-	    c := NewRestClient(e, "fake-api-token", "latest", "test-user-agent-string", false)
+	    c := NewRestClient(e, "fake-api-token", "latest", "test-user-agent-string", false, false)
             fsl := c.GetFileSystems()
 	    if diff := cmp.Diff(fsl.Items, fs.Items); diff != "" {
                 t.Errorf("Mismatch (-want +got):\n%s", diff)

@@ -25,36 +25,94 @@ func (c *BucketsSpaceCollector) Collect(ch chan<- prometheus.Metric) {
 		return
 	}
 	for _, bucket := range c.Buckets.Items {
-		ch <- prometheus.MustNewConstMetric(
-			c.ReductionDesc,
-			prometheus.GaugeValue,
-			float64(bucket.Space.DataReduction),
-			bucket.Name, bucket.Account.Name,
-		)
-		ch <- prometheus.MustNewConstMetric(
-			c.SpaceDesc,
-			prometheus.GaugeValue,
-			float64(bucket.Space.Snapshots),
-			bucket.Name, bucket.Account.Name, "snapshots",
-		)
-		ch <- prometheus.MustNewConstMetric(
-			c.SpaceDesc,
-			prometheus.GaugeValue,
-			float64(bucket.Space.TotalPhysical),
-			bucket.Name, bucket.Account.Name, "total_physical",
-		)
-		ch <- prometheus.MustNewConstMetric(
-			c.SpaceDesc,
-			prometheus.GaugeValue,
-			float64(bucket.Space.Unique),
-			bucket.Name, bucket.Account.Name, "unique",
-		)
-		ch <- prometheus.MustNewConstMetric(
-			c.SpaceDesc,
-			prometheus.GaugeValue,
-			float64(bucket.Space.Virtual),
-			bucket.Name, bucket.Account.Name, "virtual",
-		)
+		if bucket.Space.DataReduction != nil {
+			ch <- prometheus.MustNewConstMetric(
+				c.ReductionDesc,
+				prometheus.GaugeValue,
+				float64(*bucket.Space.DataReduction),
+				bucket.Name, bucket.Account.Name,
+			)
+		}
+		if bucket.Space.Snapshots != nil {
+			ch <- prometheus.MustNewConstMetric(
+				c.SpaceDesc,
+				prometheus.GaugeValue,
+				float64(*bucket.Space.Snapshots),
+				bucket.Name, bucket.Account.Name, "snapshots",
+			)
+		}
+		if bucket.Space.TotalPhysical != nil {
+			ch <- prometheus.MustNewConstMetric(
+				c.SpaceDesc,
+				prometheus.GaugeValue,
+				float64(*bucket.Space.TotalPhysical),
+				bucket.Name, bucket.Account.Name, "total_physical",
+			)
+		}
+		if bucket.Space.Unique != nil {
+			ch <- prometheus.MustNewConstMetric(
+				c.SpaceDesc,
+				prometheus.GaugeValue,
+				float64(*bucket.Space.Unique),
+				bucket.Name, bucket.Account.Name, "unique",
+			)
+		}
+		if bucket.Space.Virtual != nil {
+			ch <- prometheus.MustNewConstMetric(
+				c.SpaceDesc,
+				prometheus.GaugeValue,
+				float64(*bucket.Space.Virtual),
+				bucket.Name, bucket.Account.Name, "virtual",
+			)
+		}
+		if bucket.Space.TotalProvisioned != nil {
+			ch <- prometheus.MustNewConstMetric(
+				c.SpaceDesc,
+				prometheus.GaugeValue,
+				float64(*bucket.Space.TotalProvisioned),
+				bucket.Name, bucket.Account.Name, "total_provisioned",
+			)
+		}
+		if bucket.Space.AvailableProvisioned != nil {
+			ch <- prometheus.MustNewConstMetric(
+				c.SpaceDesc,
+				prometheus.GaugeValue,
+				float64(*bucket.Space.AvailableProvisioned),
+				bucket.Name, bucket.Account.Name, "available_provisioned",
+			)
+		}
+		if bucket.Space.AvailableRatio != nil {
+			ch <- prometheus.MustNewConstMetric(
+				c.SpaceDesc,
+				prometheus.GaugeValue,
+				float64(*bucket.Space.AvailableRatio),
+				bucket.Name, bucket.Account.Name, "available_ratio",
+			)
+		}
+		if bucket.Space.Destroyed != nil {
+			ch <- prometheus.MustNewConstMetric(
+				c.SpaceDesc,
+				prometheus.GaugeValue,
+				float64(*bucket.Space.Destroyed),
+				bucket.Name, bucket.Account.Name, "destroyed",
+			)
+		}
+		if bucket.Space.DestroyedVirtual != nil {
+			ch <- prometheus.MustNewConstMetric(
+				c.SpaceDesc,
+				prometheus.GaugeValue,
+				float64(*bucket.Space.DestroyedVirtual),
+				bucket.Name, bucket.Account.Name, "destroyed_virtual",
+			)
+		}
+		if bucket.Space.Shared != nil {
+			ch <- prometheus.MustNewConstMetric(
+				c.SpaceDesc,
+				prometheus.GaugeValue,
+				float64(*bucket.Space.Shared),
+				bucket.Name, bucket.Account.Name, "shared",
+			)
+		}
 		ch <- prometheus.MustNewConstMetric(
 			c.SpaceDesc,
 			prometheus.GaugeValue,

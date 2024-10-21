@@ -150,6 +150,9 @@ func main() {
 }
 
 func metricsHandler(w http.ResponseWriter, r *http.Request) {
+	if debug {
+		log.Printf("%s %s %s %s\n", r.RemoteAddr, r.Method, r.URL, r.Header.Get("User-Agent"))
+	}
 	params := r.URL.Query()
 	path := strings.Split(r.URL.Path, "/")
 	metrics := ""
@@ -168,6 +171,7 @@ func metricsHandler(w http.ResponseWriter, r *http.Request) {
 	}
 	endpoint := params.Get("endpoint")
 	if endpoint == "" {
+		log.Printf("[ERROR] %s %s %s HTTP REQUEST ERROR: Endpoint parameter is missing\n", r.RemoteAddr, r.Method, r.URL)
 		http.Error(w, "Endpoint parameter is missing", http.StatusBadRequest)
 		return
 	}
@@ -183,6 +187,7 @@ func metricsHandler(w http.ResponseWriter, r *http.Request) {
 		address = endpoint
 	}
 	if apitoken == "" {
+		log.Printf("[ERROR] %s %s %s HTTP REQUEST ERROR: Target authorization token is missing\n", r.RemoteAddr, r.Method, r.URL)
 		http.Error(w, "Target authorization token is missing", http.StatusBadRequest)
 		return
 	}
@@ -191,7 +196,8 @@ func metricsHandler(w http.ResponseWriter, r *http.Request) {
 	registry := prometheus.NewRegistry()
 	fbclient := client.NewRestClient(address, apitoken, apiver, uagent, debug)
 	if fbclient.Error != nil {
-		http.Error(w, "Error connecting to FlashBlade. Check your management endpoint and/or api token are correct.", http.StatusBadRequest)
+                log.Printf("[ERROR] %s %s %s %s FBCLIENT ERROR: %s\n", r.RemoteAddr, r.Method, r.URL, r.Header.Get("User-Agent"), faclient.Error.Error())
+		http.Error(w, faclient.Error.Error(), http.StatusBadRequest)
 		return
 	}
 	collectors.Collector(context.TODO(), metrics, registry, fbclient)

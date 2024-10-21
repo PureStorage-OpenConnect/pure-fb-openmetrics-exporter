@@ -35,7 +35,7 @@ func TestArraysCollector(t *testing.T) {
 	endp := strings.Split(server.URL, "/")
 	e := endp[len(endp)-1]
 	want := make(map[string]bool)
-	c := client.NewRestClient(e, "fake-api-token", "latest", "test-user-agent-string", false)
+	c := client.NewRestClient(e, "fake-api-token", "latest", "test-user-agent-string", false, false)
 	for _, a := range arrs.Items {
 		want[fmt.Sprintf("label:{name:\"array_name\" value:\"%s\"} label:{name:\"os\" value:\"%s\"} label:{name:\"system_id\" value:\"%s\"} label:{name:\"version\" value:\"%s\"} gauge:{value:1}", a.Name, a.Os, a.Id, a.Version)] = true
 	}

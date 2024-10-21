@@ -44,22 +44,22 @@ func TestAlertsCollector(t *testing.T) {
 	e := endp[len(endp)-1]
 	al := make(map[string]float64)
 	for _, a := range aopen.Items {
-		al[fmt.Sprintf("%s\n%d\n%s\n%s\n%d\n%s\n%s\n%s", 
-		               strings.Replace(a.Action, "\n", " ", -1),
-		               a.Code,
-		               a.ComponentName,
-		               a.ComponentType,
-		               a.Created,
-		               a.KBurl,
-		               a.Severity,
-		               strings.Replace(a.Summary, "\n", " ", -1))] += 1
+		al[fmt.Sprintf("%s\n%d\n%s\n%s\n%d\n%s\n%s\n%s",
+			strings.Replace(a.Action, "\n", " ", -1),
+			a.Code,
+			a.ComponentName,
+			a.ComponentType,
+			a.Created,
+			a.KBurl,
+			a.Severity,
+			strings.Replace(a.Summary, "\n", " ", -1))] += 1
 	}
 	want := make(map[string]bool)
 	for a, n := range al {
 		alert := strings.Split(a, "\n")
 		want[fmt.Sprintf("label:{name:\"action\" value:\"%s\"} label:{name:\"code\" value:\"%s\"} label:{name:\"component_name\" value:\"%s\"} label:{name:\"component_type\" value:\"%s\"} label:{name:\"created\" value:\"%s\"} label:{name:\"kburl\" value:\"%s\"} label:{name:\"severity\" value:\"%s\"} label:{name:\"summary\" value:\"%s\"} gauge:{value:%g}", alert[0], alert[1], alert[2], alert[3], alert[4], alert[5], alert[6], alert[7], n)] = true
 	}
-	c := client.NewRestClient(e, "fake-api-token", "latest", "test-user-agent-string", false)
+	c := client.NewRestClient(e, "fake-api-token", "latest", "test-user-agent-string", false, false)
 	ac := NewAlertsCollector(c)
 	metricsCheck(t, ac, want)
 	server.Close()

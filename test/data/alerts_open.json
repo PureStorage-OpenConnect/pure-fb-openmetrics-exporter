@@ -1,6 +1,6 @@
 {
   "continuation_token": null,
-  "total_item_count": 10,
+  "total_item_count": 11,
   "items": [
     {
       "name": "218",
@@ -197,6 +197,31 @@
         "details": "PSU POWER_GOOD is asserted"
       },
       "id": "8062016d-2d91-a3fd-9d64-f4cc57852be4"
+    },
+    {
+      "name": "819",
+      "index": 819,
+      "flagged": false,
+      "code": 1124,
+      "severity": "warning",
+      "component_name": "fbe",
+      "component_type": "active-directory",
+      "state": "open",
+      "created": 1722451113718,
+      "updated": 1724237785243,
+      "notified": 1722971236529,
+      "summary": "An active directory configuration (fbe) in domain poc.local is unhealthy and requires attention",
+      "description": "Health checks for the Active Directory configuration fbe, which corresponds to the computer fbe in the poc.local domain, have failed.  Clients attempting to mount and perform file operations over any version of the nfs or smb protocol may be impacted.\nA health check failed while discovering directory servers for the domain in DNS. The failure occurred while querying dns for _ldap._tcp.dc._msdcs.poc.local.\nUnable to discover directory servers for the domain using the configured DNS domain and nameservers.\nThis may be the result of a network disruption or DNS misconfiguration, and can impair communication with the domain that is needed to authenticate and authorize clients.\nThere will be daily notifications for 7 days.",
+      "knowledge_base_url": "https://support.purestorage.com/?cid=Alert_1124",
+      "action": "Please verify that the DNS configuration on FlashBlade is correct and that there is no network outage that impacts DNS availability. If this issue persists when DNS is properly configured and available, please contact the group(s) that administer the DNS name servers to ensure that the domain has not had its service records removed unintentionally.\nAttempting to verify resolution of the issue or checking its status may be done by logging in to FlashBlade and testing the Active Directory configuration. This is possible via ssh and the command line interface, the web UI, or the REST APIs.\nPure Storage Support is not notified of this alert. If you would like assistance from our support team, you can open a case by emailing support@purestorage.com.",
+      "variables": {
+        "computer_name": "fbe",
+        "domain": "poc.local",
+        "name": "fbe",
+        "failed_test_stages": "dns-directory-server-discovery",
+        "id": "34c8ec8c-c1e9-4327-984f-0be19eaef051"
+      },
+      "id": "c6f576f7-11f9-7865-ec31-6af507632d65"
     },
     {
       "name": "675",

@@ -17,18 +17,19 @@ This document describes the semantic conventions for Pure FlashBlade Metrics.
   - [`purefb_file_system_usage` - FlashBlade File System Usage metrics](#purefb_file_system_usage---flashblade-file-system-usage-metrics)
   - [`purefb_hardware` - FlashBlade Hardware metrics](#purefb_hardware---flashblade-hardware-metrics)
   - [`purefb_nfs_export_rule` - FlashBlade NFS Export information](#purefb_nfs_export_rule---flashblade-nfs-export-information)
+  - [`purefb_object_store` - FlashBlade Object Store information](#purefb_object_store---flashblade-object-store-information)
 
 <!-- tocstop -->
 
 ## Collections by Endpoint
 
-| Endpoint          | Description             | Metrics Instruments collected                                                                              |
-| ----------------- | ----------------------- | ---------------------------------------------------------------------------------------------------------- |
-| /metrics          | Full array metrics      | all                                                                                                        |
-| /metrics/array    | Array only metrics      | `purefb_info`, `purefb_alerts`, `purefb_array`, `purefb_buckets`, `purefb_file_systems`, `purefb_hardware` |
-| /metrics/clients  | Client only metrics     | `purefb_info`, `purefb_clients`                                                                            |
-| /metrics/usage    | Quota only metrics      | `purefb_info`, `purefb_file_system_usage`                                                                  |
-| /metrics/policies | NFS policy related info | `purefb_info`, `purefb_nfs_export_rule`                                                                    |
+| Endpoint          | Description             | Metrics Instruments collected                                                                                                     |
+| ----------------- | ----------------------- | --------------------------------------------------------------------------------------------------------------------------------- |
+| /metrics          | Full array metrics      | all                                                                                                                               |
+| /metrics/array    | Array only metrics      | `purefb_info`, `purefb_alerts`, `purefb_array`, `purefb_buckets`, `purefb_file_systems`, `purefb_hardware`, `purefb_object_store` |
+| /metrics/clients  | Client only metrics     | `purefb_info`, `purefb_clients`                                                                                                   |
+| /metrics/usage    | Quota only metrics      | `purefb_info`, `purefb_file_system_usage`                                                                                         |
+| /metrics/policies | NFS policy related info | `purefb_info`, `purefb_nfs_export_rule`                                                                                           |
 
 ## Metric Statuses
 
@@ -131,5 +132,9 @@ This document describes the semantic conventions for Pure FlashBlade Metrics.
 **Description:** TODO
 
 ### `purefb_nfs_export_rule` - FlashBlade NFS Export information
+
+**Description:** TODO
+
+### `purefb_object_store` - FlashBlade Object Store information
 
 **Description:** TODO

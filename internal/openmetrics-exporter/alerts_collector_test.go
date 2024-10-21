@@ -44,7 +44,15 @@ func TestAlertsCollector(t *testing.T) {
 	e := endp[len(endp)-1]
 	al := make(map[string]float64)
 	for _, a := range aopen.Items {
-		al[fmt.Sprintf("%s\n%d\n%s\n%s\n%d\n%s\n%s\n%s", a.Action, a.Code, a.ComponentName, a.ComponentType, a.Created, a.KBurl, a.Severity, a.Summary)] += 1
+		al[fmt.Sprintf("%s\n%d\n%s\n%s\n%d\n%s\n%s\n%s",
+			strings.Replace(a.Action, "\n", " ", -1),
+			a.Code,
+			a.ComponentName,
+			a.ComponentType,
+			a.Created,
+			a.KBurl,
+			a.Severity,
+			strings.Replace(a.Summary, "\n", " ", -1))] += 1
 	}
 	want := make(map[string]bool)
 	for a, n := range al {

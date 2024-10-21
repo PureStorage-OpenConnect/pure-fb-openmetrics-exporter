@@ -42,42 +42,101 @@ func (c *FileSystemsSpaceCollector) Collect(ch chan<- prometheus.Metric) {
 		} else {
 			smb = ""
 		}
-		ch <- prometheus.MustNewConstMetric(
-			c.ReductionDesc,
-			prometheus.GaugeValue,
-			float64(fs.Space.DataReduction),
-			fs.Name, fs.Nfs.ExportPolicy.Name, nfs, smb,
-		)
+		if fs.Space.DataReduction != nil {
+			ch <- prometheus.MustNewConstMetric(
+				c.ReductionDesc,
+				prometheus.GaugeValue,
+				float64(*fs.Space.DataReduction),
+				fs.Name, fs.Nfs.ExportPolicy.Name, nfs, smb,
+			)
+		}
+		if fs.Space.Snapshots != nil {
+			ch <- prometheus.MustNewConstMetric(
+				c.SpaceDesc,
+				prometheus.GaugeValue,
+				float64(*fs.Space.Snapshots),
+				fs.Name, fs.Nfs.ExportPolicy.Name, nfs, smb, "snapshots",
+			)
+		}
+		if fs.Space.TotalPhysical != nil {
+			ch <- prometheus.MustNewConstMetric(
+				c.SpaceDesc,
+				prometheus.GaugeValue,
+				float64(*fs.Space.TotalPhysical),
+				fs.Name, fs.Nfs.ExportPolicy.Name, nfs, smb, "total_physical",
+			)
+		}
+		if fs.Space.Unique != nil {
+			ch <- prometheus.MustNewConstMetric(
+				c.SpaceDesc,
+				prometheus.GaugeValue,
+				float64(*fs.Space.Unique),
+				fs.Name, fs.Nfs.ExportPolicy.Name, nfs, smb, "unique",
+			)
+		}
+		if fs.Space.Virtual != nil {
+			ch <- prometheus.MustNewConstMetric(
+				c.SpaceDesc,
+				prometheus.GaugeValue,
+				float64(*fs.Space.Virtual),
+				fs.Name, fs.Nfs.ExportPolicy.Name, nfs, smb, "virtual",
+			)
+		}
+		if fs.Space.TotalProvisioned != nil {
+			ch <- prometheus.MustNewConstMetric(
+				c.SpaceDesc,
+				prometheus.GaugeValue,
+				float64(*fs.Space.TotalProvisioned),
+				fs.Name, fs.Nfs.ExportPolicy.Name, nfs, smb, "total_provisioned",
+			)
+		}
+		if fs.Space.AvailableProvisioned != nil {
+			ch <- prometheus.MustNewConstMetric(
+				c.SpaceDesc,
+				prometheus.GaugeValue,
+				float64(*fs.Space.AvailableProvisioned),
+				fs.Name, fs.Nfs.ExportPolicy.Name, nfs, smb, "available_provisioned",
+			)
+		}
+		if fs.Space.AvailableRatio != nil {
+			ch <- prometheus.MustNewConstMetric(
+				c.SpaceDesc,
+				prometheus.GaugeValue,
+				float64(*fs.Space.AvailableRatio),
+				fs.Name, fs.Nfs.ExportPolicy.Name, nfs, smb, "available_ratio",
+			)
+		}
+		if fs.Space.Destroyed != nil {
+			ch <- prometheus.MustNewConstMetric(
+				c.SpaceDesc,
+				prometheus.GaugeValue,
+				float64(*fs.Space.Destroyed),
+				fs.Name, fs.Nfs.ExportPolicy.Name, nfs, smb, "destroyed",
+			)
+		}
+		if fs.Space.DestroyedVirtual != nil {
+			ch <- prometheus.MustNewConstMetric(
+				c.SpaceDesc,
+				prometheus.GaugeValue,
+				float64(*fs.Space.DestroyedVirtual),
+				fs.Name, fs.Nfs.ExportPolicy.Name, nfs, smb, "destroyed_virtual",
+			)
+		}
+		if fs.Space.Shared != nil {
+			ch <- prometheus.MustNewConstMetric(
+				c.SpaceDesc,
+				prometheus.GaugeValue,
+				float64(*fs.Space.Shared),
+				fs.Name, fs.Nfs.ExportPolicy.Name, nfs, smb, "shared",
+			)
+		}
 		ch <- prometheus.MustNewConstMetric(
 			c.SpaceDesc,
 			prometheus.GaugeValue,
 			float64(fs.Provisioned),
 			fs.Name, fs.Nfs.ExportPolicy.Name, nfs, smb, "provisioned",
 		)
-		ch <- prometheus.MustNewConstMetric(
-			c.SpaceDesc,
-			prometheus.GaugeValue,
-			float64(fs.Space.Snapshots),
-			fs.Name, fs.Nfs.ExportPolicy.Name, nfs, smb, "snapshots",
-		)
-		ch <- prometheus.MustNewConstMetric(
-			c.SpaceDesc,
-			prometheus.GaugeValue,
-			float64(fs.Space.TotalPhysical),
-			fs.Name, fs.Nfs.ExportPolicy.Name, nfs, smb, "total_physical",
-		)
-		ch <- prometheus.MustNewConstMetric(
-			c.SpaceDesc,
-			prometheus.GaugeValue,
-			float64(fs.Space.Unique),
-			fs.Name, fs.Nfs.ExportPolicy.Name, nfs, smb, "unique",
-		)
-		ch <- prometheus.MustNewConstMetric(
-			c.SpaceDesc,
-			prometheus.GaugeValue,
-			float64(fs.Space.Virtual),
-			fs.Name, fs.Nfs.ExportPolicy.Name, nfs, smb, "virtual",
-		)
+
 	}
 }
 

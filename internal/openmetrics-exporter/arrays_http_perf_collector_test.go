@@ -1,17 +1,16 @@
 package collectors
 
-
 import (
+	"encoding/json"
 	"fmt"
-	"testing"
-        "regexp"
-        "strings"
 	"net/http"
 	"net/http/httptest"
-	"encoding/json"
 	"os"
+	"regexp"
+	"strings"
+	"testing"
 
-	"purestorage/fb-openmetrics-exporter/internal/rest-client"
+	client "purestorage/fb-openmetrics-exporter/internal/rest-client"
 )
 
 func TestArraysHttpPerfCollector(t *testing.T) {
@@ -21,23 +20,23 @@ func TestArraysHttpPerfCollector(t *testing.T) {
 	var arrs client.ArraysHttpPerformanceList
 	json.Unmarshal(res, &arrs)
 	server := httptest.NewTLSServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-	        valid := regexp.MustCompile(`^/api/([0-9]+.[0-9]+)?/arrays/http-specific-performance$`)
-                if r.URL.Path == "/api/api_version" {
-                        w.Header().Set("Content-Type", "application/json")
-                        w.WriteHeader(http.StatusOK)
+		valid := regexp.MustCompile(`^/api/([0-9]+.[0-9]+)?/arrays/http-specific-performance$`)
+		if r.URL.Path == "/api/api_version" {
+			w.Header().Set("Content-Type", "application/json")
+			w.WriteHeader(http.StatusOK)
 			w.Write([]byte(vers))
-                } else if valid.MatchString(r.URL.Path) {
+		} else if valid.MatchString(r.URL.Path) {
 			w.Header().Set("x-auth-token", "faketoken")
 			w.Header().Set("Content-Type", "application/json")
 			w.WriteHeader(http.StatusOK)
 			w.Write([]byte(res))
 		}
-	   }))
-        endp := strings.Split(server.URL, "/")
-        e := endp[len(endp)-1]
+	}))
+	endp := strings.Split(server.URL, "/")
+	e := endp[len(endp)-1]
 	want := make(map[string]bool)
-        c := client.NewRestClient(e, "fake-api-token", "latest", "test-user-agent-string", false, false)
-        for _, p := range arrs.Items {
+	c := client.NewRestClient(e, "fake-api-token", "latest", "test-user-agent-string", false, false)
+	for _, p := range arrs.Items {
 		want[fmt.Sprintf("label:{name:\"dimension\" value:\"others_per_sec\"} gauge:{value:%g}", p.OthersPerSec)] = true
 		want[fmt.Sprintf("label:{name:\"dimension\" value:\"read_dirs_per_sec\"} gauge:{value:%g}", p.ReadDirsPerSec)] = true
 		want[fmt.Sprintf("label:{name:\"dimension\" value:\"read_files_per_sec\"} gauge:{value:%g}", p.ReadFilesPerSec)] = true
@@ -48,8 +47,8 @@ func TestArraysHttpPerfCollector(t *testing.T) {
 		want[fmt.Sprintf("label:{name:\"dimension\" value:\"usec_per_write_file_op\"} gauge:{value:%g}", p.UsecPerWriteFileOp)] = true
 		want[fmt.Sprintf("label:{name:\"dimension\" value:\"usec_per_read_file_op\"} gauge:{value:%g}", p.UsecPerReadFileOp)] = true
 		want[fmt.Sprintf("label:{name:\"dimension\" value:\"write_dirs_per_sec\"} gauge:{value:%g}", p.WriteDirsPerSec)] = true
-        }
+	}
 	ac := NewHttpPerfCollector(c)
-        metricsCheck(t, ac, want)
-        server.Close()
+	metricsCheck(t, ac, want)
+	server.Close()
 }

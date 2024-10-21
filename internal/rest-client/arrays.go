@@ -25,11 +25,11 @@ func (fb *FBClient) GetArrays() *ArraysList {
 	res, _ := fb.RestClient.R().
 		SetResult(&result).
 		Get(uri)
-        if res.StatusCode() == 401 {
-                fb.RefreshSession()
+	if res.StatusCode() == 401 {
+		fb.RefreshSession()
 		fb.RestClient.R().
 			SetResult(&result).
 			Get(uri)
-        }
+	}
 	return result
 }

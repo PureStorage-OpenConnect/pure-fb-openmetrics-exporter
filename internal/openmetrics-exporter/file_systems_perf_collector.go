@@ -1,8 +1,9 @@
 package collectors
 
 import (
+	client "purestorage/fb-openmetrics-exporter/internal/rest-client"
+
 	"github.com/prometheus/client_golang/prometheus"
-	"purestorage/fb-openmetrics-exporter/internal/rest-client"
 )
 
 type FileSystemsPerfCollector struct {

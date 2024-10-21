@@ -106,7 +106,7 @@ func main() {
 			TLSConfig: cfg,
 			Addr:      addr,
 		}
-                http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
+		http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
 			w.Header().Add("Strict-Transport-Security", "max-age=63072000; includeSubDomains")
 			index(w, r)
 		})
@@ -199,7 +199,7 @@ func metricsHandler(w http.ResponseWriter, r *http.Request) {
 	registry := prometheus.NewRegistry()
 	fbclient := client.NewRestClient(address, apitoken, apiver, uagent, debug, secure)
 	if fbclient.Error != nil {
-                log.Printf("[ERROR] %s %s %s %s FBCLIENT ERROR: %s\n", r.RemoteAddr, r.Method, r.URL, r.Header.Get("User-Agent"), fbclient.Error.Error())
+		log.Printf("[ERROR] %s %s %s %s FBCLIENT ERROR: %s\n", r.RemoteAddr, r.Method, r.URL, r.Header.Get("User-Agent"), fbclient.Error.Error())
 		http.Error(w, fbclient.Error.Error(), http.StatusBadRequest)
 		return
 	}

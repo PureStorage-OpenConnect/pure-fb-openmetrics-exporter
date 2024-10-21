@@ -1,9 +1,10 @@
 package collectors
 
 import (
-	"github.com/prometheus/client_golang/prometheus"
-	"purestorage/fb-openmetrics-exporter/internal/rest-client"
+	client "purestorage/fb-openmetrics-exporter/internal/rest-client"
 	"strconv"
+
+	"github.com/prometheus/client_golang/prometheus"
 )
 
 type UsageCollector struct {

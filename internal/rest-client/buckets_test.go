@@ -36,7 +36,7 @@ func TestBuckets(t *testing.T) {
         e := endp[len(endp)-1]
         t.Run("buckets_1", func(t *testing.T) {
             defer server.Close()
-	    c := NewRestClient(e, "fake-api-token", "latest", "test-user-agent-string", false)
+	    c := NewRestClient(e, "fake-api-token", "latest", "test-user-agent-string", false, false)
             bl := c.GetBuckets()
 	    if diff := cmp.Diff(bl.Items, ab.Items); diff != "" {
                 t.Errorf("Mismatch (-want +got):\n%s", diff)

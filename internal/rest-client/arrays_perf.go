@@ -16,11 +16,11 @@ func (fb *FBClient) GetArraysPerformance(protocol string) *ArraysPerformanceList
 			SetQueryParam("protocol", protocol).
 			Get(uri)
 		if res.StatusCode() == 401 {
-                	fb.RefreshSession()
+			fb.RefreshSession()
 			fb.RestClient.R().
-			        SetResult(&result).
-			        SetQueryParam("protocol", protocol).
-			        Get(uri)
+				SetResult(&result).
+				SetQueryParam("protocol", protocol).
+				Get(uri)
 		}
 	}
 	return result

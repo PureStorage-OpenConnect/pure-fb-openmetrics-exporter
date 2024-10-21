@@ -42,7 +42,7 @@ type FBClient struct {
 	Error      error
 }
 
-func NewRestClient(endpoint string, apitoken string, apiversion string, uagent string, debug bool) *FBClient {
+func NewRestClient(endpoint string, apitoken string, apiversion string, uagent string, debug bool, secure bool) *FBClient {
 	type ApiVersions struct {
 		Versions []string `json:"versions"`
 	}
@@ -53,7 +53,9 @@ func NewRestClient(endpoint string, apitoken string, apiversion string, uagent s
 		XAuthToken: "",
 	}
 	fb.RestClient.SetBaseURL("https://" + endpoint + "/api")
-	fb.RestClient.SetTLSClientConfig(&tls.Config{InsecureSkipVerify: true})
+	if !secure {
+		fb.RestClient.SetTLSClientConfig(&tls.Config{InsecureSkipVerify: true})
+	}
 	fb.RestClient.SetHeaders(map[string]string{
 		"Content-Type": "application/json",
 		"Accept":       "application/json",

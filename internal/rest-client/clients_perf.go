@@ -30,10 +30,10 @@ func (fb *FBClient) GetClientsPerformance() *ClientsPerformanceList {
 		SetResult(&result).
 		Get(uri)
 	if res.StatusCode() == 401 {
-                fb.RefreshSession()
+		fb.RefreshSession()
 		fb.RestClient.R().
 			SetResult(&result).
 			Get(uri)
-        }
+	}
 	return result
 }

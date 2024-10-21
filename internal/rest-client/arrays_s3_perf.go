@@ -17,6 +17,6 @@ func (fb *FBClient) GetArraysS3Performance() *ArraysS3PerformanceList {
 		fb.RestClient.R().
 			SetResult(&result).
 			Get(uri)
-        }
+	}
 	return result
 }

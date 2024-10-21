@@ -1,14 +1,15 @@
 package collectors
 
 import (
-	"github.com/prometheus/client_golang/prometheus"
-	"purestorage/fb-openmetrics-exporter/internal/rest-client"
+	client "purestorage/fb-openmetrics-exporter/internal/rest-client"
 	"strconv"
+
+	"github.com/prometheus/client_golang/prometheus"
 )
 
 type NfsPoliciesCollector struct {
-	NfsPolicyDesc  *prometheus.Desc
-	Client         *client.FBClient
+	NfsPolicyDesc *prometheus.Desc
+	Client        *client.FBClient
 }
 
 func (c *NfsPoliciesCollector) Describe(ch chan<- *prometheus.Desc) {
@@ -19,7 +20,7 @@ func (c *NfsPoliciesCollector) Collect(ch chan<- prometheus.Metric) {
 	policies := c.Client.GetNFSExportPolicies()
 	if len(policies.Items) > 0 {
 		for _, pol := range policies.Items {
-		        for _, r := range pol.Rules {
+			for _, r := range pol.Rules {
 				auid := strconv.Itoa(r.AnonUid)
 				agid := strconv.Itoa(r.AnonGid)
 				sec := strconv.FormatBool(r.Secure)
@@ -40,13 +41,13 @@ func (c *NfsPoliciesCollector) Collect(ch chan<- prometheus.Metric) {
 }
 
 func NewNfsPoliciesCollector(fb *client.FBClient) *NfsPoliciesCollector {
-	return &NfsPoliciesCollector {
+	return &NfsPoliciesCollector{
 		NfsPolicyDesc: prometheus.NewDesc(
 			"purefb_nfs_export_rule",
 			"FlashBlade NFS export rule",
 			[]string{"policy", "client", "permission", "security", "access", "anon_uid", "anon_gid", "secure", "fid32", "atime", "index"},
 			prometheus.Labels{},
 		),
-		Client:      fb,
+		Client: fb,
 	}
 }

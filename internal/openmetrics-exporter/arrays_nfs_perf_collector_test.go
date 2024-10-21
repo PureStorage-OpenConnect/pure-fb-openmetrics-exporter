@@ -1,17 +1,16 @@
 package collectors
 
-
 import (
+	"encoding/json"
 	"fmt"
-	"testing"
-        "regexp"
-        "strings"
 	"net/http"
 	"net/http/httptest"
-	"encoding/json"
 	"os"
+	"regexp"
+	"strings"
+	"testing"
 
-	"purestorage/fb-openmetrics-exporter/internal/rest-client"
+	client "purestorage/fb-openmetrics-exporter/internal/rest-client"
 )
 
 func TestArraysNfsPerfCollector(t *testing.T) {
@@ -21,23 +20,23 @@ func TestArraysNfsPerfCollector(t *testing.T) {
 	var arrs client.ArraysNfsPerformanceList
 	json.Unmarshal(res, &arrs)
 	server := httptest.NewTLSServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-	        valid := regexp.MustCompile(`^/api/([0-9]+.[0-9]+)?/arrays/nfs-specific-performance$`)
-                if r.URL.Path == "/api/api_version" {
-                        w.Header().Set("Content-Type", "application/json")
-                        w.WriteHeader(http.StatusOK)
+		valid := regexp.MustCompile(`^/api/([0-9]+.[0-9]+)?/arrays/nfs-specific-performance$`)
+		if r.URL.Path == "/api/api_version" {
+			w.Header().Set("Content-Type", "application/json")
+			w.WriteHeader(http.StatusOK)
 			w.Write([]byte(vers))
-                } else if valid.MatchString(r.URL.Path) {
+		} else if valid.MatchString(r.URL.Path) {
 			w.Header().Set("x-auth-token", "faketoken")
 			w.Header().Set("Content-Type", "application/json")
 			w.WriteHeader(http.StatusOK)
 			w.Write([]byte(res))
 		}
-	   }))
-        endp := strings.Split(server.URL, "/")
-        e := endp[len(endp)-1]
+	}))
+	endp := strings.Split(server.URL, "/")
+	e := endp[len(endp)-1]
 	want := make(map[string]bool)
-        c := client.NewRestClient(e, "fake-api-token", "latest", "test-user-agent-string", false)
-        for _, p := range arrs.Items {
+	c := client.NewRestClient(e, "fake-api-token", "latest", "test-user-agent-string", false, false)
+	for _, p := range arrs.Items {
 		want[fmt.Sprintf("label:{name:\"dimension\" value:\"fsinfos_per_sec\"} gauge:{value:%g}", p.FsinfosPerSec)] = true
 		want[fmt.Sprintf("label:{name:\"dimension\" value:\"fsstats_per_sec\"} gauge:{value:%g}", p.FsstatsPerSec)] = true
 		want[fmt.Sprintf("label:{name:\"dimension\" value:\"mkdirs_per_sec\"} gauge:{value:%g}", p.MkdirsPerSec)] = true
@@ -88,6 +87,6 @@ func TestArraysNfsPerfCollector(t *testing.T) {
 		want[fmt.Sprintf("label:{name:\"dimension\" value:\"aggregate_file_metadata_creates_per_sec\"} gauge:{value:%g}", p.AggregateFileMetadataCreatesPerSec)] = true
 	}
 	ac := NewNfsPerfCollector(c)
-        metricsCheck(t, ac, want)
-        server.Close()
+	metricsCheck(t, ac, want)
+	server.Close()
 }

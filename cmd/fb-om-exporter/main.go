@@ -2,6 +2,7 @@ package main
 
 import (
 	"context"
+	"crypto/tls"
 	"fmt"
 	"io"
 	"log"
@@ -20,6 +21,7 @@ import (
 
 var version string = "development"
 var debug bool = false
+var secure bool = false
 var arraytokens config.FlashBladeList
 
 func fileExists(args []string) error {
@@ -41,9 +43,10 @@ func main() {
 	host := parser.String("a", "address", &argparse.Options{Required: false, Help: "IP address for this exporter to bind to", Default: "0.0.0.0"})
 	port := parser.Int("p", "port", &argparse.Options{Required: false, Help: "Port for this exporter to listen", Default: 9491})
 	d := parser.Flag("d", "debug", &argparse.Options{Required: false, Help: "Enable debug", Default: false})
+	s := parser.Flag("s", "secure", &argparse.Options{Required: false, Help: "Enable TLS verification when connecting to array", Default: false})
 	at := parser.File("t", "tokens", os.O_RDONLY, 0600, &argparse.Options{Required: false, Validate: fileExists, Help: "API token(s) map file"})
-	cert := parser.String("c", "cert", &argparse.Options{Required: false, Help: "SSL/TLS certificate file. Required only for TLS"})
-	key := parser.String("k", "key", &argparse.Options{Required: false, Help: "SSL/TLS private key file. Required only for TLS"})
+	cert := parser.String("c", "cert", &argparse.Options{Required: false, Help: "SSL/TLS certificate file. Required only for Exporter TLS"})
+	key := parser.String("k", "key", &argparse.Options{Required: false, Help: "SSL/TLS private key file. Required only for Exporter TLS"})
 	err := parser.Parse(os.Args)
 	if err != nil {
 		log.Fatalf("Error in token file: %v", err)
@@ -81,33 +84,78 @@ func main() {
 		}
 	}
 	debug = *d
+	secure = *s
 	addr := fmt.Sprintf("%s:%d", *host, *port)
 	log.Printf("Start Pure FlashBlade exporter %s on %s", version, addr)
 
-	http.HandleFunc("/", index)
-	http.HandleFunc("/metrics/array", func(w http.ResponseWriter, r *http.Request) {
-		metricsHandler(w, r)
-	})
-	http.HandleFunc("/metrics/clients", func(w http.ResponseWriter, r *http.Request) {
-		metricsHandler(w, r)
-	})
-	http.HandleFunc("/metrics/usage", func(w http.ResponseWriter, r *http.Request) {
-		metricsHandler(w, r)
-	})
-	http.HandleFunc("/metrics/policies", func(w http.ResponseWriter, r *http.Request) {
-		metricsHandler(w, r)
-	})
-	http.HandleFunc("/metrics", func(w http.ResponseWriter, r *http.Request) {
-		metricsHandler(w, r)
-	})
 	if isFile(*cert) && isFile(*key) {
-		log.Fatal(http.ListenAndServeTLS(addr, *cert, *key, nil))
+
+		cfg := &tls.Config{
+			MinVersion: tls.VersionTLS12,
+			CipherSuites: []uint16{
+				tls.TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256,
+				tls.TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,
+				tls.TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384,
+				tls.TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384,
+				tls.TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305,
+				tls.TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305,
+			},
+		}
+
+		srv := &http.Server{
+			TLSConfig: cfg,
+			Addr:      addr,
+		}
+		http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
+			w.Header().Add("Strict-Transport-Security", "max-age=63072000; includeSubDomains")
+			index(w, r)
+		})
+		http.HandleFunc("/metrics/array", func(w http.ResponseWriter, r *http.Request) {
+			w.Header().Add("Strict-Transport-Security", "max-age=63072000; includeSubDomains")
+			metricsHandler(w, r)
+		})
+		http.HandleFunc("/metrics/clients", func(w http.ResponseWriter, r *http.Request) {
+			w.Header().Add("Strict-Transport-Security", "max-age=63072000; includeSubDomains")
+			metricsHandler(w, r)
+		})
+		http.HandleFunc("/metrics/usage", func(w http.ResponseWriter, r *http.Request) {
+			w.Header().Add("Strict-Transport-Security", "max-age=63072000; includeSubDomains")
+			metricsHandler(w, r)
+		})
+		http.HandleFunc("/metrics/policies", func(w http.ResponseWriter, r *http.Request) {
+			w.Header().Add("Strict-Transport-Security", "max-age=63072000; includeSubDomains")
+			metricsHandler(w, r)
+		})
+		http.HandleFunc("/metrics", func(w http.ResponseWriter, r *http.Request) {
+			w.Header().Add("Strict-Transport-Security", "max-age=63072000; includeSubDomains")
+			metricsHandler(w, r)
+		})
+		log.Fatal(srv.ListenAndServeTLS(*cert, *key))
 	} else {
+		http.HandleFunc("/", index)
+		http.HandleFunc("/metrics/array", func(w http.ResponseWriter, r *http.Request) {
+			metricsHandler(w, r)
+		})
+		http.HandleFunc("/metrics/clients", func(w http.ResponseWriter, r *http.Request) {
+			metricsHandler(w, r)
+		})
+		http.HandleFunc("/metrics/usage", func(w http.ResponseWriter, r *http.Request) {
+			metricsHandler(w, r)
+		})
+		http.HandleFunc("/metrics/policies", func(w http.ResponseWriter, r *http.Request) {
+			metricsHandler(w, r)
+		})
+		http.HandleFunc("/metrics", func(w http.ResponseWriter, r *http.Request) {
+			metricsHandler(w, r)
+		})
 		log.Fatal(http.ListenAndServe(addr, nil))
 	}
 }
 
 func metricsHandler(w http.ResponseWriter, r *http.Request) {
+	if debug {
+		log.Printf("%s %s %s %s\n", r.RemoteAddr, r.Method, r.URL, r.Header.Get("User-Agent"))
+	}
 	params := r.URL.Query()
 	path := strings.Split(r.URL.Path, "/")
 	metrics := ""
@@ -126,6 +174,7 @@ func metricsHandler(w http.ResponseWriter, r *http.Request) {
 	}
 	endpoint := params.Get("endpoint")
 	if endpoint == "" {
+		log.Printf("[ERROR] %s %s %s HTTP REQUEST ERROR: Endpoint parameter is missing\n", r.RemoteAddr, r.Method, r.URL)
 		http.Error(w, "Endpoint parameter is missing", http.StatusBadRequest)
 		return
 	}
@@ -141,15 +190,17 @@ func metricsHandler(w http.ResponseWriter, r *http.Request) {
 		address = endpoint
 	}
 	if apitoken == "" {
+		log.Printf("[ERROR] %s %s %s HTTP REQUEST ERROR: Target authorization token is missing\n", r.RemoteAddr, r.Method, r.URL)
 		http.Error(w, "Target authorization token is missing", http.StatusBadRequest)
 		return
 	}
 
 	uagent := r.Header.Get("User-Agent")
 	registry := prometheus.NewRegistry()
-	fbclient := client.NewRestClient(address, apitoken, apiver, uagent, debug)
+	fbclient := client.NewRestClient(address, apitoken, apiver, uagent, debug, secure)
 	if fbclient.Error != nil {
-		http.Error(w, "Error connecting to FlashBlade. Check your management endpoint and/or api token are correct.", http.StatusBadRequest)
+		log.Printf("[ERROR] %s %s %s %s FBCLIENT ERROR: %s\n", r.RemoteAddr, r.Method, r.URL, r.Header.Get("User-Agent"), fbclient.Error.Error())
+		http.Error(w, fbclient.Error.Error(), http.StatusBadRequest)
 		return
 	}
 	collectors.Collector(context.TODO(), metrics, registry, fbclient)

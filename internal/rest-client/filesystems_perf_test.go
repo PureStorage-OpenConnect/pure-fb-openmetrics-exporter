@@ -42,7 +42,7 @@ func TestFileSystemsPerformance(t *testing.T) {
         endp := strings.Split(server.URL, "/")
         e := endp[len(endp)-1]
         t.Run("filesystems_performance_all", func(t *testing.T) {
-	    c := NewRestClient(e, "fake-api-token", "latest", "test-user-agent-string", false)
+	    c := NewRestClient(e, "fake-api-token", "latest", "test-user-agent-string", false, false)
 	    f := c.GetFileSystems()
             fl := c.GetFileSystemsPerformance(f, "all")
 	    if diff := cmp.Diff(fl.Items, fpl.Items); diff != "" {
@@ -51,7 +51,7 @@ func TestFileSystemsPerformance(t *testing.T) {
             }
         })
         t.Run("filesystems_performance_nfs", func(t *testing.T) {
-	    c := NewRestClient(e, "fake-api-token", "latest", "test-user-agent-string", false)
+	    c := NewRestClient(e, "fake-api-token", "latest", "test-user-agent-string", false, false)
 	    f := c.GetFileSystems()
             fl := c.GetFileSystemsPerformance(f, "NFS")
 	    if diff := cmp.Diff(fl.Items, fpl.Items); diff != "" {
@@ -60,7 +60,7 @@ func TestFileSystemsPerformance(t *testing.T) {
             }
         })
         t.Run("filesystems_performance_smb", func(t *testing.T) {
-	    c := NewRestClient(e, "fake-api-token", "latest", "test-user-agent-string", false)
+	    c := NewRestClient(e, "fake-api-token", "latest", "test-user-agent-string", false, false)
 	    f := c.GetFileSystems()
             fl := c.GetFileSystemsPerformance(f, "SMB")
 	    if diff := cmp.Diff(fl.Items, fpl.Items); diff != "" {

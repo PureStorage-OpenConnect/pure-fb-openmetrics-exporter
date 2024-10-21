@@ -86,7 +86,7 @@ The exporter can be started in TLS mode (HTTPS, mutually exclusive with the HTTP
 
 ```shell
 
-usage: pure-fb-om-exporter [-h|--help] [-a|--address "<value>"] [-p|--port <integer>] [-d|--debug] [-s|--secire] [-t|--tokens <file>] [-c|--cert "<value>"] [-k|--key "<value>"]
+usage: pure-fb-om-exporter [-h|--help] [-a|--address "<value>"] [-p|--port <integer>] [-d|--debug] [-s|--secure] [-t|--tokens <file>] [-c|--cert "<value>"] [-k|--key "<value>"]
 
                            Pure Storage FB OpenMetrics exporter
 

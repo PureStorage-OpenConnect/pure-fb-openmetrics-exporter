@@ -36,7 +36,7 @@ func TestArraysS3Performance(t *testing.T) {
         e := endp[len(endp)-1]
         t.Run("array_s3_specific_1", func(t *testing.T) {
             defer server.Close()
-            c := NewRestClient(e, "fake-api-token", "latest", "test-user-agent-string", false)
+            c := NewRestClient(e, "fake-api-token", "latest", "test-user-agent-string", false, false)
 	    pl := c.GetArraysS3Performance()
 	    if diff := cmp.Diff(pl.Items, as3.Items); diff != "" {
                 t.Errorf("Mismatch (-want +got):\n%s", diff)

@@ -53,7 +53,7 @@ func TestArraysSpace(t *testing.T) {
         endp := strings.Split(server.URL, "/")
         e := endp[len(endp)-1]
         t.Run("arrays_space_1", func(t *testing.T) {
-	    c := NewRestClient(e, "fake-api-token", "latest", "test-user-agent-string", false)
+	    c := NewRestClient(e, "fake-api-token", "latest", "test-user-agent-string", false, false)
             asl := c.GetArraysSpace("array")
 	    if diff := cmp.Diff(asl.Items, arrsa.Items); diff != "" {
                 t.Errorf("Mismatch (-want +got):\n%s", diff)
@@ -61,7 +61,7 @@ func TestArraysSpace(t *testing.T) {
             }
         })
         t.Run("arrays_space_2", func(t *testing.T) {
-	    c := NewRestClient(e, "fake-api-token", "latest", "test-user-agent-string", false)
+	    c := NewRestClient(e, "fake-api-token", "latest", "test-user-agent-string", false, false)
             asfs := c.GetArraysSpace("file-system")
 	    if diff := cmp.Diff(asfs.Items, arrsfs.Items); diff != "" {
                 t.Errorf("Mismatch (-want +got):\n%s", diff)
@@ -69,7 +69,7 @@ func TestArraysSpace(t *testing.T) {
             }
         })
         t.Run("arrays_space_3", func(t *testing.T) {
-	    c := NewRestClient(e, "fake-api-token", "latest", "test-user-agent-string", false)
+	    c := NewRestClient(e, "fake-api-token", "latest", "test-user-agent-string", false, false)
             aso := c.GetArraysSpace("object-store")
 	    if diff := cmp.Diff(aso.Items, arrso.Items); diff != "" {
                 t.Errorf("Mismatch (-want +got):\n%s", diff)

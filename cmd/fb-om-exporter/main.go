@@ -196,8 +196,8 @@ func metricsHandler(w http.ResponseWriter, r *http.Request) {
 	registry := prometheus.NewRegistry()
 	fbclient := client.NewRestClient(address, apitoken, apiver, uagent, debug)
 	if fbclient.Error != nil {
-                log.Printf("[ERROR] %s %s %s %s FBCLIENT ERROR: %s\n", r.RemoteAddr, r.Method, r.URL, r.Header.Get("User-Agent"), faclient.Error.Error())
-		http.Error(w, faclient.Error.Error(), http.StatusBadRequest)
+                log.Printf("[ERROR] %s %s %s %s FBCLIENT ERROR: %s\n", r.RemoteAddr, r.Method, r.URL, r.Header.Get("User-Agent"), fbclient.Error.Error())
+		http.Error(w, fbclient.Error.Error(), http.StatusBadRequest)
 		return
 	}
 	collectors.Collector(context.TODO(), metrics, registry, fbclient)

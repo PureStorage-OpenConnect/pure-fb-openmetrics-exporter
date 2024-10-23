@@ -108,16 +108,19 @@ func (fb *FBClient) Close() *FBClient {
 	if fb.XAuthToken == "" {
 		return fb
 	}
+	fb.RestClient.SetBaseURL("https://" + fb.EndPoint + "/api")
 	_, err := fb.RestClient.R().
 		SetHeader("x-auth-token", fb.XAuthToken).
 		Post("/logout")
 	if err != nil {
 		fb.Error = err
 	}
+	fb.RestClient.SetBaseURL("https://" + fb.EndPoint + "/api/" + fb.ApiVersion)
 	return fb
 }
 
 func (fb *FBClient) RefreshSession() *FBClient {
+	fb.RestClient.SetBaseURL("https://" + fb.EndPoint + "/api")
 	res, err := fb.RestClient.R().
 		SetHeader("api-token", fb.ApiToken).
 		Post("/login")
@@ -127,5 +130,6 @@ func (fb *FBClient) RefreshSession() *FBClient {
 	}
 	fb.XAuthToken = res.Header().Get("x-auth-token")
 	fb.RestClient.SetHeader("x-auth-token", fb.XAuthToken)
+	fb.RestClient.SetBaseURL("https://" + fb.EndPoint + "/api/" + fb.ApiVersion)
 	return fb
 }

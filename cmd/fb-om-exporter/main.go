@@ -114,7 +114,15 @@ func main() {
 			w.Header().Add("Strict-Transport-Security", "max-age=63072000; includeSubDomains")
 			metricsHandler(w, r)
 		})
+		http.HandleFunc("/metrics/buckets", func(w http.ResponseWriter, r *http.Request) {
+			w.Header().Add("Strict-Transport-Security", "max-age=63072000; includeSubDomains")
+			metricsHandler(w, r)
+		})
 		http.HandleFunc("/metrics/clients", func(w http.ResponseWriter, r *http.Request) {
+			w.Header().Add("Strict-Transport-Security", "max-age=63072000; includeSubDomains")
+			metricsHandler(w, r)
+		})
+		http.HandleFunc("/metrics/filesystems", func(w http.ResponseWriter, r *http.Request) {
 			w.Header().Add("Strict-Transport-Security", "max-age=63072000; includeSubDomains")
 			metricsHandler(w, r)
 		})
@@ -136,7 +144,13 @@ func main() {
 		http.HandleFunc("/metrics/array", func(w http.ResponseWriter, r *http.Request) {
 			metricsHandler(w, r)
 		})
+		http.HandleFunc("/metrics/buckets", func(w http.ResponseWriter, r *http.Request) {
+			metricsHandler(w, r)
+		})
 		http.HandleFunc("/metrics/clients", func(w http.ResponseWriter, r *http.Request) {
+			metricsHandler(w, r)
+		})
+		http.HandleFunc("/metrics/filesystems", func(w http.ResponseWriter, r *http.Request) {
 			metricsHandler(w, r)
 		})
 		http.HandleFunc("/metrics/usage", func(w http.ResponseWriter, r *http.Request) {
@@ -164,8 +178,10 @@ func metricsHandler(w http.ResponseWriter, r *http.Request) {
 	} else {
 		metrics = path[2]
 		switch metrics {
-		case "clients":
 		case "array":
+		case "buckets":
+		case "clients":
+		case "filesystems":
 		case "usage":
 		case "policies":
 		default:
@@ -237,10 +253,22 @@ func index(w http.ResponseWriter, r *http.Request) {
             <td>Provides only array related metrics.</td>
         </tr>
         <tr>
+            <td>Bucket metrics</td>
+            <td><a href="/metrics/buckets?endpoint=host">/metrics/buckets</a></td>
+            <td>endpoint</td>
+            <td>Provides only bucket related metrics.</td>
+        </tr>
+		<tr>
             <td>Client metrics</td>
             <td><a href="/metrics/clients?endpoint=host">/metrics/clients</a></td>
             <td>endpoint</td>
-            <td>Provides only client related metrics. This is the most time expensive query</td>
+            <td>Provides only client related metrics. This is the most time expensive query.</td>
+        </tr>
+	   <tr>
+            <td>File System metrics</td>
+            <td><a href="/metrics/filesystems?endpoint=host">/metrics/filesystems</a></td>
+            <td>endpoint</td>
+            <td>Provides only file system related metrics.</td>
         </tr>
         <tr>
             <td>Quota metrics</td>

@@ -128,13 +128,15 @@ Authentication is used by the exporter as the mechanism to cross authenticate to
 The exporter understands the following requests:
 
 
-| URL                                                | GET parameters | description               |
-| ---------------------------------------------------| -------------- | --------------------------|
-| http://\<exporter-host\>:\<port\>/metrics          | endpoint       | Full array metrics        |
-| http://\<exporter-host\>:\<port\>/metrics/array    | endpoint       | Array metrics             |
-| http://\<exporter-host\>:\<port\>/metrics/clients  | endpoint       | Clients metrics           |
-| http://\<exporter-host\>:\<port\>/metrics/usage    | endpoint       | Quotas usage metrics      |
-| http://\<exporter-host\>:\<port\>/metrics/policies | endpoint       | NFS policies info metrics |
+| URL                                                   | GET parameters | description               |
+| ------------------------------------------------------| -------------- | --------------------------|
+| http://\<exporter-host\>:\<port\>/metrics             | endpoint       | Full array metrics        |
+| http://\<exporter-host\>:\<port\>/metrics/array       | endpoint       | Array metrics             |
+| http://\<exporter-host\>:\<port\>/metrics/buckets     | endpoint       | Bucket metrics            |
+| http://\<exporter-host\>:\<port\>/metrics/clients     | endpoint       | Clients metrics           |
+| http://\<exporter-host\>:\<port\>/metrics/filesystems | endpoint       | File System metrics       |
+| http://\<exporter-host\>:\<port\>/metrics/usage       | endpoint       | Quotas usage metrics      |
+| http://\<exporter-host\>:\<port\>/metrics/policies    | endpoint       | NFS policies info metrics |
 
 
 Depending on the target array, scraping for the whole set of metrics could result into timeout issues, in which case it is suggested either to increase the scraping timeout or to scrape each single endpoint instead.

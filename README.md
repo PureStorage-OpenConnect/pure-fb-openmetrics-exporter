@@ -132,7 +132,7 @@ The exporter understands the following requests:
 | ------------------------------------------------------| -------------- | --------------------------|
 | http://\<exporter-host\>:\<port\>/metrics             | endpoint       | Full array metrics        |
 | http://\<exporter-host\>:\<port\>/metrics/array       | endpoint       | Array metrics             |
-| http://\<exporter-host\>:\<port\>/metrics/objectstore | endpoint       | Object store metrics      |
+| http://\<exporter-host\>:\<port\>/metrics/objectstore | endpoint       | Object Store metrics      |
 | http://\<exporter-host\>:\<port\>/metrics/clients     | endpoint       | Clients metrics           |
 | http://\<exporter-host\>:\<port\>/metrics/filesystems | endpoint       | File System metrics       |
 | http://\<exporter-host\>:\<port\>/metrics/usage       | endpoint       | Quotas usage metrics      |

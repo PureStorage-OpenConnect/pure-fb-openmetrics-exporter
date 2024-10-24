@@ -23,15 +23,15 @@ This document describes the semantic conventions for Pure FlashBlade Metrics.
 
 ## Collections by Endpoint
 
-| Endpoint              | Description               | Metrics Instruments collected                                                                                                     |
-| --------------------- | ------------------------- | --------------------------------------------------------------------------------------------------------------------------------- |
-| /metrics              | Full array metrics        | all                                                                                                                               |
-| /metrics/array        | Array only metrics        | `purefb_info`, `purefb_alerts`, `purefb_array`, `purefb_hardware`, `purefb_object_store`                                          |
-| /metrics/buckets      | Bucket only metrics       | `purefb_info`, `purefb_buckets`                                                                                                   |
-| /metrics/clients      | Client only metrics       | `purefb_info`, `purefb_clients`                                                                                                   |
-| /metrics/filesystems  | File System only metrics  | `purefb_info`, `purefb_file_systems`                                                                                              |
-| /metrics/usage        | Quota only metrics        | `purefb_info`, `purefb_file_system_usage`                                                                                         |
-| /metrics/policies     | NFS policy related info   | `purefb_info`, `purefb_nfs_export_rule`                                                                                           |
+| Endpoint             | Description              | Metrics Instruments collected                                     |
+| -------------------- | ------------------------ | ----------------------------------------------------------------- |
+| /metrics             | Full array metrics       | all                                                               |
+| /metrics/array       | Array only metrics       | `purefb_info`, `purefb_alerts`, `purefb_array`, `purefb_hardware` |
+| /metrics/buckets     | Bucket only metrics      | `purefb_info`, `purefb_buckets`, `purefb_object_store`            |
+| /metrics/clients     | Client only metrics      | `purefb_info`, `purefb_clients`                                   |
+| /metrics/filesystems | File System only metrics | `purefb_info`, `purefb_file_systems`                              |
+| /metrics/usage       | Quota only metrics       | `purefb_info`, `purefb_file_system_usage`                         |
+| /metrics/policies    | NFS policy related info  | `purefb_info`, `purefb_nfs_export_rule`                           |
 
 ## Metric Statuses
 

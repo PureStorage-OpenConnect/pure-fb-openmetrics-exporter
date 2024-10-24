@@ -27,7 +27,6 @@ func Collector(ctx context.Context, metrics string, registry *prometheus.Registr
 		alertsCollector := NewAlertsCollector(fbclient)
 		hardwareCollector := NewHardwareCollector(fbclient)
 		hwPerfConnectorsCollector := NewHwConnectorsPerfCollector(fbclient)
-		objstoreacctsCollector := NewObjectStoreAccountsCollector(fbclient)
 		registry.MustRegister(
 			perfCollector,
 			s3perfCollector,
@@ -38,7 +37,6 @@ func Collector(ctx context.Context, metrics string, registry *prometheus.Registr
 			alertsCollector,
 			hardwareCollector,
 			hwPerfConnectorsCollector,
-			objstoreacctsCollector,
 		)
 	}
 	if metrics == "all" || metrics == "filesystems" {
@@ -49,19 +47,21 @@ func Collector(ctx context.Context, metrics string, registry *prometheus.Registr
 			filesystemsPerfCollector,
 		)
 	}
-	if metrics == "all" || metrics == "buckets" {
+	if metrics == "all" || metrics == "clients" {
+		clientsPerfCollector := NewClientsPerfCollector(fbclient)
+		registry.MustRegister(clientsPerfCollector)
+	}
+	if metrics == "all" || metrics == "objectstore" {
 		bucketsPerfCollector := NewBucketsPerfCollector(fbclient, buckets)
 		buckestS3PerfCollector := NewBucketsS3PerfCollector(fbclient, buckets)
 		bucketsSpaceCollector := NewBucketsSpaceCollector(buckets)
+		objstoreacctsCollector := NewObjectStoreAccountsCollector(fbclient)
 		registry.MustRegister(
 			bucketsPerfCollector,
 			buckestS3PerfCollector,
 			bucketsSpaceCollector,
+			objstoreacctsCollector,
 		)
-	}
-	if metrics == "all" || metrics == "clients" {
-		clientsPerfCollector := NewClientsPerfCollector(fbclient)
-		registry.MustRegister(clientsPerfCollector)
 	}
 	if metrics == "all" || metrics == "usage" {
 		usageCollector := NewUsageCollector(fbclient, filesystems)

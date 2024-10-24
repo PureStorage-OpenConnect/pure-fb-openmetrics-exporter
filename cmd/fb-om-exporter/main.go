@@ -114,15 +114,15 @@ func main() {
 			w.Header().Add("Strict-Transport-Security", "max-age=63072000; includeSubDomains")
 			metricsHandler(w, r)
 		})
-		http.HandleFunc("/metrics/buckets", func(w http.ResponseWriter, r *http.Request) {
-			w.Header().Add("Strict-Transport-Security", "max-age=63072000; includeSubDomains")
-			metricsHandler(w, r)
-		})
 		http.HandleFunc("/metrics/clients", func(w http.ResponseWriter, r *http.Request) {
 			w.Header().Add("Strict-Transport-Security", "max-age=63072000; includeSubDomains")
 			metricsHandler(w, r)
 		})
 		http.HandleFunc("/metrics/filesystems", func(w http.ResponseWriter, r *http.Request) {
+			w.Header().Add("Strict-Transport-Security", "max-age=63072000; includeSubDomains")
+			metricsHandler(w, r)
+		})
+		http.HandleFunc("/metrics/objectstore", func(w http.ResponseWriter, r *http.Request) {
 			w.Header().Add("Strict-Transport-Security", "max-age=63072000; includeSubDomains")
 			metricsHandler(w, r)
 		})
@@ -144,13 +144,13 @@ func main() {
 		http.HandleFunc("/metrics/array", func(w http.ResponseWriter, r *http.Request) {
 			metricsHandler(w, r)
 		})
-		http.HandleFunc("/metrics/buckets", func(w http.ResponseWriter, r *http.Request) {
-			metricsHandler(w, r)
-		})
 		http.HandleFunc("/metrics/clients", func(w http.ResponseWriter, r *http.Request) {
 			metricsHandler(w, r)
 		})
 		http.HandleFunc("/metrics/filesystems", func(w http.ResponseWriter, r *http.Request) {
+			metricsHandler(w, r)
+		})
+		http.HandleFunc("/metrics/objectstore", func(w http.ResponseWriter, r *http.Request) {
 			metricsHandler(w, r)
 		})
 		http.HandleFunc("/metrics/usage", func(w http.ResponseWriter, r *http.Request) {
@@ -254,9 +254,9 @@ func index(w http.ResponseWriter, r *http.Request) {
         </tr>
         <tr>
             <td>Bucket metrics</td>
-            <td><a href="/metrics/buckets?endpoint=host">/metrics/buckets</a></td>
+            <td><a href="/metrics/objectstore?endpoint=host">/metrics/objectstore</a></td>
             <td>endpoint</td>
-            <td>Provides only bucket related metrics.</td>
+            <td>Provides only object store related metrics.</td>
         </tr>
 		<tr>
             <td>Client metrics</td>

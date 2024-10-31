@@ -128,16 +128,17 @@ Authentication is used by the exporter as the mechanism to cross authenticate to
 The exporter understands the following requests:
 
 
-| URL                                                   | GET parameters | description               |
-| ------------------------------------------------------| -------------- | --------------------------|
-| http://\<exporter-host\>:\<port\>/metrics             | endpoint       | Full array metrics        |
-| http://\<exporter-host\>:\<port\>/metrics/array       | endpoint       | Array metrics             |
-| http://\<exporter-host\>:\<port\>/metrics/objectstore | endpoint       | Object Store metrics      |
-| http://\<exporter-host\>:\<port\>/metrics/clients     | endpoint       | Clients metrics           |
-| http://\<exporter-host\>:\<port\>/metrics/filesystems | endpoint       | File System metrics       |
-| http://\<exporter-host\>:\<port\>/metrics/usage       | endpoint       | Quotas usage metrics      |
-| http://\<exporter-host\>:\<port\>/metrics/policies    | endpoint       | NFS policies info metrics |
+| URL                                                   | GET parameters | description                  |
+| ------------------------------------------------------| -------------- | -----------------------------|
+| http://\<exporter-host\>:\<port\>/metrics             | endpoint       | Full array metrics           |
+| http://\<exporter-host\>:\<port\>/metrics/array       | endpoint       | Array metrics                |
+| http://\<exporter-host\>:\<port\>/metrics/objectstore | endpoint       | Object Store metrics *       |
+| http://\<exporter-host\>:\<port\>/metrics/clients     | endpoint       | Clients metrics              |
+| http://\<exporter-host\>:\<port\>/metrics/filesystems | endpoint       | File System metrics *        |
+| http://\<exporter-host\>:\<port\>/metrics/usage       | endpoint       | Quotas usage metrics         |
+| http://\<exporter-host\>:\<port\>/metrics/policies    | endpoint       | NFS policies info metrics    |
 
+\* Introduced in version 1.1.0 of the FB OpenMetrics exporter, a change to the filesystem and bucket URI's was made to split off separate endpoints to ensure performance metrics for the /metrics/array endpoint remains quick to scrape in large environments.
 
 Depending on the target array, scraping for the whole set of metrics could result into timeout issues, in which case it is suggested either to increase the scraping timeout or to scrape each single endpoint instead.
 

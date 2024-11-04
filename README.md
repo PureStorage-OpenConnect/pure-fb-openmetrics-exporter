@@ -128,19 +128,16 @@ Authentication is used by the exporter as the mechanism to cross authenticate to
 The exporter understands the following requests:
 
 
-| URL                                                   | GET parameters | description                  |
-| ------------------------------------------------------| -------------- | -----------------------------|
-| http://\<exporter-host\>:\<port\>/metrics             | endpoint       | Full array metrics           |
-| http://\<exporter-host\>:\<port\>/metrics/array       | endpoint       | Array metrics                |
-| http://\<exporter-host\>:\<port\>/metrics/objectstore | endpoint       | Object Store metrics *       |
-| http://\<exporter-host\>:\<port\>/metrics/clients     | endpoint       | Clients metrics              |
-| http://\<exporter-host\>:\<port\>/metrics/filesystems | endpoint       | File System metrics *        |
-| http://\<exporter-host\>:\<port\>/metrics/usage       | endpoint       | Quotas usage metrics         |
-| http://\<exporter-host\>:\<port\>/metrics/policies    | endpoint       | NFS policies info metrics    |
+| URL                                                   | GET parameters | description               |
+| ----------------------------------------------------- | -------------- | ------------------------- |
+| http://\<exporter-host\>:\<port\>/metrics             | endpoint       | Full array metrics        |
+| http://\<exporter-host\>:\<port\>/metrics/array       | endpoint       | Array metrics             |
+| http://\<exporter-host\>:\<port\>/metrics/clients     | endpoint       | Clients metrics           |
+| http://\<exporter-host\>:\<port\>/metrics/filesystems | endpoint       | File System metrics       |
+| http://\<exporter-host\>:\<port\>/metrics/objectstore | endpoint       | Object Store metrics      |
+| http://\<exporter-host\>:\<port\>/metrics/policies    | endpoint       | NFS policies info metrics |
+| http://\<exporter-host\>:\<port\>/metrics/usage       | endpoint       | Quotas usage metrics      |
 
-\* Introduced in version 1.1.0 of the FB OpenMetrics exporter, a change to the filesystem and bucket URI's was made to split off separate endpoints to ensure performance metrics for the /metrics/array endpoint remains quick to scrape in large environments.
-
-Depending on the target array, scraping for the whole set of metrics could result into timeout issues, in which case it is suggested either to increase the scraping timeout or to scrape each single endpoint instead.
 
 ### Usage examples
 
@@ -161,10 +158,42 @@ Please have a look at the documentation of each image/application for adequate c
 
 A simple but complete example to deploy a full monitoring stack on kubernetes can be found in the [examples](examples/config/k8s) directory  
 
+### Upgrade Information
+
+v1.1.0 - New URIs `filesystem` and `objectstore` were added to split off these metric instruments to ensure metrics in the `array` URI remain quick to scrape in large environments to comply with the limitations recommendation set below in [Bugs and Limitations](#bugs-and-limitations).
+
+If you require the following metrics for your dataset for your observability toolset, please add the new endpoint(s) as required.
+
+
+The following metrics have been moved from `array` to `filesystem`
+
+* `purefb_file_systems_performance_average_bytes`
+* `purefb_file_systems_performance_bandwidth_bytes`
+* `purefb_file_systems_performance_latency_usec`
+* `purefb_file_systems_performance_throughput_iops`
+* `purefb_file_systems_space_bytes`
+* `purefb_file_systems_space_data_reduction_ratio`
+
+The following metrics have been moved from `array` to `objectstore`
+
+* `purefb_buckets_object_count`
+* `purefb_buckets_performance_average_bytes`
+* `purefb_buckets_performance_bandwidth_bytes`
+* `purefb_buckets_performance_latency_usec`
+* `purefb_buckets_performance_throughput_iops`
+* `purefb_buckets_quota_space_bytes`
+* `purefb_buckets_s3_specific_performance_latency_usec`
+* `purefb_buckets_s3_specific_performance_throughput_iops`
+* `purefb_buckets_space_bytes`
+* `purefb_buckets_space_data_reduction_ratio`
+* `purefb_object_store_accounts_data_reduction_ratio`
+* `purefb_object_store_accounts_object_count`
+* `purefb_object_store_accounts_space_bytes`
+
 
 ### Bugs and Limitations
 
-* Pure FlashBlade REST APIs are not designed for efficiently reporting on full clients and objects quota KPIs, therefrore it is suggested to scrape the "array" metrics preferably and use the "clients" and "usage" metrics individually and with a lower frequency than the other.. In any case, as a general rule, it is advisable to do not lower the scraping interval down to less than 30 sec. In case you experience timeout issues, you may want to increase the Prometheus scraping timeout and interval approriately.
+* Pure FlashBlade REST APIs are not designed for efficiently reporting on full clients and objects quota metrics. Therefore, it is suggested to scrape the `array` metrics most frequently and use the `clients`, `filesystem`, `objectstore`, `policies`, and `usage` endpoints individually and with a lower frequency. As a general rule, it is not advisable to lower the scraping interval to less than 30 seconds for for any endpoint. In case you experience timeout issues, you may want to increase the Prometheus scraping timeout and interval appropriately. It is very important to have the collection interval (frequency) safely higher than the scrape duration.
 
 ### Metrics Collected
 

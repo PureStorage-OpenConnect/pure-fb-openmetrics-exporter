@@ -26,12 +26,13 @@ This document describes the semantic conventions for Pure FlashBlade Metrics.
 | Endpoint             | Description              | Metrics Instruments collected                                     |
 | -------------------- | ------------------------ | ----------------------------------------------------------------- |
 | /metrics             | Full array metrics       | all                                                               |
-| /metrics/array       | Array only metrics       | `purefb_info`, `purefb_alerts`, `purefb_array`, `purefb_hardware` |
-| /metrics/objectstore | Object Store metrics     | `purefb_info`, `purefb_buckets`, `purefb_object_store`            |
-| /metrics/clients     | Client only metrics      | `purefb_info`, `purefb_clients`                                   |
+| /metrics/array       | Array metrics            | `purefb_info`, `purefb_alerts`, `purefb_array`, `purefb_hardware` |
+| /metrics/clients     | Client metrics           | `purefb_info`, `purefb_clients`                                   |
 | /metrics/filesystems | File System metrics      | `purefb_info`, `purefb_file_systems`                              |
-| /metrics/usage       | Quota only metrics       | `purefb_info`, `purefb_file_system_usage`                         |
+| /metrics/objectstore | Object Store metrics     | `purefb_info`, `purefb_buckets`, `purefb_object_store`            |
 | /metrics/policies    | NFS policy related info  | `purefb_info`, `purefb_nfs_export_rule`                           |
+| /metrics/usage       | Quota metrics            | `purefb_info`, `purefb_file_system_usage`                         |
+
 
 ## Metric Statuses
 

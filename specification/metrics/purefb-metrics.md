@@ -33,7 +33,6 @@ This document describes the semantic conventions for Pure FlashBlade Metrics.
 | /metrics/policies    | NFS policy related info  | `purefb_info`, `purefb_nfs_export_rule`                           |
 | /metrics/usage       | Quota metrics            | `purefb_info`, `purefb_file_system_usage`                         |
 
-
 ## Metric Statuses
 
 | Status         | Description                                                                                                                          |

@@ -179,7 +179,7 @@ func metricsHandler(w http.ResponseWriter, r *http.Request) {
 		metrics = path[2]
 		switch metrics {
 		case "array":
-		case "buckets":
+		case "objectstore":
 		case "clients":
 		case "filesystems":
 		case "usage":

@@ -14,7 +14,9 @@ type ObjectStoreAccountsCollector struct {
 }
 
 func (c *ObjectStoreAccountsCollector) Describe(ch chan<- *prometheus.Desc) {
-	prometheus.DescribeByCollect(c, ch)
+	ch <- c.ReductionDesc
+	ch <- c.SpaceDesc
+	ch <- c.ObjectCountDesc
 }
 
 func (c *ObjectStoreAccountsCollector) Collect(ch chan<- prometheus.Metric) {

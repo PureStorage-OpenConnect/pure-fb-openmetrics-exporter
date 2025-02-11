@@ -13,7 +13,8 @@ type NfsPerfCollector struct {
 }
 
 func (c *NfsPerfCollector) Describe(ch chan<- *prometheus.Desc) {
-	prometheus.DescribeByCollect(c, ch)
+	ch <- c.LatencyDesc
+	ch <- c.ThroughputDesc
 }
 
 func (c *NfsPerfCollector) Collect(ch chan<- prometheus.Metric) {

@@ -15,7 +15,8 @@ type UsageCollector struct {
 }
 
 func (c *UsageCollector) Describe(ch chan<- *prometheus.Desc) {
-	prometheus.DescribeByCollect(c, ch)
+	ch <- c.UsageUsersDesc
+	ch <- c.UsageGroupsDesc
 }
 
 func (c *UsageCollector) Collect(ch chan<- prometheus.Metric) {

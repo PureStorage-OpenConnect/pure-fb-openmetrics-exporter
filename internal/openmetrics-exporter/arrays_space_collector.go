@@ -15,7 +15,10 @@ type ArraySpaceCollector struct {
 }
 
 func (c *ArraySpaceCollector) Describe(ch chan<- *prometheus.Desc) {
-	prometheus.DescribeByCollect(c, ch)
+	ch <- c.ReductionDesc
+	ch <- c.SpaceDesc
+	ch <- c.UtilizationDesc
+	ch <- c.ParityDesc
 }
 
 func (c *ArraySpaceCollector) Collect(ch chan<- prometheus.Metric) {

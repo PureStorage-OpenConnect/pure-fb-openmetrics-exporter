@@ -14,7 +14,8 @@ type FileSystemsSpaceCollector struct {
 }
 
 func (c *FileSystemsSpaceCollector) Describe(ch chan<- *prometheus.Desc) {
-	prometheus.DescribeByCollect(c, ch)
+	ch <- c.ReductionDesc
+	ch <- c.SpaceDesc
 }
 
 func (c *FileSystemsSpaceCollector) Collect(ch chan<- prometheus.Metric) {

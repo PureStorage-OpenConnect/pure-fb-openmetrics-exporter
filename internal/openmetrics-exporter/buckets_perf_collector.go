@@ -16,7 +16,10 @@ type BucketsPerfCollector struct {
 }
 
 func (c *BucketsPerfCollector) Describe(ch chan<- *prometheus.Desc) {
-	prometheus.DescribeByCollect(c, ch)
+	ch <- c.LatencyDesc
+	ch <- c.ThroughputDesc
+	ch <- c.BandwidthDesc
+	ch <- c.AverageSizeDesc
 }
 
 func (c *BucketsPerfCollector) Collect(ch chan<- prometheus.Metric) {

@@ -13,7 +13,8 @@ type HttpPerfCollector struct {
 }
 
 func (c *HttpPerfCollector) Describe(ch chan<- *prometheus.Desc) {
-	prometheus.DescribeByCollect(c, ch)
+	ch <- c.LatencyDesc
+	ch <- c.ThroughputDesc
 }
 
 func (c *HttpPerfCollector) Collect(ch chan<- prometheus.Metric) {

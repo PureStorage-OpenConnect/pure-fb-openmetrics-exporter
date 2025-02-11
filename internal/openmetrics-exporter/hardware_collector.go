@@ -13,7 +13,7 @@ type HardwareCollector struct {
 }
 
 func (c *HardwareCollector) Describe(ch chan<- *prometheus.Desc) {
-	prometheus.DescribeByCollect(c, ch)
+	ch <- c.HardwareDesc
 }
 
 func (c *HardwareCollector) Collect(ch chan<- prometheus.Metric) {

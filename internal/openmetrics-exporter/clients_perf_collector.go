@@ -15,7 +15,10 @@ type ClientsPerfCollector struct {
 }
 
 func (c *ClientsPerfCollector) Describe(ch chan<- *prometheus.Desc) {
-	prometheus.DescribeByCollect(c, ch)
+	ch <- c.LatencyDesc
+	ch <- c.ThroughputDesc
+	ch <- c.BandwidthDesc
+	ch <- c.AverageSizeDesc
 }
 
 func (c *ClientsPerfCollector) Collect(ch chan<- prometheus.Metric) {

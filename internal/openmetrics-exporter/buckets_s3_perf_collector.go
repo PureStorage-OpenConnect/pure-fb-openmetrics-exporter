@@ -7,16 +7,15 @@ import (
 )
 
 type BucketsS3PerfCollector struct {
-	LatencyDesc     *prometheus.Desc
-	ThroughputDesc  *prometheus.Desc
-	BandwidthDesc   *prometheus.Desc
-	AverageSizeDesc *prometheus.Desc
-	Client          *client.FBClient
-	Buckets         *client.BucketsList
+	LatencyDesc    *prometheus.Desc
+	ThroughputDesc *prometheus.Desc
+	Client         *client.FBClient
+	Buckets        *client.BucketsList
 }
 
 func (c *BucketsS3PerfCollector) Describe(ch chan<- *prometheus.Desc) {
-	prometheus.DescribeByCollect(c, ch)
+	ch <- c.LatencyDesc
+	ch <- c.ThroughputDesc
 }
 
 func (c *BucketsS3PerfCollector) Collect(ch chan<- prometheus.Metric) {

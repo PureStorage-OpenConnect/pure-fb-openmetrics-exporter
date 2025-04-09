@@ -59,6 +59,7 @@ func NewRestClient(endpoint string, apitoken string, apiversion string, uagent s
 	fb.RestClient.SetHeaders(map[string]string{
 		"Content-Type": "application/json",
 		"Accept":       "application/json",
+		"User-Agent":   FBRestUserAgent + " (" + uagent + ")",
 	})
 
 	if debug {
@@ -100,7 +101,7 @@ func NewRestClient(endpoint string, apitoken string, apiversion string, uagent s
 	fb.XAuthToken = res.Header().Get("x-auth-token")
 	fb.RestClient.SetBaseURL("https://" + endpoint + "/api/" + fb.ApiVersion)
 	fb.RestClient.SetHeader("x-auth-token", fb.XAuthToken)
-	fb.RestClient.SetHeader("User-Agent", FBRestUserAgent+" ("+uagent+")")
+
 	return fb
 }
 

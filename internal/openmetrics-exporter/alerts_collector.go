@@ -14,7 +14,7 @@ type AlertsCollector struct {
 }
 
 func (c *AlertsCollector) Describe(ch chan<- *prometheus.Desc) {
-	prometheus.DescribeByCollect(c, ch)
+	ch <- c.AlertsDesc
 }
 
 func (c *AlertsCollector) Collect(ch chan<- prometheus.Metric) {

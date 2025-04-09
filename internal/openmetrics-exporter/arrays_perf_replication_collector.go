@@ -12,7 +12,7 @@ type PerfReplicationCollector struct {
 }
 
 func (c *PerfReplicationCollector) Describe(ch chan<- *prometheus.Desc) {
-	prometheus.DescribeByCollect(c, ch)
+	ch <- c.ThroughputDesc
 }
 
 func (c *PerfReplicationCollector) Collect(ch chan<- prometheus.Metric) {

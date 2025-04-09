@@ -13,7 +13,8 @@ type S3PerfCollector struct {
 }
 
 func (c *S3PerfCollector) Describe(ch chan<- *prometheus.Desc) {
-	prometheus.DescribeByCollect(c, ch)
+	ch <- c.LatencyDesc
+	ch <- c.ThroughputDesc
 }
 
 func (c *S3PerfCollector) Collect(ch chan<- prometheus.Metric) {

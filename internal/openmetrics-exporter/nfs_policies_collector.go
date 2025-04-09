@@ -13,7 +13,7 @@ type NfsPoliciesCollector struct {
 }
 
 func (c *NfsPoliciesCollector) Describe(ch chan<- *prometheus.Desc) {
-	prometheus.DescribeByCollect(c, ch)
+	ch <- c.NfsPolicyDesc
 }
 
 func (c *NfsPoliciesCollector) Collect(ch chan<- prometheus.Metric) {

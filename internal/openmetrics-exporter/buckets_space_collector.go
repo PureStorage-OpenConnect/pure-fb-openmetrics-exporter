@@ -17,7 +17,10 @@ type BucketsSpaceCollector struct {
 }
 
 func (c *BucketsSpaceCollector) Describe(ch chan<- *prometheus.Desc) {
-	prometheus.DescribeByCollect(c, ch)
+	ch <- c.ReductionDesc
+	ch <- c.SpaceDesc
+	ch <- c.BucketQuotaDesc
+	ch <- c.BucketObjectCountDesc
 }
 
 func (c *BucketsSpaceCollector) Collect(ch chan<- prometheus.Metric) {

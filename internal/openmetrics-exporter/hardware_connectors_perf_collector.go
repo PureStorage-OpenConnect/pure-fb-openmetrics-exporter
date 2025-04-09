@@ -14,7 +14,9 @@ type HwConnectorsPerfCollector struct {
 }
 
 func (c *HwConnectorsPerfCollector) Describe(ch chan<- *prometheus.Desc) {
-	prometheus.DescribeByCollect(c, ch)
+	ch <- c.ThroughputDesc
+	ch <- c.BandwidthDesc
+	ch <- c.ErrorsDesc
 }
 
 func (c *HwConnectorsPerfCollector) Collect(ch chan<- prometheus.Metric) {

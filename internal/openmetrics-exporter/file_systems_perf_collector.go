@@ -16,7 +16,10 @@ type FileSystemsPerfCollector struct {
 }
 
 func (c *FileSystemsPerfCollector) Describe(ch chan<- *prometheus.Desc) {
-	prometheus.DescribeByCollect(c, ch)
+	ch <- c.LatencyDesc
+	ch <- c.ThroughputDesc
+	ch <- c.BandwidthDesc
+	ch <- c.AverageSizeDesc
 }
 
 func (c *FileSystemsPerfCollector) Collect(ch chan<- prometheus.Metric) {

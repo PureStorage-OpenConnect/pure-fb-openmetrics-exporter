@@ -9,8 +9,6 @@ import (
 )
 
 func Collector(ctx context.Context, metrics string, registry *prometheus.Registry, fbclient *client.FBClient) bool {
-	filesystems := fbclient.GetFileSystems()
-	buckets := fbclient.GetBuckets()
 	arrayCollector := NewArraysCollector(fbclient)
 	registry.MustRegister(
 		// collectors.NewProcessCollector(collectors.ProcessCollectorOpts{}),
@@ -40,6 +38,7 @@ func Collector(ctx context.Context, metrics string, registry *prometheus.Registr
 		)
 	}
 	if metrics == "all" || metrics == "filesystems" {
+		filesystems := fbclient.GetFileSystems()
 		filesystemsPerfCollector := NewFileSystemsPerfCollector(fbclient, filesystems)
 		filesystemsSpaceCollector := NewFileSystemsSpaceCollector(filesystems)
 		registry.MustRegister(
@@ -52,6 +51,7 @@ func Collector(ctx context.Context, metrics string, registry *prometheus.Registr
 		registry.MustRegister(clientsPerfCollector)
 	}
 	if metrics == "all" || metrics == "objectstore" {
+		buckets := fbclient.GetBuckets()
 		bucketsPerfCollector := NewBucketsPerfCollector(fbclient, buckets)
 		buckestS3PerfCollector := NewBucketsS3PerfCollector(fbclient, buckets)
 		bucketsSpaceCollector := NewBucketsSpaceCollector(buckets)
@@ -64,6 +64,7 @@ func Collector(ctx context.Context, metrics string, registry *prometheus.Registr
 		)
 	}
 	if metrics == "all" || metrics == "usage" {
+		filesystems := fbclient.GetFileSystems()
 		usageCollector := NewUsageCollector(fbclient, filesystems)
 		registry.MustRegister(usageCollector)
 	}

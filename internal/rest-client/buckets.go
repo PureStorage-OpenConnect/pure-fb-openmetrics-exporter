@@ -44,7 +44,7 @@ type BucketsList struct {
 }
 
 func (fb *FBClient) GetBuckets() *BucketsList {
-	uri := "/buckets"
+	uri := "/buckets?destroyed=false"
 	result := new(BucketsList)
 	res, _ := fb.RestClient.R().
 		SetResult(&result).

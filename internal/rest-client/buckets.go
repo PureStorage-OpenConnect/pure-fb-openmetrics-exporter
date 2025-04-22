@@ -44,10 +44,11 @@ type BucketsList struct {
 }
 
 func (fb *FBClient) GetBuckets() *BucketsList {
-	uri := "/buckets?destroyed=false"
+	uri := "/buckets"
 	result := new(BucketsList)
 	res, _ := fb.RestClient.R().
 		SetResult(&result).
+		SetQueryParam("destroyed", "false").
 		Get(uri)
 	if res.StatusCode() == 401 {
 		fb.RefreshSession()

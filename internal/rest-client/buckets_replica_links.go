@@ -23,7 +23,7 @@ type ReferenceWritable struct {
 }
 
 type ObjectBacklog struct {
-	BytesCount     int64 `json:"id"`
+	BytesCount     int64 `json:"bytes_count"`
 	DeleteOpsCount int64 `json:"delete_ops_count"`
 	OtherOpsCount  int64 `json:"other_ops_count"`
 	PutOpsCount    int64 `json:"put_ops_count"`
@@ -37,6 +37,7 @@ type BucketReplicaLink struct {
 	Context           Reference              `json:"context"`
 	CascadingEnabled  bool                   `json:"cascading_enabled"`
 	LocalBucket       FixedReference         `json:"local_bucket"`
+	ObjectBacklog     ObjectBacklog          `json:"object_backlog"`
 	Paused            bool                   `json:"paused"`
 	RecoveryPoint     int64                  `json:"recovery_point"`
 	Remote            FixedReference         `json:"remote"`
@@ -49,7 +50,7 @@ type BucketsReplicaLinksList struct {
 	CntToken     string              `json:"continuation_token"`
 	TotalItemCnt int32               `json:"total_item_count"`
 	Items        []BucketReplicaLink `json:"items"`
-	Total        []BucketReplicaLink `json:"total"`
+	Total        BucketReplicaLink   `json:"total"`
 }
 
 func (fb *FBClient) GetBucketsReplicaLinks() *BucketsReplicaLinksList {

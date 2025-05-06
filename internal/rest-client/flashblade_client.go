@@ -22,6 +22,7 @@ type Client interface {
 	GetArraysSpace(t string) *ArraysSpaceList
 	GetBlades() *BladesList
 	GetBuckets() *BucketsList
+	GetBucketsReplicaLinks() *BucketsReplicaLinksList
 	GetBucketsPerformance(b *BucketsList) *BucketsPerformanceList
 	GetBucketsS3Performance(b *BucketsList) *BucketsS3PerformanceList
 	GetClientsPerformance() *ClientsPerformanceList

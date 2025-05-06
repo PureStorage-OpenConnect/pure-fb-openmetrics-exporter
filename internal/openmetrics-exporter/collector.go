@@ -53,13 +53,15 @@ func Collector(ctx context.Context, metrics string, registry *prometheus.Registr
 	if metrics == "all" || metrics == "objectstore" {
 		buckets := fbclient.GetBuckets()
 		bucketsPerfCollector := NewBucketsPerfCollector(fbclient, buckets)
-		buckestS3PerfCollector := NewBucketsS3PerfCollector(fbclient, buckets)
+		bucketsS3PerfCollector := NewBucketsS3PerfCollector(fbclient, buckets)
 		bucketsSpaceCollector := NewBucketsSpaceCollector(buckets)
+		bucketsReplicaLinksCollector := NewBucketsReplicaLinksCollector(fbclient)
 		objstoreacctsCollector := NewObjectStoreAccountsCollector(fbclient)
 		registry.MustRegister(
 			bucketsPerfCollector,
-			buckestS3PerfCollector,
+			bucketsS3PerfCollector,
 			bucketsSpaceCollector,
+			bucketsReplicaLinksCollector,
 			objstoreacctsCollector,
 		)
 	}

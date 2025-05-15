@@ -48,6 +48,7 @@ func (fb *FBClient) GetBuckets() *BucketsList {
 	result := new(BucketsList)
 	res, _ := fb.RestClient.R().
 		SetResult(&result).
+		SetQueryParam("destroyed", "false").
 		Get(uri)
 	if res.StatusCode() == 401 {
 		fb.RefreshSession()

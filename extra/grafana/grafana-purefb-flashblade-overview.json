@@ -1,12 +1,21 @@
 {
-  "__inputs": [],
+  "__inputs": [
+    {
+      "name": "DS_PROMETHEUS",
+      "label": "prometheus",
+      "description": "",
+      "type": "datasource",
+      "pluginId": "prometheus",
+      "pluginName": "Prometheus"
+    }
+  ],
   "__elements": {},
   "__requires": [
     {
       "type": "grafana",
       "id": "grafana",
       "name": "Grafana",
-      "version": "10.1.5"
+      "version": "11.1.5"
     },
     {
       "type": "panel",
@@ -61,7 +70,7 @@
       }
     ]
   },
-  "description": "v1.0.6 Fix: Changes Average IOPS by IO Type and array(s) from Instant to Range to calculate average over range rather returning a single average value.",
+  "description": "Dashboard Version: v1.0.7\n\nFixes\n1. Resolved panel duplication caused by the introduction of objectstore in metrics like purefb_array_performance_bandwidth_bytes.\n2. Fixed Average Latency panel to include ,protocol=~\"$protocol\" in the aggregation for correct filtering.\n3. Replaced rate() with avg_over_time() in top-N panels for improved accuracy with non-counter metrics.\n4. Replaced @ end() with offset 2m in top-N panels to reduce \"No Data\" issues due to scrape timing mismatches.\n\nEnhancements\n1. Removed the left-hand metrics text panel as requested by users.\n2. Replaced the image in the Overview section with text to prevent broken image icon.\n3. Added collapsible sections for Filesystems, Objectstore, and Array metrics to help users focus only on relevant data and reduce query load.\n4. Updated the \"Average Total Bandwidth\" panel to include protocol filtering and display values with 1 decimal place.\n5. Added detailed explanations to top-N panels to help users understand how the queries work and why data may sometimes be missing.",
   "editable": false,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 1,
@@ -75,7 +84,7 @@
         "uid": "$datasource"
       },
       "gridPos": {
-        "h": 4,
+        "h": 9,
         "w": 6,
         "x": 0,
         "y": 0
@@ -94,10 +103,10 @@
           "showLineNumbers": false,
           "showMiniMap": false
         },
-        "content": "<img src=\"https://www.purestorage.com/content/dam/pure/logos/pure_storage/primary/pure-logo.png\" width=\"100%\">  ",
+        "content": "# <span style=\"color: orangered;\"><strong>PURE</strong></span> STORAGE\n#  FlashBlade <span style=\"color: orangered;\"><strong>//</strong>\n\n## Overview\n\nFleet wide performance and capacity overview for Pure Storage FlashBlade.\n\n<!--Filter arrays by environment, entire fleet or view individual arrays.-->\n\nThe following endpoints must be scraped for all panels to successfully display results.\n`/metrics/array`, `/metrics/filesystems`, `/metrics/objectstore`\n\nFor a full list of available metrics, go to [Semantic Conventions for Pure FlashBlade Metrics](https://github.com/PureStorage-OpenConnect/pure-fb-openmetrics-exporter/blob/main/specification/metrics/purefb-metrics.md)\n<!---\nMetrics Endpoints \n\n#* /metrics/array\n#* /metrics/clients\n#* /metrics/filesystems\n#* /metrics/objectstore\n#* /metrics/policies\n#* /metrics/usage\n--->",
         "mode": "markdown"
       },
-      "pluginVersion": "10.1.5",
+      "pluginVersion": "11.1.5",
       "type": "text"
     },
     {
@@ -426,7 +435,7 @@
         "showHeader": true,
         "sortBy": []
       },
-      "pluginVersion": "10.1.5",
+      "pluginVersion": "11.1.5",
       "targets": [
         {
           "datasource": {
@@ -587,30 +596,6 @@
         }
       ],
       "type": "table"
-    },
-    {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "$datasource"
-      },
-      "gridPos": {
-        "h": 5,
-        "w": 6,
-        "x": 0,
-        "y": 4
-      },
-      "id": 177,
-      "options": {
-        "code": {
-          "language": "plaintext",
-          "showLineNumbers": false,
-          "showMiniMap": false
-        },
-        "content": "# **PURE** STORAGE\n\n## Overview\n\nThis dashboard provides performance and capacity details for Pure Storage FlashBlades.\nGroup arrays by customer defined environment, whole fleets, or view arrays individually.",
-        "mode": "markdown"
-      },
-      "pluginVersion": "10.1.5",
-      "type": "text"
     },
     {
       "datasource": {
@@ -830,7 +815,7 @@
         "showHeader": true,
         "sortBy": []
       },
-      "pluginVersion": "10.1.5",
+      "pluginVersion": "11.1.5",
       "targets": [
         {
           "datasource": {
@@ -839,7 +824,7 @@
           },
           "editorMode": "code",
           "exemplar": false,
-          "expr": "sum(purefb_alerts_open{instance=~\"$instance\",severity=\"critical\",env=~\"$env\"}) by (instance) OR on() sum(purefb_alerts_open{instance=~\"$instance\"}*0) by (instance)",
+          "expr": "sum(purefb_alerts_open{instance=~\"$instance\", env=~\"$env\", severity=\"critical\"}) by (instance) OR on() sum(purefb_alerts_open{instance=~\"$instance\"}*0) by (instance)",
           "format": "table",
           "hide": false,
           "instant": true,
@@ -869,7 +854,7 @@
           },
           "editorMode": "code",
           "exemplar": false,
-          "expr": "sum(purefb_alerts_open{instance=~\"$instance\",severity=\"info\",env=~\"$env\"}) by (instance) OR on() sum(purefb_alerts_open{instance=~\".*\"}*0) by (instance)",
+          "expr": "sum(purefb_alerts_open{instance=~\"$instance\",severity=\"info\",env=~\"$env\"}) by (instance) OR on() sum(purefb_alerts_open{instance=~\"$instance\"}*0) by (instance)\n",
           "format": "table",
           "instant": true,
           "legendFormat": "__auto",
@@ -937,30 +922,6 @@
         }
       ],
       "type": "table"
-    },
-    {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "$datasource"
-      },
-      "gridPos": {
-        "h": 42,
-        "w": 6,
-        "x": 0,
-        "y": 9
-      },
-      "id": 175,
-      "options": {
-        "code": {
-          "language": "plaintext",
-          "showLineNumbers": false,
-          "showMiniMap": false
-        },
-        "content": "## Metrics\n\n`All metrics are prefixed with purefb_`\n\nBelow are the metrics names available:\n\n### Collected with endpoint /metrics/array\n\n    * info\n    * alerts_open\n    * hardware_health\n    * array_http_specific_performance_latency_usec\n    * array_http_specific_performance_throughput_iops\n    * array_nfs_latency_usec\n    * array_nfs_throughput_iops\n    * array_performance_average_bytes\n    * array_performance_bandwidth_bytes\n    * array_performance_latency_usec\n    * array_performance_throughput_iops\n    * array_s3_specific_performance_latency_usec\n    * array_s3_specific_performance_throughput_iops\n    * array_space_bytes\n    * array_space_data_reduction_ratio\n    * array_space_parity\n    * bucket_replica_links_lag_msec\n    * buckets_performance_average_bytes\n    * buckets_performance_bandwidth_bytes\n    * buckets_performance_latency_usec\n    * buckets_performance_throughput_iops\n    * buckets_s3_specific_performance_latency_usec\n    * buckets_s3_specific_performance_throughput_iops\n    * buckets_space_bytes\n    * buckets_space_data_reduction_ratio\n    * buckets_space_objects\n    * file_system_links_lag_msec\n    * file_systems_performance_average_bytes\n    * file_systems_performance_bandwidth_bytes\n    * file_systems_performance_latency_usec\n    * file_systems_performance_throughput_iops\n    * file_systems_space_bytes\n    * file_systems_space_data_reduction_ratio\n    * hardware_connectors_performance_bandwidth_bytes\n    * hardware_connectors_performance_errors\n    * hardware_connectors_performance_throughput_pkts\n\n### Collected with endpoint /metrics/usage\n    * file_system_usage_groups_bytes\n    * file_system_usage_users_bytes\n    \n### Collected with endpoint /metrics/clients\nCollecting client performance information may require increasing scrape collection it is therefore recommended as an optional configuration item.\n \n    * array_clients_performance_avg_size_bytes\n    * array_clients_performance_bandwidth_bytes\n    * array_clients_performance_latency_usec\n    * array_clients_performance_throughput_iops\n\n\n\n",
-        "mode": "markdown"
-      },
-      "pluginVersion": "10.1.5",
-      "type": "text"
     },
     {
       "datasource": {
@@ -1052,8 +1013,8 @@
       },
       "gridPos": {
         "h": 8,
-        "w": 6,
-        "x": 6,
+        "w": 8,
+        "x": 0,
         "y": 9
       },
       "id": 127,
@@ -1063,7 +1024,7 @@
         ],
         "legend": {
           "displayMode": "table",
-          "placement": "bottom",
+          "placement": "right",
           "showLegend": true,
           "values": [
             "value",
@@ -1121,7 +1082,7 @@
           "refId": "Array Free Space"
         }
       ],
-      "title": "Total Array Space Utilization by Type and $instance arrays(s)",
+      "title": "Sum Array Space Utilization by Type",
       "transformations": [
         {
           "id": "joinByField",
@@ -1185,7 +1146,7 @@
               },
               {
                 "id": "displayName",
-                "value": "reads"
+                "value": "Reads"
               }
             ]
           },
@@ -1204,7 +1165,7 @@
               },
               {
                 "id": "displayName",
-                "value": "write"
+                "value": "Writes"
               }
             ]
           },
@@ -1223,37 +1184,7 @@
               },
               {
                 "id": "displayName",
-                "value": "other"
-              }
-            ]
-          },
-          {
-            "matcher": {
-              "id": "byName",
-              "options": "reads_per_sec"
-            },
-            "properties": [
-              {
-                "id": "color",
-                "value": {
-                  "fixedColor": "#2ae5f2",
-                  "mode": "fixed"
-                }
-              }
-            ]
-          },
-          {
-            "matcher": {
-              "id": "byName",
-              "options": "other"
-            },
-            "properties": [
-              {
-                "id": "color",
-                "value": {
-                  "fixedColor": "#662e9c",
-                  "mode": "fixed"
-                }
+                "value": "Other"
               }
             ]
           }
@@ -1261,8 +1192,8 @@
       },
       "gridPos": {
         "h": 8,
-        "w": 6,
-        "x": 12,
+        "w": 8,
+        "x": 8,
         "y": 9
       },
       "id": 128,
@@ -1272,7 +1203,7 @@
         ],
         "legend": {
           "displayMode": "table",
-          "placement": "bottom",
+          "placement": "right",
           "showLegend": true,
           "values": [
             "value",
@@ -1310,8 +1241,7 @@
           "refId": "Average IOPS"
         }
       ],
-      "title": "Average IOPS by IO Type and $instance arrays(s)",
-      "transformations": [],
+      "title": "Avg Over Time IOPS by IO Type",
       "type": "piechart"
     },
     {
@@ -1402,8 +1332,8 @@
       },
       "gridPos": {
         "h": 8,
-        "w": 6,
-        "x": 18,
+        "w": 8,
+        "x": 16,
         "y": 9
       },
       "id": 190,
@@ -1413,7 +1343,7 @@
         ],
         "legend": {
           "displayMode": "table",
-          "placement": "bottom",
+          "placement": "right",
           "showLegend": true,
           "sortBy": "Value",
           "sortDesc": false,
@@ -1453,7 +1383,7 @@
           "refId": "A"
         }
       ],
-      "title": "Average IOPS by Protocol",
+      "title": "Avg Over Time IOPS by All Protocols",
       "transformations": [
         {
           "id": "filterFieldsByName",
@@ -1474,6 +1404,7 @@
             "mode": "palette-classic"
           },
           "custom": {
+            "axisBorderShow": false,
             "axisCenteredZero": false,
             "axisColorMode": "text",
             "axisLabel": "",
@@ -1524,8 +1455,8 @@
       },
       "gridPos": {
         "h": 10,
-        "w": 9,
-        "x": 6,
+        "w": 12,
+        "x": 0,
         "y": 17
       },
       "id": 165,
@@ -1555,13 +1486,13 @@
             "uid": "$datasource"
           },
           "editorMode": "code",
-          "expr": "purefb_array_performance_bandwidth_bytes{env=~\"$env\", instance=~\"$instance\", dimension=\"read_bytes_per_sec\", protocol=~\"$protocol\"}\nand\ntopk($TopItems, rate(purefb_array_performance_bandwidth_bytes{env=~\"$env\", instance=~\"$instance\", dimension=\"read_bytes_per_sec\", protocol=~\"$protocol\"}[$__range] @ end() ))",
+          "expr": "purefb_array_performance_bandwidth_bytes{env=~\"$env\", instance=~\"$instance\", dimension=\"read_bytes_per_sec\", protocol=~\"$protocol\", job=~\".+array.+\"}\nand\ntopk($TopItems, rate(purefb_array_performance_bandwidth_bytes{env=~\"$env\", instance=~\"$instance\", dimension=\"read_bytes_per_sec\", protocol=~\"$protocol\", job=~\".+array.+\"}[$__range] @ end() ))",
           "legendFormat": "{{instance}} - {{protocol}}",
           "range": true,
           "refId": "Read Bandwidth"
         }
       ],
-      "title": "Read Throughput by $instance array(s) &  $protocol protocol(s)",
+      "title": "Read Throughput by $protocol protocol(s)",
       "type": "timeseries"
     },
     {
@@ -1576,6 +1507,7 @@
             "mode": "palette-classic"
           },
           "custom": {
+            "axisBorderShow": false,
             "axisCenteredZero": false,
             "axisColorMode": "text",
             "axisLabel": "",
@@ -1626,8 +1558,8 @@
       },
       "gridPos": {
         "h": 10,
-        "w": 9,
-        "x": 15,
+        "w": 12,
+        "x": 12,
         "y": 17
       },
       "id": 131,
@@ -1657,1305 +1589,1435 @@
             "uid": "$datasource"
           },
           "editorMode": "code",
-          "expr": "purefb_array_performance_bandwidth_bytes{env=~\"$env\", instance=~\"$instance\", dimension=\"write_bytes_per_sec\", protocol=~\"$protocol\"}\nand\ntopk($TopItems, rate(purefb_array_performance_bandwidth_bytes{env=~\"$env\", instance=~\"$instance\", dimension=\"write_bytes_per_sec\", protocol=~\"$protocol\"}[$__range] @ end() ))",
+          "expr": "purefb_array_performance_bandwidth_bytes{env=~\"$env\", instance=~\"$instance\", dimension=\"write_bytes_per_sec\", protocol=~\"$protocol\", job=~\".+array.+\"}\nand\ntopk($TopItems, rate(purefb_array_performance_bandwidth_bytes{env=~\"$env\", instance=~\"$instance\", dimension=\"write_bytes_per_sec\", protocol=~\"$protocol\", job=~\".+array.+\"}[$__range] @ end() ))",
           "legendFormat": "{{instance}} - {{protocol}}",
           "range": true,
           "refId": "Read Bandwidth"
         }
       ],
-      "title": "Write Throughput by $instance array(s) & $protocol protocol(s)",
+      "title": "Write Throughput by $protocol protocol(s)",
       "type": "timeseries"
     },
     {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "$datasource"
-      },
-      "description": "",
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "palette-classic"
-          },
-          "custom": {
-            "axisCenteredZero": false,
-            "axisColorMode": "text",
-            "axisLabel": "",
-            "axisPlacement": "auto",
-            "barAlignment": 0,
-            "drawStyle": "line",
-            "fillOpacity": 10,
-            "gradientMode": "none",
-            "hideFrom": {
-              "legend": false,
-              "tooltip": false,
-              "viz": false
-            },
-            "insertNulls": false,
-            "lineInterpolation": "smooth",
-            "lineStyle": {
-              "fill": "solid"
-            },
-            "lineWidth": 1,
-            "pointSize": 5,
-            "scaleDistribution": {
-              "type": "linear"
-            },
-            "showPoints": "never",
-            "spanNulls": 300000,
-            "stacking": {
-              "group": "A",
-              "mode": "none"
-            },
-            "thresholdsStyle": {
-              "mode": "off"
-            }
-          },
-          "mappings": [],
-          "min": 0,
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              }
-            ]
-          },
-          "unit": "bytes"
-        },
-        "overrides": []
-      },
+      "collapsed": true,
       "gridPos": {
-        "h": 8,
-        "w": 9,
-        "x": 6,
+        "h": 1,
+        "w": 24,
+        "x": 0,
         "y": 27
       },
-      "id": 183,
-      "options": {
-        "legend": {
-          "calcs": [
-            "mean",
-            "min",
-            "max",
-            "last"
-          ],
-          "displayMode": "table",
-          "placement": "bottom",
-          "showLegend": true,
-          "sortBy": "Mean",
-          "sortDesc": true
-        },
-        "tooltip": {
-          "mode": "single",
-          "sort": "none"
-        }
-      },
-      "targets": [
+      "id": 198,
+      "panels": [
         {
           "datasource": {
             "type": "prometheus",
             "uid": "$datasource"
           },
-          "editorMode": "code",
-          "exemplar": false,
-          "expr": "avg(purefb_file_systems_performance_bandwidth_bytes{env=~\"$env\", instance=~\"$instance\"}) by (name,instance, dimension)\nand\ntopk($TopItems, avg(rate(purefb_file_systems_performance_bandwidth_bytes{env=~\"$env\", instance=~\"$instance\"}[$__range] @ end() )) by (name,instance, dimension))",
-          "format": "time_series",
-          "instant": false,
-          "interval": "",
-          "legendFormat": "{{instance}} - {{dimension}} - {{name}}",
-          "range": true,
-          "refId": "Volume Latency"
-        }
-      ],
-      "title": "Average Top $TopItems Filesystems Throughput by Name",
-      "type": "timeseries"
-    },
-    {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "$datasource"
-      },
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "palette-classic"
-          },
-          "custom": {
-            "axisCenteredZero": false,
-            "axisColorMode": "text",
-            "axisLabel": "",
-            "axisPlacement": "auto",
-            "barAlignment": 0,
-            "drawStyle": "line",
-            "fillOpacity": 10,
-            "gradientMode": "none",
-            "hideFrom": {
-              "legend": false,
-              "tooltip": false,
-              "viz": false
-            },
-            "insertNulls": false,
-            "lineInterpolation": "smooth",
-            "lineStyle": {
-              "fill": "solid"
-            },
-            "lineWidth": 1,
-            "pointSize": 5,
-            "scaleDistribution": {
-              "type": "linear"
-            },
-            "showPoints": "never",
-            "spanNulls": 300000,
-            "stacking": {
-              "group": "A",
-              "mode": "none"
-            },
-            "thresholdsStyle": {
-              "mode": "off"
-            }
-          },
-          "mappings": [],
-          "min": 0,
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              }
-            ]
-          },
-          "unit": "µs"
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 8,
-        "w": 9,
-        "x": 15,
-        "y": 27
-      },
-      "id": 172,
-      "options": {
-        "legend": {
-          "calcs": [
-            "mean",
-            "min",
-            "max",
-            "last"
-          ],
-          "displayMode": "table",
-          "placement": "bottom",
-          "showLegend": true,
-          "sortBy": "Mean",
-          "sortDesc": true
-        },
-        "tooltip": {
-          "mode": "single",
-          "sort": "none"
-        }
-      },
-      "targets": [
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "$datasource"
-          },
-          "editorMode": "code",
-          "exemplar": false,
-          "expr": "avg(purefb_file_systems_performance_latency_usec{env=~\"$env\", instance=~\"$instance\"}) by (name,dimension,instance)\nand\ntopk($TopItems, avg(rate(purefb_file_systems_performance_latency_usec{env=~\"$env\", instance=~\"$instance\"}[$__range] @ end() )) by (name,dimension,instance))",
-          "legendFormat": "{{instance}} - {{dimension}} - {{name}}",
-          "range": true,
-          "refId": "Write Bandwidth"
-        }
-      ],
-      "title": "Average Top $TopItems File System Latency by Name & IO Type",
-      "transformations": [],
-      "type": "timeseries"
-    },
-    {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "$datasource"
-      },
-      "description": "This query is very expensive on Prometheus and the browser. For large environments it may be advisable to reduce scope by using the filter and narrower time frame, use a tabular view or create a recording rule.",
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "palette-classic"
-          },
-          "custom": {
-            "axisCenteredZero": false,
-            "axisColorMode": "text",
-            "axisLabel": "",
-            "axisPlacement": "auto",
-            "axisSoftMin": 1,
-            "barAlignment": 0,
-            "drawStyle": "line",
-            "fillOpacity": 10,
-            "gradientMode": "none",
-            "hideFrom": {
-              "legend": false,
-              "tooltip": false,
-              "viz": false
-            },
-            "insertNulls": false,
-            "lineInterpolation": "smooth",
-            "lineStyle": {
-              "fill": "solid"
-            },
-            "lineWidth": 1,
-            "pointSize": 5,
-            "scaleDistribution": {
-              "type": "linear"
-            },
-            "showPoints": "never",
-            "spanNulls": 300000,
-            "stacking": {
-              "group": "A",
-              "mode": "none"
-            },
-            "thresholdsStyle": {
-              "mode": "off"
-            }
-          },
-          "mappings": [],
-          "min": 0,
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              }
-            ]
-          },
-          "unit": "binBps"
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 8,
-        "w": 9,
-        "x": 6,
-        "y": 35
-      },
-      "id": 142,
-      "options": {
-        "legend": {
-          "calcs": [
-            "mean",
-            "min",
-            "max",
-            "last"
-          ],
-          "displayMode": "table",
-          "placement": "bottom",
-          "showLegend": true,
-          "sortBy": "Mean",
-          "sortDesc": true
-        },
-        "tooltip": {
-          "mode": "single",
-          "sort": "none"
-        }
-      },
-      "targets": [
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "$datasource"
-          },
-          "editorMode": "code",
-          "exemplar": false,
-          "expr": "avg(purefb_buckets_performance_bandwidth_bytes{env=~\"$env\", instance=~\"$instance\"}) by (name,instance,dimension)\nand\ntopk($TopItems, avg(rate(purefb_buckets_performance_bandwidth_bytes{env=~\"$env\", instance=~\"$instance\"}[$__range] @ end() )) by (name,instance,dimension))",
-          "format": "time_series",
-          "instant": false,
-          "legendFormat": "{{instance}} - {{dimension}} - {{name}}",
-          "range": true,
-          "refId": "Write Bandwidth"
-        }
-      ],
-      "title": "Average Top $TopItems Buckets Throughput $instance arrays(s) by Name",
-      "type": "timeseries"
-    },
-    {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "$datasource"
-      },
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "palette-classic"
-          },
-          "custom": {
-            "axisCenteredZero": false,
-            "axisColorMode": "text",
-            "axisLabel": "",
-            "axisPlacement": "auto",
-            "barAlignment": 0,
-            "drawStyle": "line",
-            "fillOpacity": 10,
-            "gradientMode": "none",
-            "hideFrom": {
-              "legend": false,
-              "tooltip": false,
-              "viz": false
-            },
-            "insertNulls": false,
-            "lineInterpolation": "smooth",
-            "lineStyle": {
-              "fill": "solid"
-            },
-            "lineWidth": 1,
-            "pointSize": 5,
-            "scaleDistribution": {
-              "type": "linear"
-            },
-            "showPoints": "never",
-            "spanNulls": 300000,
-            "stacking": {
-              "group": "A",
-              "mode": "none"
-            },
-            "thresholdsStyle": {
-              "mode": "off"
-            }
-          },
-          "mappings": [],
-          "min": 0,
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              }
-            ]
-          },
-          "unit": "µs"
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 8,
-        "w": 9,
-        "x": 15,
-        "y": 35
-      },
-      "id": 191,
-      "options": {
-        "legend": {
-          "calcs": [
-            "mean",
-            "min",
-            "max",
-            "last"
-          ],
-          "displayMode": "table",
-          "placement": "bottom",
-          "showLegend": true,
-          "sortBy": "Mean",
-          "sortDesc": true
-        },
-        "tooltip": {
-          "mode": "single",
-          "sort": "none"
-        }
-      },
-      "targets": [
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "$datasource"
-          },
-          "editorMode": "code",
-          "exemplar": false,
-          "expr": "avg(purefb_buckets_performance_latency_usec{env=~\"$env\", instance=~\"$instance\"}) by (name,dimension,instance)\nand\ntopk($TopItems, avg(rate(purefb_buckets_performance_latency_usec{env=~\"$env\", instance=~\"$instance\"}[$__range] @ end() )) by (name,dimension,instance))",
-          "legendFormat": "{{instance}} - {{dimension}} - {{name}}",
-          "range": true,
-          "refId": "Write Bandwidth"
-        }
-      ],
-      "title": "Average Top $TopItems Latent Buckets $instance arrays(s) by Type",
-      "transformations": [],
-      "type": "timeseries"
-    },
-    {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "$datasource"
-      },
-      "description": "",
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "palette-classic"
-          },
-          "custom": {
-            "axisCenteredZero": false,
-            "axisColorMode": "text",
-            "axisLabel": "",
-            "axisPlacement": "auto",
-            "barAlignment": 0,
-            "drawStyle": "line",
-            "fillOpacity": 10,
-            "gradientMode": "none",
-            "hideFrom": {
-              "legend": false,
-              "tooltip": false,
-              "viz": false
-            },
-            "insertNulls": false,
-            "lineInterpolation": "smooth",
-            "lineStyle": {
-              "fill": "solid"
-            },
-            "lineWidth": 1,
-            "pointSize": 5,
-            "scaleDistribution": {
-              "type": "linear"
-            },
-            "showPoints": "never",
-            "spanNulls": 300000,
-            "stacking": {
-              "group": "A",
-              "mode": "none"
-            },
-            "thresholdsStyle": {
-              "mode": "off"
-            }
-          },
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              }
-            ]
-          },
-          "unit": "µs"
-        },
-        "overrides": [
-          {
-            "matcher": {
-              "id": "byName",
-              "options": "usec_per_write_op"
-            },
-            "properties": [
-              {
-                "id": "color",
-                "value": {
-                  "fixedColor": "#fa6400",
-                  "mode": "fixed"
-                }
-              }
-            ]
-          },
-          {
-            "matcher": {
-              "id": "byName",
-              "options": "usec_per_other_op"
-            },
-            "properties": [
-              {
-                "id": "color",
-                "value": {
-                  "fixedColor": "#662e9c",
-                  "mode": "fixed"
-                }
-              }
-            ]
-          },
-          {
-            "matcher": {
-              "id": "byName",
-              "options": "usec_per_read_op"
-            },
-            "properties": [
-              {
-                "id": "color",
-                "value": {
-                  "fixedColor": "#2ae5f2",
-                  "mode": "fixed"
-                }
-              }
-            ]
-          }
-        ]
-      },
-      "gridPos": {
-        "h": 8,
-        "w": 18,
-        "x": 6,
-        "y": 43
-      },
-      "id": 193,
-      "options": {
-        "legend": {
-          "calcs": [
-            "mean",
-            "min",
-            "max",
-            "last"
-          ],
-          "displayMode": "table",
-          "placement": "bottom",
-          "showLegend": true,
-          "sortBy": "Mean",
-          "sortDesc": true
-        },
-        "tooltip": {
-          "mode": "single",
-          "sort": "none"
-        }
-      },
-      "targets": [
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "$datasource"
-          },
-          "editorMode": "code",
-          "exemplar": false,
-          "expr": "avg(purefb_array_performance_latency_usec{instance=~\"^$instance\",env=~\"^$env\",dimension=\"usec_per_read_op\"})",
-          "format": "time_series",
-          "instant": false,
-          "interval": "",
-          "legendFormat": "usec_per_read_op",
-          "range": true,
-          "refId": "Read"
-        },
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "$datasource"
-          },
-          "editorMode": "code",
-          "exemplar": false,
-          "expr": "avg(purefb_array_performance_latency_usec{instance=~\"^$instance\",env=~\"^$env\",dimension=\"usec_per_write_op\"})",
-          "format": "time_series",
-          "hide": false,
-          "instant": false,
-          "interval": "",
-          "legendFormat": "usec_per_write_op",
-          "range": true,
-          "refId": "Write"
-        },
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "$datasource"
-          },
-          "editorMode": "code",
-          "exemplar": false,
-          "expr": "avg(purefb_array_performance_latency_usec{instance=~\"^$instance\",env=~\"^$env\",dimension=\"usec_per_other_op\"})",
-          "format": "time_series",
-          "hide": false,
-          "instant": false,
-          "interval": "",
-          "legendFormat": "usec_per_other_op",
-          "range": true,
-          "refId": "Other"
-        }
-      ],
-      "title": "Average Total Latency by $instance array(s) and $protocol protocol(s)",
-      "type": "timeseries"
-    },
-    {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "$datasource"
-      },
-      "description": "",
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "palette-classic"
-          },
-          "custom": {
-            "axisCenteredZero": false,
-            "axisColorMode": "text",
-            "axisLabel": "",
-            "axisPlacement": "auto",
-            "barAlignment": 0,
-            "drawStyle": "line",
-            "fillOpacity": 10,
-            "gradientMode": "none",
-            "hideFrom": {
-              "legend": false,
-              "tooltip": false,
-              "viz": false
-            },
-            "insertNulls": false,
-            "lineInterpolation": "smooth",
-            "lineStyle": {
-              "fill": "solid"
-            },
-            "lineWidth": 1,
-            "pointSize": 5,
-            "scaleDistribution": {
-              "type": "linear"
-            },
-            "showPoints": "never",
-            "spanNulls": 300000,
-            "stacking": {
-              "group": "A",
-              "mode": "none"
-            },
-            "thresholdsStyle": {
-              "mode": "off"
-            }
-          },
-          "mappings": [],
-          "min": 0,
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              }
-            ]
-          },
-          "unit": "iops"
-        },
-        "overrides": [
-          {
-            "matcher": {
-              "id": "byName",
-              "options": "reads_per_sec"
-            },
-            "properties": [
-              {
-                "id": "color",
-                "value": {
-                  "fixedColor": "#2ae5f2",
-                  "mode": "fixed"
-                }
-              }
-            ]
-          },
-          {
-            "matcher": {
-              "id": "byName",
-              "options": "writes_per_sec"
-            },
-            "properties": [
-              {
-                "id": "color",
-                "value": {
-                  "fixedColor": "#ff8316",
-                  "mode": "fixed"
-                }
-              }
-            ]
-          },
-          {
-            "matcher": {
-              "id": "byName",
-              "options": "other_per_sec"
-            },
-            "properties": [
-              {
-                "id": "color",
-                "value": {
-                  "fixedColor": "#662e9c",
-                  "mode": "fixed"
-                }
-              }
-            ]
-          }
-        ]
-      },
-      "gridPos": {
-        "h": 8,
-        "w": 18,
-        "x": 6,
-        "y": 51
-      },
-      "id": 194,
-      "options": {
-        "legend": {
-          "calcs": [
-            "mean",
-            "min",
-            "max",
-            "last"
-          ],
-          "displayMode": "table",
-          "placement": "bottom",
-          "showLegend": true,
-          "sortBy": "Mean",
-          "sortDesc": true
-        },
-        "tooltip": {
-          "mode": "single",
-          "sort": "none"
-        }
-      },
-      "targets": [
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "$datasource"
-          },
-          "editorMode": "code",
-          "exemplar": false,
-          "expr": "avg(purefb_array_performance_throughput_iops{instance=~\"^$instance\",env=~\"^$env\",dimension=\"reads_per_sec\"})",
-          "format": "time_series",
-          "instant": false,
-          "interval": "",
-          "legendFormat": "reads_per_sec",
-          "range": true,
-          "refId": "Read"
-        },
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "$datasource"
-          },
-          "editorMode": "code",
-          "exemplar": false,
-          "expr": "avg(purefb_array_performance_throughput_iops{instance=~\"^$instance\",env=~\"^$env\",dimension=\"writes_per_sec\"})",
-          "format": "time_series",
-          "hide": false,
-          "instant": false,
-          "interval": "",
-          "legendFormat": "writes_per_sec",
-          "range": true,
-          "refId": "Write"
-        },
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "$datasource"
-          },
-          "editorMode": "code",
-          "exemplar": false,
-          "expr": "avg(purefb_array_performance_throughput_iops{instance=~\"^$instance\",env=~\"^$env\",dimension=\"others_per_sec\"})",
-          "format": "time_series",
-          "hide": false,
-          "instant": false,
-          "interval": "",
-          "legendFormat": "other_per_sec",
-          "range": true,
-          "refId": "Other"
-        }
-      ],
-      "title": "IOPS by $instance array(s) and $protocol protocol(s)",
-      "type": "timeseries"
-    },
-    {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "$datasource"
-      },
-      "description": "",
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "palette-classic"
-          },
-          "custom": {
-            "axisCenteredZero": false,
-            "axisColorMode": "text",
-            "axisLabel": "",
-            "axisPlacement": "auto",
-            "barAlignment": 0,
-            "drawStyle": "line",
-            "fillOpacity": 10,
-            "gradientMode": "none",
-            "hideFrom": {
-              "legend": false,
-              "tooltip": false,
-              "viz": false
-            },
-            "insertNulls": false,
-            "lineInterpolation": "smooth",
-            "lineStyle": {
-              "fill": "solid"
-            },
-            "lineWidth": 1,
-            "pointSize": 5,
-            "scaleDistribution": {
-              "type": "linear"
-            },
-            "showPoints": "never",
-            "spanNulls": 300000,
-            "stacking": {
-              "group": "A",
-              "mode": "none"
-            },
-            "thresholdsStyle": {
-              "mode": "off"
-            }
-          },
-          "mappings": [],
-          "min": 0,
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              }
-            ]
-          },
-          "unit": "binBps"
-        },
-        "overrides": [
-          {
-            "matcher": {
-              "id": "byName",
-              "options": "read_bytes_per_sec"
-            },
-            "properties": [
-              {
-                "id": "color",
-                "value": {
-                  "fixedColor": "#2ae5f2",
-                  "mode": "fixed"
-                }
-              }
-            ]
-          },
-          {
-            "matcher": {
-              "id": "byName",
-              "options": "write_bytes_per_sec"
-            },
-            "properties": [
-              {
-                "id": "color",
-                "value": {
-                  "fixedColor": "dark-orange",
-                  "mode": "fixed"
-                }
-              }
-            ]
-          }
-        ]
-      },
-      "gridPos": {
-        "h": 8,
-        "w": 18,
-        "x": 6,
-        "y": 59
-      },
-      "id": 195,
-      "options": {
-        "legend": {
-          "calcs": [
-            "mean",
-            "min",
-            "max",
-            "last"
-          ],
-          "displayMode": "table",
-          "placement": "bottom",
-          "showLegend": true,
-          "sortBy": "Mean",
-          "sortDesc": true
-        },
-        "tooltip": {
-          "mode": "single",
-          "sort": "none"
-        }
-      },
-      "targets": [
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "$datasource"
-          },
-          "editorMode": "code",
-          "exemplar": false,
-          "expr": "avg(purefb_array_performance_bandwidth_bytes{instance=~\"^$instance\",env=~\"^$env\",dimension=\"read_bytes_per_sec\"})",
-          "format": "time_series",
-          "instant": false,
-          "interval": "",
-          "legendFormat": "read_bytes_per_sec",
-          "range": true,
-          "refId": "Read"
-        },
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "$datasource"
-          },
-          "editorMode": "code",
-          "exemplar": false,
-          "expr": "avg(purefb_array_performance_bandwidth_bytes{instance=~\"^$instance\",env=~\"^$env\",dimension=\"write_bytes_per_sec\"})",
-          "format": "time_series",
-          "hide": false,
-          "instant": false,
-          "interval": "",
-          "legendFormat": "write_bytes_per_sec",
-          "range": true,
-          "refId": "Write"
-        },
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "$datasource"
-          },
-          "editorMode": "code",
-          "exemplar": false,
-          "expr": "avg(purefb_array_performance_bandwidth_bytes{instance=~\"^$instance\",env=~\"^$env\",dimension=\"other_bytes_per_sec\"})",
-          "format": "time_series",
-          "hide": false,
-          "instant": false,
-          "interval": "",
-          "legendFormat": "other_bytes_per_sec",
-          "range": true,
-          "refId": "Other"
-        }
-      ],
-      "title": "Average Total Bandwidth by $instance array(s) and $protocol protocol(s)",
-      "type": "timeseries"
-    },
-    {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "$datasource"
-      },
-      "description": "Recommended for single array only.\n\nPanel will display \"No Data\" until there is at least 12 hours of data in the data source as this panel displays the last 90 days at 12 hour intervals.",
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "palette-classic"
-          },
-          "custom": {
-            "axisCenteredZero": false,
-            "axisColorMode": "text",
-            "axisLabel": "",
-            "axisPlacement": "auto",
-            "axisSoftMin": 0,
-            "barAlignment": 0,
-            "drawStyle": "line",
-            "fillOpacity": 100,
-            "gradientMode": "opacity",
-            "hideFrom": {
-              "legend": false,
-              "tooltip": false,
-              "viz": false
-            },
-            "insertNulls": false,
-            "lineInterpolation": "smooth",
-            "lineWidth": 1,
-            "pointSize": 0,
-            "scaleDistribution": {
-              "type": "linear"
-            },
-            "showPoints": "never",
-            "spanNulls": false,
-            "stacking": {
-              "group": "A",
-              "mode": "normal"
-            },
-            "thresholdsStyle": {
-              "mode": "off"
-            }
-          },
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
+          "description": "`/metrics/filesystems` endpoint required for this panel.\n\n##### Panel Overview\nThis panel displays the top `$TopItems` entities across selected sources based on a chosen metric. It uses two Prometheus queries:\n\n- **Query 1:** Calculates the average metric value per entity over the selected time range.\n- **Query 2:** Selects the top-N entities using `avg_over_time(... offset 2m)` to ensure stable, recent values and avoid scrape timing issues.\n\nOnly entities found in **both queries** (via an `AND` operator) are shown.  This query is **resource-intensive** for both Prometheus and the browser.\n\n---\n\n##### Why You Might See “No Data”\n- The top-N query evaluates **2 minutes before the end** of the time range.\n- If the average query doesn’t return data at the **same timestamp**, the `AND` will drop unmatched results.\n- This may happen when:\n  - The time range ends at “now” and Prometheus hasn’t scraped yet\n  - Data is delayed or sparse near the end of the range\n  - Timestamps differ between queries due to offset or step alignment\n\n---\n\n##### How to Improve Results\n- Set the time range to end slightly **before now** (`offset 2m`)\n- Keep the panel interval aligned with the metric scrape interval (Auto is usually fine)\n- Use shorter time ranges (e.g., 30m–2h instead of days)\n- Apply filters to reduce the number of entities or data points\n- Consider using [recording rules](https://prometheus.io/docs/prometheus/latest/configuration/recording_rules/) to pre-aggregate data\n",
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "palette-classic"
               },
-              {
-                "color": "red",
-                "value": 80
-              }
-            ]
-          },
-          "unit": "bytes"
-        },
-        "overrides": [
-          {
-            "matcher": {
-              "id": "byName",
-              "options": "capacity"
-            },
-            "properties": [
-              {
-                "id": "color",
-                "value": {
-                  "fixedColor": "#646464",
-                  "mode": "fixed"
-                }
-              },
-              {
-                "id": "custom.stacking",
-                "value": {
+              "custom": {
+                "axisBorderShow": false,
+                "axisCenteredZero": false,
+                "axisColorMode": "text",
+                "axisLabel": "",
+                "axisPlacement": "auto",
+                "barAlignment": 0,
+                "drawStyle": "line",
+                "fillOpacity": 10,
+                "gradientMode": "none",
+                "hideFrom": {
+                  "legend": false,
+                  "tooltip": false,
+                  "viz": false
+                },
+                "insertNulls": false,
+                "lineInterpolation": "smooth",
+                "lineStyle": {
+                  "fill": "solid"
+                },
+                "lineWidth": 1,
+                "pointSize": 5,
+                "scaleDistribution": {
+                  "type": "linear"
+                },
+                "showPoints": "never",
+                "spanNulls": 300000,
+                "stacking": {
                   "group": "A",
                   "mode": "none"
+                },
+                "thresholdsStyle": {
+                  "mode": "off"
                 }
               },
-              {
-                "id": "custom.fillOpacity",
-                "value": 0
-              }
-            ]
-          },
-          {
-            "matcher": {
-              "id": "byName",
-              "options": "total_physical"
+              "mappings": [],
+              "min": 0,
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green",
+                    "value": null
+                  }
+                ]
+              },
+              "unit": "bytes"
             },
-            "properties": [
-              {
-                "id": "color",
-                "value": {
-                  "fixedColor": "#2ae5f2",
-                  "mode": "fixed"
-                }
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 8,
+            "w": 12,
+            "x": 0,
+            "y": 28
+          },
+          "id": 183,
+          "options": {
+            "legend": {
+              "calcs": [
+                "mean",
+                "min",
+                "max",
+                "last"
+              ],
+              "displayMode": "table",
+              "placement": "bottom",
+              "showLegend": true,
+              "sortBy": "Mean",
+              "sortDesc": true
+            },
+            "tooltip": {
+              "mode": "single",
+              "sort": "none"
+            }
+          },
+          "targets": [
+            {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "$datasource"
               },
-              {
-                "id": "custom.stacking",
-                "value": {
+              "editorMode": "code",
+              "exemplar": false,
+              "expr": "avg(purefb_file_systems_performance_bandwidth_bytes{env=~\"$env\", instance=~\"$instance\"}) by (name,instance, dimension)\nand\ntopk($TopItems, avg(avg_over_time(purefb_file_systems_performance_bandwidth_bytes{env=~\"$env\", instance=~\"$instance\"}[$__range] offset 2m )) by (name,instance, dimension))",
+              "format": "time_series",
+              "instant": false,
+              "interval": "",
+              "legendFormat": "{{instance}} - {{dimension}} - {{name}}",
+              "range": true,
+              "refId": "Volume Latency"
+            }
+          ],
+          "title": "Top $TopItems Avg Filesystem Throughput by IO Type",
+          "type": "timeseries"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "$datasource"
+          },
+          "description": "`/metrics/filesystems` endpoint required for this panel.\n\n##### Panel Overview\nThis panel displays the top `$TopItems` entities across selected sources based on a chosen metric. It uses two Prometheus queries:\n\n- **Query 1:** Calculates the average metric value per entity over the selected time range.\n- **Query 2:** Selects the top-N entities using `avg_over_time(... offset 2m)` to ensure stable, recent values and avoid scrape timing issues.\n\nOnly entities found in **both queries** (via an `AND` operator) are shown.  This query is **resource-intensive** for both Prometheus and the browser.\n\n---\n\n##### Why You Might See “No Data”\n- The top-N query evaluates **2 minutes before the end** of the time range.\n- If the average query doesn’t return data at the **same timestamp**, the `AND` will drop unmatched results.\n- This may happen when:\n  - The time range ends at “now” and Prometheus hasn’t scraped yet\n  - Data is delayed or sparse near the end of the range\n  - Timestamps differ between queries due to offset or step alignment\n\n---\n\n##### How to Improve Results\n- Set the time range to end slightly **before now** (`offset 2m`)\n- Keep the panel interval aligned with the metric scrape interval (Auto is usually fine)\n- Use shorter time ranges (e.g., 30m–2h instead of days)\n- Apply filters to reduce the number of entities or data points\n- Consider using [recording rules](https://prometheus.io/docs/prometheus/latest/configuration/recording_rules/) to pre-aggregate data\n",
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "palette-classic"
+              },
+              "custom": {
+                "axisBorderShow": false,
+                "axisCenteredZero": false,
+                "axisColorMode": "text",
+                "axisLabel": "",
+                "axisPlacement": "auto",
+                "barAlignment": 0,
+                "drawStyle": "line",
+                "fillOpacity": 10,
+                "gradientMode": "none",
+                "hideFrom": {
+                  "legend": false,
+                  "tooltip": false,
+                  "viz": false
+                },
+                "insertNulls": false,
+                "lineInterpolation": "smooth",
+                "lineStyle": {
+                  "fill": "solid"
+                },
+                "lineWidth": 1,
+                "pointSize": 5,
+                "scaleDistribution": {
+                  "type": "linear"
+                },
+                "showPoints": "never",
+                "spanNulls": 300000,
+                "stacking": {
                   "group": "A",
                   "mode": "none"
+                },
+                "thresholdsStyle": {
+                  "mode": "off"
                 }
               },
-              {
-                "id": "custom.fillOpacity",
-                "value": 100
+              "mappings": [],
+              "min": 0,
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green",
+                    "value": null
+                  }
+                ]
               },
-              {
-                "id": "custom.lineWidth",
-                "value": 1
-              }
-            ]
-          },
-          {
-            "matcher": {
-              "id": "byName",
-              "options": "Array DRR"
+              "unit": "µs"
             },
-            "properties": [
-              {
-                "id": "custom.axisPlacement",
-                "value": "right"
-              },
-              {
-                "id": "unit",
-                "value": ":1"
-              },
-              {
-                "id": "custom.lineStyle",
-                "value": {
-                  "dash": [
-                    0,
-                    10
-                  ],
-                  "fill": "dot"
-                }
-              },
-              {
-                "id": "custom.lineWidth",
-                "value": 3
-              },
-              {
-                "id": "color",
-                "value": {
-                  "fixedColor": "#00b89e",
-                  "mode": "fixed"
-                }
-              },
-              {
-                "id": "custom.fillOpacity",
-                "value": 0
-              },
-              {
-                "id": "custom.axisLabel",
-                "value": "Data Reduction Ratio"
-              },
-              {
-                "id": "custom.axisColorMode",
-                "value": "series"
-              },
-              {
-                "id": "custom.axisSoftMax",
-                "value": 5
-              },
-              {
-                "id": "custom.stacking",
-                "value": {
-                  "group": "A",
-                  "mode": "none"
-                }
-              }
-            ]
+            "overrides": []
           },
-          {
-            "matcher": {
-              "id": "byName",
-              "options": "fs snapshots"
+          "gridPos": {
+            "h": 8,
+            "w": 12,
+            "x": 12,
+            "y": 28
+          },
+          "id": 172,
+          "options": {
+            "legend": {
+              "calcs": [
+                "mean",
+                "min",
+                "max",
+                "last"
+              ],
+              "displayMode": "table",
+              "placement": "bottom",
+              "showLegend": true,
+              "sortBy": "Mean",
+              "sortDesc": true
             },
-            "properties": [
-              {
-                "id": "color",
-                "value": {
-                  "fixedColor": "#fe7800",
-                  "mode": "fixed"
-                }
-              }
-            ]
+            "tooltip": {
+              "mode": "single",
+              "sort": "none"
+            }
           },
-          {
-            "matcher": {
-              "id": "byName",
-              "options": "fs unique"
-            },
-            "properties": [
-              {
-                "id": "color",
-                "value": {
-                  "fixedColor": "#fa6400",
-                  "mode": "fixed"
-                }
-              }
-            ]
-          },
-          {
-            "matcher": {
-              "id": "byName",
-              "options": "obj unique"
-            },
-            "properties": [
-              {
-                "id": "color",
-                "value": {
-                  "fixedColor": "#00b89e",
-                  "mode": "fixed"
-                }
-              }
-            ]
-          },
-          {
-            "matcher": {
-              "id": "byName",
-              "options": "obj snapshots"
-            },
-            "properties": [
-              {
-                "id": "color",
-                "value": {
-                  "fixedColor": "#2ae5f2",
-                  "mode": "fixed"
-                }
-              }
-            ]
-          }
-        ]
-      },
-      "gridPos": {
-        "h": 8,
-        "w": 18,
-        "x": 6,
-        "y": 67
-      },
-      "id": 197,
-      "interval": "12h",
-      "options": {
-        "legend": {
-          "calcs": [],
-          "displayMode": "list",
-          "placement": "bottom",
-          "showLegend": true
-        },
-        "tooltip": {
-          "mode": "single",
-          "sort": "none"
-        }
-      },
-      "targets": [
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "$datasource"
-          },
-          "editorMode": "code",
-          "expr": "sum(purefb_array_space_bytes{instance=~\"^$instance\",env=~\"^$env\",type=\"file-system\",space=~\"snapshots|unique|destroyed\"}) by (space)\n#\"optional granular detail\"\n#\"using sum() to show total of all arrays\"",
-          "hide": true,
-          "instant": false,
-          "legendFormat": "fs {{space}}",
-          "range": true,
-          "refId": "Filesystem Capacity"
-        },
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "$datasource"
-          },
-          "editorMode": "code",
-          "expr": "sum(purefb_array_space_bytes{instance=~\"^$instance\",env=~\"^$env\",type=\"object-store\",space=~\"snapshots|unique|destroyed\"}) by (space)\n#\"optional granular detail\"\n#\"using sum() to show total of all arrays\"",
-          "hide": true,
-          "instant": false,
-          "legendFormat": "obj {{space}}",
-          "range": true,
-          "refId": "Object Capacity"
-        },
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "$datasource"
-          },
-          "editorMode": "code",
-          "expr": "sum(purefb_array_space_bytes{instance=~\"^$instance\",env=~\"^$env\",type=\"array\",space=~\"total_physical|capacity\"}) by (space)\n#\"using sum() to show total of all arrays\"",
-          "hide": false,
-          "instant": false,
-          "legendFormat": "{{space}}",
-          "range": true,
-          "refId": "Capacity"
-        },
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "$datasource"
-          },
-          "editorMode": "code",
-          "expr": "avg(purefb_array_space_data_reduction_ratio{instance=~\"^$instance\",env=~\"^$env\",type=\"array\"}) ",
-          "hide": false,
-          "instant": false,
-          "legendFormat": "Array DRR",
-          "range": true,
-          "refId": "DRR"
+          "targets": [
+            {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "$datasource"
+              },
+              "editorMode": "code",
+              "exemplar": false,
+              "expr": "avg(purefb_file_systems_performance_latency_usec{env=~\"$env\", instance=~\"$instance\"}) by (name,dimension,instance)\nand\ntopk($TopItems, avg(avg_over_time(purefb_file_systems_performance_latency_usec{env=~\"$env\", instance=~\"$instance\"}[$__range] offset 2m )) by (name,dimension,instance))",
+              "legendFormat": "{{instance}} - {{dimension}} - {{name}}",
+              "range": true,
+              "refId": "Write Bandwidth"
+            }
+          ],
+          "title": "Top $TopItems Avg File System Latency by IO Type",
+          "type": "timeseries"
         }
       ],
-      "timeFrom": "90d",
-      "title": "Capacity Utilization by Type & $instance array(s)",
-      "type": "timeseries"
+      "title": "Filesystems",
+      "type": "row"
+    },
+    {
+      "collapsed": true,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 28
+      },
+      "id": 200,
+      "panels": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "$datasource"
+          },
+          "description": "`/metrics/objectstore` endpoint required for this panel.\n\n##### Panel Overview\nThis panel displays the top `$TopItems` entities across selected sources based on a chosen metric. It uses two Prometheus queries:\n\n- **Query 1:** Calculates the average metric value per entity over the selected time range.\n- **Query 2:** Selects the top-N entities using `avg_over_time(... offset 2m)` to ensure stable, recent values and avoid scrape timing issues.\n\nOnly entities found in **both queries** (via an `AND` operator) are shown.  This query is **resource-intensive** for both Prometheus and the browser.\n\n---\n\n##### Why You Might See “No Data”\n- The top-N query evaluates **2 minutes before the end** of the time range.\n- If the average query doesn’t return data at the **same timestamp**, the `AND` will drop unmatched results.\n- This may happen when:\n  - The time range ends at “now” and Prometheus hasn’t scraped yet\n  - Data is delayed or sparse near the end of the range\n  - Timestamps differ between queries due to offset or step alignment\n\n---\n\n##### How to Improve Results\n- Set the time range to end slightly **before now** (`offset 2m`)\n- Keep the panel interval aligned with the metric scrape interval (Auto is usually fine)\n- Use shorter time ranges (e.g., 30m–2h instead of days)\n- Apply filters to reduce the number of entities or data points\n- Consider using [recording rules](https://prometheus.io/docs/prometheus/latest/configuration/recording_rules/) to pre-aggregate data\n",
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "palette-classic"
+              },
+              "custom": {
+                "axisBorderShow": false,
+                "axisCenteredZero": false,
+                "axisColorMode": "text",
+                "axisLabel": "",
+                "axisPlacement": "auto",
+                "axisSoftMin": 1,
+                "barAlignment": 0,
+                "drawStyle": "line",
+                "fillOpacity": 10,
+                "gradientMode": "none",
+                "hideFrom": {
+                  "legend": false,
+                  "tooltip": false,
+                  "viz": false
+                },
+                "insertNulls": false,
+                "lineInterpolation": "smooth",
+                "lineStyle": {
+                  "fill": "solid"
+                },
+                "lineWidth": 1,
+                "pointSize": 5,
+                "scaleDistribution": {
+                  "type": "linear"
+                },
+                "showPoints": "never",
+                "spanNulls": 300000,
+                "stacking": {
+                  "group": "A",
+                  "mode": "none"
+                },
+                "thresholdsStyle": {
+                  "mode": "off"
+                }
+              },
+              "mappings": [],
+              "min": 0,
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green",
+                    "value": null
+                  }
+                ]
+              },
+              "unit": "binBps"
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 8,
+            "w": 12,
+            "x": 0,
+            "y": 29
+          },
+          "id": 142,
+          "options": {
+            "legend": {
+              "calcs": [
+                "mean",
+                "min",
+                "max",
+                "last"
+              ],
+              "displayMode": "table",
+              "placement": "bottom",
+              "showLegend": true,
+              "sortBy": "Mean",
+              "sortDesc": true
+            },
+            "tooltip": {
+              "mode": "single",
+              "sort": "none"
+            }
+          },
+          "targets": [
+            {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "$datasource"
+              },
+              "editorMode": "code",
+              "exemplar": false,
+              "expr": "avg(purefb_buckets_performance_bandwidth_bytes{env=~\"$env\", instance=~\"$instance\"}) by (name,instance,dimension)\nand\ntopk($TopItems, avg(avg_over_time(purefb_buckets_performance_bandwidth_bytes{env=~\"$env\", instance=~\"$instance\"}[$__range] offset 2m )) by (name,instance,dimension))",
+              "format": "time_series",
+              "hide": false,
+              "instant": false,
+              "legendFormat": "{{instance}} - {{dimension}} - {{name}}",
+              "range": true,
+              "refId": "Write Bandwidth"
+            }
+          ],
+          "title": "Top $TopItems Avg Bucket Throughput by IO Type & $instance arrays(s)",
+          "type": "timeseries"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "$datasource"
+          },
+          "description": "`/metrics/objectstore` endpoint required for this panel.\n\n##### Panel Overview\nThis panel displays the top `$TopItems` entities across selected sources based on a chosen metric. It uses two Prometheus queries:\n\n- **Query 1:** Calculates the average metric value per entity over the selected time range.\n- **Query 2:** Selects the top-N entities using `avg_over_time(... offset 2m)` to ensure stable, recent values and avoid scrape timing issues.\n\nOnly entities found in **both queries** (via an `AND` operator) are shown.  This query is **resource-intensive** for both Prometheus and the browser.\n\n---\n\n##### Why You Might See “No Data”\n- The top-N query evaluates **2 minutes before the end** of the time range.\n- If the average query doesn’t return data at the **same timestamp**, the `AND` will drop unmatched results.\n- This may happen when:\n  - The time range ends at “now” and Prometheus hasn’t scraped yet\n  - Data is delayed or sparse near the end of the range\n  - Timestamps differ between queries due to offset or step alignment\n\n---\n\n##### How to Improve Results\n- Set the time range to end slightly **before now** (`offset 2m`)\n- Keep the panel interval aligned with the metric scrape interval (Auto is usually fine)\n- Use shorter time ranges (e.g., 30m–2h instead of days)\n- Apply filters to reduce the number of entities or data points\n- Consider using [recording rules](https://prometheus.io/docs/prometheus/latest/configuration/recording_rules/) to pre-aggregate data\n",
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "palette-classic"
+              },
+              "custom": {
+                "axisBorderShow": false,
+                "axisCenteredZero": false,
+                "axisColorMode": "text",
+                "axisLabel": "",
+                "axisPlacement": "auto",
+                "barAlignment": 0,
+                "drawStyle": "line",
+                "fillOpacity": 10,
+                "gradientMode": "none",
+                "hideFrom": {
+                  "legend": false,
+                  "tooltip": false,
+                  "viz": false
+                },
+                "insertNulls": false,
+                "lineInterpolation": "smooth",
+                "lineStyle": {
+                  "fill": "solid"
+                },
+                "lineWidth": 1,
+                "pointSize": 5,
+                "scaleDistribution": {
+                  "type": "linear"
+                },
+                "showPoints": "never",
+                "spanNulls": 300000,
+                "stacking": {
+                  "group": "A",
+                  "mode": "none"
+                },
+                "thresholdsStyle": {
+                  "mode": "off"
+                }
+              },
+              "mappings": [],
+              "min": 0,
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green",
+                    "value": null
+                  }
+                ]
+              },
+              "unit": "µs"
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 8,
+            "w": 12,
+            "x": 12,
+            "y": 29
+          },
+          "id": 191,
+          "options": {
+            "legend": {
+              "calcs": [
+                "mean",
+                "min",
+                "max",
+                "last"
+              ],
+              "displayMode": "table",
+              "placement": "bottom",
+              "showLegend": true,
+              "sortBy": "Mean",
+              "sortDesc": true
+            },
+            "tooltip": {
+              "mode": "single",
+              "sort": "none"
+            }
+          },
+          "targets": [
+            {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "$datasource"
+              },
+              "editorMode": "code",
+              "exemplar": false,
+              "expr": "avg(purefb_buckets_performance_latency_usec{env=~\"$env\", instance=~\"$instance\"}) by (name,dimension,instance)\nand\ntopk($TopItems, avg(avg_over_time(purefb_buckets_performance_latency_usec{env=~\"$env\", instance=~\"$instance\"}[$__range] offset 2m )) by (name,dimension,instance))",
+              "legendFormat": "{{instance}} - {{dimension}} - {{name}}",
+              "range": true,
+              "refId": "Write Bandwidth"
+            }
+          ],
+          "title": "Top $TopItems Avg Bucket Latency by IO Type & $instance arrays(s)",
+          "type": "timeseries"
+        }
+      ],
+      "title": "Objectstore",
+      "type": "row"
+    },
+    {
+      "collapsed": true,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 29
+      },
+      "id": 201,
+      "panels": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "$datasource"
+          },
+          "description": "",
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "palette-classic"
+              },
+              "custom": {
+                "axisBorderShow": false,
+                "axisCenteredZero": false,
+                "axisColorMode": "text",
+                "axisLabel": "",
+                "axisPlacement": "auto",
+                "barAlignment": 0,
+                "drawStyle": "line",
+                "fillOpacity": 10,
+                "gradientMode": "none",
+                "hideFrom": {
+                  "legend": false,
+                  "tooltip": false,
+                  "viz": false
+                },
+                "insertNulls": false,
+                "lineInterpolation": "smooth",
+                "lineStyle": {
+                  "fill": "solid"
+                },
+                "lineWidth": 1,
+                "pointSize": 5,
+                "scaleDistribution": {
+                  "type": "linear"
+                },
+                "showPoints": "never",
+                "spanNulls": 300000,
+                "stacking": {
+                  "group": "A",
+                  "mode": "none"
+                },
+                "thresholdsStyle": {
+                  "mode": "off"
+                }
+              },
+              "mappings": [],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green",
+                    "value": null
+                  }
+                ]
+              },
+              "unit": "µs"
+            },
+            "overrides": [
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "usec_per_write_op"
+                },
+                "properties": [
+                  {
+                    "id": "color",
+                    "value": {
+                      "fixedColor": "#fa6400",
+                      "mode": "fixed"
+                    }
+                  },
+                  {
+                    "id": "displayName",
+                    "value": "Write"
+                  }
+                ]
+              },
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "usec_per_other_op"
+                },
+                "properties": [
+                  {
+                    "id": "color",
+                    "value": {
+                      "fixedColor": "#662e9c",
+                      "mode": "fixed"
+                    }
+                  },
+                  {
+                    "id": "displayName",
+                    "value": "Other"
+                  }
+                ]
+              },
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "usec_per_read_op"
+                },
+                "properties": [
+                  {
+                    "id": "color",
+                    "value": {
+                      "fixedColor": "#2ae5f2",
+                      "mode": "fixed"
+                    }
+                  },
+                  {
+                    "id": "displayName",
+                    "value": "Read"
+                  }
+                ]
+              }
+            ]
+          },
+          "gridPos": {
+            "h": 8,
+            "w": 24,
+            "x": 0,
+            "y": 30
+          },
+          "id": 193,
+          "options": {
+            "legend": {
+              "calcs": [
+                "mean",
+                "min",
+                "max",
+                "last"
+              ],
+              "displayMode": "table",
+              "placement": "right",
+              "showLegend": true,
+              "sortBy": "Mean",
+              "sortDesc": true,
+              "width": 400
+            },
+            "tooltip": {
+              "mode": "single",
+              "sort": "none"
+            }
+          },
+          "targets": [
+            {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "$datasource"
+              },
+              "editorMode": "code",
+              "exemplar": false,
+              "expr": "avg(purefb_array_performance_latency_usec{instance=~\"^$instance\",env=~\"^$env\",dimension=\"usec_per_read_op\"})",
+              "format": "time_series",
+              "instant": false,
+              "interval": "",
+              "legendFormat": "usec_per_read_op",
+              "range": true,
+              "refId": "Read"
+            },
+            {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "$datasource"
+              },
+              "editorMode": "code",
+              "exemplar": false,
+              "expr": "avg(purefb_array_performance_latency_usec{instance=~\"^$instance\",env=~\"^$env\",dimension=\"usec_per_write_op\"})",
+              "format": "time_series",
+              "hide": false,
+              "instant": false,
+              "interval": "",
+              "legendFormat": "usec_per_write_op",
+              "range": true,
+              "refId": "Write"
+            },
+            {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "$datasource"
+              },
+              "editorMode": "code",
+              "exemplar": false,
+              "expr": "avg(purefb_array_performance_latency_usec{instance=~\"^$instance\",env=~\"^$env\",dimension=\"usec_per_other_op\"})",
+              "format": "time_series",
+              "hide": false,
+              "instant": false,
+              "interval": "",
+              "legendFormat": "usec_per_other_op",
+              "range": true,
+              "refId": "Other"
+            }
+          ],
+          "title": "Avg Latency by $instance array(s) & $protocol protocol(s)",
+          "type": "timeseries"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "$datasource"
+          },
+          "description": "",
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "palette-classic"
+              },
+              "custom": {
+                "axisBorderShow": false,
+                "axisCenteredZero": false,
+                "axisColorMode": "text",
+                "axisLabel": "",
+                "axisPlacement": "auto",
+                "barAlignment": 0,
+                "drawStyle": "line",
+                "fillOpacity": 10,
+                "gradientMode": "none",
+                "hideFrom": {
+                  "legend": false,
+                  "tooltip": false,
+                  "viz": false
+                },
+                "insertNulls": false,
+                "lineInterpolation": "smooth",
+                "lineStyle": {
+                  "fill": "solid"
+                },
+                "lineWidth": 1,
+                "pointSize": 5,
+                "scaleDistribution": {
+                  "type": "linear"
+                },
+                "showPoints": "never",
+                "spanNulls": 300000,
+                "stacking": {
+                  "group": "A",
+                  "mode": "none"
+                },
+                "thresholdsStyle": {
+                  "mode": "off"
+                }
+              },
+              "mappings": [],
+              "min": 0,
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green",
+                    "value": null
+                  }
+                ]
+              },
+              "unit": "iops"
+            },
+            "overrides": [
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "reads_per_sec"
+                },
+                "properties": [
+                  {
+                    "id": "color",
+                    "value": {
+                      "fixedColor": "#2ae5f2",
+                      "mode": "fixed"
+                    }
+                  },
+                  {
+                    "id": "displayName",
+                    "value": "Reads"
+                  }
+                ]
+              },
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "writes_per_sec"
+                },
+                "properties": [
+                  {
+                    "id": "color",
+                    "value": {
+                      "fixedColor": "#ff8316",
+                      "mode": "fixed"
+                    }
+                  },
+                  {
+                    "id": "displayName",
+                    "value": "Writes"
+                  }
+                ]
+              },
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "other_per_sec"
+                },
+                "properties": [
+                  {
+                    "id": "color",
+                    "value": {
+                      "fixedColor": "#662e9c",
+                      "mode": "fixed"
+                    }
+                  },
+                  {
+                    "id": "displayName",
+                    "value": "Other"
+                  }
+                ]
+              },
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "Writes"
+                },
+                "properties": [
+                  {
+                    "id": "color",
+                    "value": {
+                      "fixedColor": "#ff8316",
+                      "mode": "fixed"
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          "gridPos": {
+            "h": 8,
+            "w": 24,
+            "x": 0,
+            "y": 38
+          },
+          "id": 194,
+          "options": {
+            "legend": {
+              "calcs": [
+                "mean",
+                "min",
+                "max",
+                "last"
+              ],
+              "displayMode": "table",
+              "placement": "right",
+              "showLegend": true,
+              "sortBy": "Mean",
+              "sortDesc": true,
+              "width": 400
+            },
+            "tooltip": {
+              "mode": "single",
+              "sort": "none"
+            }
+          },
+          "targets": [
+            {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "$datasource"
+              },
+              "editorMode": "code",
+              "exemplar": false,
+              "expr": "avg(purefb_array_performance_throughput_iops{instance=~\"^$instance\",env=~\"^$env\",dimension=\"reads_per_sec\"})",
+              "format": "time_series",
+              "instant": false,
+              "interval": "",
+              "legendFormat": "reads_per_sec",
+              "range": true,
+              "refId": "Read"
+            },
+            {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "$datasource"
+              },
+              "editorMode": "code",
+              "exemplar": false,
+              "expr": "avg(purefb_array_performance_throughput_iops{instance=~\"^$instance\",env=~\"^$env\",dimension=\"writes_per_sec\"})",
+              "format": "time_series",
+              "hide": false,
+              "instant": false,
+              "interval": "",
+              "legendFormat": "writes_per_sec",
+              "range": true,
+              "refId": "Write"
+            },
+            {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "$datasource"
+              },
+              "editorMode": "code",
+              "exemplar": false,
+              "expr": "avg(purefb_array_performance_throughput_iops{instance=~\"^$instance\",env=~\"^$env\",dimension=\"others_per_sec\"})",
+              "format": "time_series",
+              "hide": false,
+              "instant": false,
+              "interval": "",
+              "legendFormat": "other_per_sec",
+              "range": true,
+              "refId": "Other"
+            }
+          ],
+          "title": "Avg IOPS by $instance array(s) & $protocol protocol(s)",
+          "type": "timeseries"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "$datasource"
+          },
+          "description": "",
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "palette-classic"
+              },
+              "custom": {
+                "axisBorderShow": false,
+                "axisCenteredZero": false,
+                "axisColorMode": "text",
+                "axisLabel": "",
+                "axisPlacement": "auto",
+                "barAlignment": 0,
+                "drawStyle": "line",
+                "fillOpacity": 10,
+                "gradientMode": "none",
+                "hideFrom": {
+                  "legend": false,
+                  "tooltip": false,
+                  "viz": false
+                },
+                "insertNulls": false,
+                "lineInterpolation": "smooth",
+                "lineStyle": {
+                  "fill": "solid"
+                },
+                "lineWidth": 1,
+                "pointSize": 5,
+                "scaleDistribution": {
+                  "type": "linear"
+                },
+                "showPoints": "never",
+                "spanNulls": 300000,
+                "stacking": {
+                  "group": "A",
+                  "mode": "none"
+                },
+                "thresholdsStyle": {
+                  "mode": "off"
+                }
+              },
+              "decimals": 1,
+              "mappings": [],
+              "min": 0,
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green",
+                    "value": null
+                  }
+                ]
+              },
+              "unit": "binBps"
+            },
+            "overrides": [
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "read_bytes_per_sec"
+                },
+                "properties": [
+                  {
+                    "id": "color",
+                    "value": {
+                      "fixedColor": "#2ae5f2",
+                      "mode": "fixed"
+                    }
+                  },
+                  {
+                    "id": "displayName",
+                    "value": "Reads"
+                  }
+                ]
+              },
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "write_bytes_per_sec"
+                },
+                "properties": [
+                  {
+                    "id": "color",
+                    "value": {
+                      "fixedColor": "dark-orange",
+                      "mode": "fixed"
+                    }
+                  },
+                  {
+                    "id": "displayName",
+                    "value": "Writes"
+                  }
+                ]
+              },
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "Writes"
+                },
+                "properties": [
+                  {
+                    "id": "color",
+                    "value": {
+                      "fixedColor": "#ff8316",
+                      "mode": "fixed"
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          "gridPos": {
+            "h": 8,
+            "w": 24,
+            "x": 0,
+            "y": 46
+          },
+          "id": 195,
+          "options": {
+            "legend": {
+              "calcs": [
+                "mean",
+                "min",
+                "max",
+                "last"
+              ],
+              "displayMode": "table",
+              "placement": "right",
+              "showLegend": true,
+              "sortBy": "Mean",
+              "sortDesc": true,
+              "width": 400
+            },
+            "tooltip": {
+              "mode": "single",
+              "sort": "none"
+            }
+          },
+          "targets": [
+            {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "$datasource"
+              },
+              "editorMode": "code",
+              "exemplar": false,
+              "expr": "avg(purefb_array_performance_bandwidth_bytes{instance=~\"^$instance\",env=~\"^$env\", dimension=\"read_bytes_per_sec\", protocol=~\"$protocol\"})",
+              "format": "time_series",
+              "instant": false,
+              "interval": "",
+              "legendFormat": "read_bytes_per_sec",
+              "range": true,
+              "refId": "Read"
+            },
+            {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "$datasource"
+              },
+              "editorMode": "code",
+              "exemplar": false,
+              "expr": "avg(purefb_array_performance_bandwidth_bytes{instance=~\"^$instance\",env=~\"^$env\", dimension=\"write_bytes_per_sec\", protocol=~\"$protocol\"})",
+              "format": "time_series",
+              "hide": false,
+              "instant": false,
+              "interval": "",
+              "legendFormat": "write_bytes_per_sec",
+              "range": true,
+              "refId": "Write"
+            },
+            {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "$datasource"
+              },
+              "editorMode": "code",
+              "exemplar": false,
+              "expr": "avg(purefb_array_performance_bandwidth_bytes{instance=~\"^$instance\",env=~\"^$env\", dimension=\"other_bytes_per_sec\", protocol=~\"$protocol\"})",
+              "format": "time_series",
+              "hide": false,
+              "instant": false,
+              "interval": "",
+              "legendFormat": "other_bytes_per_sec",
+              "range": true,
+              "refId": "Other"
+            }
+          ],
+          "title": "Avg Bandwidth by $instance array(s) & $protocol protocol(s)",
+          "type": "timeseries"
+        }
+      ],
+      "title": "Array Performance",
+      "type": "row"
+    },
+    {
+      "collapsed": true,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 30
+      },
+      "id": 199,
+      "panels": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "$datasource"
+          },
+          "description": "Recommended for single array only.\n\nPanel will display \"No Data\" until there is at least 12 hours of data in the data source as this panel displays the last 90 days at 12 hour intervals.",
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "palette-classic"
+              },
+              "custom": {
+                "axisBorderShow": false,
+                "axisCenteredZero": false,
+                "axisColorMode": "text",
+                "axisLabel": "",
+                "axisPlacement": "auto",
+                "axisSoftMin": 0,
+                "barAlignment": 0,
+                "drawStyle": "line",
+                "fillOpacity": 100,
+                "gradientMode": "opacity",
+                "hideFrom": {
+                  "legend": false,
+                  "tooltip": false,
+                  "viz": false
+                },
+                "insertNulls": false,
+                "lineInterpolation": "smooth",
+                "lineWidth": 1,
+                "pointSize": 0,
+                "scaleDistribution": {
+                  "type": "linear"
+                },
+                "showPoints": "never",
+                "spanNulls": false,
+                "stacking": {
+                  "group": "A",
+                  "mode": "normal"
+                },
+                "thresholdsStyle": {
+                  "mode": "off"
+                }
+              },
+              "mappings": [],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green"
+                  },
+                  {
+                    "color": "red",
+                    "value": 80
+                  }
+                ]
+              },
+              "unit": "bytes"
+            },
+            "overrides": [
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "capacity"
+                },
+                "properties": [
+                  {
+                    "id": "color",
+                    "value": {
+                      "fixedColor": "#646464",
+                      "mode": "fixed"
+                    }
+                  },
+                  {
+                    "id": "custom.stacking",
+                    "value": {
+                      "group": "A",
+                      "mode": "none"
+                    }
+                  },
+                  {
+                    "id": "custom.fillOpacity",
+                    "value": 0
+                  }
+                ]
+              },
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "total_physical"
+                },
+                "properties": [
+                  {
+                    "id": "color",
+                    "value": {
+                      "fixedColor": "#2ae5f2",
+                      "mode": "fixed"
+                    }
+                  },
+                  {
+                    "id": "custom.stacking",
+                    "value": {
+                      "group": "A",
+                      "mode": "none"
+                    }
+                  },
+                  {
+                    "id": "custom.fillOpacity",
+                    "value": 100
+                  },
+                  {
+                    "id": "custom.lineWidth",
+                    "value": 1
+                  }
+                ]
+              },
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "Array DRR"
+                },
+                "properties": [
+                  {
+                    "id": "custom.axisPlacement",
+                    "value": "right"
+                  },
+                  {
+                    "id": "unit",
+                    "value": ":1"
+                  },
+                  {
+                    "id": "custom.lineStyle",
+                    "value": {
+                      "dash": [
+                        0,
+                        10
+                      ],
+                      "fill": "dot"
+                    }
+                  },
+                  {
+                    "id": "custom.lineWidth",
+                    "value": 3
+                  },
+                  {
+                    "id": "color",
+                    "value": {
+                      "fixedColor": "#00b89e",
+                      "mode": "fixed"
+                    }
+                  },
+                  {
+                    "id": "custom.fillOpacity",
+                    "value": 0
+                  },
+                  {
+                    "id": "custom.axisLabel",
+                    "value": "Data Reduction Ratio"
+                  },
+                  {
+                    "id": "custom.axisColorMode",
+                    "value": "series"
+                  },
+                  {
+                    "id": "custom.axisSoftMax",
+                    "value": 5
+                  },
+                  {
+                    "id": "custom.stacking",
+                    "value": {
+                      "group": "A",
+                      "mode": "none"
+                    }
+                  }
+                ]
+              },
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "fs snapshots"
+                },
+                "properties": [
+                  {
+                    "id": "color",
+                    "value": {
+                      "fixedColor": "#fe7800",
+                      "mode": "fixed"
+                    }
+                  }
+                ]
+              },
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "fs unique"
+                },
+                "properties": [
+                  {
+                    "id": "color",
+                    "value": {
+                      "fixedColor": "#fa6400",
+                      "mode": "fixed"
+                    }
+                  }
+                ]
+              },
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "obj unique"
+                },
+                "properties": [
+                  {
+                    "id": "color",
+                    "value": {
+                      "fixedColor": "#00b89e",
+                      "mode": "fixed"
+                    }
+                  }
+                ]
+              },
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "obj snapshots"
+                },
+                "properties": [
+                  {
+                    "id": "color",
+                    "value": {
+                      "fixedColor": "#2ae5f2",
+                      "mode": "fixed"
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          "gridPos": {
+            "h": 8,
+            "w": 24,
+            "x": 0,
+            "y": 32
+          },
+          "id": 197,
+          "interval": "12h",
+          "options": {
+            "legend": {
+              "calcs": [],
+              "displayMode": "list",
+              "placement": "bottom",
+              "showLegend": true
+            },
+            "tooltip": {
+              "mode": "single",
+              "sort": "none"
+            }
+          },
+          "targets": [
+            {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "$datasource"
+              },
+              "editorMode": "code",
+              "expr": "sum(purefb_array_space_bytes{instance=~\"^$instance\",env=~\"^$env\",type=\"file-system\",space=~\"snapshots|unique|destroyed\"}) by (space)\n#\"optional granular detail\"\n#\"using sum() to show total of all arrays\"",
+              "hide": true,
+              "instant": false,
+              "legendFormat": "fs {{space}}",
+              "range": true,
+              "refId": "Filesystem Capacity"
+            },
+            {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "$datasource"
+              },
+              "editorMode": "code",
+              "expr": "sum(purefb_array_space_bytes{instance=~\"^$instance\",env=~\"^$env\",type=\"object-store\",space=~\"snapshots|unique|destroyed\"}) by (space)\n#\"optional granular detail\"\n#\"using sum() to show total of all arrays\"",
+              "hide": true,
+              "instant": false,
+              "legendFormat": "obj {{space}}",
+              "range": true,
+              "refId": "Object Capacity"
+            },
+            {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "$datasource"
+              },
+              "editorMode": "code",
+              "expr": "sum(purefb_array_space_bytes{instance=~\"^$instance\",env=~\"^$env\",type=\"array\",space=~\"total_physical|capacity\"}) by (space)\n#\"using sum() to show total of all arrays\"",
+              "hide": false,
+              "instant": false,
+              "legendFormat": "{{space}}",
+              "range": true,
+              "refId": "Capacity"
+            },
+            {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "$datasource"
+              },
+              "editorMode": "code",
+              "expr": "avg(purefb_array_space_data_reduction_ratio{instance=~\"^$instance\",env=~\"^$env\",type=\"array\"}) ",
+              "hide": false,
+              "instant": false,
+              "legendFormat": "Array DRR",
+              "range": true,
+              "refId": "DRR"
+            }
+          ],
+          "timeFrom": "90d",
+          "title": "Capacity Utilization by Type & $instance array(s)",
+          "type": "timeseries"
+        }
+      ],
+      "title": "Array Capacity",
+      "type": "row"
     }
   ],
   "refresh": "",
   "revision": 1,
-  "schemaVersion": 38,
-  "style": "dark",
+  "schemaVersion": 39,
   "tags": [
     "pure",
     "storage",
     "purestorage",
     "flashblade",
     "fb",
-    "prometheus"
+    "prometheus",
+    "openmetrics"
   ],
   "templating": {
     "list": [
       {
         "current": {
           "selected": false,
-          "text": "1.0.6",
-          "value": "1.0.6"
+          "text": "1.0.7",
+          "value": "1.0.7"
         },
         "hide": 2,
         "includeAll": false,
@@ -2964,20 +3026,16 @@
         "options": [
           {
             "selected": true,
-            "text": "1.0.6",
-            "value": "1.0.6"
+            "text": "1.0.7",
+            "value": "1.0.7"
           }
         ],
-        "query": "1.0.6",
+        "query": "1.0.7",
         "skipUrlSync": false,
         "type": "custom"
       },
       {
-        "current": {
-          "selected": false,
-          "text": "default",
-          "value": "default"
-        },
+        "current": {},
         "hide": 0,
         "includeAll": false,
         "label": "Datasource",
@@ -3049,7 +3107,7 @@
       },
       {
         "current": {
-          "selected": true,
+          "selected": false,
           "text": "5",
           "value": "5"
         },
@@ -3177,6 +3235,6 @@
   "timezone": "",
   "title": "Pure Storage FlashBlade - Overview",
   "uid": "z0BG6-vVz",
-  "version": 218,
+  "version": 250,
   "weekStart": ""
 }

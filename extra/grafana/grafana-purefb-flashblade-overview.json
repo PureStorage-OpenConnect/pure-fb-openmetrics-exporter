@@ -70,9 +70,10 @@
       }
     ]
   },
-  "description": "Dashboard Version: v1.0.7\n\nFixes\n1. Resolved panel duplication caused by the introduction of objectstore in metrics like purefb_array_performance_bandwidth_bytes.\n2. Fixed Average Latency panel to include ,protocol=~\"$protocol\" in the aggregation for correct filtering.\n3. Replaced rate() with avg_over_time() in top-N panels for improved accuracy with non-counter metrics.\n4. Replaced @ end() with offset 2m in top-N panels to reduce \"No Data\" issues due to scrape timing mismatches.\n\nEnhancements\n1. Removed the left-hand metrics text panel as requested by users.\n2. Replaced the image in the Overview section with text to prevent broken image icon.\n3. Added collapsible sections for Filesystems, Objectstore, and Array metrics to help users focus only on relevant data and reduce query load.\n4. Updated the \"Average Total Bandwidth\" panel to include protocol filtering and display values with 1 decimal place.\n5. Added detailed explanations to top-N panels to help users understand how the queries work and why data may sometimes be missing.",
+  "description": "Get real-time visibility into your FlashBlade environment with a powerful, high-level dashboard built for speed, scale, and clarity. Instantly surface performance, capacity, and top talkers—so you can troubleshoot smarter and act faster.",
   "editable": false,
   "fiscalYearStartMonth": 0,
+  "gnetId": 18516,
   "graphTooltip": 1,
   "id": null,
   "links": [],
@@ -1613,7 +1614,7 @@
             "type": "prometheus",
             "uid": "$datasource"
           },
-          "description": "`/metrics/filesystems` endpoint required for this panel.\n\n##### Panel Overview\nThis panel displays the top `$TopItems` entities across selected sources based on a chosen metric. It uses two Prometheus queries:\n\n- **Query 1:** Calculates the average metric value per entity over the selected time range.\n- **Query 2:** Selects the top-N entities using `avg_over_time(... offset 2m)` to ensure stable, recent values and avoid scrape timing issues.\n\nOnly entities found in **both queries** (via an `AND` operator) are shown.  This query is **resource-intensive** for both Prometheus and the browser.\n\n---\n\n##### Why You Might See “No Data”\n- The top-N query evaluates **2 minutes before the end** of the time range.\n- If the average query doesn’t return data at the **same timestamp**, the `AND` will drop unmatched results.\n- This may happen when:\n  - The time range ends at “now” and Prometheus hasn’t scraped yet\n  - Data is delayed or sparse near the end of the range\n  - Timestamps differ between queries due to offset or step alignment\n\n---\n\n##### How to Improve Results\n- Set the time range to end slightly **before now** (`offset 2m`)\n- Keep the panel interval aligned with the metric scrape interval (Auto is usually fine)\n- Use shorter time ranges (e.g., 30m–2h instead of days)\n- Apply filters to reduce the number of entities or data points\n- Consider using [recording rules](https://prometheus.io/docs/prometheus/latest/configuration/recording_rules/) to pre-aggregate data\n",
+          "description": "#### Requirements\n`/metrics/filesystems` endpoint required for this panel.\n\n#### Panel Overview\nThis graph displays the top `$TopItems` values, based on their average across the selected time range.\n\nIt combines two Prometheus queries:\n- The first shows the average values over time for all matching entities.\n- The second uses `topk()` with `avg_over_time(... @ end())` to select the top N values, based on total usage across the full range.\n- Only entities present in both queries are shown, meaning the graph displays only the top-N performers.\n\n---\n\n#### Why It’s Set Up This Way\nPrometheus doesn’t support filtering a time series dynamically by top N across time, so this setup is a workaround.\n\nUsing `@ end()` ensures the `topk()` query selects exactly N entities based on a single, consistent snapshot taken at the end of the selected time range.  \nThis avoids the issue where the top N can vary over time and result in more than N lines being shown on the graph.\n\nWe also use `avg_over_time`, not `rate()`, because the metric is pre-aggregated — it's not a counter. Using `rate()` would give incorrect results.\n\n---\n\n#### Tips for Best Use\n- This panel works best for focused time windows, ideally 20 minutes to 3 hours.  \n  Longer ranges (e.g. days) smooth out the signal and may hide short-lived spikes.\n- Use it to quickly spot heavy resource consumers over time, then drill into specific panels or metrics.\n- If graph lines look broken or inconsistent, try zooming in or shifting the time range slightly before \"now\" to avoid scrape alignment issues.\n- Combine with filters (e.g., instance or protocol) to reduce clutter and highlight key trends.\n- For troubleshooting or spot checks, reduce the time range to 15–30 minutes for clearer insight.",
           "fieldConfig": {
             "defaults": {
               "color": {
@@ -1703,7 +1704,7 @@
               },
               "editorMode": "code",
               "exemplar": false,
-              "expr": "avg(purefb_file_systems_performance_bandwidth_bytes{env=~\"$env\", instance=~\"$instance\"}) by (name,instance, dimension)\nand\ntopk($TopItems, avg(avg_over_time(purefb_file_systems_performance_bandwidth_bytes{env=~\"$env\", instance=~\"$instance\"}[$__range] offset 2m )) by (name,instance, dimension))",
+              "expr": "avg(purefb_file_systems_performance_bandwidth_bytes{env=~\"$env\", instance=~\"$instance\"}) by (name,instance, dimension)\nand\ntopk($TopItems, avg(avg_over_time(purefb_file_systems_performance_bandwidth_bytes{env=~\"$env\", instance=~\"$instance\"}[$__range] @ end() )) by (name,instance, dimension))",
               "format": "time_series",
               "instant": false,
               "interval": "",
@@ -1720,7 +1721,7 @@
             "type": "prometheus",
             "uid": "$datasource"
           },
-          "description": "`/metrics/filesystems` endpoint required for this panel.\n\n##### Panel Overview\nThis panel displays the top `$TopItems` entities across selected sources based on a chosen metric. It uses two Prometheus queries:\n\n- **Query 1:** Calculates the average metric value per entity over the selected time range.\n- **Query 2:** Selects the top-N entities using `avg_over_time(... offset 2m)` to ensure stable, recent values and avoid scrape timing issues.\n\nOnly entities found in **both queries** (via an `AND` operator) are shown.  This query is **resource-intensive** for both Prometheus and the browser.\n\n---\n\n##### Why You Might See “No Data”\n- The top-N query evaluates **2 minutes before the end** of the time range.\n- If the average query doesn’t return data at the **same timestamp**, the `AND` will drop unmatched results.\n- This may happen when:\n  - The time range ends at “now” and Prometheus hasn’t scraped yet\n  - Data is delayed or sparse near the end of the range\n  - Timestamps differ between queries due to offset or step alignment\n\n---\n\n##### How to Improve Results\n- Set the time range to end slightly **before now** (`offset 2m`)\n- Keep the panel interval aligned with the metric scrape interval (Auto is usually fine)\n- Use shorter time ranges (e.g., 30m–2h instead of days)\n- Apply filters to reduce the number of entities or data points\n- Consider using [recording rules](https://prometheus.io/docs/prometheus/latest/configuration/recording_rules/) to pre-aggregate data\n",
+          "description": "#### Requirements\n`/metrics/filesystems` endpoint required for this panel.\n\n#### Panel Overview\nThis graph displays the top `$TopItems` values, based on their average across the selected time range.\n\nIt combines two Prometheus queries:\n- The first shows the average values over time for all matching entities.\n- The second uses `topk()` with `avg_over_time(... @ end())` to select the top N values, based on total usage across the full range.\n- Only entities present in both queries are shown, meaning the graph displays only the top-N performers.\n\n---\n\n#### Why It’s Set Up This Way\nPrometheus doesn’t support filtering a time series dynamically by top N across time, so this setup is a workaround.\n\nUsing `@ end()` ensures the `topk()` query selects exactly N entities based on a single, consistent snapshot taken at the end of the selected time range.  \nThis avoids the issue where the top N can vary over time and result in more than N lines being shown on the graph.\n\nWe also use `avg_over_time`, not `rate()`, because the metric is pre-aggregated — it's not a counter. Using `rate()` would give incorrect results.\n\n---\n\n#### Tips for Best Use\n- This panel works best for focused time windows, ideally 20 minutes to 3 hours.  \n  Longer ranges (e.g. days) smooth out the signal and may hide short-lived spikes.\n- Use it to quickly spot heavy resource consumers over time, then drill into specific panels or metrics.\n- If graph lines look broken or inconsistent, try zooming in or shifting the time range slightly before \"now\" to avoid scrape alignment issues.\n- Combine with filters (e.g., instance or protocol) to reduce clutter and highlight key trends.\n- For troubleshooting or spot checks, reduce the time range to 15–30 minutes for clearer insight.",
           "fieldConfig": {
             "defaults": {
               "color": {
@@ -1810,7 +1811,7 @@
               },
               "editorMode": "code",
               "exemplar": false,
-              "expr": "avg(purefb_file_systems_performance_latency_usec{env=~\"$env\", instance=~\"$instance\"}) by (name,dimension,instance)\nand\ntopk($TopItems, avg(avg_over_time(purefb_file_systems_performance_latency_usec{env=~\"$env\", instance=~\"$instance\"}[$__range] offset 2m )) by (name,dimension,instance))",
+              "expr": "avg(purefb_file_systems_performance_latency_usec{env=~\"$env\", instance=~\"$instance\"}) by (name,dimension,instance)\nand\ntopk($TopItems, avg(avg_over_time(purefb_file_systems_performance_latency_usec{env=~\"$env\", instance=~\"$instance\"}[$__range] @ end() )) by (name,dimension,instance))",
               "legendFormat": "{{instance}} - {{dimension}} - {{name}}",
               "range": true,
               "refId": "Write Bandwidth"
@@ -1838,7 +1839,7 @@
             "type": "prometheus",
             "uid": "$datasource"
           },
-          "description": "`/metrics/objectstore` endpoint required for this panel.\n\n##### Panel Overview\nThis panel displays the top `$TopItems` entities across selected sources based on a chosen metric. It uses two Prometheus queries:\n\n- **Query 1:** Calculates the average metric value per entity over the selected time range.\n- **Query 2:** Selects the top-N entities using `avg_over_time(... offset 2m)` to ensure stable, recent values and avoid scrape timing issues.\n\nOnly entities found in **both queries** (via an `AND` operator) are shown.  This query is **resource-intensive** for both Prometheus and the browser.\n\n---\n\n##### Why You Might See “No Data”\n- The top-N query evaluates **2 minutes before the end** of the time range.\n- If the average query doesn’t return data at the **same timestamp**, the `AND` will drop unmatched results.\n- This may happen when:\n  - The time range ends at “now” and Prometheus hasn’t scraped yet\n  - Data is delayed or sparse near the end of the range\n  - Timestamps differ between queries due to offset or step alignment\n\n---\n\n##### How to Improve Results\n- Set the time range to end slightly **before now** (`offset 2m`)\n- Keep the panel interval aligned with the metric scrape interval (Auto is usually fine)\n- Use shorter time ranges (e.g., 30m–2h instead of days)\n- Apply filters to reduce the number of entities or data points\n- Consider using [recording rules](https://prometheus.io/docs/prometheus/latest/configuration/recording_rules/) to pre-aggregate data\n",
+          "description": "#### Requirements\n`/metrics/objectstore` endpoint required for this panel.\n\n#### Panel Overview\nThis graph displays the top `$TopItems` values, based on their average across the selected time range.\n\nIt combines two Prometheus queries:\n- The first shows the average values over time for all matching entities.\n- The second uses `topk()` with `avg_over_time(... @ end())` to select the top N values, based on total usage across the full range.\n- Only entities present in both queries are shown, meaning the graph displays only the top-N performers.\n\n---\n\n#### Why It’s Set Up This Way\nPrometheus doesn’t support filtering a time series dynamically by top N across time, so this setup is a workaround.\n\nUsing `@ end()` ensures the `topk()` query selects exactly N entities based on a single, consistent snapshot taken at the end of the selected time range.  \nThis avoids the issue where the top N can vary over time and result in more than N lines being shown on the graph.\n\nWe also use `avg_over_time`, not `rate()`, because the metric is pre-aggregated — it's not a counter. Using `rate()` would give incorrect results.\n\n---\n\n#### Tips for Best Use\n- This panel works best for focused time windows, ideally 20 minutes to 3 hours.  \n  Longer ranges (e.g. days) smooth out the signal and may hide short-lived spikes.\n- Use it to quickly spot heavy resource consumers over time, then drill into specific panels or metrics.\n- If graph lines look broken or inconsistent, try zooming in or shifting the time range slightly before \"now\" to avoid scrape alignment issues.\n- Combine with filters (e.g., instance or protocol) to reduce clutter and highlight key trends.\n- For troubleshooting or spot checks, reduce the time range to 15–30 minutes for clearer insight.",
           "fieldConfig": {
             "defaults": {
               "color": {
@@ -1929,7 +1930,7 @@
               },
               "editorMode": "code",
               "exemplar": false,
-              "expr": "avg(purefb_buckets_performance_bandwidth_bytes{env=~\"$env\", instance=~\"$instance\"}) by (name,instance,dimension)\nand\ntopk($TopItems, avg(avg_over_time(purefb_buckets_performance_bandwidth_bytes{env=~\"$env\", instance=~\"$instance\"}[$__range] offset 2m )) by (name,instance,dimension))",
+              "expr": "avg(purefb_buckets_performance_bandwidth_bytes{env=~\"$env\", instance=~\"$instance\"}) by (name,instance,dimension)\nand\ntopk($TopItems, avg(avg_over_time(purefb_buckets_performance_bandwidth_bytes{env=~\"$env\", instance=~\"$instance\"}[$__range] @end () )) by (name,instance,dimension))",
               "format": "time_series",
               "hide": false,
               "instant": false,
@@ -1946,7 +1947,7 @@
             "type": "prometheus",
             "uid": "$datasource"
           },
-          "description": "`/metrics/objectstore` endpoint required for this panel.\n\n##### Panel Overview\nThis panel displays the top `$TopItems` entities across selected sources based on a chosen metric. It uses two Prometheus queries:\n\n- **Query 1:** Calculates the average metric value per entity over the selected time range.\n- **Query 2:** Selects the top-N entities using `avg_over_time(... offset 2m)` to ensure stable, recent values and avoid scrape timing issues.\n\nOnly entities found in **both queries** (via an `AND` operator) are shown.  This query is **resource-intensive** for both Prometheus and the browser.\n\n---\n\n##### Why You Might See “No Data”\n- The top-N query evaluates **2 minutes before the end** of the time range.\n- If the average query doesn’t return data at the **same timestamp**, the `AND` will drop unmatched results.\n- This may happen when:\n  - The time range ends at “now” and Prometheus hasn’t scraped yet\n  - Data is delayed or sparse near the end of the range\n  - Timestamps differ between queries due to offset or step alignment\n\n---\n\n##### How to Improve Results\n- Set the time range to end slightly **before now** (`offset 2m`)\n- Keep the panel interval aligned with the metric scrape interval (Auto is usually fine)\n- Use shorter time ranges (e.g., 30m–2h instead of days)\n- Apply filters to reduce the number of entities or data points\n- Consider using [recording rules](https://prometheus.io/docs/prometheus/latest/configuration/recording_rules/) to pre-aggregate data\n",
+          "description": "#### Requirements\n`/metrics/objectstore` endpoint required for this panel.\n\n#### Panel Overview\nThis graph displays the top `$TopItems` values, based on their average across the selected time range.\n\nIt combines two Prometheus queries:\n- The first shows the average values over time for all matching entities.\n- The second uses `topk()` with `avg_over_time(... @ end())` to select the top N values, based on total usage across the full range.\n- Only entities present in both queries are shown, meaning the graph displays only the top-N performers.\n\n---\n\n#### Why It’s Set Up This Way\nPrometheus doesn’t support filtering a time series dynamically by top N across time, so this setup is a workaround.\n\nUsing `@ end()` ensures the `topk()` query selects exactly N entities based on a single, consistent snapshot taken at the end of the selected time range.  \nThis avoids the issue where the top N can vary over time and result in more than N lines being shown on the graph.\n\nWe also use `avg_over_time`, not `rate()`, because the metric is pre-aggregated — it's not a counter. Using `rate()` would give incorrect results.\n\n---\n\n#### Tips for Best Use\n- This panel works best for focused time windows, ideally 20 minutes to 3 hours.  \n  Longer ranges (e.g. days) smooth out the signal and may hide short-lived spikes.\n- Use it to quickly spot heavy resource consumers over time, then drill into specific panels or metrics.\n- If graph lines look broken or inconsistent, try zooming in or shifting the time range slightly before \"now\" to avoid scrape alignment issues.\n- Combine with filters (e.g., instance or protocol) to reduce clutter and highlight key trends.\n- For troubleshooting or spot checks, reduce the time range to 15–30 minutes for clearer insight.",
           "fieldConfig": {
             "defaults": {
               "color": {
@@ -2036,7 +2037,7 @@
               },
               "editorMode": "code",
               "exemplar": false,
-              "expr": "avg(purefb_buckets_performance_latency_usec{env=~\"$env\", instance=~\"$instance\"}) by (name,dimension,instance)\nand\ntopk($TopItems, avg(avg_over_time(purefb_buckets_performance_latency_usec{env=~\"$env\", instance=~\"$instance\"}[$__range] offset 2m )) by (name,dimension,instance))",
+              "expr": "avg(purefb_buckets_performance_latency_usec{env=~\"$env\", instance=~\"$instance\"}) by (name,dimension,instance)\nand\ntopk($TopItems, avg(avg_over_time(purefb_buckets_performance_latency_usec{env=~\"$env\", instance=~\"$instance\"}[$__range] @end () )) by (name,dimension,instance))",
               "legendFormat": "{{instance}} - {{dimension}} - {{name}}",
               "range": true,
               "refId": "Write Bandwidth"
@@ -2110,8 +2111,7 @@
                 "mode": "absolute",
                 "steps": [
                   {
-                    "color": "green",
-                    "value": null
+                    "color": "green"
                   }
                 ]
               },
@@ -2308,8 +2308,7 @@
                 "mode": "absolute",
                 "steps": [
                   {
-                    "color": "green",
-                    "value": null
+                    "color": "green"
                   }
                 ]
               },
@@ -2522,8 +2521,7 @@
                 "mode": "absolute",
                 "steps": [
                   {
-                    "color": "green",
-                    "value": null
+                    "color": "green"
                   }
                 ]
               },
@@ -3005,7 +3003,7 @@
   "tags": [
     "pure",
     "storage",
-    "purestorage",
+    "pure storage",
     "flashblade",
     "fb",
     "prometheus",
@@ -3016,8 +3014,8 @@
       {
         "current": {
           "selected": false,
-          "text": "1.0.7",
-          "value": "1.0.7"
+          "text": "1.0.8",
+          "value": "1.0.8"
         },
         "hide": 2,
         "includeAll": false,
@@ -3026,11 +3024,11 @@
         "options": [
           {
             "selected": true,
-            "text": "1.0.7",
-            "value": "1.0.7"
+            "text": "1.0.8",
+            "value": "1.0.8"
           }
         ],
-        "query": "1.0.7",
+        "query": "1.0.8",
         "skipUrlSync": false,
         "type": "custom"
       },
@@ -3235,6 +3233,6 @@
   "timezone": "",
   "title": "Pure Storage FlashBlade - Overview",
   "uid": "z0BG6-vVz",
-  "version": 250,
+  "version": 255,
   "weekStart": ""
 }

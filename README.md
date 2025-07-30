@@ -156,14 +156,15 @@ docker run -d -p 3000:3000 --name=grafana -v /tmp/grafana-data:/var/lib/grafana 
 ```
 Please have a look at the documentation of each image/application for adequate configuration examples.
 
-A simple but complete example to deploy a full monitoring stack on kubernetes can be found in the [examples](examples/config/k8s) directory  
+A simple but complete example to deploy a full monitoring stack on kubernetes can be found in the [examples](examples/config/k8s) directory.
+
+Additonally, there is a [tar file](examples/config/k8s/fb-ome-helm.tar) containing an untested Helm Chart - this was created using [helmify](https://github.com/arttor/helmify).
 
 ### Upgrade Information
 
 v1.1.0 - New URIs `filesystem` and `objectstore` were added to split off these metric instruments to ensure metrics in the `array` URI remain quick to scrape in large environments to comply with the limitations recommendation set below in [Bugs and Limitations](#bugs-and-limitations).
 
 If you require the following metrics for your dataset for your observability toolset, please add the new endpoint(s) as required.
-
 
 The following metrics have been moved from `array` to `filesystem`
 

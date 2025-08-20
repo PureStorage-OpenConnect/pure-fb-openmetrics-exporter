@@ -26,10 +26,16 @@ func (c *UsageCollector) Collect(ch chan<- prometheus.Metric) {
 	if len(uusers.Items) > 0 {
 		for _, usage := range uusers.Items {
 			uid = strconv.Itoa(usage.User.Id)
+			// Set quotaValue to the quota
+			quotaValue := usage.Quota
+			// if the quota is 0 though, set it to the default quota for users on the filesystem
+			if usage.Quota == 0 {
+				quotaValue = usage.FileSystemDefaultQuota
+			}
 			ch <- prometheus.MustNewConstMetric(
 				c.UsageUsersDesc,
 				prometheus.GaugeValue,
-				usage.Quota,
+				quotaValue,
 				usage.FileSystem.Name, usage.User.Name, uid, "quota",
 			)
 			ch <- prometheus.MustNewConstMetric(
@@ -44,10 +50,16 @@ func (c *UsageCollector) Collect(ch chan<- prometheus.Metric) {
 	if len(ugroups.Items) > 0 {
 		for _, usage := range ugroups.Items {
 			gid = strconv.Itoa(usage.Group.Id)
+			// Set quotaValue to the quota
+			quotaValue := usage.Quota
+			// if the quota is 0 though, set it to the default quota for users on the filesystem
+			if usage.Quota == 0 {
+				quotaValue = usage.FileSystemDefaultQuota
+			}
 			ch <- prometheus.MustNewConstMetric(
 				c.UsageGroupsDesc,
 				prometheus.GaugeValue,
-				usage.Quota,
+				quotaValue,
 				usage.FileSystem.Name, usage.Group.Name, gid, "quota",
 			)
 			ch <- prometheus.MustNewConstMetric(

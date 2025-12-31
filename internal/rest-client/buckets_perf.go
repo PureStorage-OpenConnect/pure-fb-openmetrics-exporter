@@ -1,5 +1,9 @@
 package client
 
+import (
+	"strings"
+)
+
 type BucketsPerformanceList struct {
 	CntToken     string        `json:"continuation_token"`
 	TotalItemCnt int           `json:"total_item_count"`
@@ -13,13 +17,15 @@ func (fb *FBClient) GetBucketsPerformance(b *BucketsList) *BucketsPerformanceLis
 	if b == nil {
 		return result
 	}
-	temp := new(BucketsPerformanceList)
-	for i := 0; i < len(b.Items); i += 5 {
-		n := ""
-		for j := 0; (j < 5) && (i+j < len(b.Items)); j++ {
-			n = n + b.Items[i+j].Name + ","
+	const chunkSize = 10
+
+	for i := 0; i < len(b.Items); i += chunkSize {
+		names := make([]string, 0, chunkSize)
+		for _, bucket := range b.Items[i:min(i+chunkSize, len(b.Items))] {
+			names = append(names, bucket.Name)
 		}
-		n = n[:len(n)-1]
+		n := strings.Join(names, ",")
+		temp := new(BucketsPerformanceList)
 		res, _ := fb.RestClient.R().
 			SetResult(&temp).
 			SetQueryParam("names", n).

@@ -65,8 +65,12 @@ func Collector(ctx context.Context, metrics string, registry *prometheus.Registr
 	}
 	if metrics == "all" || metrics == "usage" {
 		filesystems := fbclient.GetFileSystems()
-		usageCollector := NewUsageCollector(fbclient, filesystems)
-		registry.MustRegister(usageCollector)
+		usageUserCollector := NewUsageUserCollector(fbclient, filesystems)
+		usageGroupCollector := NewUsageGroupCollector(fbclient, filesystems)
+		registry.MustRegister(
+			usageUserCollector,
+			usageGroupCollector,
+		)
 	}
 	if metrics == "all" || metrics == "policies" {
 		policiesCollector := NewNfsPoliciesCollector(fbclient)

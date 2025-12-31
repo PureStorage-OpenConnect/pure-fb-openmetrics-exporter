@@ -1,5 +1,7 @@
 package client
 
+import "sync"
+
 type Group struct {
 	Id   int    `json:"id"`
 	Name string `json:"name"`
@@ -49,19 +51,30 @@ type UsageUsersList struct {
 func (fb *FBClient) GetUsageUsers(f *FileSystemsList) *UsageUsersList {
 	uri := "/usage/users"
 	result := new(UsageUsersList)
-	temp := new(UsageUsersList)
-	for i := 0; i < len(f.Items); i++ {
-		res, _ := fb.RestClient.R().
-			SetResult(&temp).
-			SetQueryParam("file_system_ids", f.Items[i].Id).
-			Get(uri)
-		if res.StatusCode() == 401 {
-			fb.RefreshSession()
-			fb.RestClient.R().
+	var wg sync.WaitGroup
+	outputChan := make(chan *UsageUsersList, len(f.Items))
+	for _, fs := range f.Items {
+		wg.Add(1)
+		go func(fs *FileSystem) {
+			defer wg.Done()
+			temp := new(UsageUsersList)
+			res, _ := fb.RestClient.R().
 				SetResult(&temp).
-				SetQueryParam("file_system_ids", f.Items[i].Id).
+				SetQueryParam("file_system_ids", fs.Id).
 				Get(uri)
-		}
+			if res.StatusCode() == 401 {
+				fb.RefreshSession()
+				fb.RestClient.R().
+					SetResult(&temp).
+					SetQueryParam("file_system_ids", fs.Id).
+					Get(uri)
+			}
+			outputChan <- temp
+		}(&fs)
+	}
+	wg.Wait()
+	close(outputChan)
+	for temp := range outputChan {
 		result.Items = append(result.Items, temp.Items...)
 	}
 	return result
@@ -70,19 +83,30 @@ func (fb *FBClient) GetUsageUsers(f *FileSystemsList) *UsageUsersList {
 func (fb *FBClient) GetUsageGroups(f *FileSystemsList) *UsageGroupsList {
 	uri := "/usage/groups"
 	result := new(UsageGroupsList)
-	temp := new(UsageGroupsList)
-	for i := 0; i < len(f.Items); i++ {
-		res, _ := fb.RestClient.R().
-			SetResult(&temp).
-			SetQueryParam("file_system_ids", f.Items[i].Id).
-			Get(uri)
-		if res.StatusCode() == 401 {
-			fb.RefreshSession()
-			fb.RestClient.R().
+	var wg sync.WaitGroup
+	outputChan := make(chan *UsageGroupsList, len(f.Items))
+	for _, fs := range f.Items {
+		wg.Add(1)
+		go func(fs *FileSystem) {
+			defer wg.Done()
+			temp := new(UsageGroupsList)
+			res, _ := fb.RestClient.R().
 				SetResult(&temp).
-				SetQueryParam("file_system_ids", f.Items[i].Id).
+				SetQueryParam("file_system_ids", fs.Id).
 				Get(uri)
-		}
+			if res.StatusCode() == 401 {
+				fb.RefreshSession()
+				fb.RestClient.R().
+					SetResult(&temp).
+					SetQueryParam("file_system_ids", fs.Id).
+					Get(uri)
+			}
+			outputChan <- temp
+		}(&fs)
+	}
+	wg.Wait()
+	close(outputChan)
+	for temp := range outputChan {
 		result.Items = append(result.Items, temp.Items...)
 	}
 	return result

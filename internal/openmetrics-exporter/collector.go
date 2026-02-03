@@ -56,11 +56,13 @@ func Collector(ctx context.Context, metrics string, registry *prometheus.Registr
 		buckestS3PerfCollector := NewBucketsS3PerfCollector(fbclient, buckets)
 		bucketsSpaceCollector := NewBucketsSpaceCollector(buckets)
 		objstoreacctsCollector := NewObjectStoreAccountsCollector(fbclient)
+		bucketReplicaLinksCollector := NewBucketReplicaLinksCollector(fbclient)
 		registry.MustRegister(
 			bucketsPerfCollector,
 			buckestS3PerfCollector,
 			bucketsSpaceCollector,
 			objstoreacctsCollector,
+			bucketReplicaLinksCollector,
 		)
 	}
 	if metrics == "all" || metrics == "usage" {

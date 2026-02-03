@@ -1,0 +1,125 @@
+{
+  "continuation_token": null,
+  "total_item_count": 2,
+  "items": [
+    {
+      "id": "link-1",
+      "direction": "outgoing",
+      "lag": 12,
+      "status_details": "ok",
+      "context": {
+        "id": "ctx-1",
+        "name": "ctx-1",
+        "resource_type": "bucket-replica-links"
+      },
+      "cascading_enabled": true,
+      "local_bucket": {
+        "id": "lb-1",
+        "name": "local-a",
+        "resource_type": "buckets"
+      },
+      "object_backlog": {
+        "bytes_count": 100,
+        "delete_ops_count": 2,
+        "other_ops_count": 3,
+        "put_ops_count": 4
+      },
+      "paused": false,
+      "recovery_point": 1565034592494,
+      "remote": {
+        "id": "r-1",
+        "name": "remote-array-1",
+        "resource_type": "arrays"
+      },
+      "remote_bucket": {
+        "name": "remote-a"
+      },
+      "remote_credentials": {
+        "id": "rc-1",
+        "name": "creds-1",
+        "resource_type": "object-store-accounts"
+      },
+      "status": "ok"
+    },
+    {
+      "id": "link-2",
+      "direction": "incoming",
+      "lag": 34,
+      "status_details": "ok",
+      "context": {
+        "id": "ctx-2",
+        "name": "ctx-2",
+        "resource_type": "bucket-replica-links"
+      },
+      "cascading_enabled": false,
+      "local_bucket": {
+        "id": "lb-2",
+        "name": "local-b",
+        "resource_type": "buckets"
+      },
+      "object_backlog": {
+        "bytes_count": 500,
+        "delete_ops_count": 6,
+        "other_ops_count": 7,
+        "put_ops_count": 8
+      },
+      "paused": true,
+      "recovery_point": 1565034592494,
+      "remote": {
+        "id": "r-2",
+        "name": "remote-array-2",
+        "resource_type": "arrays"
+      },
+      "remote_bucket": {
+        "name": "remote-b"
+      },
+      "remote_credentials": {
+        "id": "rc-2",
+        "name": "creds-2",
+        "resource_type": "object-store-accounts"
+      },
+      "status": "ok"
+    }
+  ],
+  "total": {
+    "id": "total",
+    "direction": "all",
+    "lag": 46,
+    "status_details": "ok",
+    "context": {
+      "id": "ctx-total",
+      "name": "ctx-total",
+      "resource_type": "bucket-replica-links"
+    },
+    "cascading_enabled": true,
+    "local_bucket": {
+      "id": "lb-total",
+      "name": "total",
+      "resource_type": "buckets"
+    },
+    "object_backlog": {
+      "bytes_count": 600,
+      "delete_ops_count": 8,
+      "other_ops_count": 10,
+      "put_ops_count": 12
+    },
+    "paused": false,
+    "recovery_point": 1565034592494,
+    "remote": {
+      "id": "r-total",
+      "name": "total",
+      "resource_type": "arrays"
+    },
+    "remote_bucket": {
+      "name": "total"
+    },
+    "remote_credentials": {
+      "id": "rc-total",
+      "name": "creds-total",
+      "resource_type": "object-store-accounts"
+    },
+    "status": "ok"
+  }
+}
+
+
